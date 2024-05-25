@@ -11,6 +11,6 @@ As a **role** I can **capability** so that **received benefit**
 
 I know I'm done when;
 
--AC1
--AC2
--AC3
+-AC1- **CRITERIA**
+-AC2- **CRITERIA**
+-AC3- **CRITERIA**
