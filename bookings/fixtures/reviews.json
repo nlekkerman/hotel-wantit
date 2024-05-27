@@ -1,0 +1,123 @@
+[
+    {
+      "model": "reviews.review",
+      "pk": 1,
+      "fields": {
+        "user": 1,
+        "rating": 5,
+        "review": "Fantastic stay! Highly recommend.",
+        "created_at": "2024-05-20T00:00:00Z",
+        "last_edited_at": "2024-05-20T00:00:00Z",
+        "status": 1
+      }
+    },
+    {
+      "model": "reviews.review",
+      "pk": 2,
+      "fields": {
+        "user": 2,
+        "rating": 4,
+        "review": "Great service and location.",
+        "created_at": "2024-05-21T00:00:00Z",
+        "last_edited_at": "2024-05-21T00:00:00Z",
+        "status": 1
+      }
+    },
+    {
+      "model": "reviews.review",
+      "pk": 3,
+      "fields": {
+        "user": 1,
+        "rating": 3,
+        "review": "Good for the price.",
+        "created_at": "2024-05-22T00:00:00Z",
+        "last_edited_at": "2024-05-22T00:00:00Z",
+        "status": 1
+      }
+    },
+    {
+      "model": "reviews.review",
+      "pk": 4,
+      "fields": {
+        "user": 2,
+        "rating": 2,
+        "review": "Room was not clean.",
+        "created_at": "2024-05-23T00:00:00Z",
+        "last_edited_at": "2024-05-23T00:00:00Z",
+        "status": 1
+      }
+    },
+    {
+      "model": "reviews.review",
+      "pk": 5,
+      "fields": {
+        "user": 1,
+        "rating": 5,
+        "review": "Excellent amenities and friendly staff.",
+        "created_at": "2024-05-24T00:00:00Z",
+        "last_edited_at": "2024-05-24T00:00:00Z",
+        "status": 1
+      }
+    },
+    {
+      "model": "reviews.review",
+      "pk": 6,
+      "fields": {
+        "user": 2,
+        "rating": 4,
+        "review": "Good value for money.",
+        "created_at": "2024-05-25T00:00:00Z",
+        "last_edited_at": "2024-05-25T00:00:00Z",
+        "status": 1
+      }
+    },
+    {
+      "model": "reviews.review",
+      "pk": 7,
+      "fields": {
+        "user": 1,
+        "rating": 3,
+        "review": "Decent stay but could be better.",
+        "created_at": "2024-05-26T00:00:00Z",
+        "last_edited_at": "2024-05-26T00:00:00Z",
+        "status": 1
+      }
+    },
+    {
+      "model": "reviews.review",
+      "pk": 8,
+      "fields": {
+        "user": 2,
+        "rating": 2,
+        "review": "Had some issues with the room service.",
+        "created_at": "2024-05-27T00:00:00Z",
+        "last_edited_at": "2024-05-27T00:00:00Z",
+        "status": 1
+      }
+    },
+    {
+      "model": "reviews.review",
+      "pk": 9,
+      "fields": {
+        "user": 1,
+        "rating": 5,
+        "review": "Loved the view from the room.",
+        "created_at": "2024-05-28T00:00:00Z",
+        "last_edited_at": "2024-05-28T00:00:00Z",
+        "status": 1
+      }
+    },
+    {
+      "model": "reviews.review",
+      "pk": 10,
+      "fields": {
+        "user": 2,
+        "rating": 4,
+        "review": "Very comfortable bed and clean room.",
+        "created_at": "2024-05-29T00:00:00Z",
+        "last_edited_at": "2024-05-29T00:00:00Z",
+        "status": 1
+      }
+    }
+  ]
+  
