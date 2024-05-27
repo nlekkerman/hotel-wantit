@@ -1,112 +1,451 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Hotel Wantit
 
-Welcome USER_NAME,
+## Introduction
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Welcome to the Hotel Wantit page! This page is designed to offer a user-friendly and interactive experience for guests looking to book hotel rooms and restaurant tables at Hotel Wantit. Additionally, users can easily obtain all the information they need through our interactive chat feature.
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **April 26, 2024**
+## Table of Contents
+- [Hotel Wantit](#frisa-booking)
+  - [Introduction](#introduction)
+  - [Table of Contents](#table-of-contents)
+  - [User Experience](#user-experience)
+    - [User Goals](#user-goals)
+    - [Site Owner Goals](#site-owner-goals)
+    - [User Stories](#user-stories)
+      - [Epic 1 - User account creation process](#epic-1---user-account-creation-process)
+      - [Epic 2 - Development of a course booking system](#epic-2---development-of-a-course-booking-system)
+      - [Epic 3 - Development of a contact form](#epic-3---development-of-a-contact-form)
+      - [Epic 4 - Enhancing website aesthetics](#epic-4---enhancing-website-aesthetics)
+      - [Epic 5 - Employee workshop news feed](#epic-5---employee-workshop-news-feed)
+  - [Design](#design)
+    - [Color Scheme](#color-scheme)
+    - [Typography](#typography)
+    - [Imagery](#imagery)
+    - [Wireframes](#wireframes)
+      - [Index page](#index-page)
+      - [About page](#about-page)
+      - [Booking page](#booking-page)
+      - [My bookings page](#my-bookings-page)
+      - [Success page](#success-page)
+      - [Edit booking page](#edit-booking-page)
+      - [Sign up page](#sign-up-page)
+      - [Sign in page](#sign-in-page)
+      - [Sign out page](#sign-out-page)
+      - [404 page](#404-page)
+      - [500 page](#500-page)
+    - [Entity Relationship Diagram - ERD](#entity-relationship-diagram---erd)
+  - [Features](#features)
+    - [Header](#header)
+      - [Navigation bar](#navigation-bar)
+      - [Navigation bar (as a logged in user)](#navigation-bar-as-a-logged-in-user)
+      - [Navigation bar (as a staff member or superuser)](#navigation-bar-as-a-staff-member-or-superuser)
+    - [Index page](#index-page-1)
+      - [Hero image](#hero-image)
+      - [Welcome text](#welcome-text)
+      - [Member benefits](#member-benefits)
+      - [Sign up button](#sign-up-button)
+      - [Carousel](#carousel)
+    - [About page](#about-page-1)
+      - [Profile image](#profile-image)
+      - [About text](#about-text)
+      - [Contact form](#contact-form)
+      - [Contact form response](#contact-form-response)
+    - [Booking page](#booking-page-1)
+      - [Workshop presentation](#workshop-presentation)
+      - [Workshop booking](#workshop-booking)
+      - [Booking pagination](#booking-pagination)
+      - [Confirm booking modal](#confirm-booking-modal)
+      - [Double booked modal](#double-booked-modal)
+    - [Success page](#success-page-1)
+      - [Confirmation text](#confirmation-text)
+      - [Navigation buttons](#navigation-buttons)
+    - [My bookings page](#my-bookings-page-1)
+      - [No bookings - text](#no-bookings---text)
+      - [No bookings - button](#no-bookings---button)
+      - [Active bookings - text](#active-bookings---text)
+      - [Active bookings - booked workshops](#active-bookings---booked-workshops)
+      - [Active bookings pagination](#active-bookings-pagination)
+      - [Confirm cancellation modal](#confirm-cancellation-modal)
+    - [Edit booking page](#edit-booking-page-1)
+      - [Available workshops](#available-workshops)
+      - [Available workshops pagination](#available-workshops-pagination)
+      - [Confirm workshop change modal](#confirm-workshop-change-modal)
+    - [News page](#news-page)
+    - [Sign up page](#sign-up-page-1)
+    - [Sign in page](#sign-in-page-1)
+    - [Sign out page](#sign-out-page-1)
+    - [404 page](#404-page-1)
+      - [404 page text](#404-page-text)
+      - [404 page button](#404-page-button)
+    - [500 page](#500-page-1)
+      - [500 page text](#500-page-text)
+      - [500 page tips](#500-page-tips)
+    - [Footer](#footer)
+  - [Features to be Added](#features-to-be-added)
+  - [Testing](#testing)
+    - [Validation of Code](#validation-of-code)
+      - [HTML](#html)
+      - [CSS](#css)
+      - [JavaScript](#javascript)
+      - [Python](#python)
+    - [Lighthouse](#lighthouse)
+      - [Desktop](#desktop)
+      - [Mobile](#mobile)
+    - [Wave Webaim - accessibility testing](#wave-webaim---accessibility-testing)
+      - [Index page](#index-page-2)
+      - [About page](#about-page-2)
+      - [Booking page](#booking-page-2)
+      - [Contrast Grid](#contrast-grid)
+    - [Automated Testing](#automated-testing)
+      - [About](#about)
+      - [Booking](#booking)
+      - [News](#news)
+    - [Manual Testing](#manual-testing)
+      - [Navigation bar](#navigation-bar-1)
+      - [Index page](#index-page-3)
+      - [About page](#about-page-3)
+      - [Booking page](#booking-page-3)
+      - [Success page](#success-page-2)
+      - [My bookings page](#my-bookings-page-2)
+      - [Edit booking page](#edit-booking-page-2)
+      - [News page](#news-page-1)
+      - [Sign up page](#sign-up-page-2)
+      - [Sign in page](#sign-in-page-2)
+      - [Sign out page](#sign-out-page-2)
+      - [404 page](#404-page-2)
+      - [500 page](#500-page-2)
+      - [Footer](#footer-1)
+  - [Bugs](#bugs)
+  - [Technologies Used](#technologies-used)
+  - [Deployment](#deployment)
+    - [Fork repository in GitHub](#fork-repository-in-github)
+    - [Clone repository in GitHub](#clone-repository-in-github)
+    - [Deployment to Heroku](#deployment-to-heroku)
+  - [Credits](#credits)
+    - [Libraries used](#libraries-used)
+    - [Used resources](#used-resources)
+    - [Images](#images)
+    - [Acknowledgements](#acknowledgements)
+  - [User Experience](#user-experience-1)
 
-## Gitpod Reminders
+## User Experience
+### User Goals
+1. **Easy Navigation and Booking**: Users want a straightforward and intuitive interface to navigate through the website and make bookings for hotel rooms and restaurant tables effortlessly.
+2. **Access to Information**: Users need quick access to essential information about the hotel, including room details, dining options, and promotions.
+3. **Real-Time Assistance**: Users seek immediate help and answers to their queries through an interactive chat feature, providing real-time support.
+4. **Review and Feedback**: Users want to read reviews from previous guests and leave their feedback to help future visitors make informed decisions.
+5. **Responsive Design**: Users expect a seamless experience across all devices, including desktops, tablets, and smartphones.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+### Site Owner Goals
+1. **Increase Bookings**: The primary goal is to drive more bookings for hotel rooms and restaurant tables through a user-friendly and engaging website.
+2. **Enhance User Engagement**: The site aims to keep users engaged with interactive features like the chat function and dynamic content such as slideshows and reviews.
+3. **Showcase Amenities and Promotions**: The site should effectively highlight the hotel’s services and current promotions to attract potential guests.
+4. **Collect User Feedback**: Gathering reviews and feedback from guests helps improve services and build a trustworthy reputation for future visitors.
+5. **Promote Social Media Presence**: Encouraging users to follow and interact with the hotel's social media profiles helps in building an online community and increasing brand visibility.
 
-`python3 -m http.server`
 
-A blue button should appear to click: _Make Public_,
+### User Stories
+#### Epic 1 - User account creation process
+<!-- Epic 1 content here -->
 
-Another blue button should appear to click: _Open Browser_.
+#### Epic 2 - Development of a course booking system
+<!-- Epic 2 content here -->
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+#### Epic 3 - Development of a contact form
+<!-- Epic 3 content here -->
 
-A blue button should appear to click: _Make Public_,
+#### Epic 4 - Enhancing website aesthetics
+<!-- Epic 4 content here -->
 
-Another blue button should appear to click: _Open Browser_.
+#### Epic 5 - Employee workshop news feed
+<!-- Epic 5 content here -->
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+## Design
+### Color Scheme
+<!-- Color Scheme content here -->
 
-To log into the Heroku toolbelt CLI:
+### Typography
+<!-- Typography content here -->
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Imagery
+<!-- Imagery content here -->
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+### Wireframes
+#### Index page
+<!-- Index page wireframe content here -->
 
-------
+#### About page
+<!-- About page wireframe content here -->
 
-## Release History
+#### Booking page
+<!-- Booking page wireframe content here -->
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+#### My bookings page
+<!-- My bookings page wireframe content here -->
 
-**April 26 2024:** Update node version to 16
+#### Success page
+<!-- Success page wireframe content here -->
 
-**September 20 2023:** Update Python version to 3.9.17.
+#### Edit booking page
+<!-- Edit booking page wireframe content here -->
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+#### Sign up page
+<!-- Sign up page wireframe content here -->
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+#### Sign in page
+<!-- Sign in page wireframe content here -->
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+#### Sign out page
+<!-- Sign out page wireframe content here -->
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+#### 404 page
+<!-- 404 page wireframe content here -->
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+#### 500 page
+<!-- 500 page wireframe content here -->
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+### Entity Relationship Diagram - ERD
+<!-- ERD content here -->
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+## Features
+### Header
+#### Navigation bar
+<!-- Navigation bar content here -->
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+#### Navigation bar (as a logged in user)
+<!-- Navigation bar (logged in user) content here -->
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+#### Navigation bar (as a staff member or superuser)
+<!-- Navigation bar (staff member/superuser) content here -->
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+### Index page
+#### Hero image
+<!-- Hero image content here -->
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+#### Welcome text
+<!-- Welcome text content here -->
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+#### Member benefits
+<!-- Member benefits content here -->
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+#### Sign up button
+<!-- Sign up button content here -->
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+#### Carousel
+<!-- Carousel content here -->
 
-------
+### About page
+#### Profile image
+<!-- Profile image content here -->
 
-## FAQ about the uptime script
+#### About text
+<!-- About text content here -->
 
-**Why have you added this script?**
+#### Contact form
+<!-- Contact form content here -->
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+#### Contact form response
+<!-- Contact form response content here -->
 
-**How will this affect me?**
+### Booking page
+#### Workshop presentation
+<!-- Workshop presentation content here -->
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+#### Workshop booking
+<!-- Workshop booking content here -->
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+#### Booking pagination
+<!-- Booking pagination content here -->
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+#### Confirm booking modal
+<!-- Confirm booking modal content here -->
 
-**So….?**
+#### Double booked modal
+<!-- Double booked modal content here -->
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+### Success page
+#### Confirmation text
+<!-- Confirmation text content here -->
 
-**Can I opt out?**
+#### Navigation buttons
+<!-- Navigation buttons content here -->
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+### My bookings page
+#### No bookings - text
+<!-- No bookings - text content here -->
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+#### No bookings - button
+<!-- No bookings - button content here -->
 
-**Anything more?**
+#### Active bookings - text
+<!-- Active bookings - text content here -->
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+#### Active bookings - booked workshops
+<!-- Active bookings - booked workshops content here -->
 
----
+#### Active bookings pagination
+<!-- Active bookings pagination content here -->
 
-Happy coding!
+#### Confirm cancellation modal
+<!-- Confirm cancellation modal content here -->
+
+### Edit booking page
+#### Available workshops
+<!-- Available workshops content here -->
+
+#### Available workshops pagination
+<!-- Available workshops pagination content here -->
+
+#### Confirm workshop change modal
+<!-- Confirm workshop change modal content here -->
+
+### News page
+<!-- News page content here -->
+
+### Sign up page
+<!-- Sign up page content here -->
+
+### Sign in page
+<!-- Sign in page content here -->
+
+### Sign out page
+<!-- Sign out page content here -->
+
+### 404 page
+#### 404 page text
+<!-- 404 page text content here -->
+
+#### 404 page button
+<!-- 404 page button content here -->
+
+### 500 page
+#### 500 page text
+<!-- 500 page text content here -->
+
+#### 500 page tips
+<!-- 500 page tips content here -->
+
+### Footer
+<!-- Footer content here -->
+
+## Features to be Added
+<!-- Features to be added content here -->
+
+## Testing
+### Validation of Code
+#### HTML
+<!-- HTML validation content here -->
+
+#### CSS
+<!-- CSS validation content here -->
+
+#### JavaScript
+<!-- JavaScript validation content here -->
+
+#### Python
+<!-- Python validation content here -->
+
+### Lighthouse
+#### Desktop
+<!-- Lighthouse Desktop content here -->
+
+#### Mobile
+<!-- Lighthouse Mobile content here -->
+
+### Wave Webaim - accessibility testing
+#### Index page
+<!-- Index page accessibility testing content here -->
+
+#### About page
+<!-- About page accessibility testing content here -->
+
+#### Booking page
+<!-- Booking page accessibility testing content here -->
+
+### Contrast Grid
+<!-- Contrast Grid content here -->
+
+### Automated Testing
+#### About
+<!-- Automated Testing About content here -->
+
+#### Booking
+<!-- Automated Testing Booking content here -->
+
+#### News
+<!-- Automated Testing News content here -->
+
+### Manual Testing
+#### Navigation bar
+<!-- Manual Testing Navigation bar content here -->
+
+#### Index page
+<!-- Manual Testing Index page content here -->
+
+#### About page
+<!-- Manual Testing About page content here -->
+
+#### Booking page
+<!-- Manual Testing Booking page content here -->
+
+#### Success page
+<!-- Manual Testing Success page content here -->
+
+#### My bookings page
+<!-- Manual Testing My bookings page content here -->
+
+#### Edit booking page
+<!-- Manual Testing Edit booking page content here -->
+
+#### News page
+<!-- Manual Testing News page content here -->
+
+#### Sign up page
+<!-- Manual Testing Sign up page content here -->
+
+#### Sign in page
+<!-- Manual Testing Sign in page content here -->
+
+#### Sign out page
+<!-- Manual Testing Sign out page content here -->
+
+#### 404 page
+<!-- Manual Testing 404 page content here -->
+
+#### 500 page
+<!-- Manual Testing 500 page content here -->
+
+### Footer
+<!-- Manual Testing Footer content here -->
+
+## Bugs
+<!-- Bugs content here -->
+
+## Technologies Used
+<!-- Technologies Used content here -->
+
+## Deployment
+### Fork repository in GitHub
+<!-- Fork repository in GitHub content here -->
+
+### Clone repository in GitHub
+<!-- Clone repository in GitHub content here -->
+
+### Deployment to Heroku
+<!-- Deployment to Heroku content here -->
+
+## Credits
+### Libraries used
+<!-- Libraries used content here -->
+
+### Used resources
+<!-- Used resources content here -->
+
+### Images
+<!-- Images content here -->
+
+### Acknowledgements
+<!-- Acknowledgements content here -->
+
+## User Experience
+<!-- User Experience content here -->
