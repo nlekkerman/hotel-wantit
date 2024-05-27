@@ -20,6 +20,8 @@ class Booking(models.Model):
     type_of_room = models.CharField(max_length=10, choices=ROOM_TYPES)
     occupied = models.BooleanField(default=False)
     status = models.IntegerField(choices=STATUS, default=0)
+    excerpt = models.TextField(blank=True)
+    updated_on = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f'{self.name} - {self.checkin_date} to {self.checkout_date}'
