@@ -20,7 +20,7 @@ from wantit.views import my_blog
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('wantit/', my_blog, name='wantit'),
+    path('admin/', admin.site.urls),
 
 ]
