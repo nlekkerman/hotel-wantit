@@ -1,19 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Views Part 1</title>
-</head>
+{% block title %}Reviews{% endblock %}
 
-<body>
-    <h1>Posts list</h1>
-    {% for review in object_list %}
-    <p>{{review.review}}</p>
-    <p>Author: {{review.user}}</p>
-    {% endfor %}
-</body>
-
-</html>
+{% block content %}
+<div id="reviews-page">
+    <div class="container">
+        <div class="floating-button" id="leaveCommentButton">
+            <i class="fas fa-pencil-alt"></i> Write Review
+        </div>
+        <h1 class="reviews-header">Reviews</h1>
+        <div class="reviews-list">
+            {% for review in object_list %}
+            <div class="review-item">
+                <p class="review-text">{{ review.review }}</p>
+                <div class="stars">
+                    {% for _ in review.stars %}
+                        <span class="star">&#9733;</span>
+                    {% endfor %}
+                    {% for _ in review.empty_stars %}
+                        <span class="star">&#9734;</span>
+                    {% endfor %}
+                </div>
+                <p class="review-author">Author: {{ review.user.username }}</p>
+                <p class="review-date">Date: {{ review.created_at|date:"F j, Y" }}</p>
+            </div>
+           
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

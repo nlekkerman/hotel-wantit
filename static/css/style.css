@@ -1,4 +1,3 @@
-
 /**HEADER**/
 
 .header-container {
@@ -29,6 +28,15 @@
     margin-top: 10px;
     padding: 0;
     margin-right: 20px;
+}
+
+.navbar-toggler {
+    padding: .25rem .75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: .25rem;
 }
 
 .avbar {
@@ -83,15 +91,57 @@
 
 }
 
-.dropdown-menu{
+.navbar-toggler-icon {
+    background-image: none;
+    width: 1.5em;
+    height: 2px;
+    background-color: silver;
+    position: relative;
+    padding: 1px;
+    align-self: center;
+    border-radius: 4px;
+}
+
+/* Create the lines for the hamburger icon */
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    /* Inherit the background color */
+    position: absolute;
+    left: 0;
+    transition: transform 0.3s ease;
+    /* Add transition effect */
+}
+
+/* Position the lines for the hamburger icon */
+.navbar-toggler-icon::before {
+    top: -6px;
+}
+
+.navbar-toggler-icon::after {
+    bottom: -6px;
+}
+
+/* Add hover effect */
+.navbar-toggler-icon:hover::before,
+.navbar-toggler-icon:hover::after {
+    transform: scale(1.1);
+    /* Scale the lines on hover */
+}
+
+.dropdown-menu {
     background-color: #00563a;
     padding: 0 !important;
 
 }
 
-.dropdown-item{
+.dropdown-item {
     background-color: #002a1c;
-    margin:0 !important;
+    margin: 0 !important;
     color: silver !important;
     height: 100%;
     padding: 0 !important;
@@ -103,7 +153,7 @@
     color: white;
     padding: 10px 20px;
     border-radius: 25px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -118,23 +168,27 @@ label {
     color: #f8f9fa;
 }
 
-.chat-body{
+.chat-body {
     animation: zoomIn 0.7s ease-in;
 
 }
-.chat-header{
+
+.chat-header {
     display: flex;
     justify-content: space-between;
     animation: slideInFromTop 1.3s ease-in-out;
 
 }
-.chat-footer{
+
+.chat-footer {
     animation: slideInFromBottom 1.3s ease-in-out;
 
 }
+
 .chat-window {
     position: fixed;
-    bottom: 80px; /* Adjust according to floating chat button position */
+    bottom: 80px;
+    /* Adjust according to floating chat button position */
     right: 10px;
     width: 300px;
     height: 400px;
@@ -142,7 +196,8 @@ label {
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    display: none; /* Initially hidden */
+    display: none;
+    /* Initially hidden */
     flex-direction: column;
     animation: slideInFromRight 0.7s ease-in-out;
 
@@ -183,7 +238,319 @@ label {
 
 .floating-chat-container {
     position: fixed;
-    z-index:1000000000;
-    bottom: 20px; /* distance from the bottom of the viewport */
-    right: 20px;  /* distance from the right of the viewport */
+    z-index: 1000000000;
+    bottom: 20px;
+    /* distance from the bottom of the viewport */
+    right: 20px;
+    /* distance from the right of the viewport */
+}
+
+
+/*MAIN CONTENT*/
+.main-content-background {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    background-image: url("../images/lobby.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/*LOGO STYLES*/
+
+.logo-container {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    text-align: center;
+    background-color: rgba(1, 38, 41, 0.7);
+    padding: 20px 10px 0px 10px;
+    color: white;
+    font-family: Oswald;
+    font-weight: 800;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-top: 5px solid rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+#logo {
+    width: 60px;
+    border-radius: 50%;
+    border: 3px solid silver;
+}
+
+
+/*MAIN CONTENT HOMEPAGE SLIDE STYLES*/
+.slide-holder {
+    height: 400px;
+    display: flex;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    animation: zoomIn 0.9s ease-in-out;
+}
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    max-width: 800px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(255, 246, 246, 0.5);
+    animation: zoomIn 1s ease-in;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    transition: left 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    height: 150px;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    font-family: Oswald;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide img {
+    margin-bottom: 20px;
+    height: auto;
+}
+
+.main-content-background img {
+    width: 100%;
+}
+
+/*REVIEW in the SLIDE*/
+
+.review {
+    padding: 15px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    width: 100%;
+    color: white;
+        animation: zoomIn 1s ease-in;
+
+}
+
+.review-body {
+    font-size: 1em;
+    margin: 10px 0;
+
+}
+
+.review-author {
+    font-size: 1.3em;
+    color: #ffffff;
+    margin-left: 10px;
+}
+
+.review-date {
+    font-size: 0.8em;
+    color: #aaa;
+    float: right;
+}
+
+.stars {
+    color: rgb(0, 0, 0);
+    font-size: 1.9em;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    border: 2px solid rgb(0, 0, 0);
+    margin-bottom: 20px;
+}
+.action-button {
+    position: absolute;
+    bottom: 10px;
+    padding: 5px 10px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #b30000 !important;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/*all REVIEWS*/
+/* CSS for reviews page */
+#reviews-page .container {
+    background-color: rgba(0, 0, 0, 0.5);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+
+}
+
+.main-background{
+ min-height: 100vh !important;
+background-image: url("../images/reviews-background.jpg");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+
+}
+#reviews-page{
+    margin-top: 50px;
+    animation: slideInFromBottom 1s ease-in-out;
+    /* Adjust background size and position as needed */
+  
+
+}
+
+.reviews-header {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+    color: #ffffff;
+}
+
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.review-item {
+    background-color:rgba(0, 0, 0, 0.3) ;
+    padding: 15px;
+    color: white !important;
+    box-shadow: 0 2px 5px rgba(255, 254, 254, 0.1);
+    border-bottom: 3px solid silver;
+}
+
+.review-text {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-style: italic;
+    text-align: center;
+    background-color: rgba(255, 0, 0, 0.2);
+
+}
+
+.review-author, .review-date {
+    font-size: 1.3em;
+    color: #e6e3e3;
+}
+
+/*LEAVE COMMENT*/
+
+.floating-button {
+    position: fixed;
+    top: 70px; /* Adjust top distance from the top of the page */
+    right: 20px; /* Adjust right distance from the right of the page */
+    background-color: #bd1010; /* Red background color */
+    color: #fff; /* Text color */
+    padding: 5px 10px; /* Padding */
+    border: 2px solid #c0c0c0; /* Silver border */
+    border-radius: 20px; /* Border radius */
+    cursor: pointer;
+    z-index: 1000; /* Ensure it's on top of other elements */
+}
+
+.floating-button:hover {
+    background-color: #cc0000; /* Darker red on hover */
+}
+
+
+/*ANIMATIONS*/
+
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Define the keyframes for the zoom-in animation */
+@keyframes zoomIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+        background-color: rgba(255, 255, 255, 0);
+        /* Initial transparent background color */
+
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+
+    }
+}
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+
+    }
+}
+
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
