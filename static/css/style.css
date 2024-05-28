@@ -1,0 +1,189 @@
+
+/**HEADER**/
+
+.header-container {
+    border-bottom: 4px solid silver;
+    animation: slideInFromTop 0.6s ease-in-out;
+
+}
+
+.nav-container {
+    position: -webkit-sticky;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    background-color: rgb(1, 38, 41);
+    animation: slideInFromLeft 1.5s ease-in-out;
+    padding-bottom: 5px;
+    border-bottom: 1px solid silver;
+}
+
+.navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+    margin-right: 20px;
+}
+
+.avbar {
+
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.avbar .nav-item {
+    /* Add styles for each navigation item */
+    margin-left: 10px;
+    /* Example margin between items */
+}
+
+.avbar .nav-link {
+
+    color: silver;
+
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    /* Smooth transition for hover effect */
+
+}
+
+
+
+.active-link {
+    border-left: 2px solid silver;
+    border-right: 2px solid silver;
+    background-color: #000604;
+    font-size: 1.1rem;
+    animation: zoomIn 1.8s ease-in;
+}
+
+.nav-link i {
+    margin-right: 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover effect for nav links */
+.nav-link:hover {
+    background-color: silver;
+    color: black;
+}
+
+
+.nav-link:hover i {
+    color: black;
+
+}
+
+.dropdown-menu{
+    background-color: #00563a;
+    padding: 0 !important;
+
+}
+
+.dropdown-item{
+    background-color: #002a1c;
+    margin:0 !important;
+    color: silver !important;
+    height: 100%;
+    padding: 0 !important;
+}
+
+/*CHAT*/
+.floating-chat {
+    background-color: #b30021;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 0.7rem;
+}
+
+.floating-chat i {
+    margin-right: 8px;
+}
+
+label {
+    color: #f8f9fa;
+}
+
+.chat-body{
+    animation: zoomIn 0.7s ease-in;
+
+}
+.chat-header{
+    display: flex;
+    justify-content: space-between;
+    animation: slideInFromTop 1.3s ease-in-out;
+
+}
+.chat-footer{
+    animation: slideInFromBottom 1.3s ease-in-out;
+
+}
+.chat-window {
+    position: fixed;
+    bottom: 80px; /* Adjust according to floating chat button position */
+    right: 10px;
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: none; /* Initially hidden */
+    flex-direction: column;
+    animation: slideInFromRight 0.7s ease-in-out;
+
+}
+
+.chat-header {
+    background-color: #b30000;
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.chat-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.chat-footer {
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.chat-footer input {
+    width: calc(100% - 60px);
+    padding: 5px;
+}
+
+.chat-footer button {
+    width: 50px;
+    background-color: #b30000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.floating-chat-container {
+    position: fixed;
+    z-index:1000000000;
+    bottom: 20px; /* distance from the bottom of the viewport */
+    right: 20px;  /* distance from the right of the viewport */
+}

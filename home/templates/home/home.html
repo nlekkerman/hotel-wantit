@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="main-content-background">
+    <div class="logo-container">
+    <img id="logo" src="hv-logo.jpg" alt="Logo Image">
+    <p>Hotel Wantit</p>
+</div>
+    <div class="slide-holder">
+        <div class="slideshow-container">
+            <div class="slide" id="slide1">
+                <img src="room1.jpg" alt="Room Image">
+                <div class="overlay">
+                    <p>Get 10% off on Deluxe Room</p>
+                </div>
+                <button class="action-button" onclick="location.href='book-room.html'">Book Now</button>
+            </div>
+            <div class="slide" id="slide2">
+                <img src="room2.jpg" alt="Renovation Image">
+                <div class="overlay">
+                    <p>Expirience our newly refurbished rooms!</p>
+                </div>
+                <button class="action-button" onclick="location.href='renovation.html'">Read More</button>
+            </div>
+            <div class="slide" id="slide3">
+                <img src="room-view.jpg" alt="Reviews Image">
+                <div class="review">
+                    <div class="review-body">"The room was clean and the view was amazing. Highly recommend!"</div>
+                    <div class="review-author">Jacob Dalley</div>
+                    <div class="review-date">April 1, 2024</div>
+                    <div class="stars">★★★★☆</div>
+                </div>
+                <button class="action-button" onclick="location.href='reviews.html'">Leave Review</button>
+            </div>
+        </div>
+
+</div>
+</div>
+
+<!-- index.html content ends here -->
+{% endblock %}
+
+
+
