@@ -8,24 +8,39 @@
 </div>
 <div id="reviews-page">
     <div class="container">
-   
+
         <h1 class="reviews-header">Reviews</h1>
         <div class="reviews-list">
             {% for review in object_list %}
-            <div class="review-item">
-                <p class="review-text">{{ review.review }}</p>
-                <div class="stars">
-                    {% for _ in review.stars %}
-                        <span class="star">&#9733;</span>
-                    {% endfor %}
-                    {% for _ in review.empty_stars %}
-                        <span class="star">&#9734;</span>
-                    {% endfor %}
-                </div>
-                <p class="review-author">Author: {{ review.user.username }}</p>
-                <p class="review-date">Date: {{ review.created_at|date:"F j, Y" }}</p>
-            </div>
            
+            <a href="{% url 'review_detail' review.pk %}">
+                <div class="review-item">
+                    <p class="review-text">{{ review.review }}</p>
+                    <div class="stars">
+                        {% for _ in review.stars %}
+                        <span class="star">&#9733;</span>
+                        {% endfor %}
+                        {% for _ in review.empty_stars %}
+                        <span class="star">&#9734;</span>
+                        {% endfor %}
+                    </div>
+                    <p class="review-author">Author: {{ review.user.username }}</p>
+                    <p class="review-date">Date: {{ review.created_at|date:"F j, Y" }}</p>
+    
+                    <!-- Displaying count of comments -->
+                    <div class="row">
+                        <div class="col-12">
+                            <strong class="text-secondary">
+                                <i class="far fa-comments"></i> {{ comment_count }}
+                            </strong>
+                            1
+                        </div>
+                        <div class="col-12">
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </a>
             {% endfor %}
         </div>
     </div>

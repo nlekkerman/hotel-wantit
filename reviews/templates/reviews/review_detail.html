@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Review Detail{% endblock %}
+
+{% block content %}
+<div class="container review-container">
+    <h1>{{ review.review }}</h1>
+    <p>Author: {{ review.user.username }}</p>
+    <p>Date: {{ review.created_at|date:"F j, Y" }}</p>
+    <div class="review-text">{{ review.review }}</div>
+    <div class="stars">
+        {% for _ in "12345" %}
+            {% if forloop.counter <= review.rating %}
+                <span class="star">&#9733;</span> <!-- Filled star -->
+            {% else %}
+                <span class="star">&#9734;</span> <!-- Empty star -->
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
