@@ -169,7 +169,7 @@ label {
 }
 
 .chat-body {
-    animation: zoomIn 0.7s ease-in;
+    animation: slideFromRight 0.7s ease-in-out;
 
 }
 
@@ -240,7 +240,7 @@ label {
     position: fixed;
     z-index: 1000000000;
     bottom: 20px;
-    /* distance from the bottom of the viewport */
+    animation: slideInFromRight 1.2s ease-in-out;
     right: 20px;
     /* distance from the right of the viewport */
 }
@@ -267,13 +267,14 @@ label {
     top: 50px;
     left: 10px;
     text-align: center;
-    background-color: rgba(1, 38, 41, 0.7);
     padding: 20px 10px 0px 10px;
+    background-color: rgba(10, 89, 0, 0.2);
     color: white;
     font-family: Oswald;
     font-weight: 800;
     border: 2px solid rgba(0, 0, 0, 0.5);
     border-top: 5px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 5px solid rgba(0, 0, 0, 0.5);
     border-radius: 50%;
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
@@ -426,7 +427,7 @@ background-repeat: no-repeat;
 }
 #reviews-page{
     margin-top: 50px;
-    animation: slideInFromBottom 1s ease-in-out;
+    animation: zoomIn 1.2s ease-in;
     /* Adjust background size and position as needed */
   
 
@@ -471,15 +472,16 @@ background-repeat: no-repeat;
 
 .floating-button {
     position: fixed;
-    top: 70px; /* Adjust top distance from the top of the page */
-    right: 20px; /* Adjust right distance from the right of the page */
-    background-color: #bd1010; /* Red background color */
-    color: #fff; /* Text color */
-    padding: 5px 10px; /* Padding */
-    border: 2px solid #c0c0c0; /* Silver border */
-    border-radius: 20px; /* Border radius */
+    top: 70px; 
+    right: 20px;
+    background-color: #bd1010;
+    color: #fff;
+    padding: 5px 10px; 
+    border: 2px solid #c0c0c0;
+    border-radius: 20px;
     cursor: pointer;
-    z-index: 1000; /* Ensure it's on top of other elements */
+    z-index: 1000;
+    animation: slideInFromRight 1.3s ease-in-out;
 }
 
 .floating-button:hover {

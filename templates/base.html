@@ -28,25 +28,32 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
-                            <a class="nav-link active-link" href="{% url 'home' %}">
-                                <i class="fas fa-home"></i> Home
-                            </a>
-                            <a class="nav-link" href="{% url 'review-list' %}">
-                                <i class="fas fa-pen"></i> Reviews
-                            </a>
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.path == home_url %}active" aria-current="page{% endif %}"
+                                    href="{% url 'home' %}">
+                                    <i class="fas fa-home"></i> Home
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.path == review_list_url %}active" aria-current="page{% endif %}"
+                                    href="{% url 'review-list' %}">
+                                    <i class="fas fa-pen"></i> Reviews
+                                </a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="bookingsDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-book"></i> Bookings
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="bookingsDropdown">
-                                    <a class="dropdown-item" href="book-restaurant.html">Book Restaurant</a>
-                                    <a class="dropdown-item" href="book-room.html">Book Room</a>
+                                    <a class="dropdown-item" href="#">Book Restaurant</a>
+                                    <a class="dropdown-item" href="#">Book Room</a>
                                 </div>
                             </li>
-                          
                             <li class="nav-item">
-                                <a class="nav-link" href="sign_in_form.html"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-sign-in-alt"></i> Sign In
+                                </a>
                             </li>
                         </ul>
                     </div>

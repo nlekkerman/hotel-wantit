@@ -3,11 +3,12 @@
 {% block title %}Reviews{% endblock %}
 
 {% block content %}
+<div class="floating-button" id="leaveCommentButton">
+    <i class="fas fa-pencil-alt"></i> Write Review
+</div>
 <div id="reviews-page">
     <div class="container">
-        <div class="floating-button" id="leaveCommentButton">
-            <i class="fas fa-pencil-alt"></i> Write Review
-        </div>
+   
         <h1 class="reviews-header">Reviews</h1>
         <div class="reviews-list">
             {% for review in object_list %}
