@@ -1,6 +1,7 @@
 {% load static %}
 {% url 'home' as home_url %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,10 +28,12 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
-                            <a class="nav-link active-link" href="home.html">
+                            <a class="nav-link active-link" href="{% url 'home' %}">
                                 <i class="fas fa-home"></i> Home
                             </a>
-                            
+                            <a class="nav-link" href="{% url 'review-list' %}">
+                                <i class="fas fa-pen"></i> Reviews
+                            </a>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="bookingsDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

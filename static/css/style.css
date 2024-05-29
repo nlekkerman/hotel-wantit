@@ -267,13 +267,14 @@ label {
     top: 50px;
     left: 10px;
     text-align: center;
-    background-color: rgba(1, 38, 41, 0.7);
     padding: 20px 10px 0px 10px;
+    background-color: rgba(10, 89, 0, 0.2);
     color: white;
     font-family: Oswald;
     font-weight: 800;
     border: 2px solid rgba(0, 0, 0, 0.5);
     border-top: 5px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 5px solid rgba(0, 0, 0, 0.5);
     border-radius: 50%;
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
