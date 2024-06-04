@@ -1,3 +1,5 @@
+/*<a href="https://www.freepik.com/free-photo/young-adult-organizing-documents_26298132.htm#fromView=search&page=1&position=9&uuid=111ae784-2a8f-4e14-981d-9371d9795993">Image by freepik</a>*/
+
 /**HEADER**/
 
 .header-container {
@@ -7,16 +9,16 @@
 }
 
 .nav-container {
-    position: -webkit-sticky;
     position: fixed;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     width: 100%;
-    background-color: rgb(1, 38, 41);
+    background-color: rgba(1, 38, 41, 0.5);
     animation: slideInFromLeft 1.5s ease-in-out;
     padding-bottom: 5px;
     border-bottom: 1px solid silver;
+    height: 50px;
 }
 
 .navbar-nav {
@@ -37,10 +39,10 @@
     background-color: transparent;
     border: 1px solid transparent;
     border-radius: .25rem;
+    margin-top: 5px;
 }
 
 .avbar {
-
     display: flex;
     justify-content: flex-end;
     list-style: none;
@@ -49,14 +51,14 @@
 }
 
 .avbar .nav-item {
-    /* Add styles for each navigation item */
-    margin-left: 10px;
-    /* Example margin between items */
+    padding-right: 10px;
+    color: white;
+    text-align: right;
 }
 
 .avbar .nav-link {
 
-    color: silver;
+    color: rgb(255, 255, 255);
 
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s;
@@ -237,6 +239,7 @@ label {
 }
 
 .floating-chat-container {
+    display: none;
     position: fixed;
     z-index: 1000000000;
     bottom: 20px;
@@ -416,7 +419,8 @@ label {
 /*all REVIEWS*/
 /* CSS for reviews page */
 #reviews-page .container {
-    background-color: rgba(0, 0, 0, 0.5);
+    
+    background-color: rgba(255, 255, 255, 0.1);
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
@@ -432,7 +436,7 @@ background-repeat: no-repeat;
 
 }
 #reviews-page{
-    margin-top: 50px;
+    margin-top: 0;
     animation: zoomIn 1.2s ease-in;
     /* Adjust background size and position as needed */
   
@@ -444,6 +448,7 @@ background-repeat: no-repeat;
     margin-bottom: 30px;
     font-size: 2em;
     color: #ffffff;
+    margin-top: 60px;
 }
 
 .reviews-list {
@@ -479,7 +484,7 @@ background-repeat: no-repeat;
 
 .floating-button {
     position: fixed;
-    top: 70px; 
+    top: 55px; 
     right: 20px;
     background-color: #bd1010;
     color: #fff;
