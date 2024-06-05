@@ -1,0 +1,15 @@
+<!-- templates/admin/base_site.html -->
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block sidebar %}
+    {{ block.super }}
+    <li class="model-reviews">
+        <a href="{% url 'review-approval-list' %}">
+            Pending Reviews
+            <span class="badge badge-pill badge-danger">
+                {{ pending_reviews_count }}
+            </span>
+        </a>
+    </li>
+{% endblock %}

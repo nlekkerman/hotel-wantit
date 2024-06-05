@@ -56,3 +56,15 @@ document.getElementById('sendButton').addEventListener('click', function() {
 document.getElementById('toggleButton').addEventListener('click', function() {
     document.getElementById('navbar').classList.toggle('active');
 });
+
+document.getElementById('leaveCommentButton').addEventListener('click', function(event) {
+    event.preventDefault();
+    $('#reviewModal').modal('show');
+    $.ajax({
+        url: "{% url 'create-review' %}",
+        type: "GET",
+        success: function(data) {
+            $('#reviewModal .modal-body').html(data);
+        }
+    });
+});

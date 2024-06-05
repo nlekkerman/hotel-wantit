@@ -3,9 +3,9 @@
 {% block title %}Reviews{% endblock %}
 
 {% block content %}
-<div class="floating-button" id="leaveCommentButton">
+<a href="{% url 'create-review' %}" class="floating-button" id="leaveCommentButton">
     <i class="fas fa-pencil-alt"></i> Write Review
-</div>
+</a>
 <div id="reviews-page">
     <div class="container">
 
