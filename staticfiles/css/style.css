@@ -1,3 +1,8 @@
+/*<a href="https://www.freepik.com/free-photo/young-adult-organizing-documents_26298132.htm#fromView=search&page=1&position=9&uuid=111ae784-2a8f-4e14-981d-9371d9795993">Image by freepik</a>*/
+
+/* GENERAL STYLES*/
+
+
 /**HEADER**/
 
 .header-container {
@@ -7,16 +12,16 @@
 }
 
 .nav-container {
-    position: -webkit-sticky;
     position: fixed;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     width: 100%;
-    background-color: rgb(1, 38, 41);
+    background-color: rgba(1, 38, 41, 0.5);
     animation: slideInFromLeft 1.5s ease-in-out;
     padding-bottom: 5px;
     border-bottom: 1px solid silver;
+    height: 50px;
 }
 
 .navbar-nav {
@@ -28,6 +33,8 @@
     margin-top: 10px;
     padding: 0;
     margin-right: 20px;
+
+
 }
 
 .navbar-toggler {
@@ -37,10 +44,16 @@
     background-color: transparent;
     border: 1px solid transparent;
     border-radius: .25rem;
+    margin-top: 5px;
+}
+
+
+
+.navbar-collapse {
+    transition: all 1s ease;
 }
 
 .avbar {
-
     display: flex;
     justify-content: flex-end;
     list-style: none;
@@ -49,14 +62,15 @@
 }
 
 .avbar .nav-item {
-    /* Add styles for each navigation item */
-    margin-left: 10px;
-    /* Example margin between items */
+    padding-right: 10px;
+    color: white;
+    text-align: right;
+    
 }
 
 .avbar .nav-link {
 
-    color: silver;
+    color: rgb(255, 255, 255);
 
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s;
@@ -237,6 +251,7 @@ label {
 }
 
 .floating-chat-container {
+    display: none;
     position: fixed;
     z-index: 1000000000;
     bottom: 20px;
@@ -363,7 +378,7 @@ label {
     margin-top: 40px;
     width: 100%;
     color: white;
-        animation: zoomIn 1s ease-in;
+    animation: zoomIn 1s ease-in;
 
 }
 
@@ -395,6 +410,7 @@ label {
     border: 2px solid rgb(0, 0, 0);
     margin-bottom: 20px;
 }
+
 .action-button {
     position: absolute;
     bottom: 10px;
@@ -407,29 +423,38 @@ label {
     cursor: pointer;
 }
 
+.review-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    min-height: 100vh;
+    margin-top: 30px;
+    color: white;
+}
+
 /*all REVIEWS*/
 /* CSS for reviews page */
 #reviews-page .container {
-    background-color: rgba(0, 0, 0, 0.5);
+
+    background-color: rgba(255, 255, 255, 0.1);
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
 
 }
 
-.main-background{
- min-height: 100vh !important;
-background-image: url("../images/reviews-background.jpg");
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
+.main-background {
+    min-height: 100vh !important;
+    background-image: url("../images/reviews-background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
 }
-#reviews-page{
-    margin-top: 50px;
+
+#reviews-page {
+    margin-top: 0;
     animation: zoomIn 1.2s ease-in;
     /* Adjust background size and position as needed */
-  
+
 
 }
 
@@ -438,6 +463,7 @@ background-repeat: no-repeat;
     margin-bottom: 30px;
     font-size: 2em;
     color: #ffffff;
+    margin-top: 60px;
 }
 
 .reviews-list {
@@ -447,7 +473,7 @@ background-repeat: no-repeat;
 }
 
 .review-item {
-    background-color:rgba(0, 0, 0, 0.3) ;
+    background-color: rgba(0, 0, 0, 0.3);
     padding: 15px;
     color: white !important;
     box-shadow: 0 2px 5px rgba(255, 254, 254, 0.1);
@@ -459,11 +485,13 @@ background-repeat: no-repeat;
     margin-bottom: 10px;
     font-style: italic;
     text-align: center;
+    color: whitesmoke;
     background-color: rgba(255, 0, 0, 0.2);
 
 }
 
-.review-author, .review-date {
+.review-author,
+.review-date {
     font-size: 1.3em;
     color: #e6e3e3;
 }
@@ -472,11 +500,11 @@ background-repeat: no-repeat;
 
 .floating-button {
     position: fixed;
-    top: 70px; 
+    top: 55px;
     right: 20px;
     background-color: #bd1010;
     color: #fff;
-    padding: 5px 10px; 
+    padding: 5px 10px;
     border: 2px solid #c0c0c0;
     border-radius: 20px;
     cursor: pointer;
@@ -485,9 +513,160 @@ background-repeat: no-repeat;
 }
 
 .floating-button:hover {
-    background-color: #cc0000; /* Darker red on hover */
+    background-color: #cc0000;
+    /* Darker red on hover */
 }
 
+
+/* AUTHENTICATION STYLES */
+.sign-out-confirmation-container {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 20px 0px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sign-out-confirmation-row {
+
+    background-color: rgba(255, 0, 0, 0.2);
+    text-align: center;
+
+
+}
+
+/*CUSTOM BUTTONS*/
+
+.button-container {
+    margin: 0 !important;
+    background-color: rgba(92, 86, 86, 0.3);
+    display: flex;
+    justify-content: center;
+    margin-top: 30px !important;
+    border-radius: 20px;
+
+}
+
+.custom-buttons {
+    background-color: rgba(92, 86, 86, 0.3);
+    border-radius: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    margin: 0 !important;
+}
+
+.custom-buttons:hover {
+    background-color: rgba(108, 91, 63, 0.6);
+    /* Higher contrast background color */
+    border-color: rgba(112, 4, 4, 0.8);
+    /* Higher contrast border color */
+}
+
+
+
+/* Custom Styles for Signup Form */
+.container {
+    margin-top: 50px;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+}
+
+.card-title {
+    font-size: 2rem;
+    color: #333333;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+form.signup input[type="text"],
+form.signup input[type="email"],
+form.signup input[type="password"],
+form.signup input[type="submit"] {
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+form.signup input[type="text"]:focus,
+form.signup input[type="email"]:focus,
+form.signup input[type="password"]:focus,
+form.signup input[type="submit"]:focus {
+    box-shadow: 1px 0 5px rgba(0, 123, 255, 0.5);
+    border-color: #007bff;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.text-center a {
+    color: #ff0000;
+    transition: color 0.3s;
+}
+
+.text-center a:hover {
+    color: #0056b3;
+}
+
+/*LOGIN STYLES*/
+
+
+
+/*SIGN IN STYLES*/
+
+.sign-in-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.sign-in-form{
+    margin-top: 60px;
+}
+
+/*FOOTER STYLES*/
+.footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    flex-shrink: 0;
+}
+
+.footer .social-icons {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.footer .social-icons li {
+    margin: 0 10px;
+}
+
+.footer .social-icons li a {
+    color: #343a40;
+    font-size: 24px;
+    text-decoration: none;
+}
 
 /*ANIMATIONS*/
 
@@ -514,6 +693,7 @@ background-repeat: no-repeat;
 
     }
 }
+
 @keyframes slideInFromRight {
     0% {
         transform: translateX(100%);
@@ -554,5 +734,17 @@ background-repeat: no-repeat;
 
     100% {
         transform: translateY(0);
+    }
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 576px) {
+
+    .navbar-nav {
+        background-color: rgba(4, 112, 38, 0.8);
+        width: 150px;
+        position: absolute;
+        right: 0;
+        margin: 15px 5px;
     }
 }
