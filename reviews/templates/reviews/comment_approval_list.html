@@ -1,21 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Pending Comments</h1>
+<h1 class="admin-titles">Pending Comments</h1>
 <ul class="list-class">
     {% for comment in pending_comments %}
     <li class="pending-item">
-        <div>
+        <div class="username-admin">
             {{ comment.user }}
         </div>
-        <div>
-            {{ comment.text }}<br>
-            {{ comment.created_at }}
+        <div  class="font-italic">
+            {{ comment.text }}
         </div>
-        <div>
-            <a href="{% url 'approve-comment' comment.id %}">Approve</a>
-            <a href="{% url 'reject-comment' comment.id %}">Reject</a>
+        <div class="admin-button-conatiner">
+            <a class="approve-btn" href="{% url 'approve-comment' comment.id %}">Approve</a>
+            <a class="reject-btn" href="{% url 'reject-comment' comment.id %}">Reject</a>
 
+        </div>
+
+        <div class="created_at-style">
+            {{ comment.created_at }}
         </div>
     </li>
     {% endfor %}

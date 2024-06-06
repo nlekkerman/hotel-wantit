@@ -682,11 +682,42 @@ color: white;
 }
 
 /*ADMIN STYLES*/
+
+.admin-button-conatiner{
+    margin:25px 0px;
+}
+.approve-btn{
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white !important;
+    border-radius:5px;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+
+}
+
+.reject-btn{
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white !important;
+    border-radius:5px;
+    padding: 10px;
+    margin-top:10px;
+    transition: background-color 0.3s ease;
+
+}
+
+.approve-btn:hover {
+    background-color: rgba(0, 255, 0, 0.5); /* Green color with 50% opacity */
+}
+
+.reject-btn:hover {
+    background-color: rgba(255, 0, 0, 0.5); /* Red color with 50% opacity */
+}
 .list-class {
     padding: 0px !important;
     margin: 0px 5px;
-    display: flex; /* Use flexbox */
-    flex-direction: column; /* Stack items vertically */
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .pending-item {
@@ -709,10 +740,32 @@ color: white;
     text-decoration: none;
 }
 
-.pending-item a:hover {
-    text-decoration: underline;
+.admin-content-text{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.created_at-style{
+    text-align: end;
+    background-color: #000604;
+    padding-right: 5px;
+}
+.admin-titles{
+    padding-top: 50px;
 }
 
+.username-admin{
+    text-align: left;
+    font-size: 2rem;
+    text-transform: capitalize;
+}
+
+.badge-danger {
+    position: absolute;
+    top: 5px;
+    right: -5px;
+    font-size: 8px;
+    line-height: 1;
+    padding: 3px;
+}
 /*ANIMATIONS*/
 
 

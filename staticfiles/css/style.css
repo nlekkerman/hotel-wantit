@@ -67,7 +67,7 @@
     padding-right: 10px;
     color: white;
     text-align: right;
-    
+
 }
 
 .avbar .nav-link {
@@ -150,13 +150,13 @@
 }
 
 .dropdown-menu {
-    background-color:rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     padding: 0 !important;
 
 }
 
 .dropdown-item {
-    background-color:rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     margin: 0 !important;
     color: rgb(255, 255, 255) !important;
     height: 100%;
@@ -635,14 +635,14 @@ form.signup input[type="submit"]:focus {
 
 /*SIGN IN STYLES*/
 
-.sign-in-container{
+.sign-in-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
 }
 
-.sign-in-form{
+.sign-in-form {
     margin-top: 60px;
 }
 
@@ -674,8 +674,97 @@ form.signup input[type="submit"]:focus {
 
 
 
-.comment{
-    background-color: #b30000;
+.comment {
+background-color: rgba(0, 0, 0, 0.3);
+border-bottom: 3px solid silver;
+margin-bottom: 5px;
+color: white;
+}
+
+/*ADMIN STYLES*/
+
+.admin-button-conatiner{
+    margin:25px 0px;
+}
+.approve-btn{
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white !important;
+    border-radius:5px;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+
+}
+
+.reject-btn{
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white !important;
+    border-radius:5px;
+    padding: 10px;
+    margin-top:10px;
+    transition: background-color 0.3s ease;
+
+}
+
+.approve-btn:hover {
+    background-color: rgba(0, 255, 0, 0.5); /* Green color with 50% opacity */
+}
+
+.reject-btn:hover {
+    background-color: rgba(255, 0, 0, 0.5); /* Red color with 50% opacity */
+}
+.list-class {
+    padding: 0px !important;
+    margin: 0px 5px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.pending-item {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    list-style-type: none;
+    text-align: center;
+    margin-bottom: 10px; 
+    display: block;
+
+}
+
+.pending-item a {
+    margin-left: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.admin-content-text{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.created_at-style{
+    text-align: end;
+    background-color: #000604;
+    padding-right: 5px;
+}
+.admin-titles{
+    padding-top: 50px;
+}
+
+.username-admin{
+    text-align: left;
+    font-size: 2rem;
+    text-transform: capitalize;
+}
+
+.badge-danger {
+    position: absolute;
+    top: 5px;
+    right: -5px;
+    font-size: 8px;
+    line-height: 1;
+    padding: 3px;
 }
 /*ANIMATIONS*/
 

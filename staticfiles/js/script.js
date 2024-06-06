@@ -83,3 +83,20 @@ document.getElementById('leaveCommentButton').addEventListener('click', function
         }
     });
 });
+
+
+
+// Function to update the color of the dot based on pending items
+function updateDotColor() {
+    let dotElement = document.getElementById('adminDot');
+    if (checkPendingItems()) {
+        dotElement.classList.remove('badge-secondary');
+        dotElement.classList.add('badge-danger');
+    } else {
+        dotElement.classList.remove('badge-danger');
+        dotElement.classList.add('badge-secondary');
+    }
+}
+
+// Call the function when the page loads
+updateDotColor();
