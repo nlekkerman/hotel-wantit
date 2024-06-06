@@ -13,10 +13,25 @@ function showSlide(index) {
 }
 
 function nextSlide() {
-    slides[currentSlide].style.left = '-100%';
+    console.log('Current Slide:', currentSlide);
+    console.log('Total Slides:', totalSlides);
+    console.log('Slides Array:', slides);
+
+    if (slides[currentSlide]) {
+        slides[currentSlide].style.left = '-100%';
+    } else {
+        console.error('Slide at index', currentSlide, 'is undefined');
+    }
+
     currentSlide = (currentSlide + 1) % totalSlides;
-    slides[currentSlide].style.left = '0';
+
+    if (slides[currentSlide]) {
+        slides[currentSlide].style.left = '0';
+    } else {
+        console.error('Slide at index', currentSlide, 'is undefined');
+    }
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
     showSlide(currentSlide);
@@ -24,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-/*Chat button*/
+/*Chat button
 document.getElementById('chatButton').addEventListener('click', function() {
 
   
@@ -52,7 +67,7 @@ document.getElementById('sendButton').addEventListener('click', function() {
     chatInput.value = '';
     chatBody.scrollTop = chatBody.scrollHeight; // Scroll to the bottom of the chat body
 });
-
+*/
 document.getElementById('toggleButton').addEventListener('click', function() {
     document.getElementById('navbar').classList.toggle('active');
 });

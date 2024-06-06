@@ -427,7 +427,7 @@ label {
 
 .review-container {
     background-color: rgba(0, 0, 0, 0.5);
-    min-height: 100vh;
+    padding: 5px;
     margin-top: 30px;
     color: white;
 }
@@ -670,6 +670,13 @@ form.signup input[type="submit"]:focus {
     text-decoration: none;
 }
 
+/*Comments*/
+
+
+
+.comment{
+    background-color: #b30000;
+}
 /*ANIMATIONS*/
 
 

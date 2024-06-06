@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Pending Comments</h1>
+<ul class="list-class">
+    {% for comment in pending_comments %}
+    <li class="pending-item">
+        <div>
+            {{ comment.user }}
+        </div>
+        <div>
+            {{ comment.text }}<br>
+            {{ comment.created_at }}
+        </div>
+        <div>
+            <a href="{% url 'approve-comment' comment.id %}">Approve</a>
+            <a href="{% url 'reject-comment' comment.id %}">Reject</a>
+
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

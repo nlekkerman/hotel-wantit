@@ -20,4 +20,16 @@
 </div>
 
 
+<div class="container comment-container">
+    <h2>Comments</h2>
+    {% for comment in comments %}
+        <div class="comment">
+            <p>{{ comment.user.username }}</p>
+            <p>{{ comment.text }}</p>
+            <p>{{ comment.created_at }}</p>
+        </div>
+    {% endfor %}
+    {% include "reviews/partials/add_comment.html" %}
+</div>
+
 {% endblock %}

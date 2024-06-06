@@ -10,5 +10,12 @@ path('create-review/', views.create_review, name='create-review'),
 path('reviews/approval/', views.review_approval_list, name='review-approval-list'),
 path('reviews/approve/<int:review_id>/', views.approve_review, name='approve-review'),
 path('reviews/reject/<int:review_id>/', views.reject_review, name='reject-review'),
+path('review/<int:review_id>/add_comment/', views.add_comment, name='add_comment'),
+
+path('comments/approval/', views.comment_approval_list, name='comment-approval-list'),
+path('comments/approve/<int:comment_id>/', views.approve_comment, name='approve-comment'),
+path('comments/reject/<int:comment_id>/', views.reject_comment, name='reject-comment'),
+
+
 
 ]
