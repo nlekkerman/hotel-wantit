@@ -403,14 +403,15 @@ label {
 }
 
 .stars {
-    color: rgb(0, 0, 0);
-    font-size: 1.9em;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 20px;
+    color: gold;
+    font-size: 1.3em;
+    border-radius: px;
     display: flex;
     justify-content: center;
-    border: 2px solid rgb(0, 0, 0);
     margin-bottom: 20px;
+    position: relative;
+    width: 20%;
+
 }
 
 .action-button {
@@ -483,12 +484,12 @@ label {
 }
 
 .review-text {
-    font-size: 1.2em;
+    font-size: 1.4em;
     margin-bottom: 10px;
     font-style: italic;
     text-align: center;
     color: whitesmoke;
-    background-color: rgba(255, 0, 0, 0.2);
+    background-color: rgba(111, 0, 0, 0.8);
 
 }
 

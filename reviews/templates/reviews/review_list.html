@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Reviews{% endblock %}
 
@@ -15,7 +16,6 @@
            
             <a href="{% url 'review_detail' review.pk %}">
                 <div class="review-item">
-                    <p class="review-text">{{ review.review }}</p>
                     <div class="stars">
                         {% for _ in review.stars %}
                         <span class="star">&#9733;</span>
@@ -24,6 +24,8 @@
                         <span class="star">&#9734;</span>
                         {% endfor %}
                     </div>
+                    <p class="review-text">{{ review.review }}</p>
+                   
                     <p class="review-author">Author: {{ review.user.username }}</p>
                     <p class="review-date">Date: {{ review.created_at|date:"F j, Y" }}</p>
     
@@ -31,9 +33,9 @@
                     <div class="row">
                         <div class="col-12">
                             <strong class="text-secondary">
-                                <i class="far fa-comments"></i> {{ comment_count }}
+                                <i class="far fa-comments"></i> {{ review.comment_count }}
                             </strong>
-                            1
+                            
                         </div>
                         <div class="col-12">
                             <hr>

@@ -13,14 +13,11 @@ function showSlide(index) {
 }
 
 function nextSlide() {
-    console.log('Current Slide:', currentSlide);
-    console.log('Total Slides:', totalSlides);
-    console.log('Slides Array:', slides);
+   
 
     if (slides[currentSlide]) {
         slides[currentSlide].style.left = '-100%';
     } else {
-        console.error('Slide at index', currentSlide, 'is undefined');
     }
 
     currentSlide = (currentSlide + 1) % totalSlides;
@@ -28,7 +25,6 @@ function nextSlide() {
     if (slides[currentSlide]) {
         slides[currentSlide].style.left = '0';
     } else {
-        console.error('Slide at index', currentSlide, 'is undefined');
     }
 }
 

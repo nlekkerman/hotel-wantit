@@ -3,30 +3,32 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from .forms import ReviewForm, CommentForm
+from django.db.models import Count, Q
 from django.views import generic
 from .models import Review, Comment
+
+
 
 class ReviewList(generic.ListView):
     template_name = "review_list.html"
     paginate_by = 6
-    
+
     def get_queryset(self):
-        # Fetch only approved reviews
-        queryset = Review.objects.filter(status=1)
+        # Fetch all reviews
+        queryset = Review.objects.all()
+
+        # Iterate through each review and annotate the count of comments associated with it
+        for review in queryset:
+            review.comment_count = review.comments.filter(status='approved').count()
+
         return queryset
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        for review in context['object_list']:
-            review.stars = range(review.rating)
-            review.empty_stars = range(5 - review.rating)
         return context
-
-
-        
-
 def review_detail(request, pk):
     review = get_object_or_404(Review, pk=pk)
+    comment_count = review.comments.filter(status=Comment.APPROVED).count()
 
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -43,8 +45,12 @@ def review_detail(request, pk):
 
     approved_comments = review.comments.filter(status=Comment.APPROVED)
 
-    return render(request, 'reviews/review_detail.html', {'review': review, 'form': form, 'comments': approved_comments})
-
+    return render(request, 'reviews/review_detail.html', {
+        'review': review,
+        'form': form,
+        'comments': approved_comments,
+        'comment_count': comment_count,
+    })
 
 
 @login_required
@@ -139,4 +145,5 @@ def reject_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
     comment.status = Comment.REJECTED
     comment.save()
-    return redirect('comment_approval_list')
+    pending_comments = Comment.objects.filter(status=Comment.PENDING)
+    return render(request, 'reviews/comment_approval_list.html', {'pending_comments': pending_comments})
