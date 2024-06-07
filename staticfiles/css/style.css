@@ -403,14 +403,15 @@ label {
 }
 
 .stars {
-    color: rgb(0, 0, 0);
-    font-size: 1.9em;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 20px;
+    color: gold;
+    font-size: 1.3em;
+    border-radius: px;
     display: flex;
     justify-content: center;
-    border: 2px solid rgb(0, 0, 0);
     margin-bottom: 20px;
+    position: relative;
+    width: 20%;
+
 }
 
 .action-button {
@@ -443,18 +444,15 @@ label {
 
 }
 
-.main-background {
+
+#reviews-page {
+    margin-top: 0;
+    animation: zoomIn 1.2s ease-in;
     min-height: 100vh !important;
     background-image: url("../images/reviews-background.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
-}
-
-#reviews-page {
-    margin-top: 0;
-    animation: zoomIn 1.2s ease-in;
     /* Adjust background size and position as needed */
 
 
@@ -483,12 +481,12 @@ label {
 }
 
 .review-text {
-    font-size: 1.2em;
+    font-size: 1.4em;
     margin-bottom: 10px;
     font-style: italic;
     text-align: center;
     color: whitesmoke;
-    background-color: rgba(255, 0, 0, 0.2);
+    background-color: rgba(111, 0, 0, 0.8);
 
 }
 
@@ -503,7 +501,7 @@ label {
 .floating-button {
     position: fixed;
     top: 55px;
-    right: 20px;
+    left: 20px;
     background-color: #bd1010;
     color: #fff;
     padding: 5px 10px;
@@ -511,7 +509,7 @@ label {
     border-radius: 20px;
     cursor: pointer;
     z-index: 1000;
-    animation: slideInFromRight 1.3s ease-in-out;
+    animation: slideInFromLeft 1.3s ease-in-out;
 }
 
 .floating-button:hover {
@@ -675,47 +673,51 @@ form.signup input[type="submit"]:focus {
 
 
 .comment {
-background-color: rgba(0, 0, 0, 0.3);
-border-bottom: 3px solid silver;
-margin-bottom: 5px;
-color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-bottom: 3px solid silver;
+    margin-bottom: 5px;
+    color: white;
 }
 
 /*ADMIN STYLES*/
 
-.admin-button-conatiner{
-    margin:25px 0px;
+.admin-button-conatiner {
+    margin: 25px 0px;
 }
-.approve-btn{
+
+.approve-btn {
     background-color: rgba(0, 0, 0, 0.3);
     color: white !important;
-    border-radius:5px;
+    border-radius: 5px;
     padding: 10px;
     transition: background-color 0.3s ease;
 
 }
 
-.reject-btn{
+.reject-btn {
     background-color: rgba(0, 0, 0, 0.3);
     color: white !important;
-    border-radius:5px;
+    border-radius: 5px;
     padding: 10px;
-    margin-top:10px;
+    margin-top: 10px;
     transition: background-color 0.3s ease;
 
 }
 
 .approve-btn:hover {
-    background-color: rgba(0, 255, 0, 0.5); /* Green color with 50% opacity */
+    background-color: rgba(0, 255, 0, 0.5);
+    /* Green color with 50% opacity */
 }
 
 .reject-btn:hover {
-    background-color: rgba(255, 0, 0, 0.5); /* Red color with 50% opacity */
+    background-color: rgba(255, 0, 0, 0.5);
+    /* Red color with 50% opacity */
 }
+
 .list-class {
     padding: 0px !important;
     margin: 0px 5px;
-    display: flex; 
+    display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
@@ -729,7 +731,7 @@ color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     list-style-type: none;
     text-align: center;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
     display: block;
 
 }
@@ -740,19 +742,21 @@ color: white;
     text-decoration: none;
 }
 
-.admin-content-text{
+.admin-content-text {
     background-color: rgba(0, 0, 0, 0.5);
 }
-.created_at-style{
+
+.created_at-style {
     text-align: end;
     background-color: #000604;
     padding-right: 5px;
 }
-.admin-titles{
+
+.admin-titles {
     padding-top: 50px;
 }
 
-.username-admin{
+.username-admin {
     text-align: left;
     font-size: 2rem;
     text-transform: capitalize;
@@ -766,6 +770,57 @@ color: white;
     line-height: 1;
     padding: 3px;
 }
+
+/* BOOKINGS STYLES*/
+
+.book-room-card {
+    margin-bottom: 10px;
+}
+
+.room-card {
+    transition: transform 0.2s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-bottom: 3px solid silver;
+}
+
+
+.card-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: silver;
+}
+
+.card-text {
+    font-size: 1em;
+    color: silver;
+}
+
+.background-image-book-room {
+    width: 100% !important;
+    padding: 20px;
+    background-image: url('../images/with-view.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: row !important;
+    min-height: 100vh !important;
+    background-repeat: no-repeat;
+    align-items: center;
+}
+
+.book-room-title{
+    position: fixed;
+    top: 0;
+    margin-top: 50px;
+    color: #000604;
+}
+
+
+
+
+
 /*ANIMATIONS*/
 
 

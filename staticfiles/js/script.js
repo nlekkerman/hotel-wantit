@@ -13,14 +13,11 @@ function showSlide(index) {
 }
 
 function nextSlide() {
-    console.log('Current Slide:', currentSlide);
-    console.log('Total Slides:', totalSlides);
-    console.log('Slides Array:', slides);
+   
 
     if (slides[currentSlide]) {
         slides[currentSlide].style.left = '-100%';
     } else {
-        console.error('Slide at index', currentSlide, 'is undefined');
     }
 
     currentSlide = (currentSlide + 1) % totalSlides;
@@ -28,7 +25,6 @@ function nextSlide() {
     if (slides[currentSlide]) {
         slides[currentSlide].style.left = '0';
     } else {
-        console.error('Slide at index', currentSlide, 'is undefined');
     }
 }
 
@@ -100,3 +96,45 @@ function updateDotColor() {
 
 // Call the function when the page loads
 updateDotColor();
+
+    // Get all room buttons
+    const roomButtons = document.querySelectorAll('.booking-btn');
+
+    // Add click event listener to each button
+    roomButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            console.log('Button clicked:', button);
+            const roomType = button.dataset.room;
+            console.log('Room type:', roomType);
+            filterRoomsByType(roomType);
+        });
+    });
+
+    // Function to filter rooms by type and display them
+    function filterRoomsByType(roomType) {
+        console.log('Filtering rooms by type:', roomType);
+        // Get all room cards
+        const roomCards = document.querySelectorAll('.room-card');
+
+        // Hide all room cards
+        roomCards.forEach(card => {
+            card.style.display = 'none';
+        });
+
+        // Show only room cards of the selected type
+        const filteredRooms = document.querySelectorAll(`.room-card[data-room-type="${roomType}"]`);
+        filteredRooms.forEach(card => {
+            card.style.display = 'block';
+        });
+    }
+    function filterRooms(roomType) {
+        var roomCards = document.querySelectorAll('.room-card');
+        roomCards.forEach(function(card) {
+            var cardType = card.getAttribute('data-room-type');
+            if (cardType === roomType) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
