@@ -5,24 +5,32 @@
 
 {% block content %}
 <div class="container">
+    <h1 class="text-center">{{ room_type|capfirst }} Rooms</h1>
     <div class="row">
         {% for room in rooms %}
-        <div class="col-md-4 book-room-card">
-            <div class="card room-card animate__animated animate__fadeInUp">
-                <img src="{% static 'images/room1.jpg' %}" class="card-img-top" alt="Room Image">
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+
+                {% if  room.available %}
+                <span class="badge badge-success badge-pill availability-badge">Available</span>
+                {% else %}
+                <span class="badge badge-danger badge-pill availability-badge">Booked</span>
+                {% endif %}
+                <img src="{% static room.image.url %}" class="card-img-top" alt="{{ room.room_number }}">
                 <div class="card-body">
-                    <h5 class="card-title">{{ room.room_type }}</h5>
+                    <h5 class="card-title">{{ room.room_number }}</h5>
                     <p class="card-text">{{ room.description }}</p>
-                    <p class="card-text"><strong>$ {{ room.price }} per night</strong></p>
-                    <form action="{% url 'room_details' room_type=room.room_type %}" method="get">
-                        <button type="submit" class="btn btn-primary booking-btn">View Details</button>
-                    </form>
-                    {% if room.available %}
-                    <span class="badge badge-success badge-pill availability-badge">Available</span>
-                    {% else %}
-                    <span class="badge badge-danger badge-pill availability-badge">BOOKED OUT</span>
-                    {% endif %}
+                    <p class="card-text"><strong>${{ room.price }} per night</strong></p>
                 </div>
+                <form method="post" action="{% url 'reserve_room' room.id %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="room_id" value="{{ room.id }}">
+                    <input type="hidden" name="room_number" value="{{ room.room_number }}">
+                    <input type="hidden" name="room_price" value="{{ room.price }}">
+                    <input type="hidden" name="room_type" value="{{ room.room_type }}">
+                    <button id="room_booking_button" type="submit" class="btn btn-primary">Book Room</button>
+                </form>
+
             </div>
         </div>
         {% endfor %}

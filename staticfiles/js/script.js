@@ -13,19 +13,17 @@ function showSlide(index) {
 }
 
 function nextSlide() {
-   
+
 
     if (slides[currentSlide]) {
         slides[currentSlide].style.left = '-100%';
-    } else {
-    }
+    } else {}
 
     currentSlide = (currentSlide + 1) % totalSlides;
 
     if (slides[currentSlide]) {
         slides[currentSlide].style.left = '0';
-    } else {
-    }
+    } else {}
 }
 
 
@@ -64,17 +62,17 @@ document.getElementById('sendButton').addEventListener('click', function() {
     chatBody.scrollTop = chatBody.scrollHeight; // Scroll to the bottom of the chat body
 });
 */
-document.getElementById('toggleButton').addEventListener('click', function() {
+document.getElementById('toggleButton').addEventListener('click', function () {
     document.getElementById('navbar').classList.toggle('active');
 });
 
-document.getElementById('leaveCommentButton').addEventListener('click', function(event) {
+document.getElementById('leaveCommentButton').addEventListener('click', function (event) {
     event.preventDefault();
     $('#reviewModal').modal('show');
     $.ajax({
         url: "{% url 'create-review' %}",
         type: "GET",
-        success: function(data) {
+        success: function (data) {
             $('#reviewModal .modal-body').html(data);
         }
     });
@@ -97,44 +95,54 @@ function updateDotColor() {
 // Call the function when the page loads
 updateDotColor();
 
-    // Get all room buttons
-    const roomButtons = document.querySelectorAll('.booking-btn');
+// Get all room buttons
+const roomButtons = document.querySelectorAll('.booking-btn');
 
-    // Add click event listener to each button
-    roomButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            console.log('Button clicked:', button);
-            const roomType = button.dataset.room;
-            console.log('Room type:', roomType);
-            filterRoomsByType(roomType);
-        });
+// Add click event listener to each button
+roomButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        console.log('Button clicked:', button);
+        const roomType = button.dataset.room;
+        console.log('Room type:', roomType);
+        filterRoomsByType(roomType);
+    });
+});
+
+// Function to filter rooms by type and display them
+function filterRoomsByType(roomType) {
+    console.log('Filtering rooms by type:', roomType);
+    // Get all room cards
+    const roomCards = document.querySelectorAll('.room-card');
+
+    // Hide all room cards
+    roomCards.forEach(card => {
+        card.style.display = 'none';
     });
 
-    // Function to filter rooms by type and display them
-    function filterRoomsByType(roomType) {
-        console.log('Filtering rooms by type:', roomType);
-        // Get all room cards
-        const roomCards = document.querySelectorAll('.room-card');
+    // Show only room cards of the selected type
+    const filteredRooms = document.querySelectorAll(`.room-card[data-room-type="${roomType}"]`);
+    filteredRooms.forEach(card => {
+        card.style.display = 'block';
+    });
+}
 
-        // Hide all room cards
-        roomCards.forEach(card => {
-            card.style.display = 'none';
-        });
-
-        // Show only room cards of the selected type
-        const filteredRooms = document.querySelectorAll(`.room-card[data-room-type="${roomType}"]`);
-        filteredRooms.forEach(card => {
+function filterRooms(roomType) {
+    var roomCards = document.querySelectorAll('.room-card');
+    roomCards.forEach(function (card) {
+        var cardType = card.getAttribute('data-room-type');
+        if (cardType === roomType) {
             card.style.display = 'block';
-        });
-    }
-    function filterRooms(roomType) {
-        var roomCards = document.querySelectorAll('.room-card');
-        roomCards.forEach(function(card) {
-            var cardType = card.getAttribute('data-room-type');
-            if (cardType === roomType) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    }
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+
+$(document).ready(function(){
+    $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+        startDate: new Date(),
+        autoclose: true
+    });
+});

@@ -4,33 +4,85 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1 class="text-center mb-5 animate__animated animate__fadeInDown book-room-title">Book Your Room</h1>
-        </div>
-    </div>
-    <div class="row">
-        {% for room in rooms %}
-        <div class="col-md-4 book-room-card">
-            <div class="card room-card animate__animated animate__fadeInUp">
-                <img src="{% static 'images/room1.jpg' %}" class="card-img-top" alt="Room Image">
-                <div class="card-body">
-                    <h5 class="card-title">{{ room.room_type }}</h5>
-                    <p class="card-text">{{ room.description }}</p>
-                    <p class="card-text"><strong>$ {{ room.price }} per night</strong></p>
-                    <form action="{% url 'room_details' room_type=room.room_type %}" method="get">
-                        <button type="submit" class="btn btn-primary booking-btn">View Details</button>
-                    </form>
-                    {% if room.available %}
-                    <span class="badge badge-success badge-pill availability-badge">Available</span>
-                    {% else %}
-                    <span class="badge badge-danger badge-pill availability-badge">BOOKED OUT</span>
-                    {% endif %}
+<div id="main-container" class="background-image-book-room">
+    <div class="mt-5 style-book-container">
+        <h1 class="text-center mb-5 animate__animated animate__fadeInDown">Book Your Room</h1>
+        <div class="row">
+            <div class="col-md-4 book-room-card">
+                <div class="card room-card animate__animated animate__fadeInUp">
+                    <img src="{% static 'images/room1.jpg' %}" class="card-img-top" alt="Deluxe Room">
+                    <div class="card-body">
+                        <h5 class="card-title">Deluxe Room</h5>
+                        <p class="card-text">Enjoy the luxury of our Deluxe Room with a beautiful sea view.</p>
+                        <p class="card-text"><strong>$200 per night</strong></p>
+                        <a href="{% url 'rooms' %}?type=deluxe" class="btn btn-primary">View Deluxe Rooms</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 book-room-card">
+                <div class="card room-card animate__animated animate__fadeInUp animate__delay-1s">
+                    <img src="{% static 'images/room2.jpg' %}" class="card-img-top" alt="Superior Room">
+                    <div class="card-body">
+                        <h5 class="card-title">Superior Room</h5>
+                        <p class="card-text">Superior Room offers a comfortable stay with modern amenities.</p>
+                        <p class="card-text"><strong>$150 per night</strong></p>
+                        <a href="{% url 'rooms' %}?type=superior" class="btn btn-primary">View Superior Rooms</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 book-room-card">
+                <div class="card room-card animate__animated animate__fadeInUp animate__delay-2s">
+                    <img src="{% static 'images/with-view.jpg' %}" class="card-img-top" alt="Standard Room">
+                    <div class="card-body">
+                        <h5 class="card-title">Standard Room</h5>
+                        <p class="card-text">A cozy and affordable option, perfect for short stays.</p>
+                        <p class="card-text"><strong>$100 per night</strong></p>
+                        <a href="{% url 'rooms' %}?type=standard" class="btn btn-primary">View Standard Rooms</a>
+                    </div>
                 </div>
             </div>
         </div>
-        {% endfor %}
+    </div>
+
+    <!-- Booking Form Modal -->
+    <div class="modal fade" id="book-form-modal" tabindex="-1" aria-labelledby="bookFormModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookFormModalLabel">Book Your Room</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="book-form">
+                        <div class="form-group">
+                            <label for="guest-name">Name</label>
+                            <input type="text" class="form-control" id="guest-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="guest-email">Email</label>
+                            <input type="email" class="form-control" id="guest-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="guest-phone">Phone Number</label>
+                            <input type="tel" class="form-control" id="guest-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkin-date">Check-in Date</label>
+                            <input type="date" class="form-control" id="checkin-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-date">Check-out Date</label>
+                            <input type="date" class="form-control" id="checkout-date" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
 {% endblock %}

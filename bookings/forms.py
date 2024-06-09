@@ -1,8 +1,11 @@
-# bookings/forms.py
 from django import forms
-from .models import Booking
+from .models import Room, Reservation
 
-class BookingForm(forms.ModelForm):
+class ReservationForm(forms.ModelForm):
     class Meta:
-        model = Booking
-        fields = ['name', 'email', 'phone', 'checkin_date', 'checkout_date', 'type_of_room']
+        model = Reservation
+        fields = ['name', 'email', 'phone', 'checkin_date', 'checkout_date']
+        widgets = {
+            'checkin_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'checkout_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+        }

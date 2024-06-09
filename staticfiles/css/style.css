@@ -817,6 +817,12 @@ form.signup input[type="submit"]:focus {
     color: #000604;
 }
 
+.availability-badge{
+    width: 30%;
+    position: absolute;
+    right: 5px;
+    top: 15px;
+}
 
 
 
