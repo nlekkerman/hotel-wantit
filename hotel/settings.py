@@ -33,14 +33,14 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['8000-nlekkerman-hotelwantit-6dllp2lvja2.ws-eu114.gitpod.io', '.herokuapp.com']
+ALLOWED_HOSTS = ['8000-nlekkerman-hotelwantit-72nhvj2byqt.ws.codeinstitute-ide.net', '.herokuapp.com']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*.gitpod.io',
     'https://*.herokuapp.com',
-    'https://8000-nlekkerman-hotelwantit-6dllp2lvja2.ws-eu114.gitpod.io'
+    'https://8000-nlekkerman-hotelwantit-72nhvj2byqt.ws.codeinstitute-ide.net'
 ]
 
 """# Email configuration

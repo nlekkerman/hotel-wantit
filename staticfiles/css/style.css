@@ -5,6 +5,12 @@
 
 /**HEADER**/
 
+/* Hover effect for dropdown items */
+.dropdown-menu .dropdown-item:hover {
+    background-color: silver; /* Change the background color on hover */
+    color: black; /* Change the text color on hover */
+    text-decoration: none; /* Remove underline on hover */
+}
 .header-container {
     border-bottom: 4px solid silver;
     animation: slideInFromTop 0.6s ease-in-out;

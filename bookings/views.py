@@ -17,9 +17,12 @@ from django.db.models import Q
 
 logger = logging.getLogger(__name__)
 
+
 @login_required
 def reserve_room(request, room_id):
     room = get_object_or_404(Room, id=room_id)
+    confirmation_message = None
+
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
@@ -47,57 +50,21 @@ def reserve_room(request, room_id):
                 )
                 reservation.save()
 
-                try:
-                    send_mail(
-                        subject='Reservation Confirmation',
-                        message=f"Dear {reservation.name},\n\n"
-                                f"Thank you for your reservation at Hotel Wantit.\n\n"
-                                f"Reservation Details:\n"
-                                f"Name: {reservation.name}\n"
-                                f"Email: {reservation.email}\n"
-                                f"Phone: {reservation.phone}\n"
-                                f"Check-in Date: {reservation.checkin_date}\n"
-                                f"Check-out Date: {reservation.checkout_date}\n"
-                                f"Type of Room: {reservation.get_type_of_room_display()}\n\n"
-                                f"We look forward to welcoming you.\n\n"
-                                f"Best regards,\n"
-                                f"Hotel Wantit Team",
-                        from_email=settings.EMAIL_HOST_USER,
-                        recipient_list=[reservation.email],
-                        fail_silently=False,
-                    )
-                except Exception as e:
-                    logger.error(f"Error sending confirmation email: {e}")
-
-                print("Redirection to reservation success page")  # Add this line for verification
+                # Redirect to reservation success page with reservation ID
                 return redirect('reservation_success', reservation_id=reservation.id)
+
     else:
         form = ReservationForm()
 
-    return render(request, 'bookings/reservation.html', {'form': form, 'room': room})
-
-
+    return render(request, 'bookings/reservation.html', {'form': form, 'room': room, 'confirmation_message': confirmation_message})
 
 
 @login_required
-def reservation_success(request):
-    # Assuming each reservation is associated with a user
-    reservation = Reservation.objects.filter(user=request.user).first()
-    if reservation:
-        # Reservation found, proceed with displaying details
-        data = {
-            'name': reservation.name,
-            'email': reservation.email,
-            'phone': reservation.phone,
-            'checkin_date': reservation.checkin_date,
-            'checkout_date': reservation.checkout_date,
-            'room_type': reservation.get_type_of_room_display(),
-        }
-        return JsonResponse(data)
-    else:
-        # No reservation found for the user
-        return JsonResponse({'error': 'No reservation found for the user'}, status=404)
+def reservation_success(request, reservation_id):
+    reservation = get_object_or_404(Reservation, id=reservation_id)
+    return render(request, 'bookings/reservation_success.html', {'reservation': reservation})
 
+    
 def book_room(request):
     return render(request, 'bookings/book_room.html')
 
@@ -296,64 +263,21 @@ def send_confirmation_email(request):
 
 
 
-
+@require_POST
 def check_availability(request):
-    if request.method == 'GET':
-        room_id = request.GET.get('room_id')
-        checkin_date = request.GET.get('checkin_date')
-        checkout_date = request.GET.get('checkout_date')
+    room_id = request.POST.get('room_id')
+    checkin_date = request.POST.get('checkin_date')
+    checkout_date = request.POST.get('checkout_date')
 
-        # Perform availability check
-        overlapping_reservations = Reservation.objects.filter(
-            Q(room_id=room_id) &
-            ((Q(checkin_date__lt=checkout_date) & Q(checkout_date__gt=checkin_date)) |
-             (Q(checkin_date__gte=checkout_date) & Q(checkout_date__lte=checkout_date)))
-        )
+    # Perform availability check
+    reservations = Reservation.objects.filter(room_id=room_id, 
+                                              checkin_date__lte=checkout_date, 
+                                              checkout_date__gte=checkin_date)
+    if reservations.exists():
+        # Room is not available
+        return JsonResponse({'available': False})
 
-        available = not overlapping_reservations.exists()
-
-        return JsonResponse({'available': available})
-    else:
-        # Return a JsonResponse indicating that only GET requests are allowed
-        return JsonResponse({'error': 'Only GET requests are allowed for this endpoint.'}, status=405)
-
-def check_availability(request):
-    room_id = request.GET.get('room_id')
-    checkin_date = request.GET.get('checkin_date')
-    checkout_date = request.GET.get('checkout_date')
-
-    checkin_date = datetime.strptime(checkin_date, "%Y-%m-%d").date()
-    checkout_date = datetime.strptime(checkout_date, "%Y-%m-%d").date()
-
-    reservations = Reservation.objects.filter(room_id=room_id)
-    available = not any(
-        (reservation.checkin_date <= checkout_date and reservation.checkout_date >= checkin_date)
-        for reservation in reservations
-    )
-
-    available_rooms = []
-    room_details = None
-
-    if available:
-        room = Room.objects.get(id=room_id)
-        room_details = {
-            'room_number': room.room_number,
-            'room_type': room.room_type,
-            'price': room.price
-        }
-    else:
-        selected_room = Room.objects.get(id=room_id)
-        similar_rooms = Room.objects.filter(room_type=selected_room.room_type)
-        for room in similar_rooms:
-            room_reservations = Reservation.objects.filter(room_id=room.id)
-            if not any(
-                (reservation.checkin_date <= checkout_date and reservation.checkout_date >= checkin_date)
-                for reservation in room_reservations
-            ):
-                available_rooms.append({
-                    'room_number': room.room_number,
-                    'room_type': room.room_type,
-                    'price': room.price
-                })
-
-    return JsonResponse({'available': available, 'room': room_details, 'available_rooms': available_rooms})
+    # Room is available
+    reservation_info = "Room is available for the specified period."
+    # You can customize the reservation_info with any additional information
+    return JsonResponse({'available': True, 'reservation_info': reservation_info})

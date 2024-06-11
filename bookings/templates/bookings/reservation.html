@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% load static %}
 
 {% block content %}
@@ -45,85 +44,22 @@
   </div>
 </div>
 
-<!-- Modal for available room -->
-<div class="modal fade" id="available-modal" tabindex="-1" role="dialog" aria-labelledby="available-modal-label"
-  aria-hidden="true">
+<!-- Modal -->
+<div class="modal fade" id="reservationModal" tabindex="-1" role="dialog" aria-labelledby="reservationModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="available-modal-label">Room Available</h5>
+        <h5 class="modal-title" id="reservationModalLabel">Reservation Information</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <!-- This section will be populated with reservation details -->
+      <div class="modal-body" id="reservationModalBody">
+        <!-- Reservation information will be displayed here -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal for reservation details -->
-<div class="modal fade" id="reservation-modal" tabindex="-1" role="dialog" aria-labelledby="reservation-modal-label" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="reservation-modal-label">Reservation Details</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- Reservation details will be populated here -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button id="confirm-reservation-button" type="button" class="btn btn-primary">Confirm Reservation</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal for room not available -->
-<div class="modal fade" id="not-available-modal" tabindex="-1" role="dialog" aria-labelledby="not-available-modal-label"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="not-available-modal-label">Room Not Available</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Sorry, the room is not available for the selected dates. Please choose different dates or another room.</p>
-        <!-- This section will be populated with available rooms -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal for confirmation -->
-<div class="modal fade" id="confirmation-modal" tabindex="-1" role="dialog" aria-labelledby="confirmation-modal-label" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="confirmation-modal-label">Reservation Confirmed</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Your reservation has been confirmed. Thank you for choosing our service.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="reserveButton" style="display: none;">Reserve Room</button>
       </div>
     </div>
   </div>
@@ -131,62 +67,47 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-  $(document).ready(function () {
-    var room_id = "{{ room.id }}";
+$(document).ready(function () {
+    $("#availability-button").click(function () {
+        var roomId = $("#id_room_id").val();
+        var checkinDate = $("#id_checkin_date").val();
+        var checkoutDate = $("#id_checkout_date").val();
 
-    $('#availability-button').click(function () {
-      var checkin_date = $('#id_checkin_date').val();
-      var checkout_date = $('#id_checkout_date').val();
-      $.ajax({
-        url: "{% url 'check_availability' %}",
-        type: "GET",
-        data: {
-          'room_id': room_id,
-          'checkin_date': checkin_date,
-          'checkout_date': checkout_date
-        },
-        success: function (response) {
-          if (response.available) {
-            // Room is available, make AJAX request to get reservation details
-            $.ajax({
-              url: "{% url 'reservation_success' %}",
-              type: "GET",
-              success: function (data) {
-                // Populate the modal with reservation details
-                $('#reservation-modal .modal-body').html(`
-                  <p><strong>Name:</strong> ${data.name}</p>
-                  <p><strong>Email:</strong> ${data.email}</p>
-                  <p><strong>Phone:</strong> ${data.phone}</p>
-                  <p><strong>Check-in Date:</strong> ${data.checkin_date}</p>
-                  <p><strong>Check-out Date:</strong> ${data.checkout_date}</p>
-                  <p><strong>Type of Room:</strong> ${data.room_type}</p>
-                `);
-                // Show the modal
-                $('#reservation-modal').modal('show');
-                $('#reservation-modal').modal('show');
-              },
-              error: function (xhr, errmsg, err) {
-                console.log(xhr.status + ": " + xhr.responseText);
-              }
-            });
-
-          } else {
-            // Room is not available, show the not available modal
-            $('#not-available-modal').modal('show');
-          }
-        },
-        error: function (xhr, errmsg, err) {
-          console.log(xhr.status + ": " + xhr.responseText);
-        }
-      });
+        // Send AJAX request to Django view
+        $.ajax({
+            type: "POST",
+            url: "{% url 'check_availability' %}",
+            data: {
+                room_id: roomId,
+                checkin_date: checkinDate,
+                checkout_date: checkoutDate,
+                csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()
+            },
+            dataType: "json",
+            success: function (response) {
+                if (response.available) {
+                    // Room is available, populate modal with reservation information
+                    $("#reservationModalBody").html(response.reservation_info);
+                    $("#reserveButton").show();
+                } else {
+                    // Room is not available
+                    $("#reservationModalBody").text("This room is not available for the specified period.");
+                    $("#reserveButton").hide();
+                }
+                // Open the modal
+                $("#reservationModal").modal("show");
+            },
+            error: function (xhr, status, error) {
+                console.error("Error:", xhr.status);
+            }
+        });
     });
 
-    // Function to handle confirming the reservation
-    $('#confirm-reservation-button').click(function () {
-      // Perform any actions needed to confirm the reservation, such as submitting a form
-      $('#reservation-form').submit(); // For example, submitting the reservation form
+    $("#reserveButton").click(function () {
+        // Submit the reservation form
+        $("#reservation-form").submit();
     });
-  });
+});
+
 </script>
-
 {% endblock %}

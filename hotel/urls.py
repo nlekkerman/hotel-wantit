@@ -22,12 +22,12 @@ from bookings import views
 
 
 
+
+
 urlpatterns = [
     path("", include("home.urls"), name="home"), 
     path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
-    path('reserve-room/<int:room_id>/', views.reserve_room, name='reserve_room'),
-    path('reservation_success/', views.reservation_success, name='reservation_success'),
     path('summernote/', include('django_summernote.urls')),
     path("", include("reviews.urls")),
     path('bookings/', include('bookings.urls')),
