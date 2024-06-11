@@ -33,7 +33,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-nlekkerman-hotelwantit-6dllp2lvja2.ws-eu114.gitpod.io', '.herokuapp.com']
 
@@ -43,6 +43,13 @@ CSRF_TRUSTED_ORIGINS = [
     'https://8000-nlekkerman-hotelwantit-6dllp2lvja2.ws-eu114.gitpod.io'
 ]
 
+"""# Email configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')"""
 
 # Application definition
 

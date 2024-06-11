@@ -1,12 +1,192 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
 <div class="container">
-    <h2>Reserve Room</h2>
-    <form method="post">
+  <h2>Reserve Room</h2>
+  <div class="row">
+    <div class="col-md-6 bg-warning">
+      <h4>Room Information</h4>
+      <p><strong>Room Number:</strong> {{ room.room_number }}</p>
+      <p><strong>Type:</strong> {{ room.room_type }}</p>
+      <p><strong>Price:</strong> {{ room.price }}</p>
+      <p><strong>Description:</strong> {{ room.description }}</p>
+    </div>
+    <div class="col-md-6">
+      <h4>Reservation Form</h4>
+      <form id="reservation-form" method="post" action="{% url 'reserve_room' room.id %}">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Reserve</button>
-    </form>
+        <input type="hidden" name="room_id" value="{{ room.id }}">
+        <div class="form-group">
+          <label for="id_name" class="label-name">Name:</label>
+          <input type="text" id="id_name" name="name" class="form-control" placeholder="Enter your name">
+        </div>
+        <div class="form-group">
+          <label for="id_email" class="label-email">Email:</label>
+          <input type="email" id="id_email" name="email" class="form-control" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="id_phone" class="label-phone">Phone:</label>
+          <input type="tel" id="id_phone" name="phone" class="form-control" placeholder="Enter your phone number">
+        </div>
+        <div class="form-group">
+          <label for="id_checkin_date" class="label-checkin-date">Check-in Date:</label>
+          <input type="date" id="id_checkin_date" name="checkin_date" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="id_checkout_date" class="label-checkout-date">Check-out Date:</label>
+          <input type="date" id="id_checkout_date" name="checkout_date" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Reserve Room</button>
+        <button id="availability-button" type="button" class="btn btn-primary">Check Availability</button>
+      </form>
+    </div>
+  </div>
 </div>
+
+<!-- Modal for available room -->
+<div class="modal fade" id="available-modal" tabindex="-1" role="dialog" aria-labelledby="available-modal-label"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="available-modal-label">Room Available</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- This section will be populated with reservation details -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for reservation details -->
+<div class="modal fade" id="reservation-modal" tabindex="-1" role="dialog" aria-labelledby="reservation-modal-label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="reservation-modal-label">Reservation Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Reservation details will be populated here -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="confirm-reservation-button" type="button" class="btn btn-primary">Confirm Reservation</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for room not available -->
+<div class="modal fade" id="not-available-modal" tabindex="-1" role="dialog" aria-labelledby="not-available-modal-label"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="not-available-modal-label">Room Not Available</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Sorry, the room is not available for the selected dates. Please choose different dates or another room.</p>
+        <!-- This section will be populated with available rooms -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for confirmation -->
+<div class="modal fade" id="confirmation-modal" tabindex="-1" role="dialog" aria-labelledby="confirmation-modal-label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmation-modal-label">Reservation Confirmed</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Your reservation has been confirmed. Thank you for choosing our service.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    var room_id = "{{ room.id }}";
+
+    $('#availability-button').click(function () {
+      var checkin_date = $('#id_checkin_date').val();
+      var checkout_date = $('#id_checkout_date').val();
+      $.ajax({
+        url: "{% url 'check_availability' %}",
+        type: "GET",
+        data: {
+          'room_id': room_id,
+          'checkin_date': checkin_date,
+          'checkout_date': checkout_date
+        },
+        success: function (response) {
+          if (response.available) {
+            // Room is available, make AJAX request to get reservation details
+            $.ajax({
+              url: "{% url 'reservation_success' %}",
+              type: "GET",
+              success: function (data) {
+                // Populate the modal with reservation details
+                $('#reservation-modal .modal-body').html(`
+                  <p><strong>Name:</strong> ${data.name}</p>
+                  <p><strong>Email:</strong> ${data.email}</p>
+                  <p><strong>Phone:</strong> ${data.phone}</p>
+                  <p><strong>Check-in Date:</strong> ${data.checkin_date}</p>
+                  <p><strong>Check-out Date:</strong> ${data.checkout_date}</p>
+                  <p><strong>Type of Room:</strong> ${data.room_type}</p>
+                `);
+                // Show the modal
+                $('#reservation-modal').modal('show');
+                $('#reservation-modal').modal('show');
+              },
+              error: function (xhr, errmsg, err) {
+                console.log(xhr.status + ": " + xhr.responseText);
+              }
+            });
+
+          } else {
+            // Room is not available, show the not available modal
+            $('#not-available-modal').modal('show');
+          }
+        },
+        error: function (xhr, errmsg, err) {
+          console.log(xhr.status + ": " + xhr.responseText);
+        }
+      });
+    });
+
+    // Function to handle confirming the reservation
+    $('#confirm-reservation-button').click(function () {
+      // Perform any actions needed to confirm the reservation, such as submitting a form
+      $('#reservation-form').submit(); // For example, submitting the reservation form
+    });
+  });
+</script>
+
 {% endblock %}

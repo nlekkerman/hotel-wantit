@@ -824,7 +824,35 @@ form.signup input[type="submit"]:focus {
     top: 15px;
 }
 
+/* Apply general styling to form elements */
+.form-group {
+    margin-bottom: 20px;
+}
 
+label {
+    font-weight: bold;
+}
+
+/* Apply specific styles to form labels */
+.label-name {
+    color: blue;
+}
+
+.label-email {
+    color: green;
+}
+
+.label-phone {
+    color: red;
+}
+
+.label-checkin-date {
+    color: orange;
+}
+
+.label-checkout-date {
+    color: purple;
+}
 
 
 /*ANIMATIONS*/

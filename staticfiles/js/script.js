@@ -62,6 +62,8 @@ document.getElementById('sendButton').addEventListener('click', function() {
     chatBody.scrollTop = chatBody.scrollHeight; // Scroll to the bottom of the chat body
 });
 */
+
+
 document.getElementById('toggleButton').addEventListener('click', function () {
     document.getElementById('navbar').classList.toggle('active');
 });
