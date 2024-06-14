@@ -8,10 +8,14 @@
 
 /* Hover effect for dropdown items */
 .dropdown-menu .dropdown-item:hover {
-    background-color: silver; /* Change the background color on hover */
-    color: black; /* Change the text color on hover */
-    text-decoration: none; /* Remove underline on hover */
+    background-color: silver;
+    /* Change the background color on hover */
+    color: black;
+    /* Change the text color on hover */
+    text-decoration: none;
+    /* Remove underline on hover */
 }
+
 .header-container {
     border-bottom: 4px solid silver;
     animation: slideInFromTop 0.6s ease-in-out;
@@ -279,6 +283,24 @@ label {
     height: 100vh;
     background-color: #f4f4f4;
     background-image: url("../images/lobby.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.room-container{
+ margin: 5px;
+    justify-content: center;
+ 
+}
+.rooms-content-background {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding-top: 50px;
+    background-color: #f4f4f4;
+    background-image: url("../images/room-view.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -758,7 +780,6 @@ form.signup input[type="submit"]:focus {
     background-color: #000604;
     padding-right: 5px;
 }
-
 .admin-titles {
     padding-top: 50px;
 }
@@ -778,7 +799,7 @@ form.signup input[type="submit"]:focus {
     padding: 3px;
 }
 
-/* BOOKINGS STYLES*/
+/* BOOKINGS STYLES */
 
 .book-room-card {
     margin-bottom: 10px;
@@ -788,8 +809,18 @@ form.signup input[type="submit"]:focus {
     transition: transform 0.2s ease-in-out;
     background-color: rgba(0, 0, 0, 0.8);
     border-bottom: 3px solid silver;
+    margin: 0px !important;
+    border-radius: 0px !important;
 }
 
+.mb-4 {
+    margin-bottom: 2px !important;
+}
+
+.col-md-4 {
+    padding-left: 3px;
+    padding-right: 3px;
+}
 
 .card-title {
     font-size: 1.5em;
@@ -817,14 +848,14 @@ form.signup input[type="submit"]:focus {
     align-items: center;
 }
 
-.book-room-title{
+.book-room-title {
     position: fixed;
     top: 0;
     margin-top: 50px;
     color: #000604;
 }
 
-.availability-badge{
+.availability-badge {
     width: 30%;
     position: absolute;
     right: 5px;
@@ -861,8 +892,7 @@ label {
     color: purple;
 }
 
-
-/*ALTERNATE ROOMS*/
+/* ALTERNATE ROOMS */
 .alternative-room {
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -875,7 +905,6 @@ label {
 }
 
 .alternative-room img {
-    
     border-radius: 8px;
     margin-right: 20px;
 }
@@ -900,8 +929,152 @@ label {
 .alternative-room button:hover {
     background-color: #0056b3;
 }
-/*ANIMATIONS*/
 
+/* MODALS STYLES */
+
+/* Custom modal styles */
+.custom-reservation-modal,
+.custom-thankyou-modal,
+.custom-modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background */
+}
+
+.custom-reservation-modal-dialog {
+    max-width: 800px;
+    /* Custom width for modal dialog */
+}
+
+.custom-reservation-modal-content,
+.custom-thankyou-modal-content,
+.custom-modal-content {
+    background-color: #f0f0f0;
+    /* Light gray background */
+    border: 2px solid #ccc;
+    /* Border color */
+    border-radius: 10px;
+    /* Rounded corners */
+}
+
+.custom-reservation-modal-header,
+.custom-thankyou-modal-header,
+.custom-modal-header {
+    background-color: #6cb2eb;
+    /* Custom header background color */
+    color: #fff;
+    /* Text color */
+    border-bottom: none;
+    /* No bottom border */
+}
+
+.custom-reservation-modal-body,
+.custom-thankyou-modal-body,
+.custom-modal-body {
+    padding: 20px;
+    /* Custom padding for modal body */
+}
+
+.custom-reservation-modal-footer,
+.custom-thankyou-modal-footer,
+.custom-modal-footer {
+    background-color: #f0f0f0;
+    /* Light gray footer background */
+    border-top: none;
+    /* No top border */
+}
+
+/* Modal dialog */
+.custom-modal-dialog {
+    position: relative;
+    margin: auto;
+    margin-top: 10%;
+    width: 80%;
+    /* Set width of modal */
+    max-width: 500px;
+    /* Max width of modal */
+    border: 1px solid #888;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styles */
+
+.room_availability_button {
+    display: block; /* Ensure the button is a block-level element */
+    width: fit-content; /* Adjust width to fit content */
+    margin: 0 auto; /* Center horizontally within its container */
+    text-align: center; /* Center text inside the button */
+    background-color: rgba(255, 0, 0, 0.9);
+    border: 2px solid silver !important;
+    margin-bottom: 10px;
+}
+
+.button-container {
+    text-align: center; /* Center align text within the container */
+}
+
+.custom-btn {
+    padding: 8px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.custom-btn-secondary {
+    background-color: #6c757d;
+    /* Secondary button background color */
+    border: 1px solid #6c757d;
+    /* Secondary button border color */
+    color: #fff;
+    /* Secondary button text color */
+}
+
+.custom-btn-secondary:hover {
+    background-color: #5a6268;
+    /* Secondary button hover background color */
+    border-color: #545b62;
+    /* Secondary button hover border color */
+}
+
+.custom-btn-primary {
+    background-color: #ff0000;
+    /* Primary button background color */
+    border: 1px solid #007bff;
+    /* Primary button border color */
+    color: #fff;
+    /* Primary button text color */
+}
+
+.custom-btn-primary:hover {
+    background-color: #0069d9;
+    /* Primary button hover background color */
+    border-color: #0062cc;
+    /* Primary button hover border color */
+}
+
+/* ANIMATIONS */
+/* Custom class to center content and animate zoom-in */
+.center-zoom-in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: zoomIn 1s ease-in-out;
+}
+
+/* Define the keyframes for the zoom-in animation */
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 
 @keyframes fadeIn {
     to {
@@ -909,22 +1082,6 @@ label {
     }
 }
 
-/* Define the keyframes for the zoom-in animation */
-@keyframes zoomIn {
-    0% {
-        transform: scale(0);
-        opacity: 0;
-        background-color: rgba(255, 255, 255, 0);
-        /* Initial transparent background color */
-
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: 1;
-
-    }
-}
 
 @keyframes slideInFromRight {
     0% {

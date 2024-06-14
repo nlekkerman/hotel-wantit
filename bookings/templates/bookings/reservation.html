@@ -58,20 +58,21 @@
   </div>
 </div>
 
-<!-- HTML for the confirmation modal -->
 <div class="modal" id="confirmationModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
+  <div class="modal-dialog custom-modal-dialog">
+    <div class="modal-content custom-modal-content">
+      <div class="modal-header custom-modal-header">
         <h5 class="modal-title">Confirm Reservation</h5>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close custom-close" data-dismiss="modal">&times;</button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body custom-modal-body">
         <p>Are you sure you want to submit this reservation?</p>
+        <p>Please review the details carefully before confirming.</p>
+
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" id="confirmReservationBtn">Confirm</button>
+      <div class="modal-footer custom-modal-footer">
+        <button type="button" class="btn custom-btn custom-btn-secondary" data-dismiss="modal">Review</button>
+        <button type="button" class="btn custom-btn custom-btn-primary" id="confirmReservationBtn">Confirm</button>
       </div>
     </div>
   </div>
@@ -80,43 +81,42 @@
 
 
 
-<div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
+<div class="modal fade custom-reservation-modal" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+  <div class="modal-dialog custom-reservation-modal-dialog">
+    <div class="modal-content custom-reservation-modal-content">
+      <div class="modal-header custom-reservation-modal-header">
         <h5 class="modal-title" id="reservationModalLabel">Reservation Details</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body" id="reservationModalBody">
+      <div class="modal-body custom-reservation-modal-body" id="reservationModalBody">
         <!-- Reservation details will be inserted here -->
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer custom-reservation-modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-          id="reservation_modal_close_button">Close</button>
+          id="reservation_modal_close_button">Exit</button>
       </div>
     </div>
   </div>
 </div>
 
 
-
-<!-- HTML for the thank you modal -->
-<div class="modal" id="thankYouModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
+<div class="modal fade custom-thankyou-modal" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
+  <div class="modal-dialog custom-thankyou-modal-dialog">
+    <div class="modal-content custom-thankyou-modal-content">
+      <div class="modal-header custom-thankyou-modal-header">
         <h5 class="modal-title">Thank You!</h5>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body custom-thankyou-modal-body">
         <p>Thank you for choosing us as your home. We hope you have a pleasant stay!</p>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      <div class="modal-footer custom-thankyou-modal-footer">
+        <button id="thankYouCloseBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
@@ -168,5 +168,14 @@
         });
     });
   });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // Add event listener to the Close button in Thank You modal
+    document.getElementById('thankYouCloseBtn').addEventListener('click', function () {
+        // Redirect to home page
+        console.log("erkjgnrkjgnekjrgnekjgnekjrgn")
+        window.location.href = "{% url 'home' %}";
+    });
+});
 </script>
 {% endblock %}
