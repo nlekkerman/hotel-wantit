@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Check Room Availability{% endblock %}
+
+{% block content %}
+<h1>Check Availability for {{ room.room_number }} - {{ room.room_type }}</h1>
+<p>{{ room.description }}</p>
+<p>Capacity: {{ room.capacity }}</p>
+<p>Price per night: ${{ room.price }}</p>
+
+<form method="post" id="availabilityForm">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="id_check_in">Check-In Date:</label>
+        <input type="date" class="form-control" id="id_check_in" name="check_in">
+    </div>
+    <div class="form-group">
+        <label for="id_check_out">Check-Out Date:</label>
+        <input type="date" class="form-control" id="id_check_out" name="check_out">
+    </div>
+    <div class="form-group">
+        <button id="room_availability_button" type="button" class="btn btn-primary">Check Availability</button>
+    </div>
+</form>
+
+<div id="loading" style="display: none;">Checking availability...</div>
+<div id="result"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('room_availability_button').onclick = function (event) {
+            event.preventDefault();
+
+            const button = document.getElementById('room_availability_button');
+            const loadingDiv = document.getElementById('loading');
+            const resultDiv = document.getElementById('result');
+
+            button.disabled = true;
+            loadingDiv.style.display = 'block';
+            resultDiv.innerHTML = ''; // Clear previous results
+
+            const formData = new FormData(document.getElementById('availabilityForm'));
+            fetch("{% url 'check_availability' room.id %}", {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRFToken': document.querySelector('input[name="csrfmiddlewaretoken"]').value
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    button.disabled = false;
+                    loadingDiv.style.display = 'none';
+
+                    if (data.available) {
+                        const checkInDate = data.check_in;
+                        const checkOutDate = data.check_out;
+                        const roomId = data.room_id;
+                        window.location.href =
+                            `/bookings/reserve-room/${roomId}/?check_in=${checkInDate}&check_out=${checkOutDate}`;
+                    } else {
+                        resultDiv.innerHTML = `<p>${data.message}</p>`;
+                        if (data.alternative_rooms && data.alternative_rooms.length > 0) {
+                            resultDiv.innerHTML += '<p>Alternative rooms suggested:</p>';
+                            data.alternative_rooms.forEach(room => {
+                                resultDiv.innerHTML += `
+                                    <div class="alternative-room">
+                                        <img src="{% static 'images/room1.jpg' %}" alt="Room Image">
+                                        <p>Room Number: ${room.room_number}</p>
+                                        <p>Description: ${room.description}</p>
+                                        <p>Price per night: $${room.price}</p>
+                                        <button data-room-id="${room.room_id}" 
+                                                data-check-in="${data.check_in}" 
+                                                data-check-out="${data.check_out}"
+                                                class="btn btn-secondary selectAlternativeButton">Select Room ${room.room_number}</button>
+                                    </div>
+                                `;
+                            });
+
+                            document.querySelectorAll('.selectAlternativeButton').forEach(button => {
+                                button.onclick = function () {
+                                    const alternativeRoomId = this.getAttribute(
+                                        'data-room-id');
+                                    const checkInDate = this.getAttribute('data-check-in');
+                                    const checkOutDate = this.getAttribute(
+                                    'data-check-out');
+                                    window.location.href =
+                                        `/bookings/reserve-room/${alternativeRoomId}/?check_in=${checkInDate}&check_out=${checkOutDate}`;
+                                };
+                            });
+                        }
+                    }
+                })
+                .catch(error => {
+                    button.disabled = false;
+                    loadingDiv.style.display = 'none';
+                    resultDiv.innerHTML =
+                        '<p>There was an error checking availability. Please try again.</p>';
+                    console.error('Error:', error);
+                });
+        };
+    });
+</script>
+
+{% endblock %}

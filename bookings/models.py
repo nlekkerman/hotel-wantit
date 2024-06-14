@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from .utils import calculate_price
 
 
 class Room(models.Model):
@@ -31,23 +32,19 @@ class Reservation(models.Model):
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    room = models.ForeignKey(Room, on_delete=models.CASCADE, null=True, default=None)  
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, null=True, default=None)
     name = models.CharField(max_length=100)
     email = models.EmailField()
     phone = models.CharField(max_length=15)
     checkin_date = models.DateField()
     checkout_date = models.DateField()
-    type_of_room = models.CharField(max_length=10, choices=ROOM_TYPES)
-    updated_on = models.DateTimeField(auto_now=True)
+    type_of_room = models.CharField(max_length=10, choices=Room.ROOM_TYPES)
+    price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 
     def save(self, *args, **kwargs):
-        # Call the save method of the parent class
+        # Calculate the price before saving
+        self.price = calculate_price(self.room, self.checkin_date, self.checkout_date)
         super().save(*args, **kwargs)
-        
-        # Update the related Room object
-        if self.room:
-            self.room.available = False
-            self.room.save()
 
     def __str__(self):
         return f'{self.name} - {self.checkin_date} to {self.checkout_date}'

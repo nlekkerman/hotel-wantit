@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Reservation Success - Hotel Wantit{% endblock %}
+
+{% block content %}
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Reservation Success</h1>
+        <p class="lead">Your reservation has been successfully submitted.</p>
+        <hr class="my-4">
+        <h2>Reservation Details:</h2>
+        <ul class="list-unstyled">
+            <li><strong>Name:</strong> {{ reservation.name }}</li>
+            <li><strong>Email:</strong> {{ reservation.email }}</li>
+            <li><strong>Phone:</strong> {{ reservation.phone }}</li>
+            <li><strong>Check-in Date:</strong> {{ reservation.checkin_date }}</li>
+            <li><strong>Check-out Date:</strong> {{ reservation.checkout_date }}</li>
+            <li><strong>Type of Room:</strong> {{ reservation.get_type_of_room_display }}</li>
+        </ul>
+        <a href="/" class="btn btn-primary btn-lg">Back to Home</a>
+    </div>
+{% endblock %}

@@ -5,109 +5,168 @@
 <div class="container">
   <h2>Reserve Room</h2>
   <div class="row">
-    <div class="col-md-6 bg-warning">
+    <div class="col-md-6 bg-warning" id="room-information">
       <h4>Room Information</h4>
       <p><strong>Room Number:</strong> {{ room.room_number }}</p>
       <p><strong>Type:</strong> {{ room.room_type }}</p>
-      <p><strong>Price:</strong> {{ room.price }}</p>
       <p><strong>Description:</strong> {{ room.description }}</p>
+      <p><strong>Price per Night:</strong> $<span id="pricePerNight"
+          data-price="{{ room.price }}">{{ room.price }}</span></p>
     </div>
     <div class="col-md-6">
       <h4>Reservation Form</h4>
+
       <form id="reservation-form" method="post" action="{% url 'reserve_room' room.id %}">
         {% csrf_token %}
-        <input type="hidden" name="room_id" value="{{ room.id }}">
+        <input type="hidden" id="id_room_id" name="room_id" value="{{ room.id }}">
+
         <div class="form-group">
           <label for="id_name" class="label-name">Name:</label>
-          <input type="text" id="id_name" name="name" class="form-control" placeholder="Enter your name">
+          <input type="text" id="id_name" name="name" class="form-control" placeholder="Enter your name" required>
         </div>
         <div class="form-group">
           <label for="id_email" class="label-email">Email:</label>
-          <input type="email" id="id_email" name="email" class="form-control" placeholder="Enter your email">
+          <input type="email" id="id_email" name="email" class="form-control" placeholder="Enter your email" required>
         </div>
         <div class="form-group">
           <label for="id_phone" class="label-phone">Phone:</label>
-          <input type="tel" id="id_phone" name="phone" class="form-control" placeholder="Enter your phone number">
+          <input type="tel" id="id_phone" name="phone" class="form-control" placeholder="Enter your phone number"
+            required>
         </div>
         <div class="form-group">
           <label for="id_checkin_date" class="label-checkin-date">Check-in Date:</label>
-          <input type="date" id="id_checkin_date" name="checkin_date" class="form-control">
+          <input type="date" id="id_checkin_date" name="checkin_date" class="form-control"
+            value="{{ form.initial.checkin_date }}" required>
         </div>
         <div class="form-group">
           <label for="id_checkout_date" class="label-checkout-date">Check-out Date:</label>
-          <input type="date" id="id_checkout_date" name="checkout_date" class="form-control">
+          <input type="date" id="id_checkout_date" name="checkout_date" class="form-control"
+            value="{{ form.initial.checkout_date }}" required>
         </div>
-        <button type="submit" class="btn btn-primary">Reserve Room</button>
-        <button id="availability-button" type="button" class="btn btn-primary">Check Availability</button>
+        <div class="form-group">
+          <label class="label-total-price">Total Price:</label>
+          <p>$<span id="totalPrice">{{ reservation.price }}</span></p>
+        </div>
+
+        <div id="error-message" class="alert alert-danger" role="alert" style="display: none;">
+          Please fill in all required fields.
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="reserveButton">Reserve Room</button>
       </form>
     </div>
   </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="reservationModal" tabindex="-1" role="dialog" aria-labelledby="reservationModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<!-- HTML for the confirmation modal -->
+<div class="modal" id="confirmationModal">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="reservationModalLabel">Reservation Information</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title">Confirm Reservation</h5>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <div class="modal-body" id="reservationModalBody">
-        <!-- Reservation information will be displayed here -->
+      <div class="modal-body">
+        <p>Are you sure you want to submit this reservation?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="reserveButton" style="display: none;">Reserve Room</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="confirmReservationBtn">Confirm</button>
       </div>
     </div>
   </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(document).ready(function () {
-    $("#availability-button").click(function () {
-        var roomId = $("#id_room_id").val();
-        var checkinDate = $("#id_checkin_date").val();
-        var checkoutDate = $("#id_checkout_date").val();
 
-        // Send AJAX request to Django view
-        $.ajax({
-            type: "POST",
-            url: "{% url 'check_availability' %}",
-            data: {
-                room_id: roomId,
-                checkin_date: checkinDate,
-                checkout_date: checkoutDate,
-                csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()
-            },
-            dataType: "json",
-            success: function (response) {
-                if (response.available) {
-                    // Room is available, populate modal with reservation information
-                    $("#reservationModalBody").html(response.reservation_info);
-                    $("#reserveButton").show();
-                } else {
-                    // Room is not available
-                    $("#reservationModalBody").text("This room is not available for the specified period.");
-                    $("#reserveButton").hide();
-                }
-                // Open the modal
-                $("#reservationModal").modal("show");
-            },
-            error: function (xhr, status, error) {
-                console.error("Error:", xhr.status);
-            }
+
+
+<div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="reservationModalLabel">Reservation Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="reservationModalBody">
+        <!-- Reservation details will be inserted here -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+          id="reservation_modal_close_button">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- HTML for the thank you modal -->
+<div class="modal" id="thankYouModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Thank You!</h5>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Thank you for choosing us as your home. We hope you have a pleasant stay!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('reservation-form');
+
+    // Handle form submission
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      $('#confirmationModal').modal('show'); // Show confirmation modal
+    });
+
+    // Handle confirmation button click
+    $('#confirmReservationBtn').on('click', function () {
+      const formData = new FormData(form);
+      fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'X-CSRFToken': document.querySelector('input[name="csrfmiddlewaretoken"]').value
+          }
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.room_number) {
+            // Display modal with reservation details
+            const modalBody = document.getElementById('reservationModalBody');
+            modalBody.innerHTML = `
+            <p><strong>Room Number:</strong> ${data.room_number}</p>
+            <p><strong>Room Type:</strong> ${data.room_type}</p>
+            <p><strong>Check-in Date:</strong> ${data.checkin_date}</p>
+            <p><strong>Check-out Date:</strong> ${data.checkout_date}</p>
+            <p><strong>Total Price:</strong> $${data.total_price}</p>
+          `;
+            $('#reservationModal').modal('show'); // Show reservation details modal
+            $('#reservation_modal_close_button').on('click', function () {
+              $('#reservationModal').modal('hide'); // Hide reservation details modal
+              $('#thankYouModal').modal('show'); // Show thank you modal
+            });
+          } else {
+            console.error('Error: Room not available or other error');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        })
+        .finally(() => {
+          $('#confirmationModal').modal('hide'); // Hide confirmation modal after action
         });
     });
-
-    $("#reserveButton").click(function () {
-        // Submit the reservation form
-        $("#reservation-form").submit();
-    });
-});
-
+  });
 </script>
 {% endblock %}
