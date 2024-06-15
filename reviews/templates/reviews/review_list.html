@@ -24,22 +24,19 @@
                         <span class="star">&#9734;</span>
                         {% endfor %}
                     </div>
+                    <p class="review-author" >{{ review.user.username }}</p>
                     <p class="review-text">{{ review.review }}</p>
-                   
-                    <p class="review-author">Author: {{ review.user.username }}</p>
-                    <p class="review-date">Date: {{ review.created_at|date:"F j, Y" }}</p>
+                    <p class="review-date">{{ review.created_at|date:"F j, Y" }}</p>
     
                     <!-- Displaying count of comments -->
                     <div class="row">
                         <div class="col-12">
                             <strong class="text-secondary">
-                                <i class="far fa-comments"></i> {{ review.comment_count }}
+                                <i class="far fa-comments comment-count"></i> {{ review.comment_count }}
                             </strong>
                             
                         </div>
-                        <div class="col-12">
-                            <hr>
-                        </div>
+                       
                     </div>
                 </div>
             </a>

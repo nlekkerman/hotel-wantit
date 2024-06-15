@@ -82,8 +82,11 @@ def book_room(request):
 
 def rooms_view(request):
     room_type = request.GET.get('type')  # Get the room type from query parameter
+
+     # Get distinct room types from the database
+    room_types = Room.objects.values_list('room_type', flat=True).distinct()
     if room_type:
-        rooms = Room.objects.filter(room_type=room_type)
+        rooms = Room.objects.filter(room_type=room_type).order_by('room_number')
     else:
         rooms = Room.objects.all()
     context = {
@@ -150,3 +153,22 @@ def check_availability(request, room_id):
         form = AvailabilityForm()
     
     return render(request, 'check_availability.html', {'form': form, 'room': room})
+
+def reservation_approval_list(request):
+    pending_reservations = Reservation.objects.filter(reservation_status=Reservation.PENDING)
+    context = {
+        'pending_reservations': pending_reservations,
+    }
+    return render(request, 'bookings/reservation_approval_list.html', context)
+
+def approve_reservation(request, reservation_id):
+    reservation = get_object_or_404(Reservation, id=reservation_id)
+    reservation.reservation_status = Reservation.CONFIRMED  # Use CONFIRMED, not APPROVED
+    reservation.save()
+    return redirect('reservation-approval-list')
+
+def reject_reservation(request, reservation_id):
+    reservation = get_object_or_404(Reservation, id=reservation_id)
+    reservation.reservation_status = Reservation.REJECTED
+    reservation.save()
+    return redirect('reservation-approval-list')

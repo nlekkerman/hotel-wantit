@@ -15,7 +15,7 @@ class ReviewList(generic.ListView):
 
     def get_queryset(self):
         # Fetch all reviews
-        queryset = Review.objects.all()
+        queryset = Review.objects.filter(status=1).order_by('-created_at')
 
         # Iterate through each review and annotate the count of comments associated with it
         for review in queryset:

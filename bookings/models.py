@@ -25,6 +25,17 @@ class Room(models.Model):
 
 
 class Reservation(models.Model):
+
+    PENDING = 'pending'
+    CONFIRMED = 'confirmed'
+    REJECTED = 'rejected'
+    
+    STATUS_CHOICES = [
+        (PENDING, 'Pending'),
+        (CONFIRMED, 'Confirmed'),
+        (REJECTED, 'Rejected'),
+    ]
+
     ROOM_TYPES = [
         ('deluxe', 'Deluxe Room'),
         ('superior', 'Superior Room'),
@@ -40,6 +51,8 @@ class Reservation(models.Model):
     checkout_date = models.DateField()
     type_of_room = models.CharField(max_length=10, choices=Room.ROOM_TYPES)
     price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    reservation_status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=PENDING)
+
 
     def save(self, *args, **kwargs):
         # Calculate the price before saving
