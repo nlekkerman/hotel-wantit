@@ -2,13 +2,13 @@
 
 {% block content %}
 <h1 class="admin-titles">Pending Reservations</h1>
-<ul class="list-class">
+<ul class="list-class background-image-book-room">
     {% for reservation in pending_reservations %}
     <li class="pending-item">
         <div class="username-admin">
             {{ reservation.user }} <!-- Adjust this according to your Reservation model -->
         </div>
-        <div class="font-italic">
+        <div class="font-italic ">
             <!-- Display any relevant information about the reservation -->
             <!-- For example, reservation details like date, time, etc. -->
             <div>Status: {{ reservation.get_reservation_status_display }}</div> <!-- Use get_reservation_status_display() -->
