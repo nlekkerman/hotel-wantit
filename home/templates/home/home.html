@@ -28,10 +28,22 @@
             <div class="slide" id="slide3">
                 <img src="{% static 'images/room-view.jpg' %}" alt="Reviews Image">
                 <div class="review">
-                    <div class="review-body">"The room was clean and the view was amazing. Highly recommend!"</div>
-                    <div class="review-author">Jacob Dalley</div>
-                    <div class="review-date">April 1, 2024</div>
-                    <div class="stars">★★★★☆</div>
+                    {% if random_review %}
+                    <div class="review-body">"{{ random_review.review }}"</div>
+                    <div class="review-author">{{ random_review.user.username }}</div>
+                    <div class="review-date">{{ random_review.created_at|date:"F j, Y" }}</div>
+                    <div class="stars">
+                        {% for _ in "12345" %}
+                        {% if forloop.counter <= random_review.rating %}
+                        <span class="star">&#9733;</span> <!-- Filled star -->
+                        {% else %}
+                        <span class="star">&#9734;</span> <!-- Empty star -->
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="review-body">"No reviews available at the moment."</div>
+                    {% endif %}
                 </div>
                 <button class="action-button" onclick="location.href='{% url 'review-list' %}'">Leave Review</button>
             </div>

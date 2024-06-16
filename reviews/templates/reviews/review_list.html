@@ -17,12 +17,18 @@
             <a href="{% url 'review_detail' review.pk %}">
                 <div class="review-item">
                     <div class="stars">
-                        {% for _ in review.stars %}
+                        {% for _ in review.ratings %}
                         <span class="star">&#9733;</span>
                         {% endfor %}
-                        {% for _ in review.empty_stars %}
-                        <span class="star">&#9734;</span>
-                        {% endfor %}
+                        <div class="stars">
+                            {% for _ in "12345" %}
+                                {% if forloop.counter <= review.rating %}
+                                    <span class="star">&#9733;</span> <!-- Filled star -->
+                                {% else %}
+                                    <span class="star">&#9734;</span> <!-- Empty star -->
+                                {% endif %}
+                            {% endfor %}
+                        </div>
                     </div>
                     <p class="review-author" >{{ review.user.username }}</p>
                     <p class="review-text">{{ review.review }}</p>

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Review Deletion{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">Review Deletion</h1>
+            <div class="alert alert-danger" role="alert">
+                You have successfully deleted the review.
+            </div>
+            
+            <a href="{% url 'review-list' %}" class="btn btn-secondary">Back</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

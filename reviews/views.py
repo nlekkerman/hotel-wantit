@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 from django.contrib.admin.views.decorators import staff_member_required
 from .forms import ReviewForm, CommentForm
 from django.db.models import Count, Q
@@ -60,9 +61,9 @@ def create_review(request):
         if form.is_valid():
             review = form.save(commit=False)
             review.user = request.user
-            review.status = 0  # Set status to 'Pending'
+            review.status = 0  
             review.save()
-            return redirect('review-list')  # Use the name of the URL pattern
+            return redirect('review-list')  
     else:
         form = ReviewForm()
 
@@ -84,6 +85,48 @@ def create_review(request):
         return render(request, 'reviews/create_review.html', {'form': form})
     
     return render(request, 'reviews/create_review.html', {'form': form})
+
+@login_required
+def edit_review(request, pk):
+    review = get_object_or_404(Review, pk=pk)
+
+    # Check if the current user is the author of the review
+    if request.user != review.user:
+        return redirect('review_detail', pk=pk)  # Redirect or handle unauthorized access
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.status = 0 
+            review.last_edited_at = timezone.now() 
+            review.save()
+            return render(request, 'reviews/partials/review_edit_message.html')  
+    else:
+        form = ReviewForm(instance=review)
+
+    return render(request, 'reviews/edit_review.html', {'form': form, 'review': review, 'show_modal': True})
+
+
+    
+
+@login_required
+def delete_review(request, pk):
+    review = get_object_or_404(Review, pk=pk)
+
+    # Check if the current user is the author of the review
+    if request.user != review.user:
+        return redirect('review_detail', pk=pk)  # Redirect or handle unauthorized access
+
+    if request.method == 'POST':
+        review.delete()
+
+        # After deletion, render review_delete_message.html
+        return render(request, 'reviews/partials/review_delete_message.html')
+
+    # If not a POST request, simply redirect to review-list
+    return redirect('review-list')   
+
 
 @login_required
 def add_comment(request, review_id):

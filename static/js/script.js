@@ -150,3 +150,23 @@ $(document).ready(function () {
 });
 
 
+
+    // Wait for the document to be ready
+    document.addEventListener('DOMContentLoaded', function() {
+        // Select form and button elements
+        const reviewForm = document.getElementById('reviewForm');
+        const submitReviewBtn = document.getElementById('submitReviewBtn');
+        const reviewModal = new bootstrap.Modal(document.getElementById('reviewModal')); // Assuming you're using Bootstrap modal
+
+        // Add event listener for form submission
+        reviewForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Perform AJAX request or submit form data here
+            // For demonstration purposes, simulate a delay before showing the modal
+            setTimeout(function() {
+                reviewModal.show(); // Show the modal
+            }, 500); // Adjust the delay as needed
+        });
+    });
+
