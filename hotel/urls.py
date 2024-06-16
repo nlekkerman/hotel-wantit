@@ -19,12 +19,15 @@ from django.urls import path,include
 from reviews import views
 from home import views
 from bookings import views
+from . import views
+from django.views.generic import TemplateView
 
 
 
 
 
 urlpatterns = [
+    path('notifications/', views.user_notifications, name='user-notifications'),
     path("", include("home.urls"), name="home"), 
     path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),

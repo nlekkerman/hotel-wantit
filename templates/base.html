@@ -92,6 +92,13 @@
                             </li>
                             {% endif %}
 
+                            {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'user-notifications' %}">Notifications</a>
+                            </li>
+                            
+                            {% endif %}
+
                         </ul>
                     </div>
                 </nav>

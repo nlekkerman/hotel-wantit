@@ -172,3 +172,8 @@ def reject_reservation(request, reservation_id):
     reservation.reservation_status = Reservation.REJECTED
     reservation.save()
     return redirect('reservation-approval-list')
+
+@login_required
+def user_reservations_count(request):
+    user_reservations_count = Reservation.objects.filter(user=request.user).count()
+    return user_reservations_count

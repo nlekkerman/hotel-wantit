@@ -27,6 +27,9 @@ class ReviewList(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
+
+
+        
 def review_detail(request, pk):
     review = get_object_or_404(Review, pk=pk)
     comment_count = review.comments.filter(status=Comment.APPROVED).count()
@@ -52,8 +55,6 @@ def review_detail(request, pk):
         'comments': approved_comments,
         'comment_count': comment_count,
     })
-
-
 @login_required
 def create_review(request):
     if request.method == 'POST':
@@ -61,31 +62,17 @@ def create_review(request):
         if form.is_valid():
             review = form.save(commit=False)
             review.user = request.user
-            review.status = 0  
+            review.status = 0  # Assuming 0 means pending approval
             review.save()
-            return redirect('review-list')  
+            return redirect('review-list')  # Redirect to the reviews list page
     else:
         form = ReviewForm()
 
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         return render(request, 'reviews/create_review.html', {'form': form})
-    
-    return render(request, 'reviews/create_review.html', {'form': form})
-    if request.method == 'POST':
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            review = form.save(commit=False)
-            review.user = request.user
-            review.save()
-            return redirect('home')  
-    else:
-        form = ReviewForm()
 
-    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        return render(request, 'reviews/create_review.html', {'form': form})
-    
     return render(request, 'reviews/create_review.html', {'form': form})
-
+    
 @login_required
 def edit_review(request, pk):
     review = get_object_or_404(Review, pk=pk)
@@ -190,3 +177,14 @@ def reject_comment(request, comment_id):
     comment.save()
     pending_comments = Comment.objects.filter(status=Comment.PENDING)
     return render(request, 'reviews/comment_approval_list.html', {'pending_comments': pending_comments})
+
+
+@login_required
+def user_pending_reviews_count(request):
+    user_pending_reviews_count = Review.objects.filter(user=request.user, status=0).count()
+    return user_pending_reviews_count
+
+@login_required
+def user_pending_comments_count(request):
+    user_pending_comments_count = Comment.objects.filter(user=request.user, status='pending').count()
+    return user_pending_comments_count
