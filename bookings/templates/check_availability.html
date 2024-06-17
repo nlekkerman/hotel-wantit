@@ -4,28 +4,41 @@
 {% block title %}Check Room Availability{% endblock %}
 
 {% block content %}
-<h1>Check Availability for {{ room.room_number }} - {{ room.room_type }}</h1>
-<p>{{ room.description }}</p>
-<p>Capacity: {{ room.capacity }}</p>
-<p>Price per night: ${{ room.price }}</p>
 
-<form method="post" id="availabilityForm">
-    {% csrf_token %}
-    <div class="form-group">
-        <label for="id_check_in">Check-In Date:</label>
-        <input type="date" class="form-control" id="id_check_in" name="check_in">
-    </div>
-    <div class="form-group">
-        <label for="id_check_out">Check-Out Date:</label>
-        <input type="date" class="form-control" id="id_check_out" name="check_out">
-    </div>
-    <div class="form-group">
-        <button id="room_availability_button" type="button" class="btn btn-primary">Check Availability</button>
-    </div>
-</form>
+<div class="check_avialability_container">
+   
+    <div class="form-container">
 
-<div id="loading" style="display: none;">Checking availability...</div>
-<div id="result"></div>
+        <p class="form-room-description">{{ room.description }}</p>
+        <p class="form-room-capacity">Capacity: {{ room.capacity }}</p>
+
+        <form method="post" id="availabilityForm">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_check_in">Check-In Date:</label>
+                <input type="date" class="form-control" id="id_check_in" name="check_in">
+            </div>
+            <div class="form-group">
+                <label for="id_check_out">Check-Out Date:</label>
+                <input type="date" class="form-control" id="id_check_out" name="check_out">
+            </div>
+
+            <p class="form-room-price">Price per night:<strong>{{ room.price }} $</strong> </p>
+
+            <div class="form-group">
+                <button id="room_availability_button" type="button" class="btn custom-buttons">Check
+                    Availability</button>
+            </div>
+        </form>
+        
+
+    </div>
+    <h1 class="form-room-title">Room {{ room.room_number }}</h1>
+
+    <div id="loading" style="display: none;">Checking availability...</div>
+    <div id="result"></div>
+
+</div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -86,7 +99,7 @@
                                         'data-room-id');
                                     const checkInDate = this.getAttribute('data-check-in');
                                     const checkOutDate = this.getAttribute(
-                                    'data-check-out');
+                                        'data-check-out');
                                     window.location.href =
                                         `/bookings/reserve-room/${alternativeRoomId}/?check_in=${checkInDate}&check_out=${checkOutDate}`;
                                 };

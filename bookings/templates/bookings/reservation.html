@@ -4,7 +4,7 @@
 {% block content %}
 <div class="reservation-background">
   <h2 class="reservation-title">Reserve Room</h2>
-  <div class="room-reservation-container">
+  <div class="room-reservation-container ">
     <div class="col-md-6 room-information" id="room-information">
       <h4>Room Information</h4>
       <p><strong>Room Number:</strong> {{ room.room_number }}</p>
@@ -47,7 +47,7 @@
           <input type="date" id="id_checkout_date" name="checkout_date" class="form-control" value="{{ form.initial.checkout_date }}" required>
         </div>
 
-        <button type="submit" class="btn btn-primary" id="reserveButton">Reserve Room</button>
+        <button type="submit" class="btn custom-buttons" id="reserveButton">Reserve Room</button>
       </form>
     </div>
   </div>
@@ -58,15 +58,15 @@
     <div class="modal-content custom-modal-content">
       <div class="modal-header custom-modal-header">
         <h5 class="modal-title">Confirm Reservation</h5>
-        <button type="button" class="close custom-close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close custom-close custom-buttons" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body custom-modal-body">
         <p>Are you sure you want to submit this reservation?</p>
         <p>Please review the details carefully before confirming.</p>
       </div>
       <div class="modal-footer custom-modal-footer">
-        <button type="button" class="btn custom-btn custom-btn-secondary" data-dismiss="modal">Review</button>
-        <button type="button" class="btn custom-btn custom-btn-primary" id="confirmReservationBtn">Confirm</button>
+        <button type="button" class="btn custom-btn custom-buttons" data-dismiss="modal">Review</button>
+        <button type="button" class="btn custom-btn custom-buttons" id="confirmReservationBtn">Confirm</button>
       </div>
     </div>
   </div>
@@ -83,7 +83,7 @@
         <!-- Reservation details will be inserted here -->
       </div>
       <div class="modal-footer custom-reservation-modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="reservation_modal_close_button">Exit</button>
+        <button type="button" class="btn custom-buttons" data-bs-dismiss="modal" id="reservation_modal_close_button">Exit</button>
       </div>
     </div>
   </div>
@@ -100,7 +100,7 @@
         <p>Thank you for choosing us as your home. We hope you have a pleasant stay! Your reservation is received and waiting for confirmation</p>
       </div>
       <div class="modal-footer custom-thankyou-modal-footer">
-        <button id="thankYouCloseBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        <button id="thankYouCloseBtn" type="button" class="btn custom-buttons" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
