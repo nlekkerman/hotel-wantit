@@ -536,16 +536,28 @@ height:500px ;
     padding: 20px;
 
 }
-
-
-#reviews-page {
+.review-detail-title{
+    padding-top:100px ;
+}
+.main-bg{
+    width: 100%;
+     background-image: url("../images/reviews-background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  
+}
+.reviews-page {
     margin-top: 0;
+    display: flex;
     animation: zoomIn 1.2s ease-in;
     min-height: 100vh !important;
     background-image: url("../images/reviews-background.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    width: 1000px !important;
+
     /* Adjust background size and position as needed */
 
 
@@ -563,6 +575,8 @@ height:500px ;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 1000px !important;
+
 }
 
 .review-item {

@@ -3,6 +3,8 @@
 {% block title %}Review Detail{% endblock %}
 
 {% block content %}
+<h1 class="review-detail-title">Review Detail</h1>
+
 <div class="container review-container">
     <h1>{{ review.user.username }}</h1>
     <p>Date: {{ review.created_at|date:"F j, Y" }}</p>
@@ -19,7 +21,7 @@
     <div class="review-actions">
         {% if request.user == review.user %}
             <!-- Edit Review Button -->
-            <a href="{% url 'edit-review' review.pk %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'edit-review' review.pk %}" class="btn custom-buttons">Edit</a>
             
             <!-- Delete Review Button (with confirmation dialog) -->
             <form action="{% url 'delete-review' review.pk %}" method="post" style="display: inline;">

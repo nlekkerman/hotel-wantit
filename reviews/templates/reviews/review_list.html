@@ -4,16 +4,17 @@
 {% block title %}Reviews{% endblock %}
 
 {% block content %}
-<a href="{% url 'create-review' %}" class="floating-button" id="leaveCommentButton">
-    <i class="fas fa-pencil-alt"></i> Write Review
 </a>
-<div id="reviews-page">
-    <div class="container">
+<div id="reviews-page" class="reviews-page">
+    <a href="{% url 'create-review' %}" class="floating-button" id="leaveCommentButton">
+        <i class="fas fa-pencil-alt"></i> Write Review
+
+
 
         <h1 class="reviews-header">Reviews</h1>
         <div class="reviews-list">
             {% for review in object_list %}
-           
+
             <a href="{% url 'review_detail' review.pk %}">
                 <div class="review-item">
                     <div class="stars">
@@ -22,32 +23,32 @@
                         {% endfor %}
                         <div class="stars">
                             {% for _ in "12345" %}
-                                {% if forloop.counter <= review.rating %}
-                                    <span class="star">&#9733;</span> <!-- Filled star -->
-                                {% else %}
-                                    <span class="star">&#9734;</span> <!-- Empty star -->
-                                {% endif %}
+                            {% if forloop.counter <= review.rating %}
+                            <span class="star">&#9733;</span> <!-- Filled star -->
+                            {% else %}
+                            <span class="star">&#9734;</span> <!-- Empty star -->
+                            {% endif %}
                             {% endfor %}
                         </div>
                     </div>
-                    <p class="review-author" >{{ review.user.username }}</p>
+                    <p class="review-author">{{ review.user.username }}</p>
                     <p class="review-text">{{ review.review }}</p>
                     <p class="review-date">{{ review.created_at|date:"F j, Y" }}</p>
-    
+
                     <!-- Displaying count of comments -->
                     <div class="row">
                         <div class="col-12">
                             <strong class="text-secondary">
                                 <i class="far fa-comments comment-count"></i> {{ review.comment_count }}
                             </strong>
-                            
+
                         </div>
-                       
+
                     </div>
                 </div>
             </a>
             {% endfor %}
         </div>
-    </div>
+
 </div>
 {% endblock %}
