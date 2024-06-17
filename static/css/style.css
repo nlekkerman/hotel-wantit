@@ -494,14 +494,31 @@ height:500px ;
     position: absolute;
     bottom: 10px;
     padding: 5px 10px;
-    font-size: 18px;
-    color: #fff;
-    background-color: #b30000 !important;
-    border: none;
-    border-radius: 5px;
+    background-color: rgba(255, 0, 0, 0.9);
+    color: white;
+    border-radius: 20px;
+    border: 3px solid white;
+    margin: 0 !important;
+    margin-bottom: 10px !important;
     cursor: pointer;
 }
-
+.review-success-container{
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    color: white;
+    padding: 20px;
+}
+.review-success-bg{
+    min-height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url("../images/room-view.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 .review-container {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 5px;
@@ -570,6 +587,112 @@ height:500px ;
 .review-date {
     font-size: 1.3em;
     color: #e6e3e3;
+}
+
+/* renovated-rooms.css */
+
+.renovated-rooms {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 20px;
+    background-image: url("../images/room4.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.renovated-rooms h1 {
+    font-size: 2.5em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.renovated-rooms p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    min-height: 100%;
+    width: 100%;
+}
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+   
+
+}
+
+.renovated-rooms h1 {
+    margin-top: 60px;
+}
+.carousel-item-containe{
+    display: flex;
+    min-width: 100%;
+    padding-top: 60px;
+}
+.carousel-item-container p {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    position: absolute;
+    top: 10%;
+    left: 20px;
+    width: 50%;
+ 
+}
+
+.carousel-item img {
+  
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 2em;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.left-button {
+    left: 10px;
+}
+
+.right-button {
+    right: 10px;
+}
+
+@media (max-width: 768px) {
+    .carousel-item p {
+        font-size: 1em;
+    }
 }
 
 /*LEAVE COMMENT*/
@@ -706,10 +829,13 @@ height:500px ;
 }
 
 .custom-buttons {
-    background-color: rgba(92, 86, 86, 0.3);
+    background-color: rgba(255, 0, 0, 0.9);
+    color: white;
     border-radius: 20px;
     border: 3px solid rgba(255, 255, 255, 0.9);
     margin: 0 !important;
+    margin-bottom: 10px !important;
+
 }
 
 .custom-buttons:hover {

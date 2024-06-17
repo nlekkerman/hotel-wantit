@@ -3,59 +3,14 @@
 {% block title %}Write a Review{% endblock %}
 
 {% block content %}
+
+<div class="review-container">
 <h1>Write a Review</h1>
 <form id="reviewForm" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" id="submitReviewBtn">Submit</button>
+    <button type="submit" id="submitReviewBtn" class="custom-buttons">Submit</button>
 </form>
 
-<!-- Modal -->
-<div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="reviewModalLabel">Review Submission</h5>
-                <!-- Font Awesome close icon -->
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                Your review has been submitted and is awaiting approval.
-            </div>
-        </div>
-    </div>
 </div>
-<script>
-    // Wait for the document to be ready
-    document.addEventListener('DOMContentLoaded', function () {
-        // Select form and modal elements
-        const reviewForm = document.getElementById('reviewForm');
-        const reviewModal = new bootstrap.Modal(document.getElementById(
-        'reviewModal')); // Assuming you're using Bootstrap modal
-
-        // Add event listener for form submission
-        reviewForm.addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            // Perform AJAX request or submit form data here
-            // For demonstration purposes, simulate a delay before showing the modal
-            setTimeout(function () {
-                reviewModal.show(); // Show the modal
-            }, 500); // Adjust the delay as needed
-        });
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const reviewModal = new bootstrap.Modal(document.getElementById('reviewModal'));
-
-        // Add event listener to close icon button
-        document.querySelector('.modal .btn-close').addEventListener('click', function() {
-            // Redirect to review_list page
-            window.location.href = '/reviews/';
-        });
-    });
-
-</script>
 {% endblock %}

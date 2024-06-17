@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Newly Renovated Rooms - Your Hotel Name{% endblock %}
+
+{% block content %}
+<article class="renovated-rooms">
+    <h1>Newly Renovated Rooms</h1>
+
+    <p>Step into a realm of contemporary luxury with our newly renovated rooms, where Southern California style meets
+        unparalleled comfort. Our commitment to excellence is reflected in every detail, from the elegant decor to the
+        state-of-the-art amenities.</p>
+
+    <div class="carousel-container">
+
+        <div class="carousel-slide">
+            <button class="carousel-button left-button" onclick="moveSlide(-1)">&#10094;</button>
+            <div class="carousel-item">
+                <div class="carousel-item-container">
+                    <img src="{% static 'images/room1.jpg' %}" alt="Room 1">
+                    <p>Our spacious suites offer a serene sanctuary with plush bedding, modern furnishings, and
+                        panoramic views of the city skyline or oceanfront.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-item-container">
+
+                    <img src="{% static 'images/room2.jpg' %}" alt="Room 2">
+                    <p>Relax in our luxurious bathrooms adorned with marble countertops, rainfall showers, and designer
+                        toiletries, ensuring a rejuvenating experience.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-item-container">
+                <img src="{% static 'images/room3.jpg' %}" alt="Room 3">
+                <p>Enjoy the seamless blend of comfort and style in our living areas, featuring contemporary furniture,
+                    vibrant accents, and personalized touches inspired by the local culture.</p>
+            </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-item-container">
+                <img src="{% static 'images/room4.jpg' %}" alt="Room 4">
+                <p>Modern amenities include high-speed Wi-Fi, flat-screen TVs, and Nespresso machines, ensuring you stay
+                    connected and refreshed throughout your stay.</p>
+            </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-item-container">
+                <img src="{% static 'images/room5.jpg' %}" alt="Room 5">
+                <p>Each room is meticulously designed to evoke a sense of sophistication and relaxation. The color
+                    palette is inspired by the coastal landscapes of Southern California, with soft blues, sandy
+                    neutrals, and accents of vibrant coral.</p>
+            </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-item-container">
+                <img src="{% static 'images/room6.jpg' %}" alt="Room 6">
+                <p>Our renovations include upgraded lighting fixtures, eco-friendly materials, and enhanced
+                    soundproofing to create a peaceful ambiance for our guests. Whether you're traveling for business or
+                    leisure, our renovated rooms provide an oasis of tranquility in the heart of the city.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-item-container">
+                <img src="{% static 'images/room7.jpg' %}" alt="Room 7">
+                <p>Visit us today and immerse yourself in the essence of Southern California living. Experience the
+                    ultimate blend of luxury, comfort, and style in our newly renovated rooms, where every detail is
+                    crafted with your utmost comfort in mind.</p>
+                </div>
+            </div>
+            <button class="carousel-button right-button" onclick="moveSlide(1)">&#10095;</button>
+
+        </div>
+    </div>
+</article>
+
+<script>
+    let currentSlide = 0;
+
+    document.addEventListener('DOMContentLoaded', () => {
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-item');
+        const totalSlides = slides.length;
+
+        function updateSlidePosition() {
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.style.transform = `translateX(0)`;
+                    slide.style.display = 'block';
+                } else {
+                    slide.style.transform = `translateX(100%)`;
+                    slide.style.display = 'none';
+                }
+            });
+        }
+
+        function moveSlide(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            updateSlidePosition();
+        }
+
+        document.querySelector('.left-button').addEventListener('click', () => {
+            moveSlide(-1);
+        });
+
+        document.querySelector('.right-button').addEventListener('click', () => {
+            moveSlide(1);
+        });
+
+        setInterval(() => {
+            moveSlide(1);
+        }, 5000); // Change slide every 5 seconds
+
+        updateSlidePosition(); // Initial update to set up the slide positions
+    });
+</script>
+
+{% endblock %}

@@ -2,6 +2,21 @@ let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
 const totalSlides = slides.length;
 
+
+
+
+function moveSlide(direction) {
+    console.log("asnckjanckjas")
+    const slides = document.querySelectorAll('.carousel-item');
+    const totalSlides = slides.length;
+
+    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+
+    const carouselSlide = document.querySelector('.carousel-slide');
+    const offset = -currentSlide * 100;
+    carouselSlide.style.transform = `translateX(${offset}%)`;
+}
+
 function showSlide(index) {
     slides.forEach((slide, i) => {
         if (i === index) {

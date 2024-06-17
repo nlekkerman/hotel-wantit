@@ -64,7 +64,7 @@ def create_review(request):
             review.user = request.user
             review.status = 0  # Assuming 0 means pending approval
             review.save()
-            return redirect('review-list')  # Redirect to the reviews list page
+            return redirect('review_success')  # Redirect to the review success message
     else:
         form = ReviewForm()
 
@@ -72,7 +72,10 @@ def create_review(request):
         return render(request, 'reviews/create_review.html', {'form': form})
 
     return render(request, 'reviews/create_review.html', {'form': form})
-    
+
+def review_success_message(request):
+    return render(request, 'reviews/partials/review_success_message.html')
+
 @login_required
 def edit_review(request, pk):
     review = get_object_or_404(Review, pk=pk)

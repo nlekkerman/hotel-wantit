@@ -8,3 +8,7 @@ def home_view(request):
     return render(request, 'home/home.html', {
         'random_review': random_review
     })
+
+
+def show_renovated_rooms(request):
+    return render(request, 'home/renovated_rooms.html')
