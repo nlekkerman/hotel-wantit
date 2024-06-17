@@ -287,11 +287,51 @@ label {
     background-position: center;
     background-repeat: no-repeat;
 }
-.room-container{
- margin: 5px;
-    justify-content: center;
- 
+
+.room-info_image {
+    width: 100%;
+    display: flex;
 }
+
+.room-info-container {
+    display: flex;
+}
+
+.room-container {
+    margin: 5px;
+    justify-content: center;
+
+}
+
+.reservation-title {
+    margin-top: 60px;
+}
+
+.reservation-background {
+    background-image: url("../images/room3.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.room-reservation-container {
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(3, 28, 0, 0.8);
+    padding-bottom: 30px;
+    color: white;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+
+}
+
+
 .rooms-content-background {
     display: flex;
     flex-direction: column;
@@ -326,6 +366,10 @@ label {
     border-bottom-left-radius: 25px;
 }
 
+#confirmationModal{
+    z-index: 9999999999999999999999999999999999999999999;
+}
+
 #logo {
     width: 60px;
     border-radius: 50%;
@@ -344,6 +388,10 @@ label {
     animation: zoomIn 0.9s ease-in-out;
 }
 
+.modal{
+z-index: 99999999999999999999999999999;
+height:500px ;
+}
 .slideshow-container {
     position: relative;
     width: 100%;
@@ -435,8 +483,10 @@ label {
 }
 
 .stars {
-    font-size: 20px; /* Adjust font size as needed */
-    color: #ffd700; /* Golden color for stars */
+    font-size: 20px;
+    /* Adjust font size as needed */
+    color: #ffd700;
+    /* Golden color for stars */
     /* Additional styling for stars if necessary */
 }
 
@@ -568,6 +618,79 @@ label {
     text-align: center;
 
 
+}
+
+/*NOTIFICATIONS STYLES*/
+/* Base styles for notification sections and lists */
+.notifications-container {
+    margin-top: 0;
+    animation: zoomIn 1.2s ease-in;
+    min-height: 100vh !important;
+    background-image: url("../images/reviews-background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.notification-title {
+    text-align: center;
+    padding-top: 60px;
+}
+
+.notification-section {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    /* Light alpha background */
+    border: 1px solid #ccc;
+    /* Border around the section */
+    border-radius: 5px;
+    /* Rounded corners */
+}
+
+.notification-section h2 {
+    margin-top: 0;
+    color: white;
+}
+
+.notification-list {
+    list-style-type: none;
+    /* Remove default list styles (bullets) */
+    padding: 0;
+}
+
+.notification-list li {
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: rgba(35, 0, 0, 0.6);
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+}
+
+.notification-list li a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.notification-list li a:hover {
+    color: #007bff;
+    /* Hover color for links */
+    text-decoration: underline;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 /*CUSTOM BUTTONS*/
@@ -705,15 +828,18 @@ form.signup input[type="submit"]:focus {
     margin-bottom: 5px;
     color: white;
 }
-.text-secondary  {
+
+.text-secondary {
     color: rgb(209, 0, 0) !important;
     background-color: rgba(0, 0, 0, 0.3);
     font-weight: 600;
 }
-.comment-count{
+
+.comment-count {
     color: rgb(255, 255, 255);
     font-weight: 600;
 }
+
 /*ADMIN STYLES*/
 
 .admin-button-conatiner {
@@ -786,6 +912,7 @@ form.signup input[type="submit"]:focus {
     background-color: #000604;
     padding-right: 5px;
 }
+
 .admin-titles {
     padding-top: 50px;
 }
@@ -808,15 +935,15 @@ form.signup input[type="submit"]:focus {
 
 /* BOOKINGS STYLES */
 
-.room-type-title{
+.room-type-title {
     color: rgb(255, 255, 255);
     font-weight: 700;
     margin-top: 30px;
     left: 0px;
-   
+
 }
 
-.room-card-container{
+.room-card-container {
     animation: zoomIn 1s ease-in;
     max-width: 300px;
     margin-top: 10px;
@@ -825,10 +952,11 @@ form.signup input[type="submit"]:focus {
 
 .book-room-card {
     margin-bottom: 10px;
-    
-    
+
+
 }
-.card-img-top{
+
+.card-img-top {
     border-radius: 0px !important;
 }
 
@@ -1020,9 +1148,8 @@ label {
     margin: auto;
     margin-top: 10%;
     width: 80%;
-    /* Set width of modal */
     max-width: 500px;
-    /* Max width of modal */
+ z-index: 99999999999999999999999999;
     border: 1px solid #888;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -1031,17 +1158,22 @@ label {
 /* Button styles */
 
 .room_availability_button {
-    display: block; /* Ensure the button is a block-level element */
-    width: fit-content; /* Adjust width to fit content */
-    margin: 0 auto; /* Center horizontally within its container */
-    text-align: center; /* Center text inside the button */
+    display: block;
+    /* Ensure the button is a block-level element */
+    width: fit-content;
+    /* Adjust width to fit content */
+    margin: 0 auto;
+    /* Center horizontally within its container */
+    text-align: center;
+    /* Center text inside the button */
     background-color: rgba(255, 0, 0, 0.9);
     border: 2px solid silver !important;
     margin-bottom: 10px;
 }
 
 .button-container {
-    text-align: center; /* Center align text within the container */
+    text-align: center;
+    /* Center align text within the container */
 }
 
 .custom-btn {

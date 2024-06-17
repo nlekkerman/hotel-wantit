@@ -2,86 +2,104 @@
 {% load static %}
 
 {% block title %}
-    <title>Notifications</title>
+<title>Notifications</title>
 {% endblock %}
 
 {% block content %}
-    <h1>Notifications</h1>
-    
+
+<div class="notifications-container">
+    <h1 class="notification-title">Notifications</h1>
+
     <!-- Display reservations -->
-    <div class="notification-reservations">
+    <div class="notification-section">
         <h2>Reservations</h2>
-        <ul>
+        <ul class="notification-list">
             {% for reservation in user_reservations %}
             <li>
-                <a href="#" onclick="openModal('modal_{{ reservation.id }}')">{{ reservation }}</a>
+                <a href="{% url 'reservation_detail' reservation.id %}">{{ reservation }}</a>
             </li>
-            {% empty %}
-            <li>No reservations found.</li>
             {% endfor %}
         </ul>
     </div>
-    
+
     <!-- Display pending reviews -->
-    <div class="notification-reviews">
+    <div class="notification-section">
         <h2>Pending Reviews</h2>
-        <ul>
+        <ul class="notification-list">
             {% for review in user_pending_reviews %}
-            <li>{{ review }}</li>
+            <li>
+                <a href="#" onclick="openModal('modal_review_{{ review.id }}')">{{ review.review }}</a>
+            </li>
             {% empty %}
             <li>No pending reviews found.</li>
             {% endfor %}
         </ul>
     </div>
-    
+
     <!-- Display pending comments -->
-    <div class="notification-comments">
+    <div class="notification-section">
         <h2>Pending Comments</h2>
-        <ul>
+        <ul class="notification-list">
             {% for comment in user_pending_comments %}
-            <li>{{ comment }}</li>
+            <li>
+                <a href="#" onclick="openModal('modal_comment_{{ comment.id }}')">{{ comment.text }}</a>
+            </li>
             {% empty %}
             <li>No pending comments found.</li>
             {% endfor %}
         </ul>
     </div>
 
-    <!-- Modal for reservation details -->
-    {% for reservation in user_reservations %}
-    <div id="modal_{{ reservation.id }}" class="modal">
+    <!-- Modals for reviews -->
+    {% for review in user_pending_reviews %}
+    <div id="modal_review_{{ review.id }}" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('modal_{{ reservation.id }}')">&times;</span>
-            <h2>Reservation Details</h2>
-            <p><strong>ID:</strong> {{ reservation.id }}</p>
-            <p><strong>Check-in Date:</strong> {{ reservation.checkin_date }}</p>
-            <p><strong>Check-out Date:</strong> {{ reservation.checkout_date }}</p>
+            <span class="close" onclick="closeModal('modal_review_{{ review.id }}')">&times;</span>
+            <h2>Pending Review</h2>
+            <p><strong>User:</strong> {{ review.user.username }}</p>
+            <p><strong>Rating:</strong> {{ review.rating }}</p>
+            <p><strong>Review:</strong> {{ review.review }}</p>
             <!-- Add more details as needed -->
         </div>
     </div>
     {% endfor %}
 
-    <!-- JavaScript for modal behavior -->
-    <script>
-        // Function to open modal
-        function openModal(modalId) {
-            var modal = document.getElementById(modalId);
-            modal.style.display = "block";
-        }
+    <!-- Modals for comments -->
+    {% for comment in user_pending_comments %}
+    <div id="modal_comment_{{ comment.id }}" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal_comment_{{ comment.id }}')">&times;</span>
+            <h2>Pending Comment</h2>
+            <p><strong>User:</strong> {{ comment.user.username }}</p>
+            <p><strong>Comment:</strong> {{ comment.text }}</p>
+            <!-- Add more details as needed -->
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
-        // Function to close modal
-        function closeModal(modalId) {
-            var modal = document.getElementById(modalId);
-            modal.style.display = "none";
-        }
+<!-- JavaScript for modal behavior -->
+<script>
+    // Function to open modal
+    function openModal(modalId) {
+        var modal = document.getElementById(modalId);
+        modal.style.display = "block";
+    }
 
-        // Close the modal when clicking outside of it
-        window.onclick = function(event) {
-            var modals = document.getElementsByClassName('modal');
-            for (var i = 0; i < modals.length; i++) {
-                if (event.target == modals[i]) {
-                    modals[i].style.display = "none";
-                }
+    // Function to close modal
+    function closeModal(modalId) {
+        var modal = document.getElementById(modalId);
+        modal.style.display = "none";
+    }
+
+    // Close the modal when clicking outside of it
+    window.onclick = function (event) {
+        var modals = document.getElementsByClassName('modal');
+        for (var i = 0; i < modals.length; i++) {
+            if (event.target == modals[i]) {
+                modals[i].style.display = "none";
             }
         }
-    </script>
+    }
+</script>
 {% endblock %}

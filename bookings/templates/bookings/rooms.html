@@ -12,7 +12,13 @@
         <div class="col-md-4 room-card-container">
             <div class="card mb-4 shadow-sm room-card">
 
-                <img src="{% static 'images/room2.jpg' %}" class="card-img-top" alt="{{ room.room_number }}">
+                {% if "placeholder" in post.featured_image.url %}
+                <img class="card-img-top" src="{% static 'images/room1.jpg' %}"
+                  alt="placeholder image">
+                {% else %}
+                <img class="card-img-top" src=" {{ room.featured_image.url }}"
+                  alt="{{ room.room_type }}">
+                {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ room.room_number }}</h5>
                     <p class="card-text">{{ room.description }}</p>

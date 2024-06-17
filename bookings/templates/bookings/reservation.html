@@ -2,17 +2,23 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
-  <h2>Reserve Room</h2>
-  <div class="row">
-    <div class="col-md-6 bg-warning" id="room-information">
+<div class="reservation-background">
+  <h2 class="reservation-title">Reserve Room</h2>
+  <div class="room-reservation-container">
+    <div class="col-md-6 room-information" id="room-information">
       <h4>Room Information</h4>
       <p><strong>Room Number:</strong> {{ room.room_number }}</p>
       <p><strong>Type:</strong> {{ room.room_type }}</p>
       <p><strong>Description:</strong> {{ room.description }}</p>
-      <p><strong>Price per Night:</strong> $<span id="pricePerNight"
-          data-price="{{ room.price }}">{{ room.price }}</span></p>
+      <p><strong>Price per Night:</strong> $<span id="pricePerNight" data-price="{{ room.price }}">{{ room.price }}</span></p>
+
+      {% if room.featured_image %}
+      <img src="{{ room.featured_image.url }}" alt="Room Image" class="room-info_image">
+      {% else %}
+      <p>No image available</p>
+      {% endif %}
     </div>
+
     <div class="col-md-6">
       <h4>Reservation Form</h4>
 
@@ -30,26 +36,15 @@
         </div>
         <div class="form-group">
           <label for="id_phone" class="label-phone">Phone:</label>
-          <input type="tel" id="id_phone" name="phone" class="form-control" placeholder="Enter your phone number"
-            required>
+          <input type="tel" id="id_phone" name="phone" class="form-control" placeholder="Enter your phone number" required>
         </div>
         <div class="form-group">
           <label for="id_checkin_date" class="label-checkin-date">Check-in Date:</label>
-          <input type="date" id="id_checkin_date" name="checkin_date" class="form-control"
-            value="{{ form.initial.checkin_date }}" required>
+          <input type="date" id="id_checkin_date" name="checkin_date" class="form-control" value="{{ form.initial.checkin_date }}" required>
         </div>
         <div class="form-group">
           <label for="id_checkout_date" class="label-checkout-date">Check-out Date:</label>
-          <input type="date" id="id_checkout_date" name="checkout_date" class="form-control"
-            value="{{ form.initial.checkout_date }}" required>
-        </div>
-        <div class="form-group">
-          <label class="label-total-price">Total Price:</label>
-          <p>$<span id="totalPrice">{{ reservation.price }}</span></p>
-        </div>
-
-        <div id="error-message" class="alert alert-danger" role="alert" style="display: none;">
-          Please fill in all required fields.
+          <input type="date" id="id_checkout_date" name="checkout_date" class="form-control" value="{{ form.initial.checkout_date }}" required>
         </div>
 
         <button type="submit" class="btn btn-primary" id="reserveButton">Reserve Room</button>
@@ -58,7 +53,7 @@
   </div>
 </div>
 
-<div class="modal" id="confirmationModal">
+<div class="modal" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
   <div class="modal-dialog custom-modal-dialog">
     <div class="modal-content custom-modal-content">
       <div class="modal-header custom-modal-header">
@@ -68,7 +63,6 @@
       <div class="modal-body custom-modal-body">
         <p>Are you sure you want to submit this reservation?</p>
         <p>Please review the details carefully before confirming.</p>
-
       </div>
       <div class="modal-footer custom-modal-footer">
         <button type="button" class="btn custom-btn custom-btn-secondary" data-dismiss="modal">Review</button>
@@ -77,9 +71,6 @@
     </div>
   </div>
 </div>
-
-
-
 
 <div class="modal fade custom-reservation-modal" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
   <div class="modal-dialog custom-reservation-modal-dialog">
@@ -92,13 +83,11 @@
         <!-- Reservation details will be inserted here -->
       </div>
       <div class="modal-footer custom-reservation-modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-          id="reservation_modal_close_button">Exit</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="reservation_modal_close_button">Exit</button>
       </div>
     </div>
   </div>
 </div>
-
 
 <div class="modal fade custom-thankyou-modal" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
   <div class="modal-dialog custom-thankyou-modal-dialog">
@@ -108,7 +97,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body custom-thankyou-modal-body">
-        <p>Thank you for choosing us as your home. We hope you have a pleasant stay!</p>
+        <p>Thank you for choosing us as your home. We hope you have a pleasant stay! Your reservation is received and waiting for confirmation</p>
       </div>
       <div class="modal-footer custom-thankyou-modal-footer">
         <button id="thankYouCloseBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
@@ -118,64 +107,51 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('reservation-form');
-
-    // Handle form submission
-    form.addEventListener('submit', function (event) {
+  $(document).ready(function() {
+    $('#reservation-form').submit(function(event) {
       event.preventDefault();
-      $('#confirmationModal').modal('show'); // Show confirmation modal
+      $('#confirmationModal').modal('show');
     });
 
-    // Handle confirmation button click
-    $('#confirmReservationBtn').on('click', function () {
-      const formData = new FormData(form);
-      fetch(form.action, {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'X-CSRFToken': document.querySelector('input[name="csrfmiddlewaretoken"]').value
-          }
-        })
-        .then(response => response.json())
-        .then(data => {
+    $('#confirmReservationBtn').click(function() {
+      var formData = $('#reservation-form').serialize();
+      $.ajax({
+        type: 'POST',
+        url: '{% url "reserve_room" room.id %}',
+        data: formData,
+        dataType: 'json',
+        success: function(data) {
           if (data.room_number) {
-            // Display modal with reservation details
-            const modalBody = document.getElementById('reservationModalBody');
-            modalBody.innerHTML = `
-            <p><strong>Room Number:</strong> ${data.room_number}</p>
-            <p><strong>Room Type:</strong> ${data.room_type}</p>
-            <p><strong>Check-in Date:</strong> ${data.checkin_date}</p>
-            <p><strong>Check-out Date:</strong> ${data.checkout_date}</p>
-            <p><strong>Total Price:</strong> $${data.total_price}</p>
-          `;
-            $('#reservationModal').modal('show'); // Show reservation details modal
-            $('#reservation_modal_close_button').on('click', function () {
-              $('#reservationModal').modal('hide'); // Hide reservation details modal
-              $('#thankYouModal').modal('show'); // Show thank you modal
+            $('#reservationModalBody').html(
+              '<p><strong>Room Number:</strong> ' + data.room_number + '</p>' +
+              '<p><strong>Room Type:</strong> ' + data.room_type + '</p>' +
+              '<p><strong>Check-in Date:</strong> ' + data.checkin_date + '</p>' +
+              '<p><strong>Check-out Date:</strong> ' + data.checkout_date + '</p>' +
+              '<p><strong>Total Price:</strong> $' + data.total_price + '</p>'
+            );
+            $('#reservationModal').modal('show');
+            $('#reservation_modal_close_button').click(function() {
+              $('#reservationModal').modal('hide');
+              $('#thankYouModal').modal('show');
             });
           } else {
             console.error('Error: Room not available or other error');
           }
-        })
-        .catch(error => {
+        },
+        error: function(error) {
           console.error('Error:', error);
-        })
-        .finally(() => {
-          $('#confirmationModal').modal('hide'); // Hide confirmation modal after action
-        });
+        },
+        complete: function() {
+          $('#confirmationModal').modal('hide');
+        }
+      });
+    });
+
+    $('#thankYouCloseBtn').click(function() {
+      window.location.href = "{% url 'home' %}";
     });
   });
-
-  document.addEventListener('DOMContentLoaded', function () {
-    // Add event listener to the Close button in Thank You modal
-    document.getElementById('thankYouCloseBtn').addEventListener('click', function () {
-        // Redirect to home page
-        console.log("erkjgnrkjgnekjrgnekjgnekjrgn")
-        window.location.href = "{% url 'home' %}";
-    });
-});
 </script>
+
 {% endblock %}

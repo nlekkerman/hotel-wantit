@@ -76,6 +76,9 @@ def reserve_room(request, room_id):
             form = ReservationForm()
 
     return render(request, 'bookings/reservation.html', {'form': form, 'room': room})
+
+
+
 def book_room(request):
     return render(request, 'bookings/book_room.html')
 
@@ -97,28 +100,32 @@ def rooms_view(request):
 
 
 
-
 @login_required
 def check_availability(request, room_id):
     room = get_object_or_404(Room, pk=room_id)
-    
+    total_price = 0  # Initialize total_price
+
     if request.method == 'POST':
         form = AvailabilityForm(request.POST)
         if form.is_valid():
-            check_in = form.cleaned_data['check_in']
-            check_out = form.cleaned_data['check_out']
-            
+            checkin_date = form.cleaned_data['check_in']
+            checkout_date = form.cleaned_data['check_out']
+
+            price_per_night = room.price
+            total_nights = (checkout_date - checkin_date).days
+            total_price = price_per_night * total_nights
+
             reservations = Reservation.objects.filter(
                 room=room,
-                checkout_date__gt=check_in,
-                checkin_date__lt=check_out
+                checkout_date__gt=checkin_date,
+                checkin_date__lt=checkout_date
             )
-            
+
             if reservations.exists():
                 alternative_rooms = Room.objects.filter(
                     room_type=room.room_type
                 ).exclude(id=room.id)
-                
+
                 if alternative_rooms.exists():
                     alternative_rooms_data = []
                     for alt_room in alternative_rooms:
@@ -128,13 +135,13 @@ def check_availability(request, room_id):
                             'price': alt_room.price,
                             'room_id': alt_room.id,
                         })
-                    
+
                     return JsonResponse({
                         'available': False,
                         'message': 'Room is not available. Alternative rooms suggested.',
                         'alternative_rooms': alternative_rooms_data,
-                        'check_in': check_in.strftime('%Y-%m-%d'),  # Convert date to string for JSON response
-                        'check_out': check_out.strftime('%Y-%m-%d')  # Convert date to string for JSON response
+                        'check_in': checkin_date.strftime('%Y-%m-%d'),
+                        'check_out': checkout_date.strftime('%Y-%m-%d')
                     })
                 else:
                     return JsonResponse({
@@ -146,13 +153,15 @@ def check_availability(request, room_id):
                     'available': True,
                     'message': 'Room is available.',
                     'room_id': room.id,
-                    'check_in': check_in.strftime('%Y-%m-%d'),  # Convert date to string for JSON response
-                    'check_out': check_out.strftime('%Y-%m-%d')  # Convert date to string for JSON response
+                    'check_in': checkin_date.strftime('%Y-%m-%d'),
+                    'check_out': checkout_date.strftime('%Y-%m-%d'),
+                    'total_price': total_price  # Pass total_price in the response
                 })
     else:
         form = AvailabilityForm()
-    
-    return render(request, 'check_availability.html', {'form': form, 'room': room})
+
+    return render(request, 'check_availability.html', {'form': form, 'room': room, 'total_price': total_price})
+
 
 def reservation_approval_list(request):
     pending_reservations = Reservation.objects.filter(reservation_status=Reservation.PENDING)
@@ -177,3 +186,26 @@ def reject_reservation(request, reservation_id):
 def user_reservations_count(request):
     user_reservations_count = Reservation.objects.filter(user=request.user).count()
     return user_reservations_count
+
+@login_required
+def reservation_detail(request, reservation_id):
+    reservation = get_object_or_404(Reservation, id=reservation_id, user=request.user)
+    
+    return render(request, 'bookings/reservation_detail.html', {'reservation': reservation})
+
+
+
+@login_required
+@require_POST
+def cancel_reservation(request, reservation_id):
+    reservation = get_object_or_404(Reservation, id=reservation_id, user=request.user)
+    
+    if request.method == 'POST':
+        # Handle reservation cancellation logic here
+        reservation.cancel()  # Example method to cancel reservation, adjust as per your model
+        
+        # Optionally, you can send a JSON response to indicate success
+        return JsonResponse({'success': True})
+    
+    # Handle GET request or any other method if needed
+    return redirect('home')
