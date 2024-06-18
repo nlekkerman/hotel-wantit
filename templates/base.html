@@ -34,24 +34,18 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
+                        <ul class="navbar-nav positioning-class">
                             <li class="nav-item">
                                 <a class="nav-link {% if request.path == home_url %}active"
-                                    aria-current="page{% endif %}" href="{% url 'home' %}">
-                                    <i class="fas fa-home"></i> Home
-                                </a>
+                                    aria-current="page{% endif %}" href="{% url 'home' %}">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {% if request.path == review_list_url %}active"
-                                    aria-current="page{% endif %}" href="{% url 'review-list' %}">
-                                    <i class="fas fa-pen"></i> Reviews
-                                </a>
+                                    aria-current="page{% endif %}" href="{% url 'review-list' %}">Reviews</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="bookingsDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-book"></i> Bookings
-                                </a>
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Bookings    </a>
                                 <div class="dropdown-menu" aria-labelledby="bookingsDropdown">
                                     <a class="dropdown-item" href="#">Book Restaurant</a>
                                     <a class="dropdown-item" href="{% url 'book_room' %}">Book Room</a>
@@ -77,11 +71,9 @@
                             {% if user.is_authenticated and user.is_staff %}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                                    Admin <i class="fas fa-user-shield"></i>
-                                    <span class="badge badge-pill" id="adminDot">●</span>
-                                </a>
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin </a>
+                                   
+                                
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{% url 'comment-approval-list' %}">Pending
                                         Comments</a>

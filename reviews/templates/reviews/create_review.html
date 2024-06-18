@@ -4,8 +4,8 @@
 
 {% block content %}
 
-<div class="review-container">
-<h1>Write a Review</h1>
+<div class="review-container create-review-form-style">
+<h1 class="create-review-title">Write a Review</h1>
 <form id="reviewForm" method="post">
     {% csrf_token %}
     {{ form.as_p }}
