@@ -342,11 +342,11 @@ label {
 
 /* Style for the alternative-room container */
 .alternative-room {
-    border: 1px solid #ddd;
     padding: 0px !important;
    
     margin:2px 5px !important;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
 }
 /* Style for the image inside alternative-room */
 .alternative-room img {
@@ -1257,10 +1257,6 @@ form.signup input[type="submit"]:focus {
     top: 15px;
 }
 
-/* Apply general styling to form elements */
-.form-group {
-    margin-bottom: 20px;
-}
 
 label {
     font-weight: bold;
@@ -1308,6 +1304,15 @@ label {
 .alternative-room img {
     border-radius: 8px;
     margin-right: 20px;
+}
+
+.alternative-room button {
+    background-color: rgba(255, 0, 0, 0.9);
+    color: white;
+    padding: 10px !important;
+    border-radius: 20px !important;
+    border: 3px solid rgba(255, 255, 255, 0.9) !important;
+    margin-bottom: 1px !important;
 }
 
 .alternative-room-details {
@@ -1421,13 +1426,11 @@ label {
 
 .room_availability_button {
     display: block;
-    /* Ensure the button is a block-level element */
+   
     width: fit-content;
-    /* Adjust width to fit content */
+  
     margin: 0 auto;
-    /* Center horizontally within its container */
     text-align: center;
-    /* Center text inside the button */
     background-color: rgba(255, 0, 0, 0.9);
     border: 2px solid silver !important;
     margin-bottom: 10px;
@@ -1487,21 +1490,76 @@ label {
 
     bottom: 5%;
 }
-
+   .form-control{
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: 1px solid white;
+   }
 .form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+.check_availability_form_container{
+    background-color: rgba(0, 0, 0, 0.7);
+padding: 10px;
+    width: 100%;
 
+}
 .form-group {
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    
+}
+.form-group label {
+    color: #ffffff;
+   
+    min-width: 100px;    /* Ensures labels have a minimum width for alignment */
 }
 
 .check_avialability_container {
     min-height: 100vh;
+    background-image: url("../images/room6.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Style for the date input fields */
+.form-group input[type="date"] {
+    flex: 1;
+    padding: 5px;
+    font-size: 14px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: white;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    padding-right: 30px; /* Add space for the icon */
+}
+
+/* Style for the calendar icon */
+.form-group input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 10px;
+    color: white;
+    opacity: 0; /* Hide the default icon */
+}
+
+.form-group input[type="date"]:before {
+    content: '\f073'; /* FontAwesome icon for calendar */
+    font-family: FontAwesome;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: white; /* Set the color of the icon */
 }
 
 .check_avialability_container h1 {
@@ -1516,7 +1574,7 @@ label {
     background-color: rgba(0, 0, 0, 0.3);
     width: 100%;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .form-room-price {
@@ -1558,11 +1616,6 @@ label {
     color: #ffffff;
     
 }
-
-.form-group {
-    margin-bottom: 20px;
-}
-
 /* ANIMATIONS */
 /* Custom class to center content and animate zoom-in */
 .center-zoom-in {

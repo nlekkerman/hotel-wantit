@@ -2,25 +2,29 @@
 
 {% block content %}
 <h1 class="admin-titles">Pending Reservations</h1>
-<ul class="list-class background-image-book-room">
+<ul class="list-class aproval-admin-reservation-dashboard">
     {% for reservation in pending_reservations %}
     <li class="pending-item">
         <div class="username-admin">
-            {{ reservation.user }} <!-- Adjust this according to your Reservation model -->
+            {{ reservation.user }}
+            <!-- Adjust this according to your Reservation model -->
         </div>
-        <div class="font-italic ">
+        <div class="font-italic">
             <!-- Display any relevant information about the reservation -->
             <!-- For example, reservation details like date, time, etc. -->
-            <div>Status: {{ reservation.get_reservation_status_display }}</div> <!-- Use get_reservation_status_display() -->
 
-            Check In date: {{ reservation.checkin_date}}
-            Check Out: {{ reservation.checkout_date }}
-            name: {{ reservation.name }}
-            Price: {{ reservation.price }}
+            <div class="aproval-reservatioon-list">
+                <div>Status: {{ reservation.get_reservation_status_display }}</div>
+
+                Check In date: {{ reservation.checkin_date}}<br>
+                Check Out: {{ reservation.checkout_date }}<br>
+                name: {{ reservation.name }}<br>
+                Price: {{ reservation.price }}<br>
+            </div>
         </div>
         <div class="admin-button-conatiner">
-            <a class="approve-btn" href="{% url 'approve-reservation' reservation.id %}">Approve</a>
-            <a class="reject-btn" href="{% url 'reject-reservation' reservation.id %}">Reject</a>
+            <a class=" btn custom-buttons" href="{% url 'approve-reservation' reservation.id %}">Approve</a>
+            <a class="btn custom-buttons" href="{% url 'reject-reservation' reservation.id %}">Reject</a>
         </div>
     </li>
     {% endfor %}
