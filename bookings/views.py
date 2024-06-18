@@ -134,6 +134,7 @@ def check_availability(request, room_id):
                             'description': alt_room.description,
                             'price': alt_room.price,
                             'room_id': alt_room.id,
+                             'featured_image': alt_room.featured_image.url if alt_room.featured_image else None,
                         })
 
                     return JsonResponse({
@@ -160,7 +161,7 @@ def check_availability(request, room_id):
     else:
         form = AvailabilityForm()
 
-    return render(request, 'check_availability.html', {'form': form, 'room': room, 'total_price': total_price})
+    return render(request, 'bookings/check_availability.html', {'form': form, 'room': room, 'total_price': total_price})
 
 
 def reservation_approval_list(request):

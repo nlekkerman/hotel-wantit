@@ -1,16 +1,54 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Write a Review{% endblock %}
 
 {% block content %}
-
 <div class="review-container create-review-form-style">
-<h1 class="create-review-title">Write a Review</h1>
-<form id="reviewForm" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" id="submitReviewBtn" class="custom-buttons">Submit</button>
-</form>
-
+    <h1 class="create-review-title">Write a Review</h1>
+    <form id="reviewForm" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" id="submitReviewBtn" class="custom-buttons center-buttons">Submit</button>
+    </form>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.star-rating .fa-star').forEach(function (star) {
+            star.addEventListener('click', function () {
+                let value = this.getAttribute('data-value');
+                let input = this.parentNode.querySelector('input');
+                input.value = value;
+                this.parentNode.querySelectorAll('.fa-star').forEach(function (s, index) {
+                    if (index < value) {
+                        s.classList.add('checked');
+                    } else {
+                        s.classList.remove('checked');
+                    }
+                });
+
+                // Log the click event
+                console.log('Star clicked:', value);
+
+                // Optionally send the data to the server
+                fetch('/log-star-rating/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': '{{ csrf_token }}'
+                        },
+                        body: JSON.stringify({
+                            rating: value
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => console.log('Success:', data))
+                    .catch(error => console.error('Error:', error));
+            });
+        });
+    });
+</script>
 {% endblock %}
+
+

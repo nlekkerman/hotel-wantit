@@ -17,6 +17,8 @@ path('review/<int:review_id>/add_comment/', views.add_comment, name='add_comment
 path('comments/approval/', views.comment_approval_list, name='comment-approval-list'),
 path('comments/approve/<int:comment_id>/', views.approve_comment, name='approve-comment'),
 path('comments/reject/<int:comment_id>/', views.reject_comment, name='reject-comment'),
+path('log-star-rating/', views.log_star_rating, name='log_star_rating'),
+
 
 
 

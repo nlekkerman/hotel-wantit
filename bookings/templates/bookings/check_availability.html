@@ -6,32 +6,34 @@
 {% block content %}
 
 <div class="check_avialability_container">
-   
+
     <div class="form-container">
 
         <p class="form-room-description">{{ room.description }}</p>
         <p class="form-room-capacity">Capacity: {{ room.capacity }}</p>
 
-        <form method="post" id="availabilityForm">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="id_check_in">Check-In Date:</label>
-                <input type="date" class="form-control" id="id_check_in" name="check_in">
-            </div>
-            <div class="form-group">
-                <label for="id_check_out">Check-Out Date:</label>
-                <input type="date" class="form-control" id="id_check_out" name="check_out">
-            </div>
 
-            <p class="form-room-price">Price per night:<strong>{{ room.price }} $</strong> </p>
+        <div class="check_availability_form_container">
+            <form method="post" id="availabilityForm">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_check_in">Check-In:</label>
+                    <input type="date" class="form-control" id="id_check_in" name="check_in">
+                </div>
+                <div class="form-group">
+                    <label for="id_check_out">Check-Out:</label>
+                    <input type="date" class="form-control" id="id_check_out" name="check_out">
+                </div>
 
-            <div class="form-group">
-                <button id="room_availability_button" type="button" class="btn custom-buttons">Check
-                    Availability</button>
-            </div>
-        </form>
-        
+                <p class="form-room-price">Price per night:<strong>{{ room.price }} $</strong> </p>
 
+                <div class="form-group">
+                    <button id="room_availability_button" type="button" class="btn custom-buttons">Check
+                        Availability</button>
+                </div>
+            </form>
+
+        </div>
     </div>
     <h1 class="form-room-title">Room {{ room.room_number }}</h1>
 
@@ -80,15 +82,14 @@
                             resultDiv.innerHTML += '<p>Alternative rooms suggested:</p>';
                             data.alternative_rooms.forEach(room => {
                                 resultDiv.innerHTML += `
-                                    <div class="alternative-room">
-                                        <img src="{% static 'images/room1.jpg' %}" alt="Room Image">
+                                    <div class="alternative-room"> <img src="${room.featured_image}" alt="${room.room_type}">
                                         <p>Room Number: ${room.room_number}</p>
                                         <p>Description: ${room.description}</p>
                                         <p>Price per night: $${room.price}</p>
                                         <button data-room-id="${room.room_id}" 
                                                 data-check-in="${data.check_in}" 
                                                 data-check-out="${data.check_out}"
-                                                class="btn btn-secondary selectAlternativeButton">Select Room ${room.room_number}</button>
+                                                class="selectAlternativeButton">Select Room ${room.room_number}</button>
                                     </div>
                                 `;
                             });

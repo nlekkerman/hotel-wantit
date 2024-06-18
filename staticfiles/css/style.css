@@ -320,8 +320,57 @@ label {
 
 }
 
+.cancellation_buton_style{
+    width: 50%;
+    margin: 0 auto;
+}
+.cancel-reservation-title{
+    min-width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: 0px !important;
+    padding: 10px;
+}
+.reservation-details{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+/* Style for the alternative-room container */
+.alternative-room {
+    border: 1px solid #ddd;
+    padding: 0px !important;
+   
+    margin:2px 5px !important;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+/* Style for the image inside alternative-room */
+.alternative-room img {
+    width: 100%;
+    margin: 0 !important;
+    object-fit: cover;  /* Ensure the image covers the area without distortion */
+    border-radius: 5px;
+}
+.reservations-details-content{
+    margin-left: 10px;
+}
 .reservation-title {
     padding-top: 80px;
+}
+
+.resevation-details-container{
+    background-image: url("../images/room7.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .reservation-background {
@@ -565,14 +614,6 @@ label {
     padding-top: 100px;
 }
 
-.main-bg {
-    width: 100%;
-    background-image: url("../images/reviews-background.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-}
 
 .reviews-page {
     margin-top: 0;
@@ -864,7 +905,18 @@ label {
 }
 
 /*CUSTOM BUTTONS*/
-
+.close-button {
+    font-size: 24px; /* Adjust size as needed */
+    cursor: pointer;
+    position: relative;
+    align-self: flex-end;
+    width: 40px;
+    right: 0px;
+    top: 0px;
+    color: #ffffff; /* Change color as needed */
+    background-color: red; /* Remove any background */
+    border: none; /* Remove any border */
+}
 .button-container {
     margin: 0 !important;
     background-color: rgba(92, 86, 86, 0.3);
@@ -1295,7 +1347,9 @@ label {
 }
 
 .modal-content{
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.9);
+    position: relative;
+    top: 50%;
     color: white !important;
 
 }
@@ -1339,6 +1393,16 @@ label {
 .create-review-title{
     position: relative;
     margin-top: 70px;
+}
+
+.star-rating .fa-star {
+    font-size: 24px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.star-rating .fa-star.checked {
+    color: #f5c518;
 }
 /* Modal dialog */
 .custom-modal-dialog {

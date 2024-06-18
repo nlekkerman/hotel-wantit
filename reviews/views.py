@@ -7,6 +7,9 @@ from .forms import ReviewForm, CommentForm
 from django.db.models import Count, Q
 from django.views import generic
 from .models import Review, Comment
+import json
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 
 
@@ -55,6 +58,8 @@ def review_detail(request, pk):
         'comments': approved_comments,
         'comment_count': comment_count,
     })
+
+    
 @login_required
 def create_review(request):
     if request.method == 'POST':
@@ -64,15 +69,33 @@ def create_review(request):
             review.user = request.user
             review.status = 0  # Assuming 0 means pending approval
             review.save()
+
+            # Handle AJAX request to log star rating if present
+            if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                data = json.loads(request.body)
+                rating = data.get('rating')
+                # Process the rating data as needed (e.g., save it to the database)
+                print(f'Star rating received: {rating}')
+                return JsonResponse({'status': 'success', 'rating': rating})
+
+            messages.success(request, 'Review submitted successfully!')
             return redirect('review_success')  # Redirect to the review success message
+        else:
+            messages.error(request, 'Error submitting review. Please correct the errors.')
     else:
         form = ReviewForm()
 
-    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        return render(request, 'reviews/create_review.html', {'form': form})
-
     return render(request, 'reviews/create_review.html', {'form': form})
 
+@csrf_exempt  # Use csrf_exempt for simplicity in this example; consider using CSRF protection in production
+def log_star_rating(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        rating = data.get('rating')
+        # Process the rating data as needed (e.g., save it to the database)
+        print(f'Star rating received: {rating}')
+        return JsonResponse({'status': 'success', 'rating': rating})
+    return JsonResponse({'status': 'fail'}, status=400)
 def review_success_message(request):
     return render(request, 'reviews/partials/review_success_message.html')
 
