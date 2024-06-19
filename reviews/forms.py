@@ -14,7 +14,11 @@ class ReviewForm(forms.ModelForm):
         self.fields['review'].widget = forms.Textarea(attrs={'rows': 5})
 
 
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['text']
+        labels = {
+            'text': '',  # Replace 'Your Custom Label' with your desired label
+        }

@@ -114,7 +114,11 @@ def edit_review(request, pk):
             review.status = 0 
             review.last_edited_at = timezone.now() 
             review.save()
-            return render(request, 'reviews/partials/review_edit_message.html')  
+            return render(request, 'reviews/partials/reviews_action_message.html', {
+                'object_type': 'review',
+                'action_type': 'edit',
+                'object_list_url': 'review-list'
+            })  
     else:
         form = ReviewForm(instance=review)
 
@@ -133,12 +137,52 @@ def delete_review(request, pk):
 
     if request.method == 'POST':
         review.delete()
-
-        # After deletion, render review_delete_message.html
-        return render(request, 'reviews/partials/review_delete_message.html')
+        return render(request, 'reviews/partials/reviews_action_message.html', {
+            'object_type': 'review',
+            'action_type': 'delete',
+            'object_list_url': 'review-list'
+        })
 
     # If not a POST request, simply redirect to review-list
     return redirect('review-list')   
+
+@login_required
+def delete_comment(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    if request.method == 'POST':
+        comment.delete()
+        return render(request, 'reviews/partials/reviews_action_message.html', {
+            'object_type': 'comment',
+            'action_type': 'delete',
+            'object_list_url': 'review-list'
+        })
+    # If not POST request, render delete confirmation page
+    return render(request, 'reviews/delete_comment.html', {'comment': comment})
+@login_required
+
+def edit_comment(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+
+    # Check if the current user is the author of the comment
+    if request.user != comment.user:
+        return redirect('comment_detail', pk=pk)  # Redirect or handle unauthorized access
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.status = Comment.PENDING  # Update status to pending
+            comment.last_edited_at = timezone.now()  # Update last edited timestamp if applicable
+            comment.save()
+            return render(request, 'reviews/partials/reviews_action_message.html', {
+                'object_type': 'comment',
+                'action_type': 'edit',
+                'object_list_url': 'review-list'
+            })  
+    else:
+        form = CommentForm(instance=comment)
+
+    return render(request, 'reviews/partials/edit_comment.html', {'form': form, 'comment': comment, 'show_modal': True})
 
 
 @login_required
@@ -165,7 +209,7 @@ def add_comment(request, review_id):
 @staff_member_required
 def review_approval_list(request):
     pending_reviews = Review.objects.filter(status=0) 
-    return render(request, 'reviews/review_approval_list.html', {'pending_reviews': pending_reviews})
+    return render(request, 'reviews/partials/review_approval_list.html', {'pending_reviews': pending_reviews})
 
 @staff_member_required
 def approve_review(request, review_id):
@@ -186,7 +230,7 @@ def reject_review(request, review_id):
 @staff_member_required
 def comment_approval_list(request):
     pending_comments = Comment.objects.filter(status=Comment.PENDING)
-    return render(request, 'reviews/comment_approval_list.html', {'pending_comments': pending_comments})
+    return render(request, 'reviews/partials/comment_approval_list.html', {'pending_comments': pending_comments})
 
 @staff_member_required
 def approve_comment(request, comment_id):
@@ -194,7 +238,7 @@ def approve_comment(request, comment_id):
     comment.status = Comment.APPROVED
     comment.save()
     pending_comments = Comment.objects.filter(status=Comment.PENDING)
-    return render(request, 'reviews/comment_approval_list.html', {'pending_comments': pending_comments})
+    return render(request, 'reviews/partials/comment_approval_list.html', {'pending_comments': pending_comments})
 
 @staff_member_required
 def reject_comment(request, comment_id):

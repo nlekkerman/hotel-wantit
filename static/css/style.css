@@ -81,7 +81,7 @@
     color: white;
     font-size: 1.2rem;
     text-align: right;
-    
+
     width: 100%;
     text-align: center;
 
@@ -96,7 +96,7 @@
     width: 100%;
     justify-content: end;
     text-align: end;
-   padding-right: 20px;
+    padding-right: 20px;
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s;
     /* Smooth transition for hover effect */
@@ -129,10 +129,12 @@
     color: black;
 
 }
-.navbar-toggler{
+
+.navbar-toggler {
     right: 10px;
     position: absolute;
 }
+
 .navbar-toggler-icon {
     background-image: none;
     width: 1.5em;
@@ -320,17 +322,19 @@ label {
 
 }
 
-.cancellation_buton_style{
+.cancellation_buton_style {
     width: 50%;
     margin: 0 auto;
 }
-.cancel-reservation-title{
+
+.cancel-reservation-title {
     min-width: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     margin: 0px !important;
     padding: 10px;
 }
-.reservation-details{
+
+.reservation-details {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
@@ -343,26 +347,30 @@ label {
 /* Style for the alternative-room container */
 .alternative-room {
     padding: 0px !important;
-   
-    margin:2px 5px !important;
+
+    margin: 2px 5px !important;
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
 }
+
 /* Style for the image inside alternative-room */
 .alternative-room img {
     width: 100%;
     margin: 0 !important;
-    object-fit: cover;  /* Ensure the image covers the area without distortion */
+    object-fit: cover;
+    /* Ensure the image covers the area without distortion */
     border-radius: 5px;
 }
-.reservations-details-content{
+
+.reservations-details-content {
     margin-left: 10px;
 }
+
 .reservation-title {
     padding-top: 80px;
 }
 
-.resevation-details-container{
+.resevation-details-container {
     background-image: url("../images/room7.jpg");
     background-size: cover;
     background-position: center;
@@ -592,11 +600,23 @@ label {
     background-repeat: no-repeat;
 }
 
+
+
+.review-detail-content {
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 50px;
+}
+
 .review-container {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 5px;
+    padding: 0px;
     margin-top: 30px;
     color: white;
+    width: 100% !important;
+    margin: 0 !important;
+    background-image: url("../images/room-view.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /*all REVIEWS*/
@@ -612,6 +632,7 @@ label {
 
 .review-detail-title {
     padding-top: 100px;
+    width: 100% !important;
 }
 
 
@@ -650,10 +671,32 @@ label {
 
 .review-item {
     background-color: rgba(0, 0, 0, 0.3);
-    padding: 15px;
+    padding: 5px;
+    margin: 5px;
     color: white !important;
     box-shadow: 0 2px 5px rgba(255, 254, 254, 0.1);
     border-bottom: 3px solid silver;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.read-more {
+    cursor: pointer;
+    color: rgba(0, 123, 255, 0.5);
+    display: block;
+    font: 0.4rem;
+}
+
+.truncated-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* Number of lines to show */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .review-text {
@@ -905,18 +948,40 @@ label {
 }
 
 /*CUSTOM BUTTONS*/
+
+.edit-button {
+    background-color: rgba(0, 255, 0, 0.5);
+    color: white;
+    padding: 2px 5px;
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+.delete-button {
+    background-color: rgba(223, 0, 0, 0.5);
+    color: white;
+    font-weight: 500;
+    padding: 2px 5px;
+    border: none;
+}
+
 .close-button {
-    font-size: 24px; /* Adjust size as needed */
+    font-size: 24px;
+    /* Adjust size as needed */
     cursor: pointer;
     position: relative;
     align-self: flex-end;
     width: 40px;
     right: 0px;
     top: 0px;
-    color: #ffffff; /* Change color as needed */
-    background-color: red; /* Remove any background */
-    border: none; /* Remove any border */
+    color: #ffffff;
+    /* Change color as needed */
+    background-color: red;
+    /* Remove any background */
+    border: none;
+    /* Remove any border */
 }
+
 .button-container {
     margin: 0 !important;
     background-color: rgba(92, 86, 86, 0.3);
@@ -926,12 +991,18 @@ label {
     border-radius: 20px;
 
 }
-.aproval-reservatioon-list{
+
+.main-bg {
+    min-width: 100%;
+}
+
+.aproval-reservatioon-list {
     display: flex;
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 5px;
 }
+
 #reservation-form {
     display: flex;
     flex-direction: column;
@@ -947,12 +1018,14 @@ label {
     margin-bottom: 10px !important;
 
 }
+
 .center-button {
     background-color: rgba(255, 0, 0, 0.9);
     align-self: center;
- display: flex;
+    display: flex;
 
 }
+
 .custom-buttons:hover {
     background-color: rgba(255, 255, 255, 0.6);
     color: #545b62;
@@ -1059,15 +1132,55 @@ form.signup input[type="submit"]:focus {
     text-decoration: none;
 }
 
-/*Comments*/
+/*Comments*/ 
+
+/* CSS for styling text input fields within comment actions */
+
+#id_text {
+    
+    margin: 0px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    color: white;
+    font-size: 16px;
+    resize: vertical; /* Allows vertical resizing only */
+    margin-bottom: 10px;
+        background-color: #0062cc;
+
+}
+
+.edit-comment-container {
+    margin: 0 !important;
+    min-height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url("../images/room-view.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
 
+.comment-container{
+    margin: 5px;
+}
+
+.comment-actions {
+    display: flex;
+    padding: 2px;
+    justify-content: end;
+}
 
 .comment {
     background-color: rgba(0, 0, 0, 0.3);
     border-bottom: 3px solid silver;
     margin-bottom: 5px;
     color: white;
+    margin-left: 2px !important;
+    padding: 5px;
 }
 
 .text-secondary {
@@ -1233,6 +1346,16 @@ form.signup input[type="submit"]:focus {
     height: 70px;
 }
 
+.additional-row-styles {
+    margin: 0 !important;
+}
+
+.review-list-item {
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 .background-image-book-room {
     width: 100% !important;
     padding: 20px;
@@ -1371,19 +1494,20 @@ label {
     /* Custom width for modal dialog */
 }
 
-.modal-content{
+.modal-content {
     background-color: rgba(0, 0, 0, 0.9);
     position: relative;
     top: 50%;
     color: white !important;
 
 }
+
 .custom-reservation-modal-content,
 .custom-thankyou-modal-content,
 .custom-modal-content {
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
-   
+
 }
 
 .custom-reservation-modal-header,
@@ -1406,16 +1530,17 @@ label {
 .custom-modal-footer {
     background-color: rgba(0, 0, 0, 0.7);
     border-top: none;
-   display: flex;
-   justify-content: center;
-}
-.create-review-form-style{
-    min-height: 100vh !important;
-    margin: 0 !important;
-    
+    display: flex;
+    justify-content: center;
 }
 
-.create-review-title{
+.create-review-form-style {
+    min-height: 100vh !important;
+    margin: 0 !important;
+
+}
+
+.create-review-title {
     position: relative;
     margin-top: 70px;
 }
@@ -1429,6 +1554,7 @@ label {
 .star-rating .fa-star.checked {
     color: #f5c518;
 }
+
 /* Modal dialog */
 .custom-modal-dialog {
     position: relative;
@@ -1446,9 +1572,9 @@ label {
 
 .room_availability_button {
     display: block;
-   
+
     width: fit-content;
-  
+
     margin: 0 auto;
     text-align: center;
     background-color: rgba(255, 0, 0, 0.9);
@@ -1510,33 +1636,39 @@ label {
 
     bottom: 5%;
 }
-   .form-control{
+
+.form-control {
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     border: 1px solid white;
-   }
+}
+
 .form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.check_availability_form_container{
+
+.check_availability_form_container {
     background-color: rgba(0, 0, 0, 0.7);
-padding: 10px;
+    padding: 10px;
     width: 100%;
 
 }
+
 .form-group {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
+
 .form-group label {
     color: #ffffff;
-   
-    min-width: 100px;    /* Ensures labels have a minimum width for alignment */
+
+    min-width: 100px;
+    /* Ensures labels have a minimum width for alignment */
 }
 
 .check_avialability_container {
@@ -1560,7 +1692,8 @@ padding: 10px;
     -moz-appearance: none;
     appearance: none;
     position: relative;
-    padding-right: 30px; /* Add space for the icon */
+    padding-right: 30px;
+    /* Add space for the icon */
 }
 
 /* Style for the calendar icon */
@@ -1568,18 +1701,21 @@ padding: 10px;
     position: absolute;
     right: 10px;
     color: white;
-    opacity: 0; /* Hide the default icon */
+    opacity: 0;
+    /* Hide the default icon */
 }
 
 .form-group input[type="date"]:before {
-    content: '\f073'; /* FontAwesome icon for calendar */
+    content: '\f073';
+    /* FontAwesome icon for calendar */
     font-family: FontAwesome;
     position: absolute;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-    color: white; /* Set the color of the icon */
+    color: white;
+    /* Set the color of the icon */
 }
 
 .check_avialability_container h1 {
@@ -1619,14 +1755,14 @@ padding: 10px;
     margin-top: 20px;
     color: white;
     background-color: rgba(0, 0, 0, 0.3);
-    
+
     border: 2px solid rgba(255, 255, 255, 1);
     text-align: center;
     font-size: 1.5rem;
 }
 
-  /* Hide the input fields */
-  .hidden-input {
+/* Hide the input fields */
+.hidden-input {
     display: none;
 }
 
@@ -1634,8 +1770,9 @@ padding: 10px;
 .date-display {
     font-size: 1.2em;
     color: #ffffff;
-    
+
 }
+
 /* ANIMATIONS */
 /* Custom class to center content and animate zoom-in */
 .center-zoom-in {
@@ -1713,16 +1850,16 @@ padding: 10px;
 
     .avbar .nav-link {
 
-       
+
         justify-content: center;
         text-align: center;
         align-items: center;
         background-color: rgba(0, 0, 0, 0) !important;
 
-    
+
     }
 
-    
+
 
     .navbar-nav {
         display: flex;
@@ -1741,7 +1878,7 @@ padding: 10px;
     }
 
     .room-information {
-       
+
         width: 100%;
     }
 

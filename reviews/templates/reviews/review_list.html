@@ -14,43 +14,94 @@
 
 
         <h1 class="reviews-header">Reviews</h1>
-        <div class="reviews-list">
-            {% for review in object_list %}
-
-            <a href="{% url 'review_detail' review.pk %}">
-                <div class="review-item">
-                    <div class="stars">
-                        {% for _ in review.ratings %}
-                        <span class="star">&#9733;</span>
-                        {% endfor %}
-                        <div class="stars">
-                            {% for _ in "12345" %}
-                            {% if forloop.counter <= review.rating %}
-                            <span class="star">&#9733;</span> <!-- Filled star -->
-                            {% else %}
-                            <span class="star">&#9734;</span> <!-- Empty star -->
-                            {% endif %}
-                            {% endfor %}
+       
+        <div class="review-list-container">
+            <div class="row additional-row-styles">
+                {% for review in object_list %}
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 review-list-item">
+                    <a href="{% url 'review_detail' review.pk %}" class="text-decoration-none">
+                        <div class="review-item p-3 border rounded">
+                            <div class="stars mb-2">
+                                {% for _ in review.ratings %}
+                                <span class="star">&#9733;</span>
+                                {% endfor %}
+                            </div>
+                            <p class="review-author">{{ review.user.username }}</p>
+                            <div class="review-text" data-full-text="{{ review.review|safe }}">
+                                <span class="truncated-text">{{ review.review|safe }}</span>
+                                <span class="hidden-text" style="display: none;">{{ review.review|safe }}</span>
+                                <span class="read-more" >...more</span>
+                            </div>
+                            <p class="review-date">{{ review.created_at|date:"F j, Y" }}</p>
+                            <div class="row">
+                                <div class="col-12">
+                                    <strong class="text-secondary">
+                                        <i class="far fa-comments comment-count"></i> {{ review.comment_count }}
+                                    </strong>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <p class="review-author">{{ review.user.username }}</p>
-                    <p class="review-text">{{ review.review }}</p>
-                    <p class="review-date">{{ review.created_at|date:"F j, Y" }}</p>
-
-                    <!-- Displaying count of comments -->
-                    <div class="row">
-                        <div class="col-12">
-                            <strong class="text-secondary">
-                                <i class="far fa-comments comment-count"></i> {{ review.comment_count }}
-                            </strong>
-
-                        </div>
-
-                    </div>
+                    </a>
                 </div>
-            </a>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
+       
+        
 
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.review-text').forEach(function(element) {
+            const fullText = element.getAttribute('data-full-text');
+            const truncatedText = element.querySelector('.truncated-text');
+            const readMore = element.querySelector('.read-more');
+            const hiddenText = element.querySelector('.hidden-text');
+    
+            // Create a temporary element to measure the height of the container
+            const tempElement = document.createElement('div');
+            tempElement.style.position = 'absolute';
+            tempElement.style.visibility = 'hidden';
+            tempElement.style.height = 'auto';
+            tempElement.style.width = element.offsetWidth + 'px';
+            tempElement.style.whiteSpace = 'nowrap';
+            tempElement.style.lineHeight = getComputedStyle(element).lineHeight;
+            tempElement.textContent = 'Test Line';
+            document.body.appendChild(tempElement);
+    
+            const lineHeight = tempElement.offsetHeight;
+            const maxHeight = lineHeight * 3;  // Adjust the number of lines as needed
+    
+            document.body.removeChild(tempElement);
+    
+            // Check if the review text exceeds the fixed height
+            element.style.maxHeight = maxHeight + 'px';
+            element.style.overflow = 'hidden';
+            element.style.textOverflow = 'ellipsis';
+    
+            if (element.scrollHeight > maxHeight) {
+                truncatedText.style.display = 'inline';
+                readMore.style.display = 'inline';
+    
+                readMore.addEventListener('click', function() {
+                    if (hiddenText.style.display === 'none') {
+                        hiddenText.style.display = 'inline';
+                        element.style.maxHeight = 'none';
+                        element.style.overflow = 'visible';
+                        this.innerText = '...less';
+                    } else {
+                        hiddenText.style.display = 'none';
+                        element.style.maxHeight = maxHeight + 'px';
+                        element.style.overflow = 'hidden';
+                        this.innerText = '...Read complete review';
+                    }
+                });
+            } else {
+                readMore.style.display = 'none';
+            }
+        });
+    });
+    </script>
+    
 {% endblock %}

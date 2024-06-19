@@ -1,49 +1,69 @@
 {% extends "base.html" %}
 
-{% block title %}Review Detail{% endblock %}
+
 
 {% block content %}
-<h1 class="review-detail-title">Review Detail</h1>
 
-<div class="container review-container">
-    <h1>{{ review.user.username }}</h1>
-    <p>Date: {{ review.created_at|date:"F j, Y" }}</p>
-    <div class="review-text">{{ review.review }}</div>
-    <div class="stars">
-        {% for _ in "12345" %}
+
+<div class="review-container">
+    <h1 class="review-detail-title">Review Detail</h1>
+    <div class=" review-detail-content ">
+        <h1>{{ review.user.username }}</h1>
+        <p>Date: {{ review.created_at|date:"F j, Y" }}</p>
+        <div class="review-text">{{ review.review }}</div>
+        <div class="stars">
+            {% for _ in "12345" %}
             {% if forloop.counter <= review.rating %}
-                <span class="star">&#9733;</span> <!-- Filled star -->
+            <span class="star">&#9733;</span> <!-- Filled star -->
             {% else %}
-                <span class="star">&#9734;</span> <!-- Empty star -->
+            <span class="star">&#9734;</span> <!-- Empty star -->
             {% endif %}
-        {% endfor %}
-    </div>
-    <div class="review-actions">
-        {% if request.user == review.user %}
+            {% endfor %}
+        </div>
+        <div class="review-actions">
+            {% if request.user == review.user %}
             <!-- Edit Review Button -->
-            <a href="{% url 'edit-review' review.pk %}" class="btn custom-buttons">Edit</a>
-            
-            <!-- Delete Review Button (with confirmation dialog) -->
-            <form action="{% url 'delete-review' review.pk %}" method="post" style="display: inline;">
-                {% csrf_token %}
-                <button type="submit" class="btn custom-buttons" onclick="return confirm('Are you sure you want to delete this review?');">Delete</button>
-            </form>
-        {% endif %}
-    </div>
-</div>
+            <a href="{% url 'edit-review' review.pk %}" class="edit-button">Edit</a>
 
-<div class="container comment-container">
-    <h2>Comments</h2>
-    {% for comment in comments %}
+            <!-- Delete Review Button (with confirmation dialog) -->
+            <form action="{% url 'delete-review' review.pk %}" method="post" style="display: inline; background-color: black;">
+                {% csrf_token %}
+                <button type="submit" class="delete-button"
+                    onclick="return confirm('Are you sure you want to delete this review?');">Delete</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="comment-container">
+        <h2>Comments</h2>
+        {% for comment in comments %}
         <div class="comment">
             <p>{{ comment.user.username }}</p>
             <p>{{ comment.text }}</p>
             <p>{{ comment.created_at }}</p>
+
+            <div class="comment-actions">
+                {% if request.user == comment.user %}
+                <!-- Edit Comment Button -->
+                <a href="{% url 'edit-comment' comment.pk %}" class="edit-button">Edit</a>
+                  <!-- Delete Comment Button (with confirmation dialog) -->
+                  <form action="{% url 'delete-comment' comment.pk %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="delete-button"
+                        onclick="return confirm('Are you sure you want to delete this comment?');">Delete</button>
+                </form>
+                {% endif %}
+
+                 
+            </div>
         </div>
-    {% endfor %}
-    {% include "reviews/partials/add_comment.html" %}
+
+
+        {% endfor %}
+        {% include "reviews/partials/add_comment.html" %}
+    </div>
+
 </div>
-
-
 
 {% endblock %}

@@ -650,10 +650,23 @@ label {
 
 .review-item {
     background-color: rgba(0, 0, 0, 0.3);
-    padding: 15px;
+    padding: 5px;
     color: white !important;
     box-shadow: 0 2px 5px rgba(255, 254, 254, 0.1);
     border-bottom: 3px solid silver;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.truncated-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;  /* Number of lines to show */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .review-text {
@@ -925,6 +938,10 @@ label {
     margin-top: 30px !important;
     border-radius: 20px;
 
+}
+
+.main-bg{
+    min-width:100%;
 }
 .aproval-reservatioon-list{
     display: flex;
@@ -1233,6 +1250,15 @@ form.signup input[type="submit"]:focus {
     height: 70px;
 }
 
+.additional-row-styles{
+    margin: 0 !important;
+}
+
+.review-list-item{
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
 .background-image-book-room {
     width: 100% !important;
     padding: 20px;

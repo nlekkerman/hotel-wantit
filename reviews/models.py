@@ -27,11 +27,11 @@ class Review(models.Model):
 class Comment(models.Model):
     PENDING = 'pending'
     APPROVED = 'approved'
-    REJECTED = 'rejected'  # Add Rejected status
+    REJECTED = 'rejected' 
     STATUS_CHOICES = [
         (PENDING, 'Pending'),
         (APPROVED, 'Approved'),
-        (REJECTED, 'Rejected')  # Include Rejected status in choices
+        (REJECTED, 'Rejected') 
     ]
     
     review = models.ForeignKey(Review, related_name='comments', on_delete=models.CASCADE)

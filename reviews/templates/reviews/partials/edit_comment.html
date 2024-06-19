@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Comment{% endblock %}
+
+{% block content %}
+
+<div class="edit-comment-container">
+<div>
+    <h1>Edit Comment</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn custom-buttons">Save Changes</button>
+    </form>
+</div>
+
+{% if show_modal %}
+<!-- Modal HTML code -->
+<div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="commentModalLabel">Comment Submission</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                Your comment has been updated and is awaiting approval.
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- JavaScript to show modal -->
+<script>
+    $(document).ready(function() {
+        console.log("Document ready, executing modal script...");
+        $('#commentModal').modal('show');
+    });
+</script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if action_type == 'delete' %}
+        {% if object_type == 'review' %}
+            Review Deletion
+        {% elif object_type == 'comment' %}
+            Comment Deletion
+        {% endif %}
+    {% elif action_type == 'edit' %}
+        {% if object_type == 'review' %}
+            Review Edit
+        {% elif object_type == 'comment' %}
+            Comment Edit
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">
+                {% if action_type == 'delete' %}
+                    {% if object_type == 'review' %}
+                        Review Deletion
+                    {% elif object_type == 'comment' %}
+                        Comment Deletion
+                    {% endif %}
+                {% elif action_type == 'edit' %}
+                    {% if object_type == 'review' %}
+                        Review Edit
+                    {% elif object_type == 'comment' %}
+                        Comment Edit
+                    {% endif %}
+                {% endif %}
+            </h1>
+            <div class="alert alert-success" role="alert">
+                {% if action_type == 'delete' %}
+                    You have successfully deleted the {{ object_type }}.
+                {% elif action_type == 'edit' %}
+                    You have successfully edited the {{ object_type }}.
+                {% endif %}
+            </div>
+            
+            <a href="{% url object_list_url %}" class="btn custom-buttons">Back to List</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
