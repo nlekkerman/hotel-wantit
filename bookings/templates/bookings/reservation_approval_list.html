@@ -7,14 +7,14 @@
     {% if pending_reservations %}
     <div class="row pending-reservation-card-container">
         {% for reservation in pending_reservations %}
-        <div class="col-12 col-md-6 col-lg-4 reservation-list-card">
+        <div class="col-12 col-md-6 col-lg-4">
             <div class="pending-item card mb-3">
                 <div class="card-body">
-                    <div class="username-admin card-title">
+                    <div class="username-admin ">
                         {{ reservation.user }}
                     </div>
                     <div class="font-italic card-text">
-                        <div class="approval-reservation-list">
+                        <div >
                             <div>Status: {{ reservation.get_reservation_status_display }}</div>
                             Check-In Date: {{ reservation.checkin_date }}<br>
                             Check-Out Date: {{ reservation.checkout_date }}<br>

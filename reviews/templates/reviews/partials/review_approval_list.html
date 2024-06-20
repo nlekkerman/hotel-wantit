@@ -1,25 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="admin-titles">Pending Reviews</h1>
-<ul class="pending-item">
-    {% for review in pending_reviews %}
-    <li>
-        <div class="username-admin">
-            {{ review.user }}
-        </div>
 
-        <div class="font-italic admin-content-text">
-            "{{ review.review }}"
+<div class="admin-user-container-styles">
+    <h1 class="titles-position-style">Pending Reviews</h1>
+
+    {% if pending_reviews %}
+    <div class="row">
+        {% for review in pending_reviews %}
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card pending-item">
+                <div class="card-body">
+                    <div class="username-admin">
+                        {{ review.user }}
+                    </div>
+                    <div class="font-italic admin-content-text">
+                        "{{ review.review }}"
+                    </div>
+                    <div class="review-button-container mt-3">
+                        <a class="edit-button" href="{% url 'approve-review' review.id %}">Approve</a>
+                        <a class="delete-button" href="{% url 'reject-review' review.id %}">Reject</a>
+                    </div>
+                    <div class="created_at-style">
+                        {{ review.created_at }}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="admin-button-conatiner">
-            <a class="approve-btn" href="{% url 'approve-review' review.id %}">Approve</a>
-            <a class="reject-btn" href="{% url 'reject-review' review.id %}">Reject</a>
-        </div>
-        <div class="created_at-style">
-        {{ review.created_at }}
+        {% endfor %}
     </div>
-    </li>
-    {% endfor %}
-</ul>
+    {% else %}
+    <div class="no-pending-item">
+        <p class="no-pending-item-text">No pending reviews.</p>
+    </div>
+    {% endif %}
+</div>
+
 {% endblock %}

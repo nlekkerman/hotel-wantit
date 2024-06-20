@@ -427,7 +427,7 @@ label {
 
 .logo-container {
     top: 50px;
-    
+
     text-align: center;
     padding: 20px 10px 0px 10px;
     background-color: rgba(0, 0, 0, 0.3);
@@ -443,7 +443,7 @@ label {
 }
 
 #confirmationModal {
-    z-index: 9999999999999999999999999999999999999999999;
+    width: 50%;
 }
 
 #logo {
@@ -544,7 +544,7 @@ label {
 
 }
 
-.review-author {
+.author-title {
     font-size: 1.3em;
     color: #ffffff;
     margin-left: 10px;
@@ -559,11 +559,19 @@ label {
     float: right;
 }
 
+.review-button-container {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 .stars {
     font-size: 20px;
     /* Adjust font size as needed */
     color: #ffd700;
-   margin-left: 20px;
+    margin-left: 20px;
 }
 
 .action-button {
@@ -707,11 +715,12 @@ label {
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: normal;
-    margin-top:90px !important;
-    
+    margin-top: 90px !important;
+
+
 }
 
-.review-author{
+.author-title {
     font-size: 1.3em;
     color: #e6e3e3;
     display: flex;
@@ -731,13 +740,15 @@ label {
     right: 0;
     width: 50%;
 }
-.comment-count-position{
+
+.comment-count-position {
     text-align: left;
     position: absolute;
     bottom: -10;
     right: 0;
-    
+
 }
+
 /* renovated-rooms.css */
 
 .renovated-rooms {
@@ -909,7 +920,7 @@ label {
 
 .notification-title {
     text-align: center;
-    padding-top: 60px;
+    padding-top: 80px;
 }
 
 .notification-section {
@@ -970,7 +981,7 @@ label {
     cursor: pointer;
 }
 
-.admin-user-container-styles{
+.admin-user-container-styles {
     margin-top: 0;
     animation: zoomIn 1.2s ease-in;
     min-height: 100vh !important;
@@ -982,6 +993,7 @@ label {
     margin: 0px;
     padding: 5px;
 }
+
 /*CUSTOM BUTTONS*/
 
 .edit-button {
@@ -1002,7 +1014,7 @@ label {
 
 .close-button {
     font-size: 24px;
-    /* Adjust size as needed */
+    text-align: center;
     cursor: pointer;
     position: relative;
     align-self: flex-end;
@@ -1168,21 +1180,22 @@ form.signup input[type="submit"]:focus {
     text-decoration: none;
 }
 
-/*Comments*/ 
+/*Comments*/
 
 /* CSS for styling text input fields within comment actions */
 
 #id_text {
-    
+
     margin: 0px;
     border: 1px solid #ccc;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.7) !important;
     color: white;
     font-size: 16px;
-    resize: vertical; /* Allows vertical resizing only */
+    resize: vertical;
+    /* Allows vertical resizing only */
     margin-bottom: 10px;
-        background-color: #0062cc;
+    background-color: #0062cc;
 
 }
 
@@ -1200,7 +1213,7 @@ form.signup input[type="submit"]:focus {
 }
 
 
-.comment-container{
+.comment-container {
     margin: 5px;
 }
 
@@ -1273,6 +1286,7 @@ form.signup input[type="submit"]:focus {
     flex-direction: column;
     justify-content: space-evenly;
 }
+
 .no-pending-item {
     position: absolute;
     top: 50%;
@@ -1284,21 +1298,23 @@ form.signup input[type="submit"]:focus {
     color: white;
     text-align: center;
 }
-.no-pending-item-text{
-color: white;
-text-align: center;
-font-weight: 700;
-margin-bottom: 0 !important;
-font-size: 1.5rem;
-    
+
+.no-pending-item-text {
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 0 !important;
+    font-size: 1.5rem;
+
 }
+
 .pending-item {
     background-color: rgba(5, 0, 0, 0.6);
     color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     list-style-type: none;
     text-align: center;
-    margin:5px  0px !important;
+    margin: 5px 0px !important;
     margin-bottom: 5px;
     flex-direction: column !important;
     width: 99%;
@@ -1309,18 +1325,21 @@ font-size: 1.5rem;
 
 }
 
-.reservation-list-card{
+.reservation-list-card {
     padding: 0 !important;
     align-items: center;
     justify-content: center;
     display: flex;
     align-self: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-right: 12px !important;
 }
 
-.pending-reservation-card-container{
+.pending-reservation-card-container {
     margin: 0 !important;
     padding: 0 !important;
-    
+    width: 100% !important;
+
 }
 
 .pending-item a {
@@ -1331,12 +1350,17 @@ font-size: 1.5rem;
 
 .admin-content-text {
     background-color: rgba(0, 0, 0, 0.5);
+    margin-top: 30px;
 }
 
 .created_at-style {
     text-align: end;
-    background-color: #000604;
     padding-right: 5px;
+    margin-top: 20px;
+    position: absolute;
+    top: 0px;
+    right: 5px;
+
 }
 
 .titles-position-style {
@@ -1563,13 +1587,22 @@ label {
     max-width: 800px;
     /* Custom width for modal dialog */
 }
-
+.reservation-message-card{
+    display: flex;
+    width: 100% !important;
+    margin-top: 150px !important;
+ 
+}
 .modal-content {
-    background-color: rgba(0, 0, 0, 0.9);
-    position: relative;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    max-width: 600px;
+    margin: auto;
     top: 50%;
-    color: white !important;
-
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+#cancelReservationForm{
+    align-self: center;
 }
 
 .custom-reservation-modal-content,
@@ -1736,7 +1769,7 @@ label {
 
 .form-group label {
     color: #ffffff;
-margin-bottom: 0 !important;
+    margin-bottom: 0 !important;
     min-width: 100px;
     /* Ensures labels have a minimum width for alignment */
 }
@@ -1918,7 +1951,7 @@ margin-bottom: 0 !important;
 /* Media Query for Small Screens */
 @media (min-width: 769px) {
 
-  
+
 
     .avbar .nav-link {
 
@@ -1969,4 +2002,9 @@ margin-bottom: 0 !important;
         flex-direction: row;
         top: 50%;
     }
+
+    .reservation-details {
+        width: 50%;
+    }
+
 }

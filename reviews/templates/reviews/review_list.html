@@ -21,7 +21,7 @@
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4 review-list-item">
                 <a href="{% url 'review_detail' review.pk %}" class="text-decoration-none">
                     <div class="review-item p-3 ">
-                        <div class="review-author">
+                        <div class="author-title">
                             <p>{{ review.user.username }} </p>
                             <div class="stars mb-2">
                                 {% for _ in "12345" %}

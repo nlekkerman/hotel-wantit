@@ -2,21 +2,21 @@
 {% load static %}
 
 {% block content %}
-    
-    <div class="resevation-details-container">
-    <div class="reservation-details">
+
+<div class="resevation-details-container">
+    <div class="reservation-details" id="reservation-details">
         <button class="close-button" id="close_button">
             <i class="fa fa-times"></i>
         </button>
         <h2 class="cancel-reservation-title">Reservation Number:<strong>{{ reservation.id }} </strong></h2>
-         
-        <div class="reservations-details-content">
-        <p><strong>Name:</strong> {{ reservation.name }}</p>
-        <p><strong>Check-in Date:</strong> {{ reservation.checkin_date }}</p>
-        <p><strong>Check-out Date:</strong> {{ reservation.checkout_date }}</p>
-        <p><strong>Price:</strong> {{ reservation.price }}</p>
 
-    </div>
+        <div class="reservations-details-content">
+            <p><strong>Name:</strong> {{ reservation.name }}</p>
+            <p><strong>Check-in Date:</strong> {{ reservation.checkin_date }}</p>
+            <p><strong>Check-out Date:</strong> {{ reservation.checkout_date }}</p>
+            <p><strong>Price:</strong> {{ reservation.price }}</p>
+
+        </div>
         <!-- Add more details as needed -->
 
         <!-- Button to trigger cancellation modal -->
@@ -26,74 +26,92 @@
     <!-- Modal for cancellation confirmation -->
     <div id="cancelReservationModal" class="modal">
 
+        
 
-        <div class="modal-content ">
-            <span class="close" onclick="closeModal('cancelReservationModal')">&times;</span>
+        <div class="modal-content" id="confirmation-modal-content">
+            <span class="close-button" id="close-confirmation-modal"><i class="fa fa-times"></i></span>
             <h2 class="cancel-reservation-title">Reservation Number:<strong>{{ reservation.id }} </strong></h2>
             <p class="reservations-details-content">Are you sure you want to cancel this reservation?</p>
             <form id="cancelReservationForm" data-reservation-id="{{ reservation.id }}">
                 {% csrf_token %}
-                
+                <button type="submit" class="btn custom-buttons">Confirm Cancellation</button>
+
             </form>
-            <button type="submit" class="btn custom-buttons">Confirm Cancellation</button>
         </div>
     </div>
 </div>
-    <script>
+<script>
 
+document.getElementById('close-confirmation-modal').addEventListener('click', function (event) {
+        event.preventDefault();
+        document.getElementById('reservation-details').style.display = 'block';
+        document.getElementById('reservation-details').style.display = 'flex';
+        document.getElementById('confirmation-modal-content').style.display = 'none';
+       
 
-        // Handle close button click to navigate to user notifications
-        document.getElementById('close_button').addEventListener('click', function() {
-            window.location.href = '{% url "user-notifications" %}';
-        });
-        // Function to open modal
-        function openModal(modalId) {
-            var modal = document.getElementById(modalId);
-            modal.style.display = "block";
-        }
+    });
+    // Handle close button click to navigate to user notifications
+    document.getElementById('close_button').addEventListener('click', function () {
+        window.location.href = '{% url "user-notifications" %}';
+    });
+    // Function to open modal
+    function openModal(modalId) {
+        var modal = document.getElementById(modalId);
+        modal.style.display = "block";
+    }
+
+    // Function to close modal
+    function closeModalAndRedirect(modalId) {
+        var modal = document.getElementById(modalId);
+        modal.style.display = "none";
+        window.location.href = '{% url "home" %}';
+    }
 
         // Function to close modal
         function closeModal(modalId) {
-            var modal = document.getElementById(modalId);
-            modal.style.display = "none";
-            window.location.href = '{% url "home" %}';
-        }
+        var modal = document.getElementById(modalId);
+        modal.style.display = "none";
+    }
 
-        // Open cancellation modal when button is clicked
-        document.getElementById('openCancelModal').addEventListener('click', function(event) {
-            event.preventDefault();
-            openModal('cancelReservationModal');
-        });
+    // Open cancellation modal when button is clicked
+    document.getElementById('openCancelModal').addEventListener('click', function (event) {
+        event.preventDefault();
+        openModal('cancelReservationModal');
+        document.getElementById('reservation-details').style.display = 'none';
+       
 
-        document.getElementById('cancelReservationForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    var form = this;
-    var reservationId = form.getAttribute('data-reservation-id');
-    
-    fetch('/bookings/reservation/' + reservationId + '/cancel/', {
-        method: 'POST',
-        headers: {
-            'X-CSRFToken': '{{ csrf_token }}',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({})
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Optionally, show success message or update UI
-            alert('Reservation successfully cancelled.');
-            closeModal('cancelReservationModal');
-            // Redirect to home page after cancellation
-            window.location.href = '{% url "home" %}';
-        } else {
-            // Handle error scenario if needed
-            alert('Failed to cancel reservation. Please try again.');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('An unexpected error occurred. Please try again.');
     });
-});</script>
+
+    document.getElementById('cancelReservationForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        var form = this;
+        var reservationId = form.getAttribute('data-reservation-id');
+
+        fetch('/bookings/reservation/' + reservationId + '/cancel/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({})
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Optionally, show success message or update UI
+                    alert('Reservation successfully cancelled.');
+                    closeModalAndRedirect('cancelReservationModal');
+                    // Redirect to home page after cancellation
+                    window.location.href = '{% url "home" %}';
+                } else {
+                    // Handle error scenario if needed
+                    alert('Failed to cancel reservation. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An unexpected error occurred. Please try again.');
+            });
+    });
+</script>
 {% endblock %}
