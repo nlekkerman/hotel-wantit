@@ -297,7 +297,7 @@ label {
 .main-content-background {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     height: 100vh;
     background-color: #f4f4f4;
@@ -426,12 +426,11 @@ label {
 /*LOGO STYLES*/
 
 .logo-container {
-    position: absolute;
     top: 50px;
-    left: 10px;
+    
     text-align: center;
     padding: 20px 10px 0px 10px;
-    background-color: rgba(10, 89, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
     color: white;
     font-family: Oswald;
     font-weight: 800;
@@ -564,8 +563,7 @@ label {
     font-size: 20px;
     /* Adjust font size as needed */
     color: #ffd700;
-    /* Golden color for stars */
-    /* Additional styling for stars if necessary */
+   margin-left: 20px;
 }
 
 .action-button {
@@ -642,7 +640,7 @@ label {
     flex-direction: column;
     animation: zoomIn 1.2s ease-in;
     min-height: 100vh !important;
-    background-image: url("../images/reviews-background.jpg");
+    background-image: url("../images/room3.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -670,8 +668,8 @@ label {
 }
 
 .review-item {
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 0 !important;
     margin: 5px;
     color: white !important;
     box-shadow: 0 2px 5px rgba(255, 254, 254, 0.1);
@@ -679,13 +677,13 @@ label {
     height: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
 
 }
 
 .read-more {
     cursor: pointer;
-    color: rgba(0, 123, 255, 0.5);
+    color: #adadad;
     display: block;
     font: 0.4rem;
 }
@@ -701,23 +699,45 @@ label {
 
 .review-text {
     font-size: 1.4em;
-    margin-bottom: 10px;
+    margin: 0 !important;
     font-style: italic;
-    text-align: center;
+    padding-left: 5px;
     color: whitesmoke;
-    background-color: rgba(16, 0, 0, 0.5);
     max-width: 100%;
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: normal;
+    margin-top:90px !important;
+    
 }
 
-.review-author,
+.review-author{
+    font-size: 1.3em;
+    color: #e6e3e3;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 15px;
+
+}
+
 .review-date {
     font-size: 1.3em;
     color: #e6e3e3;
+    padding-right: 5px;
+    text-align: end;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50%;
 }
-
+.comment-count-position{
+    text-align: left;
+    position: absolute;
+    bottom: -10;
+    right: 0;
+    
+}
 /* renovated-rooms.css */
 
 .renovated-rooms {
@@ -880,6 +900,7 @@ label {
     margin-top: 0;
     animation: zoomIn 1.2s ease-in;
     min-height: 100vh !important;
+    width: 100% !important;
     background-image: url("../images/reviews-background.jpg");
     background-size: cover;
     background-position: center;
@@ -920,11 +941,13 @@ label {
     border: 1px solid #ccc;
     border-radius: 3px;
     color: rgb(255, 255, 255);
+    max-width: 100%;
 }
 
 .notification-list li a {
     text-decoration: none;
     color: rgb(255, 255, 255);
+    max-width: 100%;
 }
 
 .notification-list li a:hover {
@@ -947,11 +970,23 @@ label {
     cursor: pointer;
 }
 
+.admin-user-container-styles{
+    margin-top: 0;
+    animation: zoomIn 1.2s ease-in;
+    min-height: 100vh !important;
+    background-image: url("../images/room7.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100% !important;
+    margin: 0px;
+    padding: 5px;
+}
 /*CUSTOM BUTTONS*/
 
 .edit-button {
     background-color: rgba(0, 255, 0, 0.5);
-    color: white;
+    color: white !important;
     padding: 2px 5px;
     font-weight: 500;
     margin-right: 5px;
@@ -959,7 +994,7 @@ label {
 
 .delete-button {
     background-color: rgba(223, 0, 0, 0.5);
-    color: white;
+    color: white !important;
     font-weight: 500;
     padding: 2px 5px;
     border: none;
@@ -996,11 +1031,12 @@ label {
     min-width: 100%;
 }
 
-.aproval-reservatioon-list {
+.aproval-reservation-list {
     display: flex;
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 5px;
+    width: 100%;
 }
 
 #reservation-form {
@@ -1187,6 +1223,7 @@ form.signup input[type="submit"]:focus {
     color: rgb(209, 0, 0) !important;
     background-color: rgba(0, 0, 0, 0.3);
     font-weight: 600;
+    padding: 5px;
 }
 
 .comment-count {
@@ -1231,24 +1268,59 @@ form.signup input[type="submit"]:focus {
 
 .list-class {
     padding: 0px !important;
-    margin: 0px 5px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
-
-.pending-item {
-    background-color: rgba(0, 0, 0, 0.3);
+.no-pending-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
     color: white;
-    padding: 10px;
-    margin: 10px 5px;
-    border-radius: 5px;
+    text-align: center;
+}
+.no-pending-item-text{
+color: white;
+text-align: center;
+font-weight: 700;
+margin-bottom: 0 !important;
+font-size: 1.5rem;
+    
+}
+.pending-item {
+    background-color: rgba(5, 0, 0, 0.6);
+    color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     list-style-type: none;
     text-align: center;
-    margin-bottom: 10px;
-    display: block;
+    margin:5px  0px !important;
+    margin-bottom: 5px;
+    flex-direction: column !important;
+    width: 99%;
+    display: flex !important;
+    height: 16em;
+    border-radius: 0 !important;
+    justify-content: space-evenly;
 
+}
+
+.reservation-list-card{
+    padding: 0 !important;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    align-self: center;
+}
+
+.pending-reservation-card-container{
+    margin: 0 !important;
+    padding: 0 !important;
+    
 }
 
 .pending-item a {
@@ -1267,8 +1339,9 @@ form.signup input[type="submit"]:focus {
     padding-right: 5px;
 }
 
-.admin-titles {
-    padding-top: 50px;
+.titles-position-style {
+    padding-top: 70px;
+    color: white;
 }
 
 .username-admin {
@@ -1408,28 +1481,25 @@ label {
 
 /* Apply specific styles to form labels */
 .label-name {
-    color: rgb(255, 255, 255);
+    color: red !important;
 }
 
 .label-email {
-    color: green;
+    color: red !important;
 }
 
 .label-phone {
-    color: red;
+    color: red !important;
 }
 
 .label-checkin-date {
     color: orange;
+    margin-bottom: 0 !important;
 }
 
 .label-checkout-date {
     color: rgb(254, 0, 254);
-    height: 50px;
-    display: flex;
-    text-align: center;
-    margin: 0 !important;
-    padding: 5 !important;
+    margin-bottom: 0 !important;
 }
 
 /* ALTERNATE ROOMS */
@@ -1666,7 +1736,7 @@ label {
 
 .form-group label {
     color: #ffffff;
-
+margin-bottom: 0 !important;
     min-width: 100px;
     /* Ensures labels have a minimum width for alignment */
 }
@@ -1847,6 +1917,8 @@ label {
 
 /* Media Query for Small Screens */
 @media (min-width: 769px) {
+
+  
 
     .avbar .nav-link {
 

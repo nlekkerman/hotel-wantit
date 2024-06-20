@@ -192,7 +192,7 @@ def user_reservations_count(request):
 def reservation_detail(request, reservation_id):
     reservation = get_object_or_404(Reservation, id=reservation_id, user=request.user)
     
-    return render(request, 'reservation_detail.html', {'reservation': reservation})
+    return render(request, 'bookings/reservation_detail.html', {'reservation': reservation})
 
 
 

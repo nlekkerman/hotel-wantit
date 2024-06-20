@@ -1,26 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="admin-titles">Pending Comments</h1>
-<ul class="list-class">
-    {% for comment in pending_comments %}
-    <li class="pending-item">
-        <div class="username-admin">
-            {{ comment.user }}
-        </div>
-        <div  class="font-italic">
-            {{ comment.text }}
-        </div>
-        <div class="admin-button-conatiner">
-            <a class="approve-btn" href="{% url 'approve-comment' comment.id %}">Approve</a>
-            <a class="reject-btn" href="{% url 'reject-comment' comment.id %}">Reject</a>
 
-        </div>
+<div class="admin-user-container-styles">
+    <h1 class="titles-position-style">Pending Comments</h1>
 
-        <div class="created_at-style">
-            {{ comment.created_at }}
-        </div>
-    </li>
-    {% endfor %}
-</ul>
+    {% if pending_comments %}
+    <ul class="list-class">
+        {% for comment in pending_comments %}
+        <li class="pending-item">
+            <div class="username-admin">
+                {{ comment.user }}
+            </div>
+            <div class="font-italic">
+                {{ comment.text }}
+            </div>
+            <div class="admin-button-container">
+                <a class="edit-button" href="{% url 'approve-comment' comment.id %}">Approve</a>
+                <a class="delete-button" href="{% url 'reject-comment' comment.id %}">Reject</a>
+            </div>
+            <div class="created_at-style">
+                {{ comment.created_at }}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <div class="no-pending-item">
+    <p class="no-pending-item-text">No pending request.</p>
+</div>
+    {% endif %}
+</div>
+
 {% endblock %}

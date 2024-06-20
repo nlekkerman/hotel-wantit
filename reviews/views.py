@@ -246,7 +246,7 @@ def reject_comment(request, comment_id):
     comment.status = Comment.REJECTED
     comment.save()
     pending_comments = Comment.objects.filter(status=Comment.PENDING)
-    return render(request, 'reviews/comment_approval_list.html', {'pending_comments': pending_comments})
+    return render(request, 'reviews/partials/comment_approval_list.html', {'pending_comments': pending_comments})
 
 
 @login_required
