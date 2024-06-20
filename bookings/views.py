@@ -169,7 +169,7 @@ def reservation_approval_list(request):
     context = {
         'pending_reservations': pending_reservations,
     }
-    return render(request, 'bookings/reviews/reservation_approval_list.html', context)
+    return render(request, 'bookings/reservation_approval_list.html', context)
 
 def approve_reservation(request, reservation_id):
     reservation = get_object_or_404(Reservation, id=reservation_id)
