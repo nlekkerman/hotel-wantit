@@ -79,7 +79,7 @@
 }
 
 .avbar.toggler-active .nav-item {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .avbar .nav-item {
@@ -188,16 +188,13 @@
 }
 
 /* Dropdown menu styling */
-.avbar .dropdown-menu {
+.navbar .dropdown-menu {
     display: none;
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.7);
-    /* Background color */
+    right: 0; /* Aligns the dropdown menu to the right */
+    background-color: rgba(0, 0, 0, 0.9);
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-    /* Box shadow */
     z-index: 1;
-    /* Ensure it appears above other elements */
-
 }
 
 .avbar .dropdown-item {
@@ -205,9 +202,7 @@
     border-radius: 0 !important;
     font-weight: 500;
     padding: 10px;
-    /* Padding */
     text-decoration: none;
-    /* Remove underline */
     display: block;
     border-radius: 0 !important;
 }
@@ -220,15 +215,16 @@
 }
 
 .avbar .dropdown-item img.dropdown-icon {
-    width: 50px;
+    width: 20px;
     /* Adjust icon size */
-    height: 50px;
+    height: 20px;
     margin-right: 10px;
     /* Space between icon and text */
 }
 
 .avbar .nav-item.dropdown:hover .dropdown-menu {
     display: block;
+    
 }
 
 .dropdown-item-container {
@@ -970,7 +966,7 @@ label {
     animation: zoomIn 1.2s ease-in;
     min-height: 100vh !important;
     width: 100% !important;
-    background-image: url("../images/room7.jpg");
+    background-image: url("../images/room2.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -993,11 +989,7 @@ label {
     margin-bottom: 20px;
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.1);
-    /* Light alpha background */
-    border: 1px solid #ccc;
-    /* Border around the section */
-    border-radius: 5px;
-    /* Rounded corners */
+ 
 }
 
 .notification-section h2 {
@@ -1010,13 +1002,14 @@ label {
     /* Remove default list styles (bullets) */
     padding: 0;
 }
-
+.custom-div{
+    
+}
 .notification-list li {
     padding: 10px;
     margin-bottom: 5px;
-    background-color: rgba(35, 0, 0, 0.6);
-    border: 1px solid #ccc;
-    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-left: 5px solid silver; 
     color: rgb(255, 255, 255);
     max-width: 100%;
 }
@@ -1165,7 +1158,7 @@ label {
 }
 
 .card-body {
-    padding: 5px;
+    padding: 0px !important;
     text-align: center;
 }
 
@@ -1374,11 +1367,24 @@ form.signup input[type="submit"]:focus {
 
 }
 
+.pending-list-item{
+    text-align: left;
+    padding-left: 10px;
+}
+.pending-list-item-name{
+    text-align: left;
+    padding-left: 10px;
+    text-transform: capitalize; 
+    font-size: 2rem;
+    font-weight: 500;
+
+}
 .pending-item {
-    background-color: rgba(5, 0, 0, 0.6);
+    background-color: rgba(5, 0, 0, 0.8);
     color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     list-style-type: none;
+    border-left: 5px solid silver;
     text-align: center;
     margin: 5px 0px !important;
     margin-bottom: 5px;
@@ -2102,5 +2108,12 @@ label {
         width: 50%;
     }
 
+    .avbar .dropdown-item img.dropdown-icon {
+        width: 30px;
+        /* Adjust icon size */
+        height: 30px;
+        margin-right: 10px;
+        /* Space between icon and text */
+    }
 
 }
