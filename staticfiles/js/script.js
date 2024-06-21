@@ -3,7 +3,19 @@ const slides = document.querySelectorAll('.slide');
 const totalSlides = slides.length;
 
 
+document.addEventListener('DOMContentLoaded', (event) => {
+    const toggler = document.querySelector('.navbar-toggler');
+    const navbar = document.querySelector('.avbar');
+    const navbarCollapse = document.querySelector('#navbarNav');
 
+    toggler.addEventListener('click', () => {
+        if (!navbarCollapse.classList.contains('show')) {
+            navbar.classList.add('toggler-active');
+        } else {
+            navbar.classList.remove('toggler-active');
+        }
+    });
+});
 
 function moveSlide(direction) {
     console.log("asnckjanckjas")

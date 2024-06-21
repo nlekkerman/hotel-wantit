@@ -1,4 +1,7 @@
-/*<a href="https://www.freepik.com/free-photo/young-adult-organizing-documents_26298132.htm#fromView=search&page=1&position=9&uuid=111ae784-2a8f-4e14-981d-9371d9795993">Image by freepik</a>*/
+/*
+<a href="https://www.freepik.com/search">Icon by Iconic Panda</a>
+<a href="https://www.freepik.com/search#uuid=c47bf124-ad03-405f-9847-1217d7d8091e">Icon by graphicmall</a>
+<a href="https://www.freepik.com/free-photo/young-adult-organizing-documents_26298132.htm#fromView=search&page=1&position=9&uuid=111ae784-2a8f-4e14-981d-9371d9795993">Image by freepik</a>*/
 
 /* GENERAL STYLES*/
 
@@ -38,7 +41,7 @@
     background-color: rgba(1, 38, 41, 0.5);
     animation: slideInFromLeft 1.5s ease-in-out;
     border-bottom: 1px solid silver;
-    height: 80px;
+    height: 40px;
     text-align: center;
 }
 
@@ -46,7 +49,7 @@
     width: 100% !important;
     position: absolute;
     right: 0;
-    margin: 15px 0px;
+    margin: 20px 0px;
 }
 
 
@@ -75,6 +78,9 @@
     height: 100% !important;
 }
 
+.avbar.toggler-active .nav-item {
+    background-color: rgba(0, 0, 0, 0.5);
+}
 
 .avbar .nav-item {
 
@@ -89,8 +95,7 @@
 }
 
 .avbar .nav-link {
-    background-color: rgba(0, 0, 0, 0.8) !important;
-
+    height: 100%;
     color: rgb(255, 255, 255);
     display: flex;
     width: 100%;
@@ -98,8 +103,8 @@
     text-align: end;
     padding-right: 20px;
     text-decoration: none;
+    background-color: transparent !important;
     transition: background-color 0.3s, color 0.3s;
-    /* Smooth transition for hover effect */
 
 }
 
@@ -113,26 +118,21 @@
     animation: zoomIn 1.8s ease-in;
 }
 
+.positioning-class {
+    margin-bottom: 10px;
+}
+
 .nav-link i {
     margin-right: 8px;
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* Hover effect for nav links */
-.nav-link:hover {
-    background-color: silver;
-    color: black;
-}
 
-
-.nav-link:hover i {
-    color: black;
-
-}
 
 .navbar-toggler {
     right: 10px;
     position: absolute;
+    padding-bottom: 5px;
 }
 
 .navbar-toggler-icon {
@@ -179,18 +179,66 @@
 
 .dropdown-menu {
     width: 100%;
+    display: flex;
+    flex-direction: row;
     background-color: rgba(0, 0, 0, 0.3);
     padding: 0 !important;
+    margin-top: 10px;
 
 }
 
-.dropdown-item {
-    background-color: rgba(0, 0, 0, 0.3);
-    margin: 0 !important;
+/* Dropdown menu styling */
+.avbar .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Background color */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    /* Box shadow */
+    z-index: 1;
+    /* Ensure it appears above other elements */
+
+}
+
+.avbar .dropdown-item {
+    color: white;
+    border-radius: 0 !important;
     font-weight: 500;
-    color: rgb(255, 255, 255) !important;
-    height: 100%;
-    padding: 0 !important;
+    padding: 10px;
+    /* Padding */
+    text-decoration: none;
+    /* Remove underline */
+    display: block;
+    border-radius: 0 !important;
+}
+
+.avbar .dropdown-item:hover {
+    background-color: #f8f9fa;
+    /* Background color on hover */
+    color: #ff6600;
+    /* Text color on hover */
+}
+
+.avbar .dropdown-item img.dropdown-icon {
+    width: 50px;
+    /* Adjust icon size */
+    height: 50px;
+    margin-right: 10px;
+    /* Space between icon and text */
+}
+
+.avbar .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-item-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.dropdown-item-custom-style {
+    display: flex;
+    flex-direction: column;
 }
 
 /*CHAT*/
@@ -426,8 +474,7 @@ label {
 /*LOGO STYLES*/
 
 .logo-container {
-    top: 50px;
-
+    top: 70px;
     text-align: center;
     padding: 20px 10px 0px 10px;
     background-color: rgba(0, 0, 0, 0.3);
@@ -442,13 +489,16 @@ label {
     border-bottom-left-radius: 25px;
 }
 
-#confirmationModal {
-    width: 50%;
+.logo-container p {
+    font-size: 0.7rem;
 }
 
+
+
 #logo {
-    width: 60px;
+    width: 40px;
     border-radius: 50%;
+
     border: 3px solid silver;
 }
 
@@ -705,6 +755,14 @@ label {
     text-overflow: ellipsis;
 }
 
+.review-text-profile {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .review-text {
     font-size: 1.4em;
     margin: 0 !important;
@@ -912,15 +970,23 @@ label {
     animation: zoomIn 1.2s ease-in;
     min-height: 100vh !important;
     width: 100% !important;
-    background-image: url("../images/reviews-background.jpg");
+    background-image: url("../images/room7.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
+.card-body:hover {
+    transform: scale(1.02);
+    /* Scale up slightly on hover */
+    /* Additional styles for hover state */
+}
+
 .notification-title {
     text-align: center;
     padding-top: 80px;
+    color: white;
+    font-weight: 500;
 }
 
 .notification-section {
@@ -1587,12 +1653,14 @@ label {
     max-width: 800px;
     /* Custom width for modal dialog */
 }
-.reservation-message-card{
+
+.reservation-message-card {
     display: flex;
     width: 100% !important;
     margin-top: 150px !important;
- 
+
 }
+
 .modal-content {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
@@ -1601,7 +1669,8 @@ label {
     top: 50%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
-#cancelReservationForm{
+
+#cancelReservationForm {
     align-self: center;
 }
 
@@ -1955,7 +2024,6 @@ label {
 
     .avbar .nav-link {
 
-
         justify-content: center;
         text-align: center;
         align-items: center;
@@ -1972,6 +2040,8 @@ label {
         list-style: none;
         margin: 0;
         padding: 0;
+        top: 0 !important;
+        bottom: 0 !important;
 
     }
 
@@ -2006,5 +2076,31 @@ label {
     .reservation-details {
         width: 50%;
     }
+
+    .nav-container {
+
+        height: 80px;
+
+    }
+
+
+    .avbar .nav-link {
+        transition: background-color 0.5s ease, color 0.5s ease, transform 0.7s ease, opacity 0.5s ease;
+    }
+
+    .avbar .nav-link:hover {
+        background-color: rgba(255, 0, 0, 1) !important;
+        /* Red background */
+        font-weight: 700;
+        color: #fff;
+        transform: scale(1.1);
+        opacity: 1;
+        /* Ensure full opacity on hover */
+    }
+
+    #confirmationModal {
+        width: 50%;
+    }
+
 
 }

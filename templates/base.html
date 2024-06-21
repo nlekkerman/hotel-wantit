@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    
+
 </head>
 
 <body>
@@ -36,22 +36,18 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav positioning-class">
                             <li class="nav-item">
-                                <a class="nav-link {% if request.path == home_url %}active"
-                                    aria-current="page{% endif %}" href="{% url 'home' %}">Home</a>
+                                <a class="nav-link {% if request.path == home_url %}active{% endif %}"
+                                    href="{% url 'home' %}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {% if request.path == review_list_url %}active"
-                                    aria-current="page{% endif %}" href="{% url 'review-list' %}">Reviews</a>
+                                <a class="nav-link {% if request.path == review_list_url %}active{% endif %}"
+                                    href="{% url 'review-list' %}">Reviews</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="bookingsDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Bookings    </a>
-                                <div class="dropdown-menu" aria-labelledby="bookingsDropdown">
-                                    <a class="dropdown-item" href="#">Book Restaurant</a>
-                                    <a class="dropdown-item" href="{% url 'book_room' %}">Book Room</a>
-                                </div>
+                            <li class="nav-item">
+                                
+                                    <a class="nav-link {% if request.path == book_room_url %}active{% endif %}" href="{% url 'book_room' %}">Book Room</a>
+                               
                             </li>
-
                             {% if user.is_authenticated %}
                             <li class="nav-item">
                                 <a class="nav-link {% if request.path == logout_url %}active{% endif %}"
@@ -67,35 +63,43 @@
                                     aria-current="page" href="{% url 'account_login' %}">Login</a>
                             </li>
                             {% endif %}
-
                             {% if user.is_authenticated and user.is_staff %}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin </a>
-                                   
-                                
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{% url 'comment-approval-list' %}">Pending
-                                        Comments</a>
-                                    <a class="dropdown-item" href="{% url 'review-approval-list' %}">Pending Reviews</a>
-
-                                    <a class="dropdown-item" href="{% url 'reservation-approval-list' %}">Pending Reservation</a>
+                                    <div class="row">
+                                        <div class="col">
+                                            <a class="dropdown-item" href="{% url 'comment-approval-list' %}">
+                                                <img src="{% static 'images/icons/comment-icon.png' %}" alt="Comments" class="dropdown-icon"> Comments
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a class="dropdown-item" href="{% url 'review-approval-list' %}">
+                                                <img src="{% static 'images/icons/review-icon.png' %}" alt="Reviews" class="dropdown-icon"> Reviews
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a class="dropdown-item" href="{% url 'reservation-approval-list' %}">
+                                                <img src="{% static 'images/icons/reservation-icon.png' %}" alt="Reservation" class="dropdown-icon"> Reservations
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </li>
-                            {% endif %}
-
+                            
+                        {% endif %}
                             {% if user.is_authenticated %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'user-notifications' %}">Profile</a>
                             </li>
-                            
                             {% endif %}
-
                         </ul>
                     </div>
                 </nav>
             </div>
         </div>
+
         <div class="floating-chat-container">
             <div class="floating-chat" id="chatButton">
                 <i class="fas fa-comments"></i> Chat

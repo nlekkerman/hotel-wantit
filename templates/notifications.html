@@ -10,7 +10,7 @@
 <div class="notifications-container">
     <h1 class="notification-title">Profile</h1>
 
-    <div class="container">
+    <div class="container-profile">
         <div class="container mt-4">
             <h2 class="titles-position-style">Reservations</h2>
             <div class="row ">
@@ -21,6 +21,7 @@
                     <a href="{% url 'reservation_detail' reservation.id %}" class="h-100 text-decoration-none">
                         <div class="card-body">
                             <ul class="pending-item list-unstyled">
+                                <li class="cancel-reservation-title"><strong>Room:</strong> {{ reservation.id }}</li>
                                 <li><strong>Name:</strong> {{ reservation.name }}</li>
                                 <li><strong>Check-in Date:</strong> {{ reservation.checkin_date }}</li>
                                 <li><strong>Check-out Date:</strong> {{ reservation.checkout_date }}</li>
@@ -43,7 +44,7 @@
         <ul class="notification-list">
             {% for review in user_pending_reviews %}
             <li>
-                <a href="#" onclick="openModal('modal_review_{{ review.id }}')">{{ review.review }}</a>
+                <a href="#" onclick="openModal('modal_review_{{ review.id }}')" class="review-text-profile">{{ review.review }}</a>
             </li>
             {% empty %}
             <li>No pending reviews found.</li>

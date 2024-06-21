@@ -38,7 +38,7 @@
     background-color: rgba(1, 38, 41, 0.5);
     animation: slideInFromLeft 1.5s ease-in-out;
     border-bottom: 1px solid silver;
-    height: 80px;
+    height: 40px;
     text-align: center;
 }
 
@@ -46,7 +46,7 @@
     width: 100% !important;
     position: absolute;
     right: 0;
-    margin: 15px 0px;
+    margin: 20px 0px;
 }
 
 
@@ -75,6 +75,9 @@
     height: 100% !important;
 }
 
+.avbar.toggler-active .nav-item {
+    background-color: rgba(0, 0, 0, 0.5);
+}
 
 .avbar .nav-item {
 
@@ -89,8 +92,7 @@
 }
 
 .avbar .nav-link {
-    background-color: rgba(0, 0, 0, 0.8) !important;
-
+    height: 100%;
     color: rgb(255, 255, 255);
     display: flex;
     width: 100%;
@@ -98,8 +100,8 @@
     text-align: end;
     padding-right: 20px;
     text-decoration: none;
+    background-color: transparent !important;
     transition: background-color 0.3s, color 0.3s;
-    /* Smooth transition for hover effect */
 
 }
 
@@ -113,26 +115,21 @@
     animation: zoomIn 1.8s ease-in;
 }
 
+.positioning-class {
+    margin-bottom: 10px;
+}
+
 .nav-link i {
     margin-right: 8px;
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* Hover effect for nav links */
-.nav-link:hover {
-    background-color: silver;
-    color: black;
-}
 
-
-.nav-link:hover i {
-    color: black;
-
-}
 
 .navbar-toggler {
     right: 10px;
     position: absolute;
+    padding-bottom: 5px;
 }
 
 .navbar-toggler-icon {
@@ -184,13 +181,26 @@
 
 }
 
+/* Align icons and text in the dropdown items */
+.dropdown-item .fas {
+    margin-right: 10px;
+    /* Adjust the space between the icon and the text */
+    font-size: 1.2em;
+    /* Adjust the icon size if needed */
+}
+
+/* Additional styling for dropdown items */
 .dropdown-item {
-    background-color: rgba(0, 0, 0, 0.3);
-    margin: 0 !important;
-    font-weight: 500;
-    color: rgb(255, 255, 255) !important;
-    height: 100%;
-    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    /* Light background on hover */
+    color: #000;
+    /* Dark text color on hover */
 }
 
 /*CHAT*/
@@ -426,8 +436,7 @@ label {
 /*LOGO STYLES*/
 
 .logo-container {
-    top: 50px;
-
+    top: 70px;
     text-align: center;
     padding: 20px 10px 0px 10px;
     background-color: rgba(0, 0, 0, 0.3);
@@ -442,13 +451,18 @@ label {
     border-bottom-left-radius: 25px;
 }
 
+.logo-container p {
+    font-size: 0.7rem;
+}
+
 #confirmationModal {
     width: 50%;
 }
 
 #logo {
-    width: 60px;
+    width: 40px;
     border-radius: 50%;
+
     border: 3px solid silver;
 }
 
@@ -1587,12 +1601,14 @@ label {
     max-width: 800px;
     /* Custom width for modal dialog */
 }
-.reservation-message-card{
+
+.reservation-message-card {
     display: flex;
     width: 100% !important;
     margin-top: 150px !important;
- 
+
 }
+
 .modal-content {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
@@ -1601,7 +1617,8 @@ label {
     top: 50%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
-#cancelReservationForm{
+
+#cancelReservationForm {
     align-self: center;
 }
 
@@ -1955,7 +1972,6 @@ label {
 
     .avbar .nav-link {
 
-
         justify-content: center;
         text-align: center;
         align-items: center;
@@ -1972,6 +1988,8 @@ label {
         list-style: none;
         margin: 0;
         padding: 0;
+        top: 0 !important;
+        bottom: 0 !important;
 
     }
 
@@ -2006,5 +2024,27 @@ label {
     .reservation-details {
         width: 50%;
     }
+
+    .nav-container {
+
+        height: 80px;
+
+    }
+
+
+    .avbar .nav-link {
+        transition: background-color 0.5s ease, color 0.5s ease, transform 0.7s ease, opacity 0.5s ease;
+    }
+
+    .avbar .nav-link:hover {
+        background-color: rgba(255, 0, 0, 1) !important;
+        /* Red background */
+        font-weight: 700;
+        color: #fff;
+        transform: scale(1.1);
+        opacity: 1;
+        /* Ensure full opacity on hover */
+    }
+
 
 }
