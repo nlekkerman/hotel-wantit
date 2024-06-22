@@ -16,21 +16,24 @@
             <div class="row ">
                 {% for reservation in user_reservations %}
 
-                <div class="col-12 col-md-4 col-lg-2  mb-3 " href="{% url 'reservation_detail' reservation.id %}">
+                <div class="col-12 col-md-12 col-lg-6  mb-4 " href="{% url 'reservation_detail' reservation.id %}">
+                    <div class="card-body custom-div">
 
-                    <a href="{% url 'reservation_detail' reservation.id %}" class="h-100 text-decoration-none">
-                        <div class="card-body reservations-details-content">
-                            <ul class="pending-item list-unstyled">
-                                <li class="cancel-reservation-title"><strong>Room:</strong> {{ reservation.id }}</li>
-                                <li class="pending-list-item-name"> {{ reservation.name }}</li>
-                                <li class="pending-list-item"><strong>Check-in Date:</strong>
-                                    {{ reservation.checkin_date }}</li>
-                                <li class="pending-list-item"><strong>Check-out Date:</strong>
-                                    {{ reservation.checkout_date }}</li>
-                                <li class="pending-list-item"><strong>Price:</strong> {{ reservation.price }}</li>
-                            </ul>
-                        </div>
-                    </a>
+                        <a href="{% url 'reservation_detail' reservation.id %}" class="h-100 text-decoration-none">
+                            <div class="card-body reservations-details-content">
+                                <ul class="pending-reservation-item list-unstyled">
+                                    <p class="text-bold">Reservation number:</p>
+                                    <li class="custom-reservation-card-title"><strong>#</strong> {{ reservation.id }}</li>
+                                    <li class="user-title reservation-user-title text-center"> {{ reservation.name }}</li>
+                                    <li class="pending-list-item"><strong>Check-in Date:</strong>
+                                        {{ reservation.checkin_date }}</li>
+                                    <li class="pending-list-item"><strong>Check-out Date:</strong>
+                                        {{ reservation.checkout_date }}</li>
+                                    <li class="pending-list-item text-center bg-success"><strong>Price:</strong> {{ reservation.price }}</li>
+                                </ul>
+                            </div>
+                        </a>
+                    </div>
                 </div>
                 {% empty %}
                 <div class="col-12">
@@ -41,54 +44,54 @@
         </div>
 
         <!-- Display pending reviews -->
-        <div class="notification-section">
-            <h2>Pending Reviews</h2>
-            <ul class="notification-list">
+        <div class="container mt-4">
+            <h2 class="titles-position-style">Pending Reviews</h2>
+            <div class="row">
                 {% for review in user_pending_reviews %}
-                <li>
-                    <div class="custom-div ">
-                        <a href="#" onclick="openModal('modal_review_{{ review.id }}')" class="review-text-profile">
-                            <div class="review-details">
-                                <p class=" cancel-reservation-title">{{ review.user }}</p>
-                                <div class="review-text">
-                                   " {{ review.review }} "
-                                </div>
-                                <p class="red">{{ review.created_at }}</p>
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <div class=" pending-item">
+                        <a href="#" onclick="openModal('modal_review_{{ review.id }}')"
+                            class="h-100 text-decoration-none">
+                            <div class="card-body custom-div">
+                                <p class="custom-card-title">REVIEW</p>
+                                <p class="user-title">{{ review.user }}</p>
+                                <div class="review-text multi-line-truncate">"{{ review.review }}"</div>
+                                <p class="pending-list-item text-center bg-white text-bold text-dark review-align-bottom-date">{{ review.created_at }}</p>
                             </div>
+                        </a>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12">
+                    <div class="alert alert-info" role="alert">No pending reviews found.</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
 
-
+        <!-- Display pending comments -->
+        <div class="notification-section">
+            <h2>Pending Comments</h2>
+            <ul class="notification-list">
+                {% for comment in user_pending_comments %}
+                <li>
+                    <div class="custom-div-profile">
+                        <a href="#" onclick="openModal('modal_comment_{{ comment.id }}')" class="review-text-profile">
+                            <div class="review-details-profile">
+                                <p class="review-name-profile">{{ comment.user }}</p>
+                                <div class="review-text-profile">
+                                    "{{ comment.text }}"
+                                </div>
+                                <p class="review-created-at-profile">{{ comment.created_at }}</p>
+                            </div>
                         </a>
                     </div>
                 </li>
                 {% empty %}
-                <li>No pending reviews found.</li>
+                <li>No pending comments found.</li>
                 {% endfor %}
             </ul>
         </div>
-
-      <!-- Display pending comments -->
-<div class="notification-section">
-    <h2>Pending Comments</h2>
-    <ul class="notification-list">
-        {% for comment in user_pending_comments %}
-        <li>
-            <div class="custom-div-profile">
-                <a href="#" onclick="openModal('modal_comment_{{ comment.id }}')" class="review-text-profile">
-                    <div class="review-details-profile">
-                        <p class="review-name-profile">{{ comment.user }}</p>
-                        <div class="review-text-profile">
-                            "{{ comment.text }}"
-                        </div>
-                        <p class="review-created-at-profile">{{ comment.created_at }}</p>
-                    </div>
-                </a>
-            </div>
-        </li>
-        {% empty %}
-        <li>No pending comments found.</li>
-        {% endfor %}
-    </ul>
-</div>
 
 
         <!-- Modals for reviews -->

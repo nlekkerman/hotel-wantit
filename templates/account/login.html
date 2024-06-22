@@ -7,18 +7,19 @@
 
 {% block content %}
 
-<div class="sign-in-container">
-    <div class=" bg-warning sign-in-form">
+<div class="login-out-container">
+    <div class="sign-in-form">
         <div class="col-md-8 mt-3 offset-md-2">
-            <h3 class="text-white">{% trans "Sign In" %}</h3>
+            <h3 class="text-white text-center mb-3">{% trans "Sign In" %}</h3>
 
-            <p class="text-white">{% blocktrans %}Welcome back to the Hotel Wantit Login and Sign up page. To leave a review or book restaurant, please log in. If
+            <p class="text-white text-center">{% blocktrans %}Welcome back to the Hotel Wantit Login and Sign up page. To leave a review or book restaurant, please log in. If
                 you
                 have not created an account yet, then <a class="link" href="{{ signup_url }}">CREATE ACCOUNT</a>
                 first.{% endblocktrans %}</p>
         </div>
     </div>
-    <div>
+    <div class="col-md-8 col-lg-6 create-account-form">
+        
         <div class="col-md-8 mt-3 offset-md-2">
             <form class="login" method="POST" action="{% url 'account_login' %}">
                 {% csrf_token %}
@@ -26,7 +27,7 @@
                 {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
-                <button class="btn btn-signup right custom-buttons" type="submit">{% trans "Sign In" %}</button>
+                <button class="btn edit-button " type="submit">{% trans "Sign In" %}</button>
             </form>
         </div>
     </div>

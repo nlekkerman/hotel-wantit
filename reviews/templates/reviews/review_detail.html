@@ -8,9 +8,7 @@
 <div class="review-container">
     <h1 class="review-detail-title">Review Detail</h1>
     <div class=" review-detail-content ">
-        <h1>{{ review.user.username }}</h1>
-        <p>Date: {{ review.created_at|date:"F j, Y" }}</p>
-        <div class="review-text">{{ review.review }}</div>
+        <h1 class="review-detail-username">{{ review.user.username }}</h1>
         <div class="stars">
             {% for _ in "12345" %}
             {% if forloop.counter <= review.rating %}
@@ -19,7 +17,14 @@
             <span class="star">&#9734;</span> <!-- Empty star -->
             {% endif %}
             {% endfor %}
+
+            
         </div>
+        <div class="review-text">{{ review.review }}</div>
+     
+
+        <p>Date: {{ review.created_at|date:"F j, Y" }}</p>
+
         <div class="review-actions">
             {% if request.user == review.user %}
             <!-- Edit Review Button -->
@@ -39,7 +44,7 @@
         <h2>Comments</h2>
         {% for comment in comments %}
         <div class="comment">
-            <p>{{ comment.user.username }}</p>
+            <p class="title bg-dark">{{ comment.user.username }}</p>
             <p>{{ comment.text }}</p>
             <p>{{ comment.created_at }}</p>
 
