@@ -191,7 +191,8 @@
 .navbar .dropdown-menu {
     display: none;
     position: absolute;
-    right: 0; /* Aligns the dropdown menu to the right */
+    right: 0;
+    /* Aligns the dropdown menu to the right */
     background-color: rgba(0, 0, 0, 0.9);
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
     z-index: 1;
@@ -224,7 +225,7 @@
 
 .avbar .nav-item.dropdown:hover .dropdown-menu {
     display: block;
-    
+
 }
 
 .dropdown-item-container {
@@ -612,7 +613,7 @@ label {
 }
 
 .stars {
-  
+
     color: #ffd700;
     margin-left: 10px;
 }
@@ -675,14 +676,15 @@ label {
 /*all REVIEWS*/
 
 .review-detail-username {
-    display: inline-block; 
+    display: inline-block;
     text-align: right;
     background-color: red;
     font-weight: 600;
-    padding: 0.5rem; 
+    padding: 0.5rem;
     color: white;
     float: right;
 }
+
 /* CSS for reviews page */
 #reviews-page .container {
 
@@ -1009,7 +1011,7 @@ label {
     margin-bottom: 20px;
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.1);
- 
+
 }
 
 .notification-section h2 {
@@ -1022,14 +1024,14 @@ label {
     /* Remove default list styles (bullets) */
     padding: 0;
 }
-.custom-div{
-    
-}
+
+.custom-div {}
+
 .notification-list li {
     padding: 10px;
     margin-bottom: 5px;
     background-color: rgba(0, 0, 0, 0.6);
-    border-left: 5px solid silver; 
+    border-left: 5px solid silver;
     color: rgb(255, 255, 255);
     max-width: 100%;
 }
@@ -1232,17 +1234,19 @@ form.signup input[type="submit"]:focus {
 }
 
 form.login label {
-    color: rgba(255, 0, 0, 0.5);
+    color: red;
 }
+
 form.login button {
-   
-    margin-top: 10px; 
+
+    margin-top: 10px;
     display: flex;
     align-self: center;
     position: relative;
     left: 35%;
     border-radius: none !important;
 }
+
 form.login input[type="text"],
 form.login input[type="password"] {
     /* Styles for input fields */
@@ -1251,9 +1255,17 @@ form.login input[type="password"] {
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     border: 2px solid #ccc;
-    border-radius: 25px;
     box-sizing: border-box;
     height: 40px;
+}
+form.login{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-text{
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 form.login input[type="text"]:focus,
@@ -1264,7 +1276,58 @@ form.login input[type="password"]:focus {
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
     color: white;
     background-color: rgba(211, 0, 0, 0.7)
+}
 
+form.signup input[type="text"]:focus,
+form.signup input[type="password"]:focus {
+    /* Styles for input fields on focus */
+    border-color: #ffffff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    color: white;
+    background-color: rgba(211, 0, 0, 0.7)
+
+}
+
+/* Target list items within the form.signup */
+form.signup ul {
+    padding: 0; /* Remove default padding */
+    background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+form.signup li {
+    margin-bottom: 10px; /* Add some space between list items */
+    font-weight: bold; /* Make the text bold */
+    color: rgb(255, 255, 255); /* Change text color to red */
+}
+
+.create-account-form{
+    width: 100% !important;
+}
+form.signup label {
+    color: red;
+
+}
+
+.signup input[type="text"],
+.signup input[type="password"],
+.signup input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+    height: 40px;
+}
+
+
+.create-acount-form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .sign-in-form {
@@ -1425,15 +1488,16 @@ form.login input[type="password"]:focus {
     padding-left: 10px;
     background-color: rgba(0, 0, 0, 0.8);
     position: relative;
-   top: 1.5rem;
-   
+    top: 1.5rem;
+
 }
 
-.text-bold{
+.text-bold {
     text-align: left;
     padding-left: 10px;
     font-weight: 700;
 }
+
 .custom-reservation-card-title {
     background-color: red;
     color: white;
@@ -1443,7 +1507,8 @@ form.login input[type="password"]:focus {
     position: absolute;
     right: 18px;
 }
-.custom-card-title{
+
+.custom-card-title {
     background-color: red;
     color: white;
     font-weight: 700;
@@ -1472,22 +1537,24 @@ form.login input[type="password"]:focus {
 
 }
 
-.pending-list-item{
+.pending-list-item {
     text-align: left;
     padding-left: 10px;
 }
-.pending-list-item-name{
+
+.pending-list-item-name {
     text-align: center;
     padding-left: 10px;
-    text-transform: capitalize; 
+    text-transform: capitalize;
     font-size: 1.5rem;
     font-weight: 500;
 
 }
 
-.pending-card{
+.pending-card {
     background-color: rgba(0, 0, 0, 0.5);
 }
+
 .pending-item {
     background-color: rgba(5, 0, 0, 0.8);
     color: white;
@@ -1523,9 +1590,11 @@ form.login input[type="password"]:focus {
     justify-content: space-between;
 
 }
-.reservation-user-title{
+
+.reservation-user-title {
     margin-top: -93px;
 }
+
 .reservation-list-card {
     padding: 0 !important;
     align-items: center;
@@ -1542,10 +1611,12 @@ form.login input[type="password"]:focus {
     width: 100% !important;
 
 }
-.review-align-bottom-date{
+
+.review-align-bottom-date {
     position: absolute;
     bottom: 0;
 }
+
 .pending-item a {
     color: #ffffff;
     text-decoration: none;
@@ -2247,11 +2318,11 @@ label {
         /* Space between icon and text */
     }
 
-    #id_text{
-        width:50%;
+    #id_text {
+        width: 50%;
         margin: 0 auto;
         display: flex;
     }
-    
+
 
 }
