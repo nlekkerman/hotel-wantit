@@ -173,14 +173,20 @@ def reservation_approval_list(request):
 
 def approve_reservation(request, reservation_id):
     reservation = get_object_or_404(Reservation, id=reservation_id)
-    reservation.reservation_status = Reservation.CONFIRMED  # Use CONFIRMED, not APPROVED
+    reservation.reservation_status = Reservation.CONFIRMED
     reservation.save()
+    return JsonResponse({'message': 'Reservation approved successfully'})
+
+    # Redirect to reservation_approval_list
     return redirect('reservation-approval-list')
 
 def reject_reservation(request, reservation_id):
     reservation = get_object_or_404(Reservation, id=reservation_id)
     reservation.reservation_status = Reservation.REJECTED
     reservation.save()
+    return JsonResponse({'message': 'Reservation rejected successfully'})
+
+    # Redirect to reservation_approval_list
     return redirect('reservation-approval-list')
 
 @login_required

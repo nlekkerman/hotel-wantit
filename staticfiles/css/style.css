@@ -392,10 +392,10 @@ label {
 /* Style for the alternative-room container */
 .alternative-room {
     padding: 0px !important;
-
-    margin: 2px 5px !important;
-    background-color: rgba(0, 0, 0, 0.7);
+    margin: 5px 5px !important;
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
+    display: flex;
 }
 
 /* Style for the image inside alternative-room */
@@ -403,8 +403,6 @@ label {
     width: 100%;
     margin: 0 !important;
     object-fit: cover;
-    /* Ensure the image covers the area without distortion */
-    border-radius: 5px;
 }
 
 
@@ -963,7 +961,7 @@ label {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     background-color: #f4f4f4;
     background-image: url("../images/lobby.jpg");
     background-size: cover;
@@ -980,6 +978,23 @@ label {
 
 
 }
+
+
+
+.approved {
+    z-index: 1;
+    background-image: url("../images/approved-image.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.rejected {
+    z-index: 1;
+    background-image: url("../images/rejected-image.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
 
 /*NOTIFICATIONS STYLES*/
 /* Base styles for notification sections and lists */
@@ -1093,6 +1108,17 @@ label {
     border: none;
 }
 
+.edit-button:hover {
+    background-color: rgba(0, 123, 255, 0.5);
+    border: 1px solid #ffffff;
+}
+
+.delete-button:hover {
+    background-color: rgba(0, 13, 27, 0.2);
+    border: 1px solid #ffffff;
+}
+
+
 .close-button {
     font-size: 24px;
     text-align: center;
@@ -1181,7 +1207,6 @@ label {
 
 .card-body {
     padding: 0px !important;
-    text-align: center;
 }
 
 form.signup input[type="text"],
@@ -1234,16 +1259,14 @@ form.signup input[type="submit"]:focus {
 }
 
 form.login label {
-    color: red;
+    color: white;
+    font-size: 1.2rem;
 }
 
 form.login button {
-
     margin-top: 10px;
     display: flex;
     align-self: center;
-    position: relative;
-    left: 35%;
     border-radius: none !important;
 }
 
@@ -1258,13 +1281,14 @@ form.login input[type="password"] {
     box-sizing: border-box;
     height: 40px;
 }
-form.login{
+
+form.login {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.form-text{
+.form-text {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -1278,6 +1302,12 @@ form.login input[type="password"]:focus {
     background-color: rgba(211, 0, 0, 0.7)
 }
 
+form.signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 form.signup input[type="text"]:focus,
 form.signup input[type="password"]:focus {
     /* Styles for input fields on focus */
@@ -1286,29 +1316,51 @@ form.signup input[type="password"]:focus {
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
     color: white;
     background-color: rgba(211, 0, 0, 0.7)
-
 }
 
 /* Target list items within the form.signup */
 form.signup ul {
-    padding: 0; /* Remove default padding */
+    padding: 5px;
+    /* Remove default padding */
     background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    list-style-type: none;
 
 }
 
 form.signup li {
-    margin-bottom: 10px; /* Add some space between list items */
-    font-weight: bold; /* Make the text bold */
-    color: rgb(255, 255, 255); /* Change text color to red */
+    margin-bottom: 10px;
+    /* Add some space between list items */
+    font-weight: bold;
+    /* Make the text bold */
+    color: rgb(255, 255, 255);
+    /* Change text color to red */
 }
 
-.create-account-form{
+.create-account-form {
     width: 100% !important;
+    margin-top: 80px !important;
 }
+
 form.signup label {
-    color: red;
+    color: white;
+    font-size: 1.2rem;
 
 }
+
+form.signup button {
+    margin-top: 10px;
+    display: flex;
+    align-self: center;
+    border-radius: none !important;
+
+
+}
+
 
 .signup input[type="text"],
 .signup input[type="password"],
@@ -1516,6 +1568,28 @@ form.signup label {
     float: right;
 }
 
+#result {
+    width: 100%;
+}
+
+#result p {
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+    font-weight: 500;
+}
+
+.available-badge{
+    background-color: rgba(0, 255, 17, 0.3);
+    width: 20%;
+    text-align: center;
+}
+
+.check_availability_form_container form {
+    width: 50%;
+    margin: 0 auto;
+}
+
 .no-pending-item {
     position: absolute;
     top: 50%;
@@ -1556,6 +1630,7 @@ form.signup label {
 }
 
 .pending-item {
+    position: relative;
     background-color: rgba(5, 0, 0, 0.8);
     color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -1803,17 +1878,16 @@ label {
 /* ALTERNATE ROOMS */
 .alternative-room {
     border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 15px;
+    padding: 0px !important;
+    margin: 5 !important;
     margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-}
+    color: white;
 
+}
+.width-style{
+    width: 100%;
+}
 .alternative-room img {
-    border-radius: 8px;
     margin-right: 20px;
 }
 
@@ -1847,6 +1921,18 @@ label {
     background-color: #0056b3;
 }
 
+
+.loading {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    padding: 15px;
+    margin-top: 200px;
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
 /* MODALS STYLES */
 
 /* Custom modal styles */
@@ -1854,8 +1940,12 @@ label {
 .custom-thankyou-modal,
 .custom-modal {
     background-color: rgba(0, 0, 0, 0.5);
+    top: 40%;
+
     /* Semi-transparent background */
 }
+
+
 
 .custom-reservation-modal-dialog {
     max-width: 800px;
@@ -2307,7 +2397,8 @@ label {
     }
 
     #confirmationModal {
-        width: 50%;
+        margin: 0 auto;
+        top: 40%;
     }
 
     .avbar .dropdown-item img.dropdown-icon {
@@ -2324,5 +2415,10 @@ label {
         display: flex;
     }
 
+    .form-room-description {
+        padding-top: 120px;
+        color: white;
+        font-size: 1.5rem;
+    }
 
 }

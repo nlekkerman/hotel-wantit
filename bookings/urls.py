@@ -12,5 +12,6 @@ urlpatterns = [
     path('reservations/approval/', views.reservation_approval_list, name='reservation-approval-list'),
     path('reservations/approve/<int:reservation_id>/', views.approve_reservation, name='approve-reservation'),
     path('reservations/reject/<int:reservation_id>/', views.reject_reservation, name='reject-reservation')
+    
 
 ]
