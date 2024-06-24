@@ -11,7 +11,7 @@
     <h1 class="notification-title">Profile</h1>
 
     <div class="container-profile">
-        <div class="container mt-4">
+        <div class="notification-section">
             <h2 class="titles-position-style">Reservations</h2>
             <div class="row ">
                 {% for reservation in user_reservations %}
@@ -36,15 +36,15 @@
                     </div>
                 </div>
                 {% empty %}
-                <div class="col-12">
-                    <div class="alert alert-info" role="alert">You have 0 reservations</div>
-                </div>
+                
+                    <div role="alert" class="no-content-message">You have 0 reservations</div>
+                
                 {% endfor %}
             </div>
         </div>
 
         <!-- Display pending reviews -->
-        <div class="container mt-4">
+        <div class="notification-section">
             <h2 class="titles-position-style">Pending Reviews</h2>
             <div class="row">
                 {% for review in user_pending_reviews %}
@@ -62,9 +62,7 @@
                     </div>
                 </div>
                 {% empty %}
-                <div class="col-12">
-                    <div class="alert alert-info" role="alert">No pending reviews found.</div>
-                </div>
+                <div class="no-content-message">No pending reviews found.</div>
                 {% endfor %}
             </div>
         </div>

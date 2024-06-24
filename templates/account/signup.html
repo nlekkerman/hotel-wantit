@@ -6,11 +6,11 @@
 
 {% block content %}
 <div class="login-out-container">
-  <div class="justify-content-center pt-5">
-      <div class="col-md-8  create-account-form">
-          <div class=" shadow-sm">
+ 
+      <div class="create-account-form">
+          
               <div class="card-body">
-                  <h1 class="card-title text-center mb-4 ">{% trans "Sign Up" %}</h1>
+                  <h1 class="text-white text-center mb-3 bg-dark pb-2">{% trans "Sign Up" %}</h1>
 
                   <p class="text-center text-bold text-white">
                       {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
@@ -27,8 +27,8 @@
                       </div>
                   </form>
               </div>
-          </div>
+          
       </div>
-  </div>
+ 
 </div>
 {% endblock content %}

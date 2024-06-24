@@ -5,7 +5,7 @@
 {% block head_title %}{% trans "Sign Out" %}{% endblock %}
 
 {% block content %}
-<div class=" login-out-container">
+<div class="login-out-container">
     <div class="row sign-out-confirmation-row">
         <div class="col-md-8 mt-3 offset-md-2 log-sign-in-message">
             <h3 class="text-white">{% trans "Sign Out" %}</h3>
@@ -22,7 +22,7 @@
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
                 <button class="edit-button" type="submit">{% trans 'Sign Out' %}</button>
-                <button type="button" class="delete-button" href="{% url 'home' %}">{% trans 'Cancel' %}</button>
+                <button  class="delete-button" href="{% url 'home' %}">{% trans 'Cancel' %}</button>
 
             </form>
         </div>

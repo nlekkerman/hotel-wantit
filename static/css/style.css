@@ -665,6 +665,9 @@ label {
     color: white;
     width: 100% !important;
     margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-image: url("../images/room-view.jpg");
     background-size: cover;
     background-position: center;
@@ -961,7 +964,7 @@ label {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 100vh;
     background-color: #f4f4f4;
     background-image: url("../images/lobby.jpg");
     background-size: cover;
@@ -1013,6 +1016,17 @@ label {
     transform: scale(1.02);
     /* Scale up slightly on hover */
     /* Additional styles for hover state */
+}
+
+.no-content-message {
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-left: 5px solid silver;
+    color: rgb(255, 255, 255);
+    width: 100% !important;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 .notification-title {
@@ -1205,15 +1219,33 @@ label {
     color: #333333;
 }
 
+.col-md-8 {
+    padding: 0 !important;
+}
+
 .card-body {
     padding: 0px !important;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-body a {
+    width: 120px;
+    margin: 0 auto;
+}
+
+.card-body h1 {
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: 500;
 }
 
 form.signup input[type="text"],
 form.signup input[type="email"],
 form.signup input[type="password"],
 form.signup input[type="submit"] {
-    border-radius: 5px;
     padding: 10px 15px;
 }
 
@@ -1250,6 +1282,11 @@ form.signup input[type="submit"]:focus {
 
 
 /*SIGN IN STYLES*/
+.logo-login-holder {
+    width: 60% !important;
+    background-color: 'none' !important;
+    padding-bottom: 10px;
+}
 
 .sign-in-container {
     display: flex;
@@ -1286,6 +1323,8 @@ form.login {
     width: 100%;
     display: flex;
     flex-direction: column;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .form-text {
@@ -1306,6 +1345,8 @@ form.signup {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px;
 }
 
 form.signup input[type="text"]:focus,
@@ -1344,6 +1385,8 @@ form.signup li {
 .create-account-form {
     width: 100% !important;
     margin-top: 80px !important;
+    padding-bottom: 20px;
+
 }
 
 form.signup label {
@@ -1385,6 +1428,7 @@ form.signup button {
 .sign-in-form {
     background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
+    margin-top: 20px;
 }
 
 .sign-in-form h3 {
@@ -1579,7 +1623,7 @@ form.signup button {
     font-weight: 500;
 }
 
-.available-badge{
+.available-badge {
     background-color: rgba(0, 255, 17, 0.3);
     width: 20%;
     text-align: center;
@@ -1609,6 +1653,10 @@ form.signup button {
     margin-bottom: 0 !important;
     font-size: 1.5rem;
 
+}
+
+.pending-item p {
+    margin: 10px;
 }
 
 .pending-list-item {
@@ -1743,6 +1791,10 @@ form.signup button {
 
 }
 
+.row {
+    margin: 0 !important;
+}
+
 .room-card-container {
     animation: zoomIn 1s ease-in;
     max-width: 300px;
@@ -1794,6 +1846,54 @@ form.signup button {
 
 .additional-row-styles {
     margin: 0 !important;
+}
+
+.form-holder-create-review {
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Style for the form container */
+#reviewForm {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+#submitReviewBtn {
+    width: 70px;
+    margin: 0 auto;
+}
+
+.col {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Style for the form elements */
+#reviewForm input[type="text"],
+#reviewForm textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #fffefe;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Focus state for the form elements */
+#reviewForm input[type="text"]:focus,
+#reviewForm textarea:focus {
+    border-color: rgb(255, 255, 255);
+    background-color: rgba(255, 0, 0, 0.5);
+    color: white;
+    outline: none;
+    /* Remove the default outline */
 }
 
 .review-list-item {
@@ -1884,9 +1984,11 @@ label {
     color: white;
 
 }
-.width-style{
+
+.width-style {
     width: 100%;
 }
+
 .alternative-room img {
     margin-right: 20px;
 }
@@ -2012,7 +2114,9 @@ label {
 
 .create-review-title {
     position: relative;
-    margin-top: 70px;
+    background-color: rgba(0, 0, 0, 0.9);
+    margin-bottom: 0 !important;
+    padding-left: 5px;
 }
 
 .star-rating .fa-star {
@@ -2420,5 +2524,11 @@ label {
         color: white;
         font-size: 1.5rem;
     }
+
+    /* Style for the form container */
+    #reviewForm {
+        width: 50%;
+    }
+
 
 }

@@ -6,11 +6,15 @@
 {% block content %}
 <div class="review-container create-review-form-style">
     <h1 class="create-review-title">Write a Review</h1>
+
+    <div class="form-holder-create-review">
     <form id="reviewForm" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" id="submitReviewBtn" class="custom-buttons center-buttons">Submit</button>
+        <button type="submit" id="submitReviewBtn" class="edit-button">Submit</button>
     </form>
+
+</div>
 </div>
 
 <script>
