@@ -1,34 +1,39 @@
 {% extends "base.html" %}
 
 {% load i18n %}
+{% load static %}
 
 
 
 {% block content %}
 <div class="login-out-container">
- 
-      <div class="create-account-form">
-          
-              <div class="card-body">
-                  <h1 class="text-white text-center mb-3 bg-dark pb-2">{% trans "Sign Up" %}</h1>
+    <div class="logo-container margin-top-style">
+        <img id="logo" src="{% static 'images/hv-logo.jpg' %}" alt="Logo Image">
+        <p>Hotel Wantit</p>
+    </div>
+    <div class="create-account-form">
 
-                  <p class="text-center text-bold text-white">
-                      {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
-                  </p>
+        <div class="card-body">
+            <h1 class="text-white text-center mb-3 bg-dark pb-2">{% trans "Sign Up" %}</h1>
 
-                  <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-                      {% csrf_token %}
-                      {{ form.as_p }}
-                      {% if redirect_field_value %}
-                      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                      {% endif %}
-                      <div class="d-grid">
-                          <button type="submit" class="btn edit-button">{% trans "Sign Up" %}</button>
-                      </div>
-                  </form>
-              </div>
-          
-      </div>
- 
+            <p class="text-center text-bold text-white">
+                {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign
+                    in</a>.{% endblocktrans %}
+            </p>
+
+            <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <div class="d-grid">
+                    <button type="submit" class="btn edit-button">{% trans "Sign Up" %}</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
 </div>
 {% endblock content %}

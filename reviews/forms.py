@@ -20,5 +20,8 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ['text']
         labels = {
-            'text': '',  # Replace 'Your Custom Label' with your desired label
+            'text': '', 
+        }
+        widgets = {
+            'text': forms.Textarea(attrs={'class': 'custom-textarea', 'placeholder': 'Enter your comment...'}),
         }

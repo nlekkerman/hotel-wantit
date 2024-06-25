@@ -8,6 +8,22 @@
 
 /**HEADER**/
 
+body {
+    margin: 0; /* Removes default margin */
+    padding: 0; /* Removes default padding */
+    font-family: Arial, sans-serif; /* Sets the default font */
+    background-color: #f0f0f0; /* Sets a light grey background color */
+    color: #333; /* Sets the default text color */
+    line-height: 1.6; /* Sets the line height for better readability */
+    font-size: 16px; /* Sets the default font size */
+}
+
+hr {
+    border: 3px solid #ccc;
+    margin: 20px 0;
+}
+
+
 
 /* Hover effect for dropdown items */
 .dropdown-menu .dropdown-item:hover {
@@ -408,7 +424,12 @@ label {
 
 
 .reservation-title {
-    padding-top: 80px;
+    margin-top: 80px;
+    margin-bottom: 30px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding-left: 5px;
+
 }
 
 .resevation-details-container {
@@ -427,23 +448,22 @@ label {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .room-reservation-container {
-
+    
     background-color: rgba(1, 8, 0, 0.8);
     padding-bottom: 60px;
     color: white;
-    position: absolute;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     display: flex;
     width: 100%;
-    top: 72%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  
 
 
 
@@ -667,6 +687,7 @@ label {
     margin: 0 !important;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
     justify-content: center;
     background-image: url("../images/room-view.jpg");
     background-size: cover;
@@ -676,14 +697,64 @@ label {
 
 /*all REVIEWS*/
 
+.edit-review-container {
+    min-height: 100vh;
+    padding: 0px;
+    margin-top: 30px;
+    color: white;
+    width: 100% !important;
+    margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    background-image: url("../images/room-view.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.edit-review-detail-content{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+.edit-review-detail-content h1{
+    margin-top: 5rem;
+    
+}
+.edit-review-detail-content form p {
+    display: flex;
+    flex-direction: column;
+}
+.edit-review-detail-content form p textarea {
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    color: white;
+    font-size: 16px;
+    resize: vertical;
+}
+
+
+.edit-review-detail-content form {
+    padding-bottom: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .review-detail-username {
     display: inline-block;
     text-align: right;
-    background-color: red;
+    background-color: rgba(0, 0, 0, 0.3);
     font-weight: 600;
     padding: 0.5rem;
     color: white;
-    float: right;
+    
 }
 
 /* CSS for reviews page */
@@ -697,8 +768,12 @@ label {
 }
 
 .review-detail-title {
-    padding-top: 100px;
+    margin-top: 100px;
+    margin-bottom: 3rem;
     width: 100% !important;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
 }
 
 
@@ -792,7 +867,7 @@ label {
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: normal;
-    margin-top: 70px !important;
+    margin-top: 20px !important;
     background-color: rgba(0, 0, 0, 0.5) !important;
 
 
@@ -938,6 +1013,25 @@ label {
 
 /*LEAVE COMMENT*/
 
+.custom-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    box-sizing: border-box;
+    resize: vertical;
+}
+.custom-textarea:focus {
+    border-color: #66afe9;
+    outline: none;
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.6);
+}
+
+
 .floating-button {
     position: fixed;
     top: 75px;
@@ -964,7 +1058,7 @@ label {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #f4f4f4;
     background-image: url("../images/lobby.jpg");
     background-size: cover;
@@ -1102,9 +1196,15 @@ label {
     width: 100% !important;
     margin: 0px;
     padding: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction:column;
 }
 
 /*CUSTOM BUTTONS*/
+.card-body .btn {
+    margin-top: 30px;
+}
 
 .edit-button {
     background-color: rgba(0, 255, 0, 0.5);
@@ -1162,6 +1262,7 @@ label {
 
 .main-bg {
     min-width: 100%;
+    min-height: 100vh;
 }
 
 .aproval-reservation-list {
@@ -1185,6 +1286,12 @@ label {
     border-radius: 20px;
     border: 3px solid rgba(255, 255, 255, 0.9);
     margin-bottom: 10px !important;
+    width: 70px;
+    margin: 0 auto;
+    display: flex;
+    text-align: center !important;
+    justify-content: center;
+
 
 }
 
@@ -1205,9 +1312,7 @@ label {
 
 
 /* Custom Styles for Signup Form */
-.container {
-    margin-top: 50px;
-}
+.margin-top-style{ margin-top: 70px;}
 
 .card {
     border: none;
@@ -1474,17 +1579,15 @@ form.signup button {
 
 #id_text {
 
-    margin: 0px;
     border: 2px solid #ffffff;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.7) !important;
     color: white;
     font-size: 16px;
     resize: vertical;
-    /* Allows vertical resizing only */
-    margin-bottom: 10px;
     background-color: #0062cc;
-
+    width: 100%;
+    margin: 5;
 }
 
 .edit-comment-container {
@@ -1518,6 +1621,11 @@ form.signup button {
     color: white;
     margin-left: 2px !important;
     padding: 5px;
+}
+
+.comment p {
+    padding-left: 5px;
+    text-transform: capitalize;
 }
 
 .text-secondary {
@@ -1625,7 +1733,7 @@ form.signup button {
 
 .available-badge {
     background-color: rgba(0, 255, 17, 0.3);
-    width: 20%;
+    width: 50%;
     text-align: center;
 }
 
@@ -1761,8 +1869,9 @@ form.signup button {
 }
 
 .titles-position-style {
-    padding-top: 70px;
+    margin-top: 90px;
     color: white;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .username-admin {
@@ -1904,7 +2013,7 @@ form.signup button {
 
 .background-image-book-room {
     width: 100% !important;
-    padding: 20px;
+    padding: 5px;
     background-image: url('../images/with-view.jpg');
     background-size: cover;
     background-position: center;
@@ -2460,8 +2569,9 @@ label {
     }
 
     .reservation-title {
-        display: none;
+      
         margin-top: 70px;
+        padding-left: 10px;
 
     }
 

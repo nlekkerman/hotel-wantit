@@ -136,10 +136,10 @@ def check_availability(request, room_id):
                             'room_id': alt_room.id,
                              'featured_image': alt_room.featured_image.url if alt_room.featured_image else None,
                         })
-
+                    message = f"Room {room.room_number} is not available."
                     return JsonResponse({
                         'available': False,
-                        'message': 'Room is not available. Alternative rooms suggested.',
+                        'message': message,
                         'alternative_rooms': alternative_rooms_data,
                         'check_in': checkin_date.strftime('%Y-%m-%d'),
                         'check_out': checkout_date.strftime('%Y-%m-%d')
