@@ -51,7 +51,7 @@ $(document).ready(function() {
             success: function(data) {
                 $('.pending-item').removeClass('approved rejected');
                 $parentCard.addClass('approved');
-                $parentCard.find('.card-text').addClass('invisible');
+                $parentCard.find('.card-body').addClass('invisible');
                 
                 // Slide up and disappear after 2 seconds
                 setTimeout(function() {
@@ -77,8 +77,8 @@ $(document).ready(function() {
             success: function(data) {
                 $('.pending-item').removeClass('approved rejected');
                 $parentCard.addClass('rejected');
-                $parentCard.find('.card-text').addClass('invisible');
-                $parentCard.find('.username-admin').addClass('invisible');
+                $parentCard.find('.card-body').addClass('invisible');
+             
                 
                 // Slide up and disappear after 2 seconds
                 setTimeout(function() {

@@ -44,40 +44,57 @@
                                     href="{% url 'review-list' %}">Reviews</a>
                             </li>
                             <li class="nav-item">
-                                
-                                    <a class="nav-link {% if request.path == book_room_url %}active{% endif %}" href="{% url 'book_room' %}">Book Room</a>
-                               
+
+                                <a class="nav-link {% if request.path == book_room_url %}active{% endif %}"
+                                    href="{% url 'book_room' %}">Book Room</a>
+
                             </li>
-                  
+
                             {% if user.is_authenticated and user.is_staff %}
-                            <li class="nav-item dropdown">
+                            <li
+                                class="nav-item dropdown {% if check_pending_reservations or check_pending_reviews or check_pending_comments %}attention-required{% endif %}">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Admin
+                                </a>
+                                
+                                <span class="  attention-required">{{total_pending_count}}</span>
+                                
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <div class="dropdown-content">
                                         <div class="col">
                                             <a class="dropdown-item" href="{% url 'comment-approval-list' %}">
-                                                <img src="{% static 'images/icons/comment-icon.png' %}" alt="Comments" class="dropdown-icon"> Comments
+                                                <img src="{% static 'images/icons/comment-icon.png' %}" alt="Comments"
+                                                    class="dropdown-icon"> Comments
+                                                    <p class="pendings-count-number">{{ pending_comments_count }}</p>
+
                                             </a>
                                         </div>
                                         <div class="col">
                                             <a class="dropdown-item" href="{% url 'review-approval-list' %}">
-                                                <img src="{% static 'images/icons/review-icon.png' %}" alt="Reviews" class="dropdown-icon"> Reviews
+                                                <img src="{% static 'images/icons/review-icon.png' %}" alt="Reviews"
+                                                    class="dropdown-icon"> Reviews
+                                                    <p class="pendings-count-number">{{pending_reviews_count}}</p>
                                             </a>
                                         </div>
                                         <div class="col">
                                             <a class="dropdown-item" href="{% url 'reservation-approval-list' %}">
-                                                <img src="{% static 'images/icons/reservation-icon.png' %}" alt="Reservation" class="dropdown-icon"> Reservations
+                                                <img src="{% static 'images/icons/reservation-icon.png' %}"
+                                                    alt="Reservation" class="dropdown-icon"> Reservations
+                                                    
+                                                   <p class="pendings-count-number">{{pending_reservations_count}}</p></span>
+                                                   
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                            
-                        {% endif %}
+                            {% endif %}
                             {% if user.is_authenticated %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'user-notifications' %}">Profile</a>
+                                <span class="  attention-required">{{profile_total_pending_count}}</span>
+
                             </li>
                             {% endif %}
 
@@ -87,7 +104,7 @@
                                     aria-current="page" href="{% url 'account_logout' %}">Logout</a>
                             </li>
                             {% else %}
-                         
+
                             <li class="nav-item">
                                 <a class="nav-link {% if request.path == login_url %}active{% endif %}"
                                     aria-current="page" href="{% url 'account_login' %}">Login/Register</a>

@@ -6,30 +6,106 @@
     <h1 class="titles-position-style">Pending Comments</h1>
 
     {% if pending_comments %}
-    <ul class="list-class">
+    <div class="row">
         {% for comment in pending_comments %}
-        <li class="pending-item">
-            <div class="username-admin">
-                {{ comment.user }}
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card pending-item {% if comment.is_approved == 'approved' %}approved{% elif comment.is_approved == 'rejected' %}rejected{% endif %}">
+                <div class="card-body">
+                    <div class="username-admin">
+                        {{ comment.user }}
+                    </div>
+
+                    <div class="admin-content-text ">
+                        {{ comment.text }}
+                    </div>
+                  
+                   
+                    <div class="review-button-container mt-3">
+                        <a class="edit-button" href="{% url 'approve-comment' comment.id %}">Approve</a>
+                        <a class="delete-button" href="{% url 'reject-comment' comment.id %}">Reject</a>
+                    </div>
+                    <div >
+                        {{ comment.created_at }}
+                    </div>
+                </div>
             </div>
-            <div class="font-italic">
-                {{ comment.text }}
-            </div>
-            <div class="admin-button-container">
-                <a class="edit-button" href="{% url 'approve-comment' comment.id %}">Approve</a>
-                <a class="delete-button" href="{% url 'reject-comment' comment.id %}">Reject</a>
-            </div>
-            <div class="created_at-style">
-                {{ comment.created_at }}
-            </div>
-        </li>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
     {% else %}
     <div class="no-pending-item">
-    <p class="no-pending-item-text">No pending request.</p>
-</div>
+        <p class="no-pending-item-text">No pending comments.</p>
+    </div>
     {% endif %}
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('.edit-button').click(function(e) {
+
+            e.preventDefault();
+            var url = $(this).attr('href');
+            var $parentCard = $(this).closest('.pending-item'); // Find the parent .pending-item
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function(data) {
+                    $('.pending-item').removeClass('approved rejected');
+                    $parentCard.addClass('approved');
+                    $parentCard.find('.card-body').addClass('invisible');
+                    
+                    // Slide up and disappear after 2 seconds
+                    setTimeout(function() {
+                        $parentCard.slideUp(400, function() {
+                            $(this).remove(); 
+                            checkPendingItems(); // Check if any items left after removal
+                        });
+                    }, 2000);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        });
+    
+        $('.delete-button').click(function(e) {
+            e.preventDefault();
+            var url = $(this).attr('href');
+            var $parentCard = $(this).closest('.pending-item');
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function(data) {
+                    $('.pending-item').removeClass('approved rejected');
+                    $parentCard.addClass('rejected');
+                    $parentCard.find('.card-body').addClass('invisible');
+                 
+                    
+                    // Slide up and disappear after 2 seconds
+                    setTimeout(function() {
+                        $parentCard.slideUp(400, function() {
+                            $(this).remove(); 
+                            checkPendingItems(); // Check if any items left after removal
+                        });
+                    }, 2000);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        });
+    
+        function checkPendingItems() {
+            // Check if there are any pending items left
+            if ($('.pending-item').length === 0) {
+                // Reload the page after 2 seconds if no pending items are left
+                setTimeout(function() {
+                    location.reload();
+                }, 2000);
+            }
+        }
+    });
+    </script>
 {% endblock %}

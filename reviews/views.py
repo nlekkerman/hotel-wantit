@@ -7,6 +7,7 @@ from .forms import ReviewForm, CommentForm
 from django.db.models import Count, Q
 from django.views import generic
 from .models import Review, Comment
+from bookings.models import Reservation 
 import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -96,6 +97,7 @@ def log_star_rating(request):
         print(f'Star rating received: {rating}')
         return JsonResponse({'status': 'success', 'rating': rating})
     return JsonResponse({'status': 'fail'}, status=400)
+
 def review_success_message(request):
     return render(request, 'reviews/partials/review_success_message.html')
 
@@ -123,9 +125,6 @@ def edit_review(request, pk):
         form = ReviewForm(instance=review)
 
     return render(request, 'reviews/edit_review.html', {'form': form, 'review': review, 'show_modal': True})
-
-
-    
 
 @login_required
 def delete_review(request, pk):
@@ -185,6 +184,7 @@ def edit_comment(request, pk):
     return render(request, 'reviews/partials/edit_comment.html', {'form': form, 'comment': comment, 'show_modal': True})
 
 
+
 @login_required
 def add_comment(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
@@ -197,15 +197,16 @@ def add_comment(request, review_id):
             comment.user = request.user
             comment.status = Comment.PENDING  # Set comment status to pending
             comment.save()
-            messages.success(request, 'Your comment has been submitted and is pending approval.')
-            return redirect('review_detail', pk=review_id)  # Redirect to review detail page
+            # Redirect to the review success page
+            return render(request, 'reviews/partials/reviews_action_message.html', {
+                'object_type': 'comment',
+                'action_type': 'create',
+                'object_list_url': 'review-list'
+            })  
     else:
         form = CommentForm()
-    
-    # If the form is invalid or it's not a POST request, render the template with the form
+
     return render(request, 'add_comment.html', {'form': form, 'review': review})
-
-
 @staff_member_required
 def review_approval_list(request):
     pending_reviews = Review.objects.filter(status=0) 
@@ -216,7 +217,11 @@ def approve_review(request, review_id):
     review = get_object_or_404(Review, id=review_id)
     review.status = 1  # Approve the review
     review.save()
-    return redirect('review-approval-list')
+    return JsonResponse({'message': 'Review approved successfully'})
+
+
+    # Redirect to reservation_approval_list
+    return redirect('reservation-approval-list')
 
 @staff_member_required
 def reject_review(request, review_id):
@@ -238,7 +243,8 @@ def approve_comment(request, comment_id):
     comment.status = Comment.APPROVED
     comment.save()
     pending_comments = Comment.objects.filter(status=Comment.PENDING)
-    return render(request, 'reviews/partials/comment_approval_list.html', {'pending_comments': pending_comments})
+    return redirect('comment-approval-list')
+
 
 @staff_member_required
 def reject_comment(request, comment_id):
@@ -246,7 +252,7 @@ def reject_comment(request, comment_id):
     comment.status = Comment.REJECTED
     comment.save()
     pending_comments = Comment.objects.filter(status=Comment.PENDING)
-    return render(request, 'reviews/partials/comment_approval_list.html', {'pending_comments': pending_comments})
+    return redirect('comment-approval-list')
 
 
 @login_required

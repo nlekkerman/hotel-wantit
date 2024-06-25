@@ -1,43 +1,46 @@
+<!-- templates/reviews/partials/reviews_action_message.html -->
 {% extends "base.html" %}
 
-
 {% block content %}
-
 <div class="admin-user-container-styles">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="pending-reservation-card-container ">
-
-                <div class="card-body ">
+            <div class="pending-reservation-card-container">
+                <div class="card-body">
                     <h1 class="card-title titles-position-style">
                         {% if action_type == 'delete' %}
-                        {% if object_type == 'review' %}
-                        Review Deletion
-                        {% elif object_type == 'comment' %}
-                        Comment Deletion
-                        {% endif %}
+                            {% if object_type == 'review' %}
+                                Review Deletion
+                            {% elif object_type == 'comment' %}
+                                Comment Deletion
+                            {% endif %}
                         {% elif action_type == 'edit' %}
-                        {% if object_type == 'review' %}
-                        Edit Review
-                        {% elif object_type == 'comment' %}
-                        Edit Comment
-                        {% endif %}
+                            {% if object_type == 'review' %}
+                                Edit Review
+                            {% elif object_type == 'comment' %}
+                                Edit Comment
+                            {% endif %}
+                        {% elif action_type == 'create' %}
+                            {% if object_type == 'review' %}
+                                Create Review
+                            {% elif object_type == 'comment' %}
+                                Create Comment
+                            {% endif %}
                         {% endif %}
                     </h1>
                     <div class="pending-item" role="alert">
                         {% if action_type == 'delete' %}
-                        You have successfully deleted the {{ object_type }}.
+                            You have successfully deleted the {{ object_type }}.
                         {% elif action_type == 'edit' %}
-                        You have successfully edited the {{ object_type }}.
+                            You have successfully edited the {{ object_type }}.
+                        {% elif action_type == 'create' %}
+                            You have successfully created the {{ object_type }}.
                         {% endif %}
                     </div>
-
-                    <a href="{% url object_list_url %}" class="btn edit-button">Back to Reviews</a>
+                    <a href="{% url object_list_url %}" class="btn edit-button">Back</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</div>
-
 {% endblock %}

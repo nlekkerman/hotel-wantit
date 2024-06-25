@@ -15,24 +15,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
-from reviews import views
-from home import views
-from bookings import views
-from . import views
+from django.urls import path, include
 from django.views.generic import TemplateView
-
-
-
-
+from reviews import views as reviews_views
+from home import views as home_views
+from bookings import views as bookings_views
+from . import views as root_views
+from django_summernote import urls as summernote_urls
 
 urlpatterns = [
-    path('notifications/', views.user_notifications, name='user-notifications'),
-    path("", include("home.urls"), name="home"), 
-    path("accounts/", include("allauth.urls")),
+    path('notifications/', root_views.user_notifications, name='user-notifications'),
+    path('', include('home.urls')),  # Assuming 'home.urls' defines its own URL patterns
+    path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
-    path('summernote/', include('django_summernote.urls')),
-    path("", include("reviews.urls")),
-    path('bookings/', include('bookings.urls')),
-
+    path('summernote/', include(summernote_urls)),
+    path('reviews/', include('reviews.urls')),  # Example: Replace 'reviews.urls' with actual path
+    path('bookings/', include('bookings.urls')),  # Example: Replace 'bookings.urls' with actual path
+    path('admin_dashboard/', root_views.admin_dashboard, name='admin_dashboard'),
 ]

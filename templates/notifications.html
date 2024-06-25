@@ -17,7 +17,7 @@
                 {% for reservation in user_reservations %}
 
                 <div class="col-12 col-md-12 col-lg-6  mb-4 " href="{% url 'reservation_detail' reservation.id %}">
-                    <div class="card-body custom-div">
+                    <div class="custom-div">
 
                         <a href="{% url 'reservation_detail' reservation.id %}" class="h-100 text-decoration-none">
                             <div class="card-body reservations-details-content">
@@ -50,7 +50,7 @@
                 {% for review in user_pending_reviews %}
                 <div class="col-12 col-md-6 col-lg-4 mb-4">
                     <div class=" pending-item">
-                        <a href="#" onclick="openModal('modal_review_{{ review.id }}')"
+                        <a href="{% url 'review_detail' review.id %}"
                             class="h-100 text-decoration-none">
                             <div class="card-body custom-div">
                                 <p class="custom-card-title">REVIEW</p>
@@ -70,11 +70,13 @@
         <!-- Display pending comments -->
         <div class="notification-section">
             <h2>Pending Comments</h2>
+
+            <div class="row">
             <ul class="notification-list">
                 {% for comment in user_pending_comments %}
                 <li>
                     <div class="custom-div-profile">
-                        <a href="#" onclick="openModal('modal_comment_{{ comment.id }}')" class="review-text-profile">
+                        <a href="{% url 'review_detail' comment.id %}" class="review-text-profile">
                             <div class="review-details-profile">
                                 <p class="review-name-profile">{{ comment.user }}</p>
                                 <div class="review-text-profile">
@@ -89,6 +91,7 @@
                 <li>No pending comments found.</li>
                 {% endfor %}
             </ul>
+        </div>
         </div>
 
 

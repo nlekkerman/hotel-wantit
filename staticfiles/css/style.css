@@ -9,18 +9,48 @@
 /**HEADER**/
 
 body {
-    margin: 0; /* Removes default margin */
-    padding: 0; /* Removes default padding */
-    font-family: Arial, sans-serif; /* Sets the default font */
-    background-color: #f0f0f0; /* Sets a light grey background color */
-    color: #333; /* Sets the default text color */
-    line-height: 1.6; /* Sets the line height for better readability */
-    font-size: 16px; /* Sets the default font size */
+    margin: 0;
+    /* Removes default margin */
+    padding: 0;
+    /* Removes default padding */
+    font-family: Arial, sans-serif;
+    /* Sets the default font */
+    background-color: #f0f0f0;
+    /* Sets a light grey background color */
+    color: #333;
+    /* Sets the default text color */
+    line-height: 1.6;
+    /* Sets the line height for better readability */
+    font-size: 16px;
+    /* Sets the default font size */
 }
 
 hr {
     border: 3px solid #ccc;
     margin: 20px 0;
+}
+
+.pendings-count-number {
+    background-color: rgba(255, 0, 0, 0.7);
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    position: relative;
+    float: right;
+}
+
+.attention-required {
+    background-color: rgba(255, 0, 0, 0.7);
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    position: relative;
+    float: left;
+    margin-left: 50px;
+    padding: 0px !important;
+    bottom: 55px;
 }
 
 
@@ -406,6 +436,12 @@ label {
 }
 
 /* Style for the alternative-room container */
+
+.alternative-room-container {
+    margin: 0 !important;
+    padding: 5px !important;
+}
+
 .alternative-room {
     padding: 0px !important;
     margin: 5px 5px !important;
@@ -423,8 +459,9 @@ label {
 
 
 
+
 .reservation-title {
-    margin-top: 80px;
+    margin-top: 90px;
     margin-bottom: 30px;
     color: white;
     background-color: rgba(0, 0, 0, 0.8);
@@ -455,7 +492,7 @@ label {
 }
 
 .room-reservation-container {
-    
+
     background-color: rgba(1, 8, 0, 0.8);
     padding-bottom: 60px;
     color: white;
@@ -463,7 +500,7 @@ label {
     align-items: center;
     display: flex;
     width: 100%;
-  
+
 
 
 
@@ -714,21 +751,24 @@ label {
     background-repeat: no-repeat;
 }
 
-.edit-review-detail-content{
+.edit-review-detail-content {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+
 }
-.edit-review-detail-content h1{
+
+.edit-review-detail-content h1 {
     margin-top: 5rem;
-    
+
 }
+
 .edit-review-detail-content form p {
     display: flex;
     flex-direction: column;
 }
+
 .edit-review-detail-content form p textarea {
     border: 2px solid #ffffff;
     border-radius: 10px;
@@ -747,6 +787,7 @@ label {
     justify-content: center;
     align-items: center;
 }
+
 .review-detail-username {
     display: inline-block;
     text-align: right;
@@ -754,7 +795,7 @@ label {
     font-weight: 600;
     padding: 0.5rem;
     color: white;
-    
+
 }
 
 /* CSS for reviews page */
@@ -1025,6 +1066,7 @@ label {
     box-sizing: border-box;
     resize: vertical;
 }
+
 .custom-textarea:focus {
     border-color: #66afe9;
     outline: none;
@@ -1034,13 +1076,10 @@ label {
 
 .floating-button {
     position: fixed;
-    top: 75px;
+    top: 90px;
     left: 20px;
-    background-color: #bd1010;
     color: #fff;
     padding: 5px 10px;
-    border: 2px solid #c0c0c0;
-    border-radius: 20px;
     cursor: pointer;
     z-index: 1000;
     animation: slideInFromLeft 1.3s ease-in-out;
@@ -1146,17 +1185,27 @@ label {
     list-style-type: none;
     /* Remove default list styles (bullets) */
     padding: 0;
+    margin: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
-
-.custom-div {}
-
+.review-text-profile{
+    background-color:rgba(0, 0, 0, 0.5);
+    
+}
+.review-name-profile{
+    background-color: #ff0000;
+    padding-left: 10px;
+}
 .notification-list li {
-    padding: 10px;
+    
     margin-bottom: 5px;
     background-color: rgba(0, 0, 0, 0.6);
     border-left: 5px solid silver;
     color: rgb(255, 255, 255);
-    max-width: 100%;
+    margin: 2px;
+    text-transform: capitalize;
 }
 
 .notification-list li a {
@@ -1197,8 +1246,7 @@ label {
     margin: 0px;
     padding: 5px;
     display: flex;
-    justify-content: center;
-    flex-direction:column;
+    flex-direction: column;
 }
 
 /*CUSTOM BUTTONS*/
@@ -1207,11 +1255,12 @@ label {
 }
 
 .edit-button {
-    background-color: rgba(0, 255, 0, 0.5);
+    background-color: rgba(0, 255, 0, 0.6);
     color: white !important;
     padding: 2px 5px;
     font-weight: 500;
     margin-right: 5px;
+    text-align: center;
 }
 
 .delete-button {
@@ -1225,6 +1274,8 @@ label {
 .edit-button:hover {
     background-color: rgba(0, 123, 255, 0.5);
     border: 1px solid #ffffff;
+    color: black;
+    border: 1px solid black;
 }
 
 .delete-button:hover {
@@ -1312,7 +1363,9 @@ label {
 
 
 /* Custom Styles for Signup Form */
-.margin-top-style{ margin-top: 70px;}
+.margin-top-style {
+    margin-top: 70px;
+}
 
 .card {
     border: none;
@@ -1333,7 +1386,6 @@ label {
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 .card-body a {
@@ -1709,7 +1761,7 @@ form.signup button {
     width: 30%;
     float: right;
     position: absolute;
-    right: 18px;
+    right: 25px;
 }
 
 .custom-card-title {
@@ -1722,13 +1774,27 @@ form.signup button {
 
 #result {
     width: 100%;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.availability-message {
+    font-size: 16px;
+    color: red !important;
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 1);
+    width: 100%;
 }
 
 #result p {
     text-align: center;
-    margin-top: 20px;
     color: white;
     font-weight: 500;
+    padding-left: 5px;
+    margin: 5px;
+    margin-top: 20px;
+
 }
 
 .available-badge {
@@ -1942,15 +2008,26 @@ form.signup button {
 
 .card-title {
     font-size: 1.5em;
-    margin-bottom: 10px;
+    margin-bottom: 0px !important;
     color: rgb(255, 255, 255);
-    font-weight: 500;
+    width: 100%;
+    background-color: rgba(28, 58, 0, 0.7);
+    text-align: center;
+    font-weight: 700;
+    text-transform: capitalize;
 }
 
 .card-text {
     font-size: 1em;
     color: silver;
     height: 70px;
+    padding: 5px;
+}
+
+.card-price {
+    width: 100%;
+    text-align: center;
+    color: white;
 }
 
 .additional-row-styles {
@@ -2085,12 +2162,25 @@ label {
 }
 
 /* ALTERNATE ROOMS */
+
+.alternate-room-description {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+}
+
+.alternate-room-price {
+    font-weight: 700 !important;
+    background-color: red;
+}
+
 .alternative-room {
     border: 1px solid #ccc;
     padding: 0px !important;
     margin: 5 !important;
     margin-bottom: 20px;
     color: white;
+    display: flex;
+    flex-direction: column;
 
 }
 
@@ -2103,12 +2193,11 @@ label {
 }
 
 .alternative-room button {
-    background-color: rgba(255, 0, 0, 0.9);
-    color: white;
-    padding: 10px !important;
-    border-radius: 20px !important;
-    border: 3px solid rgba(255, 255, 255, 0.9) !important;
-    margin-bottom: 1px !important;
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .alternative-room-details {
@@ -2120,16 +2209,14 @@ label {
 }
 
 .alternative-room button {
-    background-color: #b30000;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
 }
 
 .alternative-room button:hover {
-    background-color: #0056b3;
+    background-color: #f9fafb;
+    color: black;
 }
 
 
@@ -2150,8 +2237,8 @@ label {
 .custom-reservation-modal,
 .custom-thankyou-modal,
 .custom-modal {
-    background-color: rgba(0, 0, 0, 0.5);
-    top: 40%;
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 20%;
 
     /* Semi-transparent background */
 }
@@ -2356,10 +2443,12 @@ label {
 
 .check_avialability_container {
     min-height: 100vh;
-    background-image: url("../images/room6.jpg");
+    background-image: url("../images/room7.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Style for the date input fields */
@@ -2437,9 +2526,8 @@ label {
     padding: 10px;
     margin-top: 20px;
     color: white;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.7);
 
-    border: 2px solid rgba(255, 255, 255, 1);
     text-align: center;
     font-size: 1.5rem;
 }
@@ -2569,8 +2657,9 @@ label {
     }
 
     .reservation-title {
-      
-        margin-top: 70px;
+
+        margin-top: 120px;
+        font-size: 2rem;
         padding-left: 10px;
 
     }
@@ -2612,7 +2701,7 @@ label {
 
     #confirmationModal {
         margin: 0 auto;
-        top: 40%;
+        top: 20%;
     }
 
     .avbar .dropdown-item img.dropdown-icon {

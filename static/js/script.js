@@ -52,7 +52,35 @@ function nextSlide() {
         slides[currentSlide].style.left = '0';
     } else {}
 }
+$(document).ready(function () {
+    fetchAdminDashboardData();
+    console.log("ADMINANDNASMASNADN");
 
+    function fetchAdminDashboardData() {
+        console.log("BBBBBBBBBBBBBBBBBBBBBBBBB");
+
+        $.ajax({
+            url: '{% url "admin_dashboard" %}',
+            method: 'GET',
+            success: function (data) {
+                handleAdminDashboardData(data);
+
+            },
+            error: function (xhr, status, error) {
+                console.error('Error fetching admin dashboard data:', xhr.responseText);
+            }
+        });
+    }
+
+    function handleAdminDashboardData(data) {
+        
+        if (data.total_pending > 0) {
+            $('#attentionMessage').show();  // Show the attention message
+        } else {
+            $('#attentionMessage').hide();  // Hide the attention message
+        }
+    }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     showSlide(currentSlide);
