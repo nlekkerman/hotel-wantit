@@ -1259,7 +1259,7 @@ label {
 .edit-button {
     background-color: rgba(0, 255, 0, 0.6);
     color: white !important;
-    padding: 2px 5px;
+    padding: 2px 5px !important;
     font-weight: 500;
     margin-right: 5px;
     text-align: center;

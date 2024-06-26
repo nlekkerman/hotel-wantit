@@ -151,6 +151,8 @@ $(document).ready(function () {
     });
 
     $('#confirmReservationBtn').click(function () {
+
+      is_discount = false
         var formData = $('#reservation-form').serialize();
         $.ajax({
             type: 'POST',
