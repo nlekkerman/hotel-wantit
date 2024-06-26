@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+ {% load static %}
+
+{% block content %}
+<div class="login-out-container mt-4">
+    
+    <div class="logo-container">
+        <img id="logo" src="{% static 'images/hv-logo.jpg' %}" alt="Logo Image">
+        <p>Hotel Wantit</p>
+    </div>
+    <h3 class="text-white signup-title p-2">Admin Dashboard</h3>
+    <div class="row">
+        <!-- Reservations Card -->
+        <div class="col-md-4">
+            <a href="{% url 'reservation-approval-list' %}" class="card-link">
+                <div class=" text-white card-body reservations-details-conten">
+                    <p class="attention-required">You have: {{ pending_reservations_count }} reservations</p>
+
+                    <div class="pending-reservation-item">
+                        <h5 class="card-title">Reservations</h5>
+                        <p class="card-text">Manage and approve reservations.</p>
+                        <div></div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- Comments Card -->
+        <div class="col-md-4">
+            <a href="{% url 'comment-approval-list' %}" class="card-link">
+                <div class=" text-white card-body reservations-details-conten">
+                    <p class="attention-required">You have: {{ pending_comments_count }} comment</p>
+
+                    <div class="pending-reservation-item">                       
+                        <h5 class="card-title">Comments</h5>
+                        <p class="card-text">Review and moderate comments.</p>
+                        <div></div>
+
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- Reviews Card -->
+        <div class="col-md-4">
+            <a href="{% url 'review-approval-list' %}" class="card-link">
+                <div class=" text-white card-body reservations-details-conten">
+                    <p class="attention-required">You have: {{ pending_reviews_count }} reviews</p>
+
+                    <div class="pending-reservation-item">
+                        <h5 class="card-title">Reviews</h5>
+                        <p class="card-text">Approve and manage reviews.</p>
+                        <div></div>
+
+
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <div class="dropdown-content">
+        <div class="col">
+            <a class="dropdown-item" href="{% url 'comment-approval-list' %}">
+                <img src="{% static 'images/icons/comment-icon.png' %}" alt="Comments" class="dropdown-icon"> Comments
+            </a>
+        </div>
+        <div class="col">
+            <a class="dropdown-item" href="{% url 'review-approval-list' %}">
+                <img src="{% static 'images/icons/review-icon.png' %}" alt="Reviews" class="dropdown-icon"> Reviews
+            </a>
+        </div>
+        <div class="col">
+            <a class="dropdown-item" href="{% url 'reservation-approval-list' %}">
+                <img src="{% static 'images/icons/reservation-icon.png' %}" alt="Reservation" class="dropdown-icon"> Reservations
+            </a>
+        </div>
+    </div>
+</div>

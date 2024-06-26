@@ -75,7 +75,7 @@ $(document).ready(function () {
     function handleAdminDashboardData(data) {
         
         if (data.total_pending > 0) {
-            $('#attentionMessage').show();  // Show the attention message
+            $('.attention-required').show();  // Show the attention message
         } else {
             $('#attentionMessage').hide();  // Hide the attention message
         }

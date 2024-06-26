@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
-{% url 'review-list' as review_list_url %}
 
 {% block content %}
-
 <div class="main-content-background">
     <div class="logo-container">
         <img id="logo" src="{% static 'images/hv-logo.jpg' %}" alt="Logo Image">
@@ -16,7 +14,15 @@
                 <div class="overlay">
                     <p>Get 10% off on Deluxe Room</p>
                 </div>
-                <button class="action-button">Book Now</button>
+                <button class="action-button discount-button" id="bookNowBtn">Book Now</button>
+                <div id="discountCheckboxContainer" style="display: none;">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="applyDiscountCheckbox" name="apply_discount">
+                            <label class="form-check-label" for="applyDiscountCheckbox">Check to apply discount</label>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="slide" id="slide2">
                 <img src="{% static 'images/room2.jpg' %}" alt="Renovation Image">
@@ -51,6 +57,37 @@
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Check if is_discount is already stored in local storage
+        let is_discount = localStorage.getItem('is_discount') === 'true';
+    
+        // Log initial value
+        console.log("is_discount initial:", is_discount);
+    
+        $('#bookNowBtn').click(function (event) {
+            event.preventDefault();  // Prevent the default action
+            
+            // Set is_discount to true
+            is_discount = true;
+    
+            // Log updated value
+            console.log("is_discount:", is_discount);
+    
+            // Store updated value in local storage
+            localStorage.setItem('is_discount', is_discount.toString());
+    
+            // Get the base URL from the href attribute
+            var baseUrl = "{% url 'book_room' %}";
+            // Append the query parameter
+            var newUrl = baseUrl + '?is_discount=' + is_discount;
+            // Redirect to the new URL
+            window.location.href = newUrl;
+        });
+    });
+    </script>
+    
 
-<!-- index.html content ends here -->
+
 {% endblock %}

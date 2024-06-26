@@ -10,7 +10,8 @@
       <p><strong>Room Number:</strong> {{ room.room_number }}</p>
       <p><strong>Type:</strong> {{ room.room_type }}</p>
       <p><strong>Description:</strong> {{ room.description }}</p>
-      <p><strong>Price per Night:</strong> $<span id="pricePerNight" data-price="{{ room.price }}">{{ room.price }}</span></p>
+      <p><strong>Price per Night:</strong> $<span id="pricePerNight"
+          data-price="{{ room.price }}">{{ room.price }}</span></p>
 
       {% if room.featured_image %}
       <img src="{{ room.featured_image.url }}" alt="Room Image" class="room-info_image">
@@ -20,13 +21,23 @@
     </div>
 
     <div class="col-md-6">
-      <div class="available-badge"><p>AVAILABLE</p></div>
+      <div class="available-badge">
+        <p>AVAILABLE</p>
+      </div>
 
       <h4>Reservation Form</h4>
 
       <form id="reservation-form" method="post" action="{% url 'reserve_room' room.id %}">
         {% csrf_token %}
+
         <input type="hidden" id="id_room_id" name="room_id" value="{{ room.id }}">
+
+        <div id="check-box-visibility-style">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="applyDiscountCheckbox" name="apply_discount">
+            <label class="form-check-label" for="applyDiscountCheckbox">Check to apply discount</label>
+          </div>
+        </div>
 
         <div class="form-group">
           <label for="id_name" class="label-name">Name:</label>
@@ -38,18 +49,21 @@
         </div>
         <div class="form-group">
           <label for="id_phone" class="label-phone">Phone:</label>
-          <input type="tel" id="id_phone" name="phone" class="form-control" placeholder="Enter your phone number" required>
+          <input type="tel" id="id_phone" name="phone" class="form-control" placeholder="Enter your phone number"
+            required>
         </div>
         <div class="form-group">
           <label for="id_checkin_date" class="label-checkin-date">Check-in Date:</label>
-          <input type="date" id="id_checkin_date" name="checkin_date" class="form-control hidden-input" value="{{ form.initial.checkin_date }}" required>
+          <input type="date" id="id_checkin_date" name="checkin_date" class="form-control hidden-input"
+            value="{{ form.initial.checkin_date }}" required>
           <div class="date-display">{{ form.initial.checkin_date }}</div>
-      </div>
-      <div class="form-group">
+        </div>
+        <div class="form-group">
           <label for="id_checkout_date" class="label-checkout-date">Check-out Date:</label>
-          <input type="date" id="id_checkout_date" name="checkout_date" class="form-control hidden-input" value="{{ form.initial.checkout_date }}" required>
+          <input type="date" id="id_checkout_date" name="checkout_date" class="form-control hidden-input"
+            value="{{ form.initial.checkout_date }}" required>
           <div class="date-display">{{ form.initial.checkout_date }}</div>
-      </div>
+        </div>
 
         <button type="submit" class="btn edit-button" id="reserveButton">Reserve Room</button>
       </form>
@@ -57,9 +71,10 @@
   </div>
 </div>
 
-<div class="modal" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+<div class="modal" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog custom-modal-dialog">
-    <div class="modal-content ">
+    <div class="modal-content">
       <div class="modal-header custom-modal-header">
         <h5 class="modal-title">Confirm Reservation</h5>
         <button type="button" class="close custom-close custom-buttons" data-dismiss="modal">&times;</button>
@@ -76,7 +91,8 @@
   </div>
 </div>
 
-<div class="modal fade custom-reservation-modal" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+<div class="modal fade custom-reservation-modal" id="reservationModal" tabindex="-1"
+  aria-labelledby="reservationModalLabel" aria-hidden="true">
   <div class="modal-dialog custom-reservation-modal-dialog">
     <div class="modal-content custom-reservation-modal-content">
       <div class="modal-header custom-reservation-modal-header">
@@ -87,13 +103,15 @@
         <!-- Reservation details will be inserted here -->
       </div>
       <div class="modal-footer custom-reservation-modal-footer">
-        <button type="button" class="btn custom-buttons" data-bs-dismiss="modal" id="reservation_modal_close_button">Exit</button>
+        <button type="button" class="btn custom-buttons" data-bs-dismiss="modal"
+          id="reservation_modal_close_button">Exit</button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal fade custom-thankyou-modal" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
+<div class="modal fade custom-thankyou-modal" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog custom-thankyou-modal-dialog">
     <div class="modal-content custom-thankyou-modal-content">
       <div class="modal-header custom-thankyou-modal-header">
@@ -101,7 +119,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body custom-thankyou-modal-body">
-        <p>Thank you for choosing us as your home. We hope you have a pleasant stay! Your reservation is received and waiting for confirmation</p>
+        <p>Thank you for choosing us as your home. We hope you have a pleasant stay! Your reservation is received and
+          waiting for confirmation</p>
       </div>
       <div class="modal-footer custom-thankyou-modal-footer">
         <button id="thankYouCloseBtn" type="button" class="btn custom-buttons" data-bs-dismiss="modal">Close</button>
@@ -112,50 +131,93 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-  $(document).ready(function() {
-    $('#reservation-form').submit(function(event) {
-      event.preventDefault();
-      $('#confirmationModal').modal('show');
+
+$(document).ready(function () {
+    // Retrieve is_discount from local storage
+    let is_discount = localStorage.getItem('is_discount') === 'true';
+
+
+    // Show or hide check-box-visibility-style based on is_discount
+    if (is_discount) {
+        $('#check-box-visibility-style').show();
+    } else {
+        $('#check-box-visibility-style').hide();
+    }
+    console.log("Initial is_discount value:", is_discount);
+  
+    $('#reservation-form').submit(function (event) {
+        event.preventDefault();
+        $('#confirmationModal').modal('show');
     });
 
-    $('#confirmReservationBtn').click(function() {
-      var formData = $('#reservation-form').serialize();
-      $.ajax({
-        type: 'POST',
-        url: '{% url "reserve_room" room.id %}',
-        data: formData,
-        dataType: 'json',
-        success: function(data) {
-          if (data.room_number) {
-            $('#reservationModalBody').html(
-              '<p><strong>Room Number:</strong> ' + data.room_number + '</p>' +
-              '<p><strong>Room Type:</strong> ' + data.room_type + '</p>' +
-              '<p><strong>Check-in Date:</strong> ' + data.checkin_date + '</p>' +
-              '<p><strong>Check-out Date:</strong> ' + data.checkout_date + '</p>' +
-              '<p><strong>Total Price:</strong> $' + data.total_price + '</p>'
-            );
-            $('#reservationModal').modal('show');
-            $('#reservation_modal_close_button').click(function() {
-              $('#reservationModal').modal('hide');
-              $('#thankYouModal').modal('show');
-            });
-          } else {
-            console.error('Error: Room not available or other error');
-          }
-        },
-        error: function(error) {
-          console.error('Error:', error);
-        },
-        complete: function() {
-          $('#confirmationModal').modal('hide');
+    $('#confirmReservationBtn').click(function () {
+        var formData = $('#reservation-form').serialize();
+        $.ajax({
+            type: 'POST',
+            url: '{% url "reserve_room" room.id %}',
+            data: formData,
+            dataType: 'json',
+            success: function (data) {
+                if (data.room_number) {
+                    // Prepare the HTML for reservation details
+                    var reservationDetailsHtml =
+                        '<p><strong>Room Number:</strong> ' + data.room_number + '</p>' +
+                        '<p><strong>Room Type:</strong> ' + data.room_type + '</p>' +
+                        '<p><strong>Check-in Date:</strong> ' + data.checkin_date + '</p>' +
+                        '<p><strong>Check-out Date:</strong> ' + data.checkout_date + '</p>' +
+                        '<p><strong>Price:</strong> ' + data.total_price + '</p>';
+
+                    // Prepare the HTML for discount applied info based on is_discount
+                    var discountAppliedHtml = '';
+                    if (is_discount) {
+                        discountAppliedHtml = '<p><span class="badge bg-success">10% Discount Applied</span></p>';
+                    }
+
+                    // Combine reservation details and discount info
+                    var modalContentHtml = reservationDetailsHtml + discountAppliedHtml;
+
+                    // Update modal body with content
+                    $('#reservationModalBody').html(modalContentHtml);
+
+                    // Show the modal
+                    $('#reservationModal').modal('show');
+
+                    // Set up close button behavior
+                    $('#reservation_modal_close_button').click(function () {
+                        $('#reservationModal').modal('hide');
+                        $('#thankYouModal').modal('show');
+                    });
+                } else {
+                    console.error('Error: Room not available or other error');
+                }
+            },
+            error: function (error) {
+                console.error('Error:', error);
+            },
+            complete: function () {
+                $('#confirmationModal').modal('hide');
+            }
+        });
+    });
+
+    $('#thankYouCloseBtn').click(function () {
+        window.location.href = "{% url 'home' %}";
+    });
+
+    // Check if apply discount checkbox is checked
+    $('#applyDiscountCheckbox').change(function () {
+        var isChecked = $(this).is(':checked');
+        if (isChecked) {
+            // Apply 10% discount logic here (if needed on client-side)
+            // You can add client-side logic here if you want to update UI
+            console.log('Discount applied');
+        } else {
+            console.log('Discount not applied');
         }
-      });
     });
+});
 
-    $('#thankYouCloseBtn').click(function() {
-      window.location.href = "{% url 'home' %}";
-    });
-  });
+
 </script>
 
 {% endblock %}

@@ -20,7 +20,7 @@
         <!-- Add more details as needed -->
 
         <!-- Button to trigger cancellation modal -->
-        <button id="openCancelModal" class="btn custom-buttons cancellation_buton_style">Cancel Reservation</button>
+        <button id="openCancelModal" class="btn delete-button m-5">Cancel Reservation</button>
     </div>
 
     <!-- Modal for cancellation confirmation -->
@@ -34,7 +34,7 @@
             <p class="reservations-details-content">Are you sure you want to cancel this reservation?</p>
             <form id="cancelReservationForm" data-reservation-id="{{ reservation.id }}">
                 {% csrf_token %}
-                <button type="submit" class="btn custom-buttons">Confirm Cancellation</button>
+                <button type="submit" class="btn delete-button">Confirm Cancellation</button>
 
             </form>
         </div>

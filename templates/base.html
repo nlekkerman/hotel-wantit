@@ -51,49 +51,19 @@
                             </li>
 
                             {% if user.is_authenticated and user.is_staff %}
-                            <li
-                                class="nav-item dropdown {% if check_pending_reservations or check_pending_reviews or check_pending_comments %}attention-required{% endif %}">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <li class="nav-item {% if total_pending_count %}attention-required{% endif %}">
+                                <a class="nav-link" href="{% url 'admin-interface' %}">
                                     Admin
                                 </a>
-                                
-                                <span class="  attention-required">{{total_pending_count}}</span>
-                                
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <div class="dropdown-content">
-                                        <div class="col">
-                                            <a class="dropdown-item" href="{% url 'comment-approval-list' %}">
-                                                <img src="{% static 'images/icons/comment-icon.png' %}" alt="Comments"
-                                                    class="dropdown-icon"> Comments
-                                                    <p class="pendings-count-number">{{ pending_comments_count }}</p>
-
-                                            </a>
-                                        </div>
-                                        <div class="col">
-                                            <a class="dropdown-item" href="{% url 'review-approval-list' %}">
-                                                <img src="{% static 'images/icons/review-icon.png' %}" alt="Reviews"
-                                                    class="dropdown-icon"> Reviews
-                                                    <p class="pendings-count-number">{{pending_reviews_count}}</p>
-                                            </a>
-                                        </div>
-                                        <div class="col">
-                                            <a class="dropdown-item" href="{% url 'reservation-approval-list' %}">
-                                                <img src="{% static 'images/icons/reservation-icon.png' %}"
-                                                    alt="Reservation" class="dropdown-icon"> Reservations
-                                                    
-                                                   <p class="pendings-count-number">{{pending_reservations_count}}</p></span>
-                                                   
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                                <span class="hide-counts {% if total_pending_count %} pending-total-count {% endif %}">{{ total_pending_count }}</span>
                             </li>
-                            {% endif %}
+                            
+                        {% endif %}
+                        
                             {% if user.is_authenticated %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'user-notifications' %}">Profile</a>
-                                <span class="  attention-required">{{profile_total_pending_count}}</span>
+                                <a class="nav-link  {% if profile_total_pending_count %} attention-required{% endif %}" href="{% url 'user-notifications' %}">Profile</a>
+                                <span class="hide-counts{% if profile_total_pending_count %} pending-total-count {% endif %}">{{profile_total_pending_count}}</span>
 
                             </li>
                             {% endif %}
@@ -113,33 +83,6 @@
                         </ul>
                     </div>
                 </nav>
-            </div>
-        </div>
-
-        <div class="floating-chat-container">
-            <div class="floating-chat" id="chatButton">
-                <i class="fas fa-comments"></i> Chat
-            </div>
-            <div class="chat-window" id="chatWindow">
-                <div class="chat-header">
-                    Chat
-                    <span class="close-chat" id="closeChat">&times;</span>
-                </div>
-                <div class="chat-body">
-                    <div class="chat-message">
-                        <p class="avatar"><strong>Concierge</strong></p>
-                        <div class="message-content">Hello! How can I help you?</div>
-                    </div>
-                    <div class="chat-message">
-                        <p class="avatar"><strong>Username</strong></p>
-                        <div class="message-content">I have a question about my booking.</div>
-                    </div>
-                    <!-- More chat messages can be added here -->
-                </div>
-                <div class="chat-footer">
-                    <input type="text" placeholder="Type a message..." id="chatInput">
-                    <button id="sendButton">Send</button>
-                </div>
             </div>
         </div>
     </header>

@@ -39,3 +39,9 @@ def admin_dashboard(request):
     # Construct a JSON response with your context data
     return JsonResponse(context)
 
+def admin_interface(request):
+    context = {
+        'title': 'Admin Interface',
+        # Add any other context variables you need
+    }
+    return render(request, 'admin_interface.html', context)

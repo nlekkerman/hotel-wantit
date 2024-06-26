@@ -22,6 +22,7 @@ from home import views as home_views
 from bookings import views as bookings_views
 from . import views as root_views
 from django_summernote import urls as summernote_urls
+from . import views
 
 urlpatterns = [
     path('notifications/', root_views.user_notifications, name='user-notifications'),
@@ -32,4 +33,5 @@ urlpatterns = [
     path('reviews/', include('reviews.urls')),  # Example: Replace 'reviews.urls' with actual path
     path('bookings/', include('bookings.urls')),  # Example: Replace 'bookings.urls' with actual path
     path('admin_dashboard/', root_views.admin_dashboard, name='admin_dashboard'),
+    path('admin-interface/', views.admin_interface, name='admin-interface'),
 ]

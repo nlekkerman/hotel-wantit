@@ -14,10 +14,11 @@ from django.views.decorators.http import require_POST
 from django.views.decorators.http import require_GET
 from django.db.models import Q  
 from django.core import serializers
+from decimal import Decimal
+
 
 
 logger = logging.getLogger(__name__)
-
 
 @login_required
 def reserve_room(request, room_id):
@@ -33,10 +34,18 @@ def reserve_room(request, room_id):
             checkin_date = form.cleaned_data['checkin_date']
             checkout_date = form.cleaned_data['checkout_date']
 
+            # Calculate price per night and total nights
             price_per_night = room.price
             total_nights = (checkout_date - checkin_date).days
-            total_price = price_per_night * total_nights
 
+            # Check if discount checkbox is checked
+            apply_discount = request.POST.get('apply_discount') == 'on'
+            if apply_discount:
+                total_price = calculate_discounted_price(price_per_night, total_nights)
+            else:
+                total_price = price_per_night * total_nights
+
+            # Create reservation object
             reservation = Reservation.objects.create(
                 user=request.user,
                 room=room,
@@ -77,8 +86,17 @@ def reserve_room(request, room_id):
 
     return render(request, 'bookings/reservation.html', {'form': form, 'room': room})
 
+def calculate_discounted_price(price_per_night, total_nights):
+    # Convert to Decimal for precision
+    price_per_night_decimal = Decimal(str(price_per_night))
+    total_nights_decimal = Decimal(str(total_nights))
+    
+    # Calculate discounted price with 10% discount
+    discounted_price = price_per_night_decimal * total_nights_decimal * Decimal('0.9')
+    return discounted_price
 
 
+    
 def book_room(request):
     return render(request, 'bookings/book_room.html')
 
