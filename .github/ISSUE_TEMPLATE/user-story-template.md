@@ -9,7 +9,7 @@ assignees: ''
 
 As a **role** I can **capability** so that **received benefit**
 
-I know I'm done when;
+**ACCEPTANCE CRITERIA**
 
 -AC1- **CRITERIA**
 -AC2- **CRITERIA**
