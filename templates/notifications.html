@@ -12,7 +12,7 @@
 
     <div class="container-profile">
         <div class="notification-section">
-            <h2 class="titles-position-style">Reservations</h2>
+            <h2 class="p-4 titles-position-style">Reservations</h2>
             <div class="row ">
                 {% for reservation in user_reservations %}
 
@@ -45,14 +45,14 @@
 
         <!-- Display pending reviews -->
         <div class="notification-section">
-            <h2 class="titles-position-style">Pending Reviews</h2>
+            <h2 class="p-4 titles-position-style">Pending Reviews</h2>
             <div class="row">
                 {% for review in user_pending_reviews %}
                 <div class="col-12 col-md-6 col-lg-4 mb-4">
-                    <div class=" pending-item">
+                    <div class=" pending-item card-body">
                         <a href="{% url 'review_detail' review.id %}"
                             class="h-100 text-decoration-none">
-                            <div class="card-body custom-div">
+                            <div class=" custom-div">
                                 <p class="custom-card-title">REVIEW</p>
                                 <p class="user-title">{{ review.user }}</p>
                                 <div class="review-text multi-line-truncate">"{{ review.review }}"</div>
@@ -69,18 +69,18 @@
 
         <!-- Display pending comments -->
         <div class="notification-section">
-            <h2>Pending Comments</h2>
+            <h2 class="p-4 titles-position-style">Pending Comments</h2>
 
             <div class="row">
             <ul class="notification-list">
                 {% for comment in user_pending_comments %}
                 <li>
-                    <div class="custom-div-profile">
-                        <a href="{% url 'review_detail' comment.id %}" class="review-text-profile">
+                    <div class="custom-div-profile card-body">
+                        <a href="{% url 'review_detail' comment.review.id %}" >
                             <div class="review-details-profile">
                                 <p class="review-name-profile">{{ comment.user }}</p>
-                                <div class="review-text-profile">
-                                    "{{ comment.text }}"
+                                <div class="review-text-profile"><strong>
+                                    "{{ comment.text }}"</strong>
                                 </div>
                                 <p class="review-created-at-profile">{{ comment.created_at }}</p>
                             </div>

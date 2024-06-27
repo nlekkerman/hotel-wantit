@@ -38,13 +38,19 @@ hr {
     display: block;
 }
 
-.display-pendings{
+.display-pendings {
 
     display: block !important;
 }
 
+
+
 .attention-required {
-    background-color: rgba(255, 183, 0, 0.7);
+    background-image: url("../images/attention-required.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 !important;
     text-align: center;
     width: 100% !important;
 
@@ -248,6 +254,16 @@ hr {
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
     z-index: 1;
 }
+
+/* Active link style */
+.avbar .nav-link.active {
+    font-weight: 900;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border-bottom: 3px solid white;
+    font-size: 1.4rem;
+}
+
 
 .avbar .dropdown-item {
     color: white;
@@ -895,13 +911,23 @@ label {
     text-overflow: ellipsis;
 }
 
+.review-created-at-profile {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    height: 100%;
+    padding: 5px;
+}
+
 .review-text-profile {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0;
+    padding-left: 5px;
 }
 
 .review-text {
@@ -916,6 +942,7 @@ label {
     white-space: normal;
     margin-top: 20px !important;
     background-color: rgba(0, 0, 0, 0.5) !important;
+
 
 
 
@@ -1099,11 +1126,12 @@ label {
 
 /* AUTHENTICATION STYLES */
 
-.signup-title{
+.signup-title {
     background-color: rgba(0, 0, 0, 0.7) !important;
     font-weight: 700 !important;
     font-size: 2rem !important;
 }
+
 .login-out-container {
     display: flex;
     flex-direction: column;
@@ -1197,20 +1225,24 @@ label {
     list-style-type: none;
     /* Remove default list styles (bullets) */
     padding: 0;
-    margin: 20px;
+    margin: 10px;
     width: 100%;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
 }
 
-.review-text-profile {
-    background-color: rgba(0, 0, 0, 0.5);
-
-}
 
 .review-name-profile {
-    background-color: #ff0000;
-    padding-left: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    margin: 0 !important;
+    font-size: 1.2rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
 }
 
 .notification-list li {
@@ -1227,12 +1259,19 @@ label {
     text-decoration: none;
     color: rgb(255, 255, 255);
     max-width: 100%;
+    height: 100%;
 }
 
-.notification-list li a:hover {
-    color: #007bff;
-    /* Hover color for links */
-    text-decoration: underline;
+.custom-div-profile {
+    padding: 5px;
+}
+
+.custom-div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
 }
 
 .close {
@@ -1272,7 +1311,7 @@ label {
 .edit-button {
     background-color: rgba(0, 255, 0, 0.6);
     color: white !important;
-    padding: 10px 15px;
+    padding: 5px 10px;
     font-weight: 500;
     margin-right: 5px;
     text-align: center;
@@ -1401,11 +1440,18 @@ label {
     width: 100%;
     display: flex;
     flex-direction: column;
+
 }
 
 .card-body a {
-    width: 120px;
+    width: 100%;
     margin: 0 auto;
+}
+
+.review-details-profile {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .card-body h1 {
@@ -1661,10 +1707,19 @@ form.signup button {
     margin: 5;
 }
 
+.edit-comment-container h1 {
+    width: 100%;
+    padding: 10px;
+    color: white;
+    font-weight: 500;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 .edit-comment-container {
     margin: 0 !important;
     min-height: 100vh;
     text-align: center;
+    padding: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1941,6 +1996,8 @@ form.signup button {
 .pending-item a {
     color: #ffffff;
     text-decoration: none;
+    width: 100%;
+    height: 100%;
 }
 
 .admin-content-text {
@@ -1961,7 +2018,7 @@ form.signup button {
 .titles-position-style {
     margin-top: 90px;
     color: white;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(50, 0, 0, 0.8);
 }
 
 .username-admin {
@@ -2539,7 +2596,7 @@ label {
 
 .hide-counts {
     display: none;
-    
+
 }
 
 .form-room-title {
@@ -2758,18 +2815,12 @@ label {
         width: 50%;
     }
 
-.admin-count-container{
-    background-color: #000;
-    display: block;
-}
-    .attention-required {
-        background-image: url("../images/attention-required.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 100%;
-        margin: 0 !important;
+    .admin-count-container {
+        background-color: #000;
+        display: block;
     }
+
+   
 
     .pending-total-count {
         position: relative;
@@ -2780,4 +2831,18 @@ label {
     }
 
 
+    .review-details-profile {
+
+        flex-direction: row;
+    }
+
+    .card-body {
+
+        height: 100%;
+    }
+
+    .review-name-profile {
+
+        font-size: 1.7rem;
+    }
 }

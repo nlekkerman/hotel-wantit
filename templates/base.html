@@ -40,31 +40,42 @@
                                     href="{% url 'home' %}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {% if request.path == review_list_url %}active{% endif %}"
+                                <a class="nav-link {% if '/reviews/' in request.path %}active{% endif %}"
                                     href="{% url 'review-list' %}">Reviews</a>
+
                             </li>
                             <li class="nav-item">
 
-                                <a class="nav-link {% if request.path == book_room_url %}active{% endif %}"
-                                    href="{% url 'book_room' %}">Book Room</a>
+                                <a class="nav-link {% if '/bookings/' in request.path %}active{% endif %}"
+                                    href="{% url 'book_room' %}">Bookings</a>
+
 
                             </li>
 
                             {% if user.is_authenticated and user.is_staff %}
-                            <li class="nav-item {% if total_pending_count %}attention-required{% endif %}">
-                                <a class="nav-link" href="{% url 'admin-interface' %}">
+                            <li
+                                class="nav-item {% if request.path == '/admin-interface/' %}active{% endif %} {% if total_pending_count %}attention-required{% endif %}">
+                                <a class="nav-link {% if request.path == '/admin-interface/' %}active{% endif %}"
+                                    href="{% url 'admin-interface' %}">
                                     Admin
                                 </a>
-                                <span class="hide-counts {% if total_pending_count %} pending-total-count {% endif %}">{{ total_pending_count }}</span>
+                                <span class="hide-counts {% if total_pending_count %}pending-total-count{% endif %}">
+                                    {{ total_pending_count }}
+                                </span>
                             </li>
-                            
-                        {% endif %}
-                        
+                            {% endif %}
+
+
                             {% if user.is_authenticated %}
                             <li class="nav-item">
-                                <a class="nav-link  {% if profile_total_pending_count %} attention-required{% endif %}" href="{% url 'user-notifications' %}">Profile</a>
-                                <span class="hide-counts{% if profile_total_pending_count %} pending-total-count {% endif %}">{{profile_total_pending_count}}</span>
-
+                                <a class="nav-link {% if request.path == '/notifications/'  %}active{% endif %} {% if profile_total_pending_count %}attention-required{% endif %}"
+                                    href="{% url 'user-notifications' %}">
+                                    Profile
+                                </a>
+                                <span
+                                    class="hide-counts {% if profile_total_pending_count %}pending-total-count{% endif %}">
+                                    {{ profile_total_pending_count }}
+                                </span>
                             </li>
                             {% endif %}
 
