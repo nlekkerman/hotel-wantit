@@ -1370,6 +1370,30 @@ label {
     min-height: 100vh;
 }
 
+.datepicker {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid #00bfff;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.datepicker-dropdown {
+    background-color: #ff0000;
+    border: 1px solid #00bfff;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.datepicker table {
+    width: 100%;
+}
+
+.datepicker table tr td.day:hover, .datepicker table tr td.day.focused {
+    background: #00bfff;
+    color: #ffffff;
+}
+
+
 .aproval-reservation-list {
     display: flex;
     flex-direction: column;
@@ -2055,6 +2079,7 @@ form.signup button {
     animation: zoomIn 1s ease-in;
     max-width: 300px;
     margin-top: 10px;
+    height: 400px;
 
 }
 
@@ -2101,8 +2126,8 @@ form.signup button {
 .card-text {
     font-size: 1em;
     color: silver;
-    height: 70px;
     padding: 5px;
+    height: 90px;
 }
 
 .card-price {
@@ -2421,18 +2446,30 @@ label {
 
 /* Button styles */
 
-.room_availability_button {
+.availability_button {
     display: block;
-
-    width: fit-content;
-
+background-color: rgba(136, 255, 0, 0.7);
+    width: 100%;
+color: white;
+font-weight: 600;
     margin: 0 auto;
     text-align: center;
-    background-color: rgba(255, 0, 0, 0.9);
-    border: 2px solid silver !important;
-    margin-bottom: 10px;
+    padding: 5px;
+ 
+}
+form .availability_button:hover {
+    background-color: rgba(0, 0, 0, 0.5); /* Darken the background color on hover */
+    transform: scale(1.05); /* Scale the button on hover */
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.3);
 }
 
+.availability_button:hover {
+    background-color: rgba(255, 255, 255, 0.5); /* Darken the background color on hover */
+    transform: scale(1.05); /* Scale the button on hover */
+    color: white !important;
+    text-decoration: none !;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.3);
+}
 .button-container {
     text-align: center;
     /* Center align text within the container */
@@ -2479,14 +2516,6 @@ label {
     /* Primary button hover border color */
 }
 
-/*CHECK AVAILABLITY*/
-#room_availability_button {
-    display: flex;
-    align-self: center;
-    text-align: center;
-
-    bottom: 5%;
-}
 
 .form-control {
     background-color: rgba(0, 0, 0, 0.7);
@@ -2510,7 +2539,7 @@ label {
 .form-group {
     width: 100%;
     display: flex;
-    justify-content: center;
+   
     align-items: center;
 
 }
