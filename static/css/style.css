@@ -2055,6 +2055,7 @@ form.signup button {
     animation: zoomIn 1s ease-in;
     max-width: 300px;
     margin-top: 10px;
+    height: 400px;
 
 }
 
@@ -2101,8 +2102,8 @@ form.signup button {
 .card-text {
     font-size: 1em;
     color: silver;
-    height: 70px;
     padding: 5px;
+    height: 90px;
 }
 
 .card-price {

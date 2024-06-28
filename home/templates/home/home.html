@@ -62,9 +62,13 @@
     $(document).ready(function () {
         // Check if is_discount is already stored in local storage
         let is_discount = localStorage.getItem('is_discount') === 'true';
+        is_discount = false;
+        localStorage.setItem('is_discount', is_discount.toString());
+
     
         // Log initial value
         console.log("is_discount initial:", is_discount);
+     
     
         $('#bookNowBtn').click(function (event) {
             event.preventDefault();  // Prevent the default action

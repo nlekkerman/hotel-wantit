@@ -152,7 +152,6 @@ $(document).ready(function () {
 
     $('#confirmReservationBtn').click(function () {
 
-      is_discount = false
         var formData = $('#reservation-form').serialize();
         $.ajax({
             type: 'POST',
@@ -186,6 +185,9 @@ $(document).ready(function () {
 
                     // Set up close button behavior
                     $('#reservation_modal_close_button').click(function () {
+                      is_discount = false
+                      console.log("AFTER DISPLAY" + is_discount)
+
                         $('#reservationModal').modal('hide');
                         $('#thankYouModal').modal('show');
                     });
