@@ -45,6 +45,8 @@ class Reservation(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE, null=True, default=None)
+    first_name = models.CharField(max_length=30)  # New field
+    last_name = models.CharField(max_length=30)  # New field
     name = models.CharField(max_length=100)
     email = models.EmailField()
     phone = models.CharField(max_length=15)
@@ -62,8 +64,8 @@ class Reservation(models.Model):
 
     def cancel(self):
         # Method to cancel the reservation
-        self.reservation_status = self.PENDING  # Example: Update status to 'Rejected'
+        self.reservation_status = self.REJECTED  # Update status to 'Rejected'
         self.save()
 
     def __str__(self):
-        return f"Reservation #{self.id} - {self.user.username}"
+        return f"Reservation #{self.id} - {self.user.username} ({self.first_name} {self.last_name})"

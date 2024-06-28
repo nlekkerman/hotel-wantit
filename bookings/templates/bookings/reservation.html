@@ -1,3 +1,5 @@
+<!-- bookings/reserve_room.html -->
+
 {% extends "base.html" %}
 {% load static %}
 
@@ -30,22 +32,34 @@
       <form id="reservation-form" method="post" action="{% url 'reserve_room' room.id %}">
         {% csrf_token %}
 
+        <!-- Hidden field for room ID -->
         <input type="hidden" id="id_room_id" name="room_id" value="{{ room.id }}">
 
-        <div id="check-box-visibility-style">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="applyDiscountCheckbox" name="apply_discount">
-            <label class="form-check-label" for="applyDiscountCheckbox">Check to apply discount</label>
-          </div>
+        <!-- Hidden field for name -->
+        <input type="hidden" id="id_name" name="name"
+          value="{{ request.user.first_name }} {{ request.user.last_name }}">
+
+        <!-- Checkbox to apply discount -->
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="applyDiscountCheckbox" name="apply_discount">
+          <label class="form-check-label" for="applyDiscountCheckbox">Check to apply discount</label>
         </div>
 
+        <!-- Form fields -->
         <div class="form-group">
-          <label for="id_name" class="label-name">Name:</label>
-          <input type="text" id="id_name" name="name" class="form-control" placeholder="Enter your name" required>
+          <label for="id_first_name" class="label-first-name">First Name:</label>
+          <input type="text" id="id_first_name" name="first_name" class="form-control"
+            placeholder="Enter your first name" value="{{ request.user.first_name }}" required>
+        </div>
+        <div class="form-group">
+          <label for="id_last_name" class="label-last-name">Last Name:</label>
+          <input type="text" id="id_last_name" name="last_name" class="form-control" placeholder="Enter your last name"
+            value="{{ request.user.last_name }}" required>
         </div>
         <div class="form-group">
           <label for="id_email" class="label-email">Email:</label>
-          <input type="email" id="id_email" name="email" class="form-control" placeholder="Enter your email" required>
+          <input type="email" id="id_email" name="email" class="form-control" placeholder="Enter your email"
+            value="{{ request.user.email }}" required>
         </div>
         <div class="form-group">
           <label for="id_phone" class="label-phone">Phone:</label>
@@ -54,23 +68,24 @@
         </div>
         <div class="form-group">
           <label for="id_checkin_date" class="label-checkin-date">Check-in Date:</label>
-          <input type="date" id="id_checkin_date" name="checkin_date" class="form-control hidden-input"
+          <input type="date" id="id_checkin_date" name="checkin_date" class="form-control"
             value="{{ form.initial.checkin_date }}" required>
-          <div class="date-display">{{ form.initial.checkin_date }}</div>
         </div>
         <div class="form-group">
           <label for="id_checkout_date" class="label-checkout-date">Check-out Date:</label>
-          <input type="date" id="id_checkout_date" name="checkout_date" class="form-control hidden-input"
+          <input type="date" id="id_checkout_date" name="checkout_date" class="form-control"
             value="{{ form.initial.checkout_date }}" required>
-          <div class="date-display">{{ form.initial.checkout_date }}</div>
         </div>
 
+        <!-- Submit button -->
         <button type="submit" class="btn edit-button" id="reserveButton">Reserve Room</button>
       </form>
+
     </div>
   </div>
 </div>
 
+<!-- Modals -->
 <div class="modal" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel"
   aria-hidden="true">
   <div class="modal-dialog custom-modal-dialog">
@@ -129,37 +144,35 @@
   </div>
 </div>
 
+<!-- JavaScript -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-
-$(document).ready(function () {
+  $(document).ready(function () {
     // Retrieve is_discount from local storage
     let is_discount = localStorage.getItem('is_discount') === 'true';
 
 
     // Show or hide check-box-visibility-style based on is_discount
     if (is_discount) {
-        $('#check-box-visibility-style').show();
+      $('#check-box-visibility-style').show();
     } else {
-        $('#check-box-visibility-style').hide();
+      $('#check-box-visibility-style').hide();
     }
-    console.log("Initial is_discount value:", is_discount);
-  
+    
     $('#reservation-form').submit(function (event) {
-        event.preventDefault();
-        $('#confirmationModal').modal('show');
+      event.preventDefault();
+      $('#confirmationModal').modal('show');
     });
 
     $('#confirmReservationBtn').click(function () {
-
-        var formData = $('#reservation-form').serialize();
-        $.ajax({
-            type: 'POST',
-            url: '{% url "reserve_room" room.id %}',
-            data: formData,
-            dataType: 'json',
-            success: function (data) {
-                if (data.room_number) {
+      var formData = $('#reservation-form').serialize();
+      $.ajax({
+        type: 'POST',
+        url: '{% url "reserve_room" room.id %}',
+        data: formData,
+        dataType: 'json',
+        success: function (data) {
+          if (data.room_number) {
                     // Prepare the HTML for reservation details
                     var reservationDetailsHtml =
                         '<p><strong>Room Number:</strong> ' + data.room_number + '</p>' +
@@ -191,37 +204,32 @@ $(document).ready(function () {
                         $('#reservationModal').modal('hide');
                         $('#thankYouModal').modal('show');
                     });
-                } else {
-                    console.error('Error: Room not available or other error');
-                }
-            },
-            error: function (error) {
-                console.error('Error:', error);
-            },
-            complete: function () {
-                $('#confirmationModal').modal('hide');
-            }
-        });
+          } else {
+            console.error('Error: Room not available or other error');
+          }
+        },
+        error: function (error) {
+          console.error('Error:', error);
+        },
+        complete: function () {
+          $('#confirmationModal').modal('hide');
+        }
+      });
     });
 
     $('#thankYouCloseBtn').click(function () {
-        window.location.href = "{% url 'home' %}";
+      window.location.href = "{% url 'home' %}";
     });
 
-    // Check if apply discount checkbox is checked
     $('#applyDiscountCheckbox').change(function () {
-        var isChecked = $(this).is(':checked');
-        if (isChecked) {
-            // Apply 10% discount logic here (if needed on client-side)
-            // You can add client-side logic here if you want to update UI
-            console.log('Discount applied');
-        } else {
-            console.log('Discount not applied');
-        }
+      var isChecked = $(this).is(':checked');
+      if (isChecked) {
+        console.log('Discount applied');
+      } else {
+        console.log('Discount not applied');
+      }
     });
-});
-
-
+  });
 </script>
 
 {% endblock %}

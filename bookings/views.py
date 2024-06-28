@@ -20,70 +20,53 @@ from decimal import Decimal
 
 logger = logging.getLogger(__name__)
 
+
 @login_required
 def reserve_room(request, room_id):
-    room = get_object_or_404(Room, id=room_id)
-    
+    room = Room.objects.get(pk=room_id)
+
     if request.method == 'POST':
         form = ReservationForm(request.POST)
-        
         if form.is_valid():
-            name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
-            phone = form.cleaned_data['phone']
+            reservation = form.save(commit=False)
+            reservation.room = room
+            reservation.user = request.user  # Assuming user is authenticated
+            reservation.first_name = request.user.first_name
+            reservation.last_name = request.user.last_name
+            reservation.name = request.user.first_name
+            
+            # Calculate total nights
             checkin_date = form.cleaned_data['checkin_date']
             checkout_date = form.cleaned_data['checkout_date']
-
-            # Calculate price per night and total nights
-            price_per_night = room.price
             total_nights = (checkout_date - checkin_date).days
-
-            # Check if discount checkbox is checked
-            apply_discount = request.POST.get('apply_discount') == 'on'
-            if apply_discount:
-                total_price = calculate_discounted_price(price_per_night, total_nights)
-            else:
-                total_price = price_per_night * total_nights
-
-            # Create reservation object
-            reservation = Reservation.objects.create(
-                user=request.user,
-                room=room,
-                name=name,
-                email=email,
-                phone=phone,
-                checkin_date=checkin_date,
-                checkout_date=checkout_date,
-                price=total_price,
-                type_of_room=room.room_type
-            )
-
-            # Return JSON response with reservation details
-            data = {
+            
+            # Calculate total price with discount
+            price_per_night = room.price
+            total_price = calculate_discounted_price(price_per_night, total_nights)
+            
+            reservation.total_price = total_price
+            reservation.save()
+            
+            # Return success response with reservation details
+            return JsonResponse({
                 'room_number': room.room_number,
                 'room_type': room.room_type,
-                'checkin_date': checkin_date.strftime('%Y-%m-%d'),
-                'checkout_date': checkout_date.strftime('%Y-%m-%d'),
-                'total_price': f'{total_price:.2f}',
-            }
-            return JsonResponse(data)
-        else:
-            # Handle form validation errors
-            errors = form.errors.as_json()
-            return JsonResponse({'errors': errors}, status=400)
-    else:
-        # Handle GET request (if needed)
-        check_in_date = request.GET.get('check_in')
-        check_out_date = request.GET.get('check_out')
-
-        if check_in_date and check_out_date:
-            form = ReservationForm(initial={
-                'checkin_date': check_in_date,
-                'checkout_date': check_out_date
+                'checkin_date': reservation.checkin_date,
+                'checkout_date': reservation.checkout_date,
+                'total_price': reservation.total_price,
+                'name': reservation.name,
             })
         else:
-            form = ReservationForm()
-
+            # Form is not valid, handle the error scenario
+            return JsonResponse({'error': form.errors}, status=400)
+    else:
+        initial_data = {
+            'checkin_date': request.GET.get('check_in'),
+            'checkout_date': request.GET.get('check_out'),
+            'type_of_room': room.room_type  # Assuming room_type is a field in ReservationForm
+        }
+        form = ReservationForm(initial=initial_data)
+    
     return render(request, 'bookings/reservation.html', {'form': form, 'room': room})
 
 def calculate_discounted_price(price_per_night, total_nights):
