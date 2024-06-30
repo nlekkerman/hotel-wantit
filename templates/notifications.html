@@ -22,14 +22,13 @@
                         <a href="{% url 'reservation_detail' reservation.id %}" class="h-100 text-decoration-none">
                             <div class="card-body reservations-details-content">
                                 <ul class="pending-reservation-item list-unstyled">
-                                    <p class="text-bold">Reservation number:</p>
-                                    <li class="custom-reservation-card-title"><strong>#</strong> {{ reservation.id }}</li>
-                                    <li class="user-title reservation-user-title text-center"> {{ reservation.name }}</li>
-                                    <li class="pending-list-item"><strong>Check-in Date:</strong>
+                                    
+                                    <li class="reservation-user-title"> {{ request.user.first_name }} {{ request.user.last_name }}</li>
+                                    <li class="pending-list-item"><strong>Check-in:</strong>
                                         {{ reservation.checkin_date }}</li>
-                                    <li class="pending-list-item"><strong>Check-out Date:</strong>
+                                    <li class="pending-list-item"><strong>Check-out:</strong>
                                         {{ reservation.checkout_date }}</li>
-                                    <li class="pending-list-item text-center bg-success"><strong>Price:</strong> {{ reservation.price }}</li>
+                                    <li class="pending-list-item text-center p-3"><strong>Price:</strong> {{ reservation.price }}</li>
                                 </ul>
                             </div>
                         </a>

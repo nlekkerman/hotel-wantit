@@ -1388,7 +1388,8 @@ label {
     width: 100%;
 }
 
-.datepicker table tr td.day:hover, .datepicker table tr td.day.focused {
+.datepicker table tr td.day:hover,
+.datepicker table tr td.day.focused {
     background: #00bfff;
     color: #ffffff;
 }
@@ -1877,14 +1878,19 @@ form.signup button {
 }
 
 .availability-message {
-    font-size: 16px;
-    color: red !important;
+    font-size: 2rem;
+    padding: 1rem;
+    color: rgb(255, 255, 255) !important;
     margin-bottom: 10px;
+    font-weight: 700;
     text-align: center;
-    background-color: rgba(255, 255, 255, 1);
-    width: 100%;
-}
+    background-color: rgb(216, 101, 0);
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin: 0 auto;
 
+}
 #result p {
     text-align: center;
     color: white;
@@ -1987,7 +1993,13 @@ form.signup button {
 }
 
 .reservation-user-title {
-    margin-top: -93px;
+    margin: 0 !important;
+    background-color: rgba(0, 0, 0, 0.7);
+    text-transform: capitalize;
+    text-align: start;
+    padding: 5px;
+    font-size: 1.4rem;
+    font-weight: 700;
 }
 
 .reservation-list-card {
@@ -2117,11 +2129,12 @@ form.signup button {
     margin-bottom: 0px !important;
     color: rgb(255, 255, 255);
     width: 100%;
-    background-color: rgba(28, 58, 0, 0.7);
+    background-color: rgba(193, 2, 2, 0.7);
     text-align: center;
     font-weight: 700;
     text-transform: capitalize;
 }
+
 
 .card-text {
     font-size: 1em;
@@ -2231,6 +2244,10 @@ form.signup button {
     color: #000604;
 }
 
+.book-title {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 .availability-badge {
     width: 30%;
     position: absolute;
@@ -2300,10 +2317,11 @@ label {
 
 .alternative-room button {
     display: flex;
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
     justify-content: center;
-    margin-bottom: 20px;
+    border: none !important;
+ 
 }
 
 .alternative-room-details {
@@ -2448,28 +2466,34 @@ label {
 
 .availability_button {
     display: block;
-background-color: rgba(136, 255, 0, 0.7);
+    background-color: rgba(136, 255, 0, 0.7);
     width: 100%;
-color: white;
-font-weight: 600;
+    color: white;
+    font-weight: 600;
     margin: 0 auto;
     text-align: center;
     padding: 5px;
- 
+
 }
+
 form .availability_button:hover {
-    background-color: rgba(0, 0, 0, 0.5); /* Darken the background color on hover */
-    transform: scale(1.05); /* Scale the button on hover */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Darken the background color on hover */
+    transform: scale(1.05);
+    /* Scale the button on hover */
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .availability_button:hover {
-    background-color: rgba(255, 255, 255, 0.5); /* Darken the background color on hover */
-    transform: scale(1.05); /* Scale the button on hover */
+    background-color: rgba(255, 255, 255, 0.5);
+    /* Darken the background color on hover */
+    transform: scale(1.05);
+    /* Scale the button on hover */
     color: white !important;
     text-decoration: none !;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.3);
 }
+
 .button-container {
     text-align: center;
     /* Center align text within the container */
@@ -2539,7 +2563,7 @@ form .availability_button:hover {
 .form-group {
     width: 100%;
     display: flex;
-   
+
     align-items: center;
 
 }
@@ -2849,7 +2873,10 @@ form .availability_button:hover {
         display: block;
     }
 
-   
+    #check-box-visibility-style {
+        margin-bottom: 10px !important;
+        background-color: #007bff;
+    }
 
     .pending-total-count {
         position: relative;
@@ -2857,6 +2884,7 @@ form .availability_button:hover {
         right: 5px;
         background-color: rgba(255, 0, 0, 0);
         display: block !important;
+        font-weight: 700;
     }
 
 

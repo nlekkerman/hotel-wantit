@@ -15,7 +15,7 @@
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="id_check_in">Check-In:</label>
-                    <input type="date" class="form-control datepicker" id="id_check_in" name="check_in">
+                    <input type="date" class="form-control datepicker" id="id_check_in" name="check_in" required>
                 </div>
                 <div class="form-group">
                     <label for="id_check_out">Check-Out:</label>
@@ -33,27 +33,52 @@
     <div id="result"></div>
 </div>
 
+<div id="customAlert" class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;">
+    Please select both Check-In and Check-Out dates.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {
         // Get today's date in YYYY-MM-DD format
-    var today = new Date().toISOString().split('T')[0];
-    
-    // Set min attribute for check-in and check-out date pickers
-    $('#id_check_in').attr('min', today);
-    $('#id_check_out').attr('min', today);
+        let today = new Date().toISOString().split('T')[0];
 
-    // Initialize datepicker
-    $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd',
-        autoclose: true,
-        todayHighlight: true,
-        startDate: today // Disable past dates
-    });
+        // Set min attribute for check-in and check-out date pickers
+        $('#id_check_in').attr('min', today);
+        $('#id_check_out').attr('min', today);
+
+        // Initialize datepicker
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true,
+            startDate: today // Disable past dates
+        });
     });
     document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('room_availability_button').onclick = function (event) {
             event.preventDefault();
+
+
+            let checkInDate = $('#id_check_in').val();
+            let checkOutDate = $('#id_check_out').val();
+
+            // Check if both Check-In and Check-Out dates are selected
+            if (!checkInDate || !checkOutDate) {
+                alert('Please select both dates');
+                return;
+            }
+
+            // Parse dates to compare them
+            let checkIn = new Date(checkInDate);
+            let checkOut = new Date(checkOutDate);
+
+            // Check if Check-In date is after Check-Out date
+            if (checkIn >= checkOut) {
+                alert('Check-In date must be earlier than Check-Out date.');
+                return;
+            }
 
             const button = document.getElementById('room_availability_button');
             const formContainer = document.getElementById('form-container');
@@ -86,7 +111,7 @@
                         window.location.href =
                             `/bookings/reserve-room/${roomId}/?check_in=${checkInDate}&check_out=${checkOutDate}`;
                     } else {
-                        resultDiv.innerHTML = `<p class="availability-message">${data.message}</p>`;
+                        resultDiv.innerHTML = `<div class="availability-message">${data.message}</div>`;
                         if (data.alternative_rooms && data.alternative_rooms.length > 0) {
                             resultDiv.innerHTML += '<p class="card-title">Available rooms:</p>';
                             resultDiv.innerHTML += '<div class="container"><div class="row">';
@@ -97,12 +122,12 @@
                                         <img src="${room.featured_image}" class="card-img-top" alt="${room.room_type}">
                                         <div class="card-body">
                                             <p>Room Number: ${room.room_number}</p>
-                                            <p class="alternate-room-description">Description: ${room.description}</p>
                                             <p class="alternate-room-price">Price per night: $${room.price}</p>
+                                            <p class="alternate-room-description"> ${room.description}</p>
                                             <button data-room-id="${room.room_id}" 
                                                     data-check-in="${data.check_in}" 
                                                     data-check-out="${data.check_out}"
-                                                    class="selectAlternativeButton btn edit-button">Select Room ${room.room_number}</button>
+                                                    class="selectAlternativeButton edit-button">Select Room ${room.room_number}</button>
                                         </div>
                                     </div>
                                 </div>

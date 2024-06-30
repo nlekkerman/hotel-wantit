@@ -8,10 +8,10 @@
         <button class="close-button" id="close_button">
             <i class="fa fa-times"></i>
         </button>
-        <h2 class="cancel-reservation-title">Reservation Number:<strong>{{ reservation.id }} </strong></h2>
 
         <div class="reservations-details-content">
-            <p><strong>Name:</strong> {{ reservation.name }}</p>
+            <p class="reservation-user-title"><strong>Name: </strong> {{ request.user.first_name }}
+                {{ request.user.last_name }}</p>
             <p><strong>Check-in Date:</strong> {{ reservation.checkin_date }}</p>
             <p><strong>Check-out Date:</strong> {{ reservation.checkout_date }}</p>
             <p><strong>Price:</strong> {{ reservation.price }}</p>
@@ -26,11 +26,11 @@
     <!-- Modal for cancellation confirmation -->
     <div id="cancelReservationModal" class="modal">
 
-        
+
 
         <div class="modal-content" id="confirmation-modal-content">
             <span class="close-button" id="close-confirmation-modal"><i class="fa fa-times"></i></span>
-            <h2 class="cancel-reservation-title">Reservation Number:<strong>{{ reservation.id }} </strong></h2>
+            <h2 class="cancel-reservation-title">Reservation Number:<strong> {{ reservation.id }} </strong></h2>
             <p class="reservations-details-content">Are you sure you want to cancel this reservation?</p>
             <form id="cancelReservationForm" data-reservation-id="{{ reservation.id }}">
                 {% csrf_token %}
@@ -41,13 +41,12 @@
     </div>
 </div>
 <script>
-
-document.getElementById('close-confirmation-modal').addEventListener('click', function (event) {
+    document.getElementById('close-confirmation-modal').addEventListener('click', function (event) {
         event.preventDefault();
         document.getElementById('reservation-details').style.display = 'block';
         document.getElementById('reservation-details').style.display = 'flex';
         document.getElementById('confirmation-modal-content').style.display = 'none';
-       
+
 
     });
     // Handle close button click to navigate to user notifications
@@ -67,8 +66,8 @@ document.getElementById('close-confirmation-modal').addEventListener('click', fu
         window.location.href = '{% url "home" %}';
     }
 
-        // Function to close modal
-        function closeModal(modalId) {
+    // Function to close modal
+    function closeModal(modalId) {
         var modal = document.getElementById(modalId);
         modal.style.display = "none";
     }
@@ -78,7 +77,7 @@ document.getElementById('close-confirmation-modal').addEventListener('click', fu
         event.preventDefault();
         openModal('cancelReservationModal');
         document.getElementById('reservation-details').style.display = 'none';
-       
+
 
     });
 

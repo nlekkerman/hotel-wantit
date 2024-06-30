@@ -24,6 +24,11 @@
                 {{ form.as_p }}
                 {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                <div class="form-group">
+                    <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                    {{ form.email }}
+                    {{ form.email.errors }}
+                </div>
                 {% endif %}
                 <div class="d-grid">
                     <button type="submit" class="btn edit-button">{% trans "Sign Up" %}</button>
