@@ -23,12 +23,12 @@
         <div class="review-text">{{ review.review }}</div>
      
 
-        <p>Date: {{ review.created_at|date:"F j, Y" }}</p>
+        <p class="review-date-text">Date: {{ review.created_at|date:"F j, Y" }}</p>
 
         <div class="review-actions">
             {% if request.user == review.user %}
             <!-- Edit Review Button -->
-            <a href="{% url 'edit-review' review.pk %}" class="edit-button">Edit</a>
+            <a href="{% url 'edit-review' review.pk %}" class="edit-button p-2">Edit</a>
 
             <!-- Delete Review Button (with confirmation dialog) -->
             <form action="{% url 'delete-review' review.pk %}" method="post" style="display: inline; background-color: black;">

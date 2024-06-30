@@ -27,6 +27,7 @@ class Room(models.Model):
 
 class Reservation(models.Model):
 
+
     PENDING = 'pending'
     CONFIRMED = 'confirmed'
     REJECTED = 'rejected'
@@ -69,3 +70,19 @@ class Reservation(models.Model):
 
     def __str__(self):
         return f"Reservation #{self.id} - {self.user.username} ({self.first_name} {self.last_name})"
+
+
+class BathroomImage(models.Model):
+    image = CloudinaryField('image')
+
+    def __str__(self):
+        return f"Bathroom Image"
+
+class MinibarImage(models.Model):
+    image = CloudinaryField('image')
+
+    def __str__(self):
+        return f"Minibar Image"
+
+
+

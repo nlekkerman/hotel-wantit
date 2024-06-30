@@ -512,6 +512,17 @@ label {
     flex-direction: column;
 }
 
+.rooms-details-background {
+    background-image: url("../images/room6.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .room-reservation-container {
 
     background-color: rgba(1, 8, 0, 0.8);
@@ -699,11 +710,11 @@ label {
     position: absolute;
     bottom: 10px;
     padding: 5px 10px;
-    background-color: rgba(255, 0, 0, 0.9);
-    color: white;
-    border-radius: 20px;
-    border: 3px solid white;
     margin: 0 !important;
+    background-color: red !important;
+    color: white !important;
+    border: none !important;
+    font-weight: 600;
     margin-bottom: 10px !important;
     cursor: pointer;
 }
@@ -919,6 +930,10 @@ label {
     padding: 5px;
 }
 
+.review-date-text {
+    padding: 5px;
+}
+
 .review-text-profile {
     display: flex;
     align-items: center;
@@ -927,7 +942,7 @@ label {
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0;
-    padding-left: 5px;
+    padding: 5px;
 }
 
 .review-text {
@@ -1877,6 +1892,7 @@ form.signup button {
     display: flex;
 }
 
+
 .availability-message {
     font-size: 2rem;
     padding: 1rem;
@@ -1884,13 +1900,14 @@ form.signup button {
     margin-bottom: 10px;
     font-weight: 700;
     text-align: center;
-    background-color: rgb(216, 101, 0);
+    background-color: rgb(216, 54, 0);
     display: flex;
-    justify-content: center; 
-    align-items: center; 
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
 
 }
+
 #result p {
     text-align: center;
     color: white;
@@ -2033,13 +2050,19 @@ form.signup button {
     color: #ffffff;
     text-decoration: none;
     width: 100%;
-    height: 100%;
 }
 
 .admin-content-text {
     background-color: rgba(0, 0, 0, 0.5);
     margin-top: 30px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    line-height: 1.6;
+    max-height: calc(1.6 * 3);
 }
+
 
 .created_at-style {
     text-align: end;
@@ -2140,7 +2163,14 @@ form.signup button {
     font-size: 1em;
     color: silver;
     padding: 5px;
-    height: 90px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    /* Number of lines to show */
+    line-height: 1.6;
+    /* Adjust line height for readability */
+    max-height: calc(1.6 * 3);
 }
 
 .card-price {
@@ -2289,6 +2319,13 @@ label {
 .alternate-room-description {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 5px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    line-height: 1.6;
+    max-height: calc(1.6 * 3);
+
 }
 
 .alternate-room-price {
@@ -2321,7 +2358,7 @@ label {
     margin: 0 auto;
     justify-content: center;
     border: none !important;
- 
+
 }
 
 .alternative-room-details {
@@ -2343,7 +2380,11 @@ label {
     color: black;
 }
 
-
+.card-body:hover {
+    transform: scale(1.03); 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
+    text-decoration: none;
+}
 .loading {
     background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
@@ -2353,6 +2394,117 @@ label {
     text-align: center;
     font-size: 1.5rem;
     font-weight: 500;
+}
+
+/**ROOM DETAILS*/
+.room-extra-image{
+    height: 100px;
+    margin-right: 10px;
+
+}
+.images-container{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: 3px solid silver;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    width: 100%;
+    flex-direction: row !important;
+    justify-content: center;
+    
+}
+
+/* New styles for expanded state */
+.room-extra-image.expanded {
+    height: auto;
+    max-height: 70vh; /* Adjust max height as per your design */
+    max-width: 90vw; /* Adjust max width as per your design */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000; /* Ensure it's above other content */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Optional: Add box-shadow for effect */
+    transition: all 0.3s ease; /* Smooth transition for expanding effect */
+}
+
+/* Updated styles for images container */
+.images-container.expanded {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 900; /* Ensure it's above other content but below expanded image */
+}
+
+.images-container.expanded .image-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.images-container.expanded .image-section img {
+    max-height: 80vh; /* Adjust max height for expanded images */
+    max-width: 90vw; /* Adjust max width for expanded images */
+}
+
+
+.room-detail-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 100%
+}
+
+.room-detail-title {
+    font-size: 2rem;
+    margin-top: 90px;
+    font-weight: bold;
+    padding-left: 5px;
+    color: #ffffff;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+
+.room-detail-image {
+    max-width: 100%;
+    height: auto;
+    border-bottom: 3px solid silver;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.room-detail-description {
+    font-size: 1.2rem;
+    padding: 5px;
+    line-height: 1.5;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.room-detail-price {
+    font-size: 1.5rem;
+    color: #f96233;
+    /* Custom accent color */
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: end;
+    margin-right: 20px;
 }
 
 /* MODALS STYLES */
@@ -2476,22 +2628,14 @@ label {
 
 }
 
-form .availability_button:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-    /* Darken the background color on hover */
-    transform: scale(1.05);
-    /* Scale the button on hover */
-    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.3);
-}
+
 
 .availability_button:hover {
-    background-color: rgba(255, 255, 255, 0.5);
-    /* Darken the background color on hover */
+    background-color: rgba(0, 0, 0, 0.5) !important;
     transform: scale(1.05);
-    /* Scale the button on hover */
     color: white !important;
-    text-decoration: none !;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.3);
+    text-decoration: none !important;
 }
 
 .button-container {
@@ -2758,7 +2902,11 @@ form .availability_button:hover {
 /* Media Query for Small Screens */
 @media (min-width: 769px) {
 
+    .room-detail-responsive-container{
+        display: flex;
+        flex-direction: row;
 
+    }
 
     .avbar .nav-link {
 
@@ -2893,13 +3041,58 @@ form .availability_button:hover {
         flex-direction: row;
     }
 
-    .card-body {
 
-        height: 100%;
-    }
 
     .review-name-profile {
 
         font-size: 1.7rem;
     }
+    
+    .room-detail-image{
+        margin-left: 10px;
+        flex: 1;
+     }
+}
+
+
+@media screen and (max-width: 1000px)and (max-height: 500px) and (orientation: landscape) {
+
+    .availability-message {
+
+        background-color: rgb(0, 249, 8) !important;
+
+    }
+
+    .slideshow-container {
+        height: 300px;
+    }
+
+    .custom-reservation-modal,
+    .custom-thankyou-modal,
+    .custom-modal {
+        background-color: rgba(0, 0, 0, 0.8);
+        top: 0%;
+    }
+
+
+    /* Custom modal styles */
+    .custom-reservation-modal,
+    .custom-thankyou-modal,
+    .custom-modal {
+        background-color: rgba(0, 0, 0, 0.8);
+        top: 0%;
+
+        /* Semi-transparent background */
+    }
+
+    .modal-content {
+
+        flex-direction: row;
+
+    }
+
+    .modal-title {
+        display: none;
+    }
+
 }

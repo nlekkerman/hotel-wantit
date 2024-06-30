@@ -2,7 +2,15 @@ from django.contrib import admin
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import path, reverse
 from django.utils.html import format_html
-from .models import Room, Reservation
+from .models import Room, Reservation, BathroomImage, MinibarImage
+
+class BathroomImageInline(admin.TabularInline):
+    model = BathroomImage
+    extra = 1
+
+class MinibarImageInline(admin.TabularInline):
+    model = MinibarImage
+    extra = 1
 
 class ReservationAdmin(admin.ModelAdmin):
     list_filter = ('reservation_status',)
@@ -45,5 +53,7 @@ class ReservationAdmin(admin.ModelAdmin):
     status_link.short_description = 'reservation_status'
 
 admin.site.register(Reservation, ReservationAdmin)
+admin.site.register(BathroomImage)
+admin.site.register(MinibarImage)
 
 admin.site.register(Room)

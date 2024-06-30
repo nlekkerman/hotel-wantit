@@ -5,7 +5,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.http import HttpResponseServerError,HttpResponse  
 from .models import Room
-from .models import Reservation
+from .models import Reservation, BathroomImage, MinibarImage
 from .forms import ReservationForm, AvailabilityForm
 from django.http import JsonResponse
 from datetime import datetime
@@ -217,3 +217,17 @@ def cancel_reservation(request, reservation_id):
     
     # Handle GET request or any other method if needed
     return redirect('home')
+
+
+def room_detail(request, room_id):
+    room = Room.objects.get(pk=room_id)
+
+    # Fetch random bathroom and minibar images
+    random_bathroom_image = BathroomImage.objects.order_by('?').first()
+    random_minibar_image = MinibarImage.objects.order_by('?').first()
+
+    return render(request, 'bookings/room_detail.html', {
+        'room': room,
+        'random_bathroom_image': random_bathroom_image,
+        'random_minibar_image': random_minibar_image,
+    })

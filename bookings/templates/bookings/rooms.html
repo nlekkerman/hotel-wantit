@@ -12,6 +12,8 @@
         {% for room in rooms %}
         <div class="col-md-4 room-card-container">
             <div class="card mb-4 shadow-sm room-card">
+                <a class="card-body" href="{% url 'room_detail' room.id %}">
+
                 <h5 class="card-title"> {{ room.room_type }}  {{ room.room_number }}</h5>
 
                 {% if "placeholder" in post.featured_image.url %}
@@ -21,10 +23,10 @@
                 <img class="card-img-top" src=" {{ room.featured_image.url }}"
                   alt="{{ room.room_type }}">
                 {% endif %}
-                <div class="card-body">
+               
                     <p class="card-text">{{ room.description }}</p>
                     <p class="card-price"><strong>${{ room.price }}</strong> night</p>
-                </div>
+                </a>
                 <form method="post" id="availabilityForm" action="{% url 'check_availability' room.id %}">
                     {% csrf_token %}
                     <input type="hidden" name="room_id" value="{{ room.id }}">
