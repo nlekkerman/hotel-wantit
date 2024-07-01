@@ -99,7 +99,7 @@
         <p>Please review the details carefully before confirming.</p>
       </div>
       <div class="modal-footer custom-modal-footer">
-        <button type="button" class="btn custom-buttons" data-dismiss="modal">Review</button>
+        <button type="button" class="btn custom-buttons" data-bs-dismiss="modal">Review</button>
         <button type="button" class="btn custom-buttons" id="confirmReservationBtn">Confirm</button>
       </div>
     </div>
@@ -112,13 +112,13 @@
     <div class="modal-content custom-reservation-modal-content">
       <div class="modal-header custom-reservation-modal-header">
         <h5 class="modal-title" id="reservationModalLabel">Reservation Details</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <a href="{% url 'home' %}" class="delete-button" role="button" aria-label="Close">Close</a>
       </div>
       <div class="modal-body custom-reservation-modal-body" id="reservationModalBody">
         <!-- Reservation details will be inserted here -->
       </div>
       <div class="modal-footer custom-reservation-modal-footer">
-      
+
       </div>
     </div>
   </div>

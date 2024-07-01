@@ -1,68 +1,54 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
 {% block title %}Room Detail - {{ room.room_type }} {{ room.room_number }}{% endblock %}
 
 {% block content %}
-
 <div class="rooms-details-background">
     <div class="room-detail-container">
-        
+        <a href="{% url 'rooms' %}?type=deluxe" class="return-link"><i class="fas fa-arrow-left"></i> Back to {{ room.room_type }} Rooms</a>
+
         <div class="room-detail-content">
-        <h1 class="room-detail-title">{{ room.room_type }} {{ room.room_number }}</h1>
-        <p class="room-detail-price">Price per night: <strong>${{ room.price }}</strong></p>
-
-        <div class="room-detail-responsive-container">
-        <img class="room-detail-image" src="{{ room.featured_image.url }}" alt="{{ room.room_type }}">
-
-        <p class="room-detail-description">{{ room.description }}</p>
-
+            <h1 class="room-detail-title">{{ room.room_type }} {{ room.room_number }}</h1>
+            <p class="room-detail-price">Price per night: <strong>${{ room.price }}</strong></p>
+            <div class="room-detail-responsive-container">
+                <a href="{% url 'room_detail' room.id %}">
+                    <img class="room-detail-image" id="room-detail-image" src="{{ room.featured_image.url }}" alt="{{ room.room_type }}">
+                </a>
+                <p class="room-detail-description">{{ room.description }}</p>
+            </div>
+        </div>
     </div>
 
-
-</div>
-
-
-<div class="images-container">
-    <div class="image-section">
-        {% if random_bathroom_image %}
-            <img class="room-extra-image" src="{{ random_bathroom_image.image.url }}" alt="Bathroom Image">
-        {% endif %}
-    </div>
-    <div class="image-section">
-        {% if random_minibar_image %}
-            <img class="room-extra-image" src="{{ random_minibar_image.image.url }}" alt="Minibar Image">
-        {% endif %}
+    <div class="images-container">
+        <div class="image-section">
+            {% if random_bathroom_image %}
+                <img class="room-extra-image" id="random_bathroom_image" src="{{ random_bathroom_image.image.url }}" alt="Bathroom Image">
+            {% endif %}
+        </div>
+        <div class="image-section">
+            {% if random_minibar_image %}
+                <img class="room-extra-image" id="random_minibar_image" src="{{ random_minibar_image.image.url }}" alt="Minibar Image">
+            {% endif %}
+        </div>
     </div>
 </div>
-
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
+        // Click handler for small images
         $('.room-extra-image').click(function() {
-            $(this).toggleClass('expanded'); // Toggle expanded class on click
-            $('.images-container').toggleClass('expanded'); // Toggle expanded class on images container
+            var imageUrl = $(this).attr('src');
+            $('#room-detail-image').attr('src', imageUrl);
         });
 
-        // Close expanded image on click outside
-        $('.images-container.expanded').click(function(e) {
-            if ($(e.target).hasClass('expanded')) {
-                $(this).removeClass('expanded');
-                $('.room-extra-image.expanded').removeClass('expanded');
-            }
-        });
-
-        // Close expanded image on pressing Escape key
-        $(document).keyup(function(e) {
-            if (e.key === "Escape" && $('.images-container').hasClass('expanded')) {
-                $('.images-container').removeClass('expanded');
-                $('.room-extra-image.expanded').removeClass('expanded');
-            }
+        // Click handler for room detail container to load original featured image
+        $('.room-detail-container').click(function() {
+            var originalImageUrl = '{{ room.featured_image.url }}';
+            $('#room-detail-image').attr('src', originalImageUrl);
         });
     });
 </script>
-
 
 {% endblock %}

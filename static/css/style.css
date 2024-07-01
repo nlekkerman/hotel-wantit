@@ -998,106 +998,64 @@ label {
     width: 100%;
     min-height: 100vh;
     margin: 0 auto;
-    padding: 20px;
+    padding: 5px;
     background-image: url("../images/room4.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .renovated-rooms h1 {
-    font-size: 2.5em;
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.renovated-rooms p {
-    font-size: 1.2em;
-    line-height: 1.6;
-    margin-bottom: 15px;
-}
-
-.carousel-container {
-    position: relative;
-    width: 100%;
-    margin: 0 auto;
-    min-height: 100%;
-    overflow: hidden;
-}
-
-.carousel-slide {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    min-height: 100%;
-    width: 100%;
-}
-
-.carousel-item {
-    min-width: 100%;
-    box-sizing: border-box;
-    padding: 20px;
-    text-align: center;
-
+    margin-top: 90px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 2rem !important;
+    font-family: 500;
 
 }
 
-.renovated-rooms h1 {
-    margin-top: 60px;
-}
-
-.carousel-item-containe {
-    display: flex;
-    min-width: 100%;
-    padding-top: 60px;
-}
-
-.carousel-item-container p {
+.renovated-rooms-subtitle {
+    margin-top: 2rem;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
-    position: absolute;
-    top: 10%;
-    left: 20px;
-    width: 50%;
-
-}
-
-.carousel-item img {
-
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.carousel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    color: white;
-    font-size: 2em;
+    font-family: 500;
     padding: 10px;
-    cursor: pointer;
-    z-index: 10;
+
 }
 
-.left-button {
-    left: 10px;
+.luxury-renovated-rooms {
+    text-align: center;
 }
 
-.right-button {
-    right: 10px;
+.luxury-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
 }
 
-@media (max-width: 768px) {
-    .carousel-item p {
-        font-size: 1em;
-    }
+.luxury-card {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-bottom: 3px solid #ddd;
+    overflow: hidden;
+    box-shadow: -2px 9px 10px 0px rgba(0, 0, 0, 0.6);
+    max-width: 300px;
+    color: white;
+    margin: 10px;
+    text-align: left;
+}
+
+.luxury-card img {
+    width: 100%;
+    height: auto;
+}
+
+.luxury-card p {
+    padding: 15px;
+    font-size: 14px;
 }
 
 /*LEAVE COMMENT*/
@@ -1925,7 +1883,7 @@ form.signup button {
 }
 
 .check_availability_form_container form {
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -2130,10 +2088,14 @@ form.signup button {
 
 .room-card {
     transition: transform 0.2s ease-in-out;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-bottom: 3px solid silver;
     margin: 0px !important;
     border-radius: 0px !important;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-bottom: 3px solid #ddd;
+    overflow: hidden;
+    box-shadow: -2px 9px 10px 0px rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: left;
 }
 
 
@@ -2160,16 +2122,19 @@ form.signup button {
 
 
 .card-text {
+    background-color: rgba(0, 0, 0, 0.1);
     font-size: 1em;
-    color: silver;
+    font-weight: 500;
+    font-size: 1em;
+    color: white;
+    margin-top: 20px;
+    text-align: center;
     padding: 5px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
     -webkit-line-clamp: 3;
-    /* Number of lines to show */
     line-height: 1.6;
-    /* Adjust line height for readability */
     max-height: calc(1.6 * 3);
 }
 
@@ -2317,7 +2282,7 @@ label {
 /* ALTERNATE ROOMS */
 
 .alternate-room-description {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(86, 86, 86, 0.2);
     padding: 5px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -2334,11 +2299,13 @@ label {
 }
 
 .alternative-room {
-    border: 1px solid #ccc;
-    padding: 0px !important;
-    margin: 5 !important;
-    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-bottom: 3px solid #ddd;
+    overflow: hidden;
+    box-shadow: -2px 9px 10px 0px rgba(0, 0, 0, 0.6);
     color: white;
+    margin: 10px;
+    text-align: left;
     display: flex;
     flex-direction: column;
 
@@ -2376,15 +2343,19 @@ label {
 }
 
 .alternative-room button:hover {
-    background-color: #f9fafb;
-    color: black;
+    transform: scale(1.01);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
+    text-decoration: none;
 }
 
 .card-body:hover {
-    transform: scale(1.03); 
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
     text-decoration: none;
 }
+
 .loading {
     background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
@@ -2397,35 +2368,55 @@ label {
 }
 
 /**ROOM DETAILS*/
-.room-extra-image{
+.room-extra-image {
     height: 100px;
-    margin-right: 10px;
+    width: 150px;
 
 }
-.images-container{
+
+.image-section {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid silver;
+    flex-wrap: wrap;
+
+}
+
+.images-container {
     padding-top: 5px;
     padding-bottom: 5px;
     border-top: 3px solid silver;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     width: 100%;
     flex-direction: row !important;
-    justify-content: center;
-    
+    justify-content: space-evenly;
+
 }
+
+.return-link {
+    color: white !important;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 5px;
+    background-color: rgba(0, 255, 0, 0.2);
+}
+
+
 
 /* New styles for expanded state */
 .room-extra-image.expanded {
     height: auto;
-    max-height: 70vh; /* Adjust max height as per your design */
-    max-width: 90vw; /* Adjust max width as per your design */
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1000; /* Ensure it's above other content */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Optional: Add box-shadow for effect */
-    transition: all 0.3s ease; /* Smooth transition for expanding effect */
+    z-index: 1000;
+    /* Ensure it's above other content */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    /* Optional: Add box-shadow for effect */
+    transition: all 0.3s ease;
+    /* Smooth transition for expanding effect */
 }
 
 /* Updated styles for images container */
@@ -2439,7 +2430,8 @@ label {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.9);
-    z-index: 900; /* Ensure it's above other content but below expanded image */
+    z-index: 900;
+    /* Ensure it's above other content but below expanded image */
 }
 
 .images-container.expanded .image-section {
@@ -2451,10 +2443,20 @@ label {
 }
 
 .images-container.expanded .image-section img {
-    max-height: 80vh; /* Adjust max height for expanded images */
-    max-width: 90vw; /* Adjust max width for expanded images */
+    max-height: 80vh;
+    /* Adjust max height for expanded images */
+    max-width: 90vw;
+    /* Adjust max width for expanded images */
 }
 
+.room-details-bathroom-image-title {
+    color: white;
+    margin: 0 !important;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: relative;
+    bottom: 50px;
+
+}
 
 .room-detail-container {
     display: flex;
@@ -2463,7 +2465,6 @@ label {
     width: 100%;
     margin: 0 auto;
     background-color: rgba(0, 0, 0, 0.5);
-    border: 1px solid #ddd;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     height: 100%
 }
@@ -2494,6 +2495,9 @@ label {
     line-height: 1.5;
     color: white;
     font-weight: 500;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-left: 10px;
     margin-bottom: 20px;
 }
 
@@ -2621,6 +2625,7 @@ label {
     background-color: rgba(136, 255, 0, 0.7);
     width: 100%;
     color: white;
+    border: none !important;
     font-weight: 600;
     margin: 0 auto;
     text-align: center;
@@ -2902,7 +2907,7 @@ label {
 /* Media Query for Small Screens */
 @media (min-width: 769px) {
 
-    .room-detail-responsive-container{
+    .room-detail-responsive-container {
         display: flex;
         flex-direction: row;
 
@@ -3047,11 +3052,37 @@ label {
 
         font-size: 1.7rem;
     }
-    
-    .room-detail-image{
+
+    .room-detail-image {
         margin-left: 10px;
         flex: 1;
-     }
+    }
+
+    .check_availability_form_container form {
+        width: 30%;
+        margin: 0 auto;
+    }
+
+    .images-container {
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .image-section {
+        margin-right: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .image-section {
+        margin-right: 10px;
+    }
+
+
+    .room-detail-content {
+        width: 70%;
+        margin: 0 auto;
+    }
 }
 
 
