@@ -5,6 +5,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.http import HttpResponseServerError,HttpResponse  
 from .models import Room
+from home.models import Message
 from .models import Reservation, BathroomImage, MinibarImage
 from .forms import ReservationForm, AvailabilityForm
 from django.http import JsonResponse
@@ -172,24 +173,41 @@ def reservation_approval_list(request):
     }
     return render(request, 'bookings/reservation_approval_list.html', context)
 
+
+@login_required
 def approve_reservation(request, reservation_id):
     reservation = get_object_or_404(Reservation, id=reservation_id)
     reservation.reservation_status = Reservation.CONFIRMED
+    reservation.status_changed = True
     reservation.save()
+
+    # Create a message for the user
+    user = reservation.user
+    checkin_date = reservation.checkin_date.strftime('%B %d, %Y')
+    checkout_date = reservation.checkout_date.strftime('%B %d, %Y')
+    message_content = f'Your reservation from {checkin_date} to {checkout_date} has been approved.'
+    message = Message(user=user, content=message_content)
+    message.save()
+
     return JsonResponse({'message': 'Reservation approved successfully'})
 
-    # Redirect to reservation_approval_list
-    return redirect('reservation-approval-list')
 
+login_required
 def reject_reservation(request, reservation_id):
     reservation = get_object_or_404(Reservation, id=reservation_id)
     reservation.reservation_status = Reservation.REJECTED
+    reservation.status_changed = True
     reservation.save()
+    
+    # Create a message for the user
+    user = reservation.user
+    checkin_date = reservation.checkin_date
+    checkout_date = reservation.checkout_date
+    message_content = f'Your reservation from {checkin_date} to {checkout_date} has been rejected.'
+    message = Message(user=user, content=message_content)
+    message.save()
+
     return JsonResponse({'message': 'Reservation rejected successfully'})
-
-    # Redirect to reservation_approval_list
-    return redirect('reservation-approval-list')
-
 @login_required
 def user_reservations_count(request):
     user_reservations_count = Reservation.objects.filter(user=request.user).count()

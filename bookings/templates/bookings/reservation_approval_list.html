@@ -5,26 +5,28 @@
     <h1 class="titles-position-style">Pending Reservations</h1>
 
     {% if pending_reservations %}
-    <div class="row pending-reservation-card-container">
+    <div class="row pending-reservation-card-container ">
         {% for reservation in pending_reservations %}
-        <div class="col-12 col-md-6 col-lg-4">
-            <div class="pending-item card mb-3 {% if reservation.is_approved == 'approved' %}approved{% elif reservation.is_approved == 'rejected' %}rejected{% endif %}">
-                <div class="card-body">
-                    <div class="username-admin">
+        <div class="col-12 col-md-6 col-lg-4 pb-1">
+            <div class="pending-item room-card card mb-3 {% if reservation.is_approved == 'approved' %}approved{% elif reservation.is_approved == 'rejected' %}rejected{% endif %}">
+                <div class="pb-2">
+                    <div class="username-admin-title">
                         {{ reservation.user }}
                     </div>
-                    <div class="font-italic card-text">
-                        <div>
+                    <div class="font-italic">
+                        <div >
                             <div>Status: {{ reservation.get_reservation_status_display }}</div>
                             Check-In Date: {{ reservation.checkin_date }}<br>
                             Check-Out Date: {{ reservation.checkout_date }}<br>
                             Name: {{ reservation.name }}<br>
-                            Price: {{ reservation.price }}<br>
-                            <div class="admin-button-container mt-2">
-                                <a class="edit-button" href="{% url 'approve-reservation' reservation.id %}">Approve</a>
-                                <a class="delete-button" href="{% url 'reject-reservation' reservation.id %}">Reject</a>
-                            </div>
+                           <strong class="approval-reservation-price bg-trasparent d-flex justify-content-center"> Price: {{ reservation.price }} </strong><br>
+                            
                         </div>
+                      
+                    </div>
+                    <div class="admin-button-container mt-2">
+                        <a class="edit-button" href="{% url 'approve-reservation' reservation.id %}">Approve</a>
+                        <a class="delete-button" href="{% url 'reject-reservation' reservation.id %}">Reject</a>
                     </div>
                 </div>
             </div>

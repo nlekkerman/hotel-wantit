@@ -7,55 +7,137 @@
 
 {% block content %}
 
+ <!-- Display each message in the action_messages list -->
+
+
 <div class="notifications-container">
+
+
     <h1 class="notification-title">Profile</h1>
+    
+    {% if user_messages %}
+    <div class=" message-container">
+        <ul class="message-list">
+            {% for message in user_messages %}
+            <li class="message-item" id="message-{{ message.id }}">
+                <span class="message-timestamp">{{ message.timestamp }}</span>
+                <span class="message-content">{{ message.content }}</span>
+                <button class="close-message-button" onclick="closeMessage('{{ message.id }}')">Close</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
 
     <div class="container-profile">
         <div class="notification-section">
             <h2 class="p-4 titles-position-style">Reservations</h2>
-            <div class="row ">
+            <div class="row">
                 {% for reservation in user_reservations %}
-
-                <div class="col-12 col-md-12 col-lg-6  mb-4 " href="{% url 'reservation_detail' reservation.id %}">
+                <div class="col-12 col-md-12 col-lg-6 mb-4">
                     <div class="custom-div">
-
-                        <a href="{% url 'reservation_detail' reservation.id %}" class="h-100 text-decoration-none">
-                            <div class="card-body reservations-details-content">
-                                <ul class="pending-reservation-item list-unstyled">
-                                    
-                                    <li class="reservation-user-title"> {{ request.user.first_name }} {{ request.user.last_name }}</li>
+                        {% if reservation.reservation_status == reservation.REJECTED %}
+                        <!-- Unclickable div for rejected reservations -->
+                        <div class="h-100 text-decoration-none">
+                            <div class="mb-2 room-card">
+                                <ul class="list-unstyled">
+                                    <li class="reservation-user-title">{{ request.user.first_name }}
+                                        {{ request.user.last_name }}</li>
+                                    <li class="text-center p-1 
+                                            {% if reservation.reservation_status == reservation.PENDING %}
+                                                bg-primary
+                                            {% elif reservation.reservation_status == reservation.CONFIRMED %}
+                                                bg-success
+                                            {% elif reservation.reservation_status == reservation.REJECTED %}
+                                                bg-danger
+                                            {% else %}
+                                                bg-light
+                                            {% endif %}
+                                        ">
+                                        <strong>Status:</strong> {{ reservation.get_reservation_status_display }}
+                                    </li>
                                     <li class="pending-list-item"><strong>Check-in:</strong>
                                         {{ reservation.checkin_date }}</li>
                                     <li class="pending-list-item"><strong>Check-out:</strong>
                                         {{ reservation.checkout_date }}</li>
-                                    <li class="pending-list-item text-center p-3"><strong>Price:</strong> {{ reservation.price }}</li>
+                                    <li class="pending-list-item text-center p-3"><strong>Price:</strong>
+                                        {{ reservation.price }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        {% else %}
+                        <!-- Clickable link for other reservations -->
+                        <a href="{% url 'reservation_detail' reservation.id %}" class="h-100 text-decoration-none">
+                            <div class="mb-2 room-card">
+                                <ul class="list-unstyled">
+                                    <li class="reservation-user-title"> {{ request.user.first_name }}
+                                        {{ request.user.last_name }}</li>
+                                    <li class="text-center p-1 
+                                            {% if reservation.reservation_status == reservation.PENDING %}
+                                                bg-primary
+                                            {% elif reservation.reservation_status == reservation.CONFIRMED %}
+                                                bg-success
+                                            {% elif reservation.reservation_status == reservation.REJECTED %}
+                                                bg-danger
+                                            {% else %}
+                                                bg-light
+                                            {% endif %}
+                                        ">
+                                        <strong>Status:</strong> {{ reservation.get_reservation_status_display }}
+                                    </li>
+                                    <li class="pending-list-item"><strong>Check-in:</strong>
+                                        {{ reservation.checkin_date }}</li>
+                                    <li class="pending-list-item"><strong>Check-out:</strong>
+                                        {{ reservation.checkout_date }}</li>
+                                    <li class="pending-list-item text-center p-3"><strong>Price:</strong>
+                                        {{ reservation.price }}</li>
                                 </ul>
                             </div>
                         </a>
+                        {% endif %}
                     </div>
                 </div>
                 {% empty %}
-                
-                    <div role="alert" class="no-content-message">You have 0 reservations</div>
-                
+                <div role="alert" class="no-content-message">You have 0 reservations</div>
                 {% endfor %}
             </div>
         </div>
 
         <!-- Display pending reviews -->
         <div class="notification-section">
-            <h2 class="p-4 titles-position-style">Pending Reviews</h2>
+            <h2 class="p-4 titles-position-style">Reviews</h2>
             <div class="row">
                 {% for review in user_pending_reviews %}
                 <div class="col-12 col-md-6 col-lg-4 mb-4">
-                    <div class=" pending-item card-body">
-                        <a href="{% url 'review_detail' review.id %}"
-                            class="h-100 text-decoration-none">
-                            <div class=" custom-div">
-                                <p class="custom-card-title">REVIEW</p>
-                                <p class="user-title">{{ review.user }}</p>
+                    <div class="room-card">
+                        <a href="{% url 'review_detail' review.id %}" class="h-100 text-decoration-none">
+                            <div class="profile-review">
+                                <p class="user-title comment-user-title">{{ review.user }}</p>
+                                <p class="pending-list-item text-center text-white
+                            {% if review.status ==  0 %}
+                                bg-primary
+                            {% elif review.status == 1 %}
+                                bg-success
+                            {% elif review.status == 2 %}
+                                bg-danger
+                            {% else %}
+                                bg-light
+                            {% endif %}
+                        ">
+                                    <strong>Status:</strong>
+                                    {% if review.status == 0 %}
+                                    Pending
+                                    {% elif review.status == 1 %}
+                                    Confirmed
+                                    {% elif review.status == 2 %}
+                                    Rejected
+                                    {% else %}
+                                    Unknown
+                                    {% endif %}
+                                </p>
                                 <div class="review-text multi-line-truncate">"{{ review.review }}"</div>
-                                <p class="pending-list-item text-center bg-white text-bold text-dark review-align-bottom-date">{{ review.created_at }}</p>
+                                
+                                <p class=" review-align-bottom-date">{{ review.created_at }}</p>
                             </div>
                         </a>
                     </div>
@@ -65,35 +147,53 @@
                 {% endfor %}
             </div>
         </div>
-
-        <!-- Display pending comments -->
         <div class="notification-section">
-            <h2 class="p-4 titles-position-style">Pending Comments</h2>
-
+            <h2 class="p-4 titles-position-style">Comments</h2>
             <div class="row">
-            <ul class="notification-list">
-                {% for comment in user_pending_comments %}
-                <li>
-                    <div class="custom-div-profile card-body">
-                        <a href="{% url 'review_detail' comment.review.id %}" >
-                            <div class="review-details-profile">
-                                <p class="review-name-profile">{{ comment.user }}</p>
-                                <div class="review-text-profile"><strong>
-                                    "{{ comment.text }}"</strong>
+                <ul class="notification-list">
+                    {% for comment in user_pending_comments %}
+                    <li class="col-12 col-md-6 col-lg-4 mb-4">
+                        <div class="">
+                            <a href="{% url 'review_detail' comment.review.id %}" class="h-100 text-decoration-none">
+                                <div class="room-card">
+                                    <p class="comment-user-title pl-1">{{ comment.user }}</p>  <p class="text-center
+                                    {% if comment.status == 'pending' %}
+                                        bg-primary
+                                    {% elif comment.status == 'approved' %}
+                                        bg-success
+                                    {% elif comment.status == 'rejected' %}
+                                        bg-danger
+                                    {% else %}
+                                        bg-light
+                                    {% endif %}
+                                ">
+                                    <strong>Status:</strong>
+                                    {% if comment.status == 'pending' %}
+                                    Pending
+                                    {% elif comment.status == 'approved' %}
+                                    Approved
+                                    {% elif comment.status == 'rejected' %}
+                                    Rejected
+                                    {% else %}
+                                    Unknown
+                                    {% endif %}
+                                </p>
+
+                                    <div class="review-text-profile"><strong>"{{ comment.text }}"</strong></div>
+                                    <p class="review-created-at-profile">{{ comment.created_at }}</p>
+                                  
                                 </div>
-                                <p class="review-created-at-profile">{{ comment.created_at }}</p>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-                {% empty %}
-                <li>No pending comments found.</li>
-                {% endfor %}
-            </ul>
+                            </a>
+                        </div>
+                    </li>
+                    {% empty %}
+                    <li class="col-12">
+                        <div class="no-content-message">No pending comments found.</div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
-        </div>
-
-
         <!-- Modals for reviews -->
         {% for review in user_pending_reviews %}
         <div id="modal_review_{{ review.id }}" class="modal">
@@ -145,5 +245,29 @@
                 }
             }
         }
+        function closeMessage(messageId) {
+        fetch(`/close-message/${messageId}/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                'action': 'close'
+            })
+        })
+        .then(response => {
+            if (response.ok) {
+                // Refresh or update the message list after successfully closing
+                location.reload();  // Example: Refresh the page
+            } else {
+                alert('Failed to close message.');
+            }
+        })
+        .catch(error => {
+            console.error('Error closing message:', error);
+        });
+    }
+        
     </script>
     {% endblock %}

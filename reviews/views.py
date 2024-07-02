@@ -7,6 +7,7 @@ from .forms import ReviewForm, CommentForm
 from django.db.models import Count, Q
 from django.views import generic
 from .models import Review, Comment
+from home.models import Message
 from bookings.models import Reservation 
 import json
 from django.http import JsonResponse
@@ -212,23 +213,35 @@ def review_approval_list(request):
     pending_reviews = Review.objects.filter(status=0) 
     return render(request, 'reviews/partials/review_approval_list.html', {'pending_reviews': pending_reviews})
 
+
 @staff_member_required
 def approve_review(request, review_id):
     review = get_object_or_404(Review, id=review_id)
-    review.status = 1  # Approve the review
+    review.status = 1
     review.save()
+
+    # Create a message for the user
+    user = review.user
+    message_content = f'Your review has been approved.'
+    message = Message(user=user, content=message_content)
+    message.save()
+
     return JsonResponse({'message': 'Review approved successfully'})
 
-
-    # Redirect to reservation_approval_list
-    return redirect('reservation-approval-list')
 
 @staff_member_required
 def reject_review(request, review_id):
     review = get_object_or_404(Review, id=review_id)
-    review.status = 2  # Reject the review
+    review.status = 2
     review.save()
-    return redirect('review-approval-list')
+
+    # Create a message for the user
+    user = review.user
+    message_content = f'Your review has been rejected.'
+    message = Message(user=user, content=message_content)
+    message.save()
+
+    return JsonResponse({'message': 'Review rejected successfully'})
 
 
 
@@ -237,23 +250,34 @@ def comment_approval_list(request):
     pending_comments = Comment.objects.filter(status=Comment.PENDING)
     return render(request, 'reviews/partials/comment_approval_list.html', {'pending_comments': pending_comments})
 
+
 @staff_member_required
 def approve_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
     comment.status = Comment.APPROVED
     comment.save()
-    pending_comments = Comment.objects.filter(status=Comment.PENDING)
-    return redirect('comment-approval-list')
 
+    # Create a message for the user
+    user = comment.user  # Assuming Comment model has a 'user' field
+    message_content = f'Your comment on "{comment.review.review}" has been approved.'  # Customize as needed
+    message = Message(user=user, content=message_content)
+    message.save()
+
+    return redirect('comment-approval-list')
 
 @staff_member_required
 def reject_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
     comment.status = Comment.REJECTED
     comment.save()
-    pending_comments = Comment.objects.filter(status=Comment.PENDING)
-    return redirect('comment-approval-list')
 
+    # Create a message for the user
+    user = comment.user  # Assuming Comment model has a 'user' field
+    message_content = f'Your comment on "{comment.review.review}" has been rejected.'  # Customize as needed
+    message = Message(user=user, content=message_content)
+    message.save()
+
+    return redirect('comment-approval-list')
 
 @login_required
 def user_pending_reviews_count(request):

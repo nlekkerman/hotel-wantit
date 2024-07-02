@@ -33,5 +33,6 @@ urlpatterns = [
     path('reviews/', include('reviews.urls')),  # Example: Replace 'reviews.urls' with actual path
     path('bookings/', include('bookings.urls')),  # Example: Replace 'bookings.urls' with actual path
     path('admin_dashboard/', root_views.admin_dashboard, name='admin_dashboard'),
+    path('close-message/<int:message_id>/', views.close_message_view, name='close_message'),
     path('admin-interface/', views.admin_interface, name='admin-interface'),
 ]
