@@ -6,18 +6,21 @@
 {% block content %}
 <div class="rooms-details-background">
     <div class="room-detail-container">
-        <a href="{% url 'rooms' %}?type=deluxe" class="return-link"><i class="fas fa-arrow-left"></i> Back to {{ room.room_type }} Rooms</a>
 
         <div class="room-detail-content">
             <h1 class="room-detail-title">{{ room.room_type }} {{ room.room_number }}</h1>
             <p class="room-detail-price">Price per night: <strong>${{ room.price }}</strong></p>
             <div class="room-detail-responsive-container">
+                <a href="{% url 'rooms' %}?type=deluxe" class="return-link"><i class="fas fa-arrow-left"></i> Back to {{ room.room_type }} Rooms</a>
+
                 <a href="{% url 'room_detail' room.id %}">
                     <img class="room-detail-image" id="room-detail-image" src="{{ room.featured_image.url }}" alt="{{ room.room_type }}">
                 </a>
+                
                 <p class="room-detail-description">{{ room.description }}</p>
             </div>
         </div>
+
     </div>
 
     <div class="images-container">

@@ -129,36 +129,137 @@ Welcome to the Hotel Wantit page! This page is designed to offer a user-friendly
   - [User Experience](#user-experience-1)
 
 ## User Experience
-### User Goals
-1. **Easy Navigation and Booking**: Users want a straightforward and intuitive interface to navigate through the website and make bookings for hotel rooms and restaurant tables effortlessly.
-2. **Access to Information**: Users need quick access to essential information about the hotel, including room details, dining options, and promotions.
-3. **Real-Time Assistance**: Users seek immediate help and answers to their queries through an interactive chat feature, providing real-time support.
-4. **Review and Feedback**: Users want to read reviews from previous guests and leave their feedback to help future visitors make informed decisions.
-5. **Responsive Design**: Users expect a seamless experience across all devices, including desktops, tablets, and smartphones.
+## User Goals
 
-### Site Owner Goals
-1. **Increase Bookings**: The primary goal is to drive more bookings for hotel rooms and restaurant tables through a user-friendly and engaging website.
-2. **Enhance User Engagement**: The site aims to keep users engaged with interactive features like the chat function and dynamic content such as slideshows and reviews.
-3. **Showcase Amenities and Promotions**: The site should effectively highlight the hotel’s services and current promotions to attract potential guests.
-4. **Collect User Feedback**: Gathering reviews and feedback from guests helps improve services and build a trustworthy reputation for future visitors.
-5. **Promote Social Media Presence**: Encouraging users to follow and interact with the hotel's social media profiles helps in building an online community and increasing brand visibility.
+### Hotel Guest/User
 
+1. **Efficient Reservation Management**
+   - *Goal:* Easily browse available rooms, select preferred dates, and make reservations seamlessly.
+   - *Benefits:* Allows guests to efficiently plan and organize their accommodation needs.
 
-### User Stories
-#### Epic 1 - User account creation process
-<!-- Epic 1 content here -->
+2. **Transparent Booking Process**
+   - *Goal:* Receive clear and detailed information about room types, amenities, prices, and availability.
+   - *Benefits:* Helps guests make informed decisions and ensures expectations are met upon arrival.
 
-#### Epic 2 - Development of a course booking system
-<!-- Epic 2 content here -->
+3. **Interactive Feedback Mechanism**
+   - *Goal:* Provide feedback through reviews and comments to share experiences and help improve service quality.
+   - *Benefits:* Enhances user engagement and contributes to continuous improvement of services.
 
-#### Epic 3 - Development of a contact form
-<!-- Epic 3 content here -->
+4. **Accessible Reservation Management**
+   - *Goal:* Manage reservations, view booking details, and easily cancel bookings if necessary.
+   - *Benefits:* Offers flexibility and control over bookings, ensuring a smooth experience.
 
-#### Epic 4 - Enhancing website aesthetics
-<!-- Epic 4 content here -->
+5. **Responsive User Interface**
+   - *Goal:* Access the booking system from various devices (desktop, tablet, mobile) with consistent usability.
+   - *Benefits:* Provides convenience and accessibility for users on the go.
 
-#### Epic 5 - Employee workshop news feed
-<!-- Epic 5 content here -->
+---
+
+### Admin
+
+1. **Centralized Management**
+   - *Goal:* Monitor and manage reservations, reviews, and comments efficiently from a central dashboard.
+   - *Benefits:* Facilitates oversight and ensures timely handling of guest interactions and feedback.
+
+2. **Streamlined Approval Process**
+   - *Goal:* Review and approve/reject pending reservations, reviews, and comments.
+   - *Benefits:* Maintains quality control and responsiveness to guest needs and feedback.
+
+3. **Enhanced Communication**
+   - *Goal:* Communicate effectively with users regarding booking confirmations, updates, and responses to reviews/comments.
+   - *Benefits:* Improves customer satisfaction and engagement through timely and personalized communication.
+
+4. **Data-Driven Decision Making**
+   - *Goal:* Utilize analytics and reports derived from reservation and feedback data to improve service offerings.
+   - *Benefits:* Enables informed decisions to enhance guest experience and operational efficiency.
+
+---
+
+### Owner
+
+1. **Business Growth and Profitability**
+   - *Goal:* Increase occupancy rates and revenue through efficient booking and management processes.
+   - *Benefits:* Maximizes profitability and supports sustainable business growth.
+
+2. **Brand Reputation Management**
+   - *Goal:* Maintain a positive online reputation through responsive customer service and proactive management of reviews.
+   - *Benefits:* Builds trust with guests and enhances the hotel's brand image.
+
+3. **Operational Efficiency**
+   - *Goal:* Optimize resource allocation and operational processes based on reservation data and guest feedback.
+   - *Benefits:* Improves efficiency, reduces costs, and enhances overall service delivery.
+
+4. **Innovative Service Offerings**
+   - *Goal:* Introduce new services or amenities based on guest preferences and market trends identified through booking and feedback data.
+   - *Benefits:* Differentiates the hotel from competitors and attracts more guests.
+
+## User Stories
+
+### Admin Dashboard Management
+
+**As an Admin, I want to access and manage reservations, comments, and reviews from a centralized dashboard so that I can efficiently oversee activities on the platform.**
+
+**Description:**
+The admin dashboard provides a centralized interface for admins to monitor and manage reservations, comments, and reviews. Admins can view counts of pending items and navigate to specific management pages for detailed actions.
+
+**Acceptance Criteria:**
+- **AC1:** Display the Admin Dashboard page with a title "Admin Dashboard."
+- **AC2:** Include management cards for Reservations, Comments, and Reviews.
+  - **AC2.1:** Each card displays the count of pending items.
+  - **AC2.2:** Each card includes a brief description of its function.
+- **AC3:** Clicking on a card navigates to the respective management page:
+  - **AC3.1:** Reservations card navigates to Reservations Approval List.
+  - **AC3.2:** Comments card navigates to Comments Approval List.
+  - **AC3.3:** Reviews card navigates to Reviews Approval List.
+- **AC4:** Ensure the dashboard layout is responsive to different screen sizes.
+
+---
+
+### Notifications and Interaction Management
+
+**As a User, I want to manage my reservations, pending reviews, and pending comments from a notifications page so that I can efficiently organize my interactions within the hotel booking system.**
+
+**Description:**
+Users can access a notifications page where they can view and manage their reservations, pending reviews awaiting approval, and pending comments. This page enhances user interaction by providing a central hub for managing activities related to their bookings and interactions.
+
+**Acceptance Criteria:**
+- **AC1:** Users can navigate to the notifications page after logging into the hotel site.
+- **AC2:** The notifications page prominently displays sections for "Reservations," "Pending Reviews," and "Pending Comments."
+- **AC3:** Each section lists items with basic details (e.g., reservation IDs, review excerpts, comment previews).
+- **AC4:** Clicking on an item within a section opens a modal or detailed view with comprehensive information.
+- **AC5:** The notifications page is responsive and adjusts layout gracefully across different devices.
+
+---
+
+### Manage Reviews
+
+**As a User, I want to create, edit, delete, and view details of my reviews so that I can share experiences and manage feedback effectively within the hotel booking system.**
+
+**Description:**
+Users have the ability to perform CRUD operations on their reviews, including creating new reviews, editing existing ones, deleting reviews, and viewing detailed information. This functionality allows users to maintain and update their review content as needed.
+
+**Acceptance Criteria:**
+- **AC1:** Users can create new reviews, providing details such as ratings and comments.
+- **AC2:** Users can edit their existing reviews to update information or correct errors.
+- **AC3:** Users can delete their reviews if they choose to remove them from the system.
+- **AC4:** The system displays detailed information for each review, including ratings, comments, and related data.
+
+---
+
+### Booking System
+
+**As a User, I want to easily reserve a room online, manage my bookings, and receive confirmation details so that I can efficiently plan and organize my accommodation needs.**
+
+**Description:**
+The booking system enables users to browse available rooms, select dates, make reservations, manage bookings, and receive confirmation details. This functionality ensures a seamless booking experience for users planning their accommodation within the hotel.
+
+**Acceptance Criteria:**
+- **AC1:** Users can view details of available rooms, including room types, amenities, and prices.
+- **AC2:** Users can select check-in and check-out dates, choose room types, and initiate the reservation process.
+- **AC3:** Users receive confirmation of their reservation with details such as room number, dates, total price, and booking status.
+- **AC4:** Users can cancel their reservations if needed.
+- **AC5:** The system suggests alternative room options if the selected room type is unavailable for the chosen dates.
+
 
 ## Design
 ### Color Scheme

@@ -94,7 +94,6 @@ def log_star_rating(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         rating = data.get('rating')
-        # Process the rating data as needed (e.g., save it to the database)
         print(f'Star rating received: {rating}')
         return JsonResponse({'status': 'success', 'rating': rating})
     return JsonResponse({'status': 'fail'}, status=400)

@@ -35,3 +35,6 @@ class StarRatingWidget(forms.Widget):
         </script>
         '''
         return mark_safe(html)
+
+    def value_from_datadict(self, data, files, name):
+        return data.get(name, None)

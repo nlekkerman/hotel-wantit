@@ -1286,11 +1286,13 @@ label {
     padding: 5px;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
 }
 
 /*CUSTOM BUTTONS*/
 .card-body .btn {
     margin-top: 30px;
+    width: 40%;
 }
 
 .edit-button {
@@ -2113,6 +2115,8 @@ form.signup button {
     margin-top: 90px;
     color: white;
     background-color: rgba(50, 0, 0, 0.8);
+    padding: 5px;
+    text-align: center;
 }
 
 .username-admin {
@@ -2259,6 +2263,7 @@ form.signup button {
     margin-bottom: 10px;
     border: 1px solid #fffefe;
     border-radius: 5px;
+    color: white;
     background-color: rgba(0, 0, 0, 0.7);
     box-sizing: border-box;
     font-size: 16px;
@@ -2473,6 +2478,7 @@ label {
 }
 
 .return-link {
+    position: float;
     color: white !important;
     text-decoration: none;
     font-weight: 700;
@@ -3160,6 +3166,9 @@ label {
     .room-detail-content {
         width: 70%;
         margin: 0 auto;
+    }
+    .card-body .btn {
+        width: 20%;
     }
 }
 

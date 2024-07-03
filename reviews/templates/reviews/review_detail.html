@@ -12,9 +12,9 @@
         <div class="stars">
             {% for _ in "12345" %}
             {% if forloop.counter <= review.rating %}
-            <span class="star">&#9733;</span> <!-- Filled star -->
+            <span class="star">&#9733;</span> 
             {% else %}
-            <span class="star">&#9734;</span> <!-- Empty star -->
+            <span class="star">&#9734;</span> 
             {% endif %}
             {% endfor %}
 

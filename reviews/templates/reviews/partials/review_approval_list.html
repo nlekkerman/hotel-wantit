@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="admin-user-container-styles">
+<div class="pending-content-container">
     <h1 class="titles-position-style">Pending Reviews</h1>
 
     {% if pending_reviews %}
@@ -81,7 +81,7 @@
                 success: function (data) {
                     $('.pending-item').removeClass('approved rejected');
                     $parentCard.addClass('rejected');
-                    $parentCard.find('.card-text').addClass('invisible');
+                    $parentCard.find('.card-body').addClass('invisible');
                     $parentCard.find('.username-admin').addClass('invisible');
 
                     // Slide up and disappear after 2 seconds

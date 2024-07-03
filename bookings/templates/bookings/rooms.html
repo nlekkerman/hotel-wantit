@@ -27,15 +27,9 @@
                     <p class="card-text">{{ room.description }}</p>
                     <p class="card-price"><strong>${{ room.price }}</strong> night</p>
                 </a>
-                <form method="post" id="availabilityForm" action="{% url 'check_availability' room.id %}">
-                    {% csrf_token %}
-                    <input type="hidden" name="room_id" value="{{ room.id }}">
-                    <input type="hidden" name="room_number" value="{{ room.room_number }}">
-                    <input type="hidden" name="room_price" value="{{ room.price }}">
-                    <input type="hidden" name="room_type" value="{{ room.room_type }}">
-                    <button id="room_availability_button" type="submit" class="availability_button">Check
-                        Availabilty</button>
-                </form>
+                <a href="{% url 'check_availability' room.id %}" class="availability_button">
+                    Check Availability
+                </a>
 
             </div>
         </div>

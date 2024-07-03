@@ -261,6 +261,7 @@ hr {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     background-color: rgba(0, 0, 0, 0.3) !important;
     border-bottom: 3px solid white;
+    border-top: 1px solid white;
     font-size: 1.4rem;
 }
 
@@ -854,7 +855,19 @@ label {
     padding: 10px;
 }
 
+.pending-content-container{
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    animation: zoomIn 1.2s ease-in;
+    min-height: 100vh !important;
+    background-image: url("../images/room7.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100% !important;
 
+}
 .reviews-page {
     margin-top: 0;
     display: flex;
@@ -866,10 +879,6 @@ label {
     background-position: center;
     background-repeat: no-repeat;
     width: 100% !important;
-
-    /* Adjust background size and position as needed */
-
-
 }
 
 .reviews-header {
@@ -1286,11 +1295,13 @@ label {
     padding: 5px;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
 }
 
 /*CUSTOM BUTTONS*/
 .card-body .btn {
     margin-top: 30px;
+    width: 40%;
 }
 
 .edit-button {
@@ -2113,6 +2124,8 @@ form.signup button {
     margin-top: 90px;
     color: white;
     background-color: rgba(50, 0, 0, 0.8);
+    padding: 5px;
+    text-align: center;
 }
 
 .username-admin {
@@ -2259,6 +2272,7 @@ form.signup button {
     margin-bottom: 10px;
     border: 1px solid #fffefe;
     border-radius: 5px;
+    color: white;
     background-color: rgba(0, 0, 0, 0.7);
     box-sizing: border-box;
     font-size: 16px;
@@ -2473,6 +2487,7 @@ label {
 }
 
 .return-link {
+    
     color: white !important;
     text-decoration: none;
     font-weight: 700;
@@ -3160,6 +3175,9 @@ label {
     .room-detail-content {
         width: 70%;
         margin: 0 auto;
+    }
+    .card-body .btn {
+        width: 20%;
     }
 }
 

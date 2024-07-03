@@ -8,20 +8,59 @@
     <h1 class="create-review-title">Write a Review</h1>
 
     <div class="form-holder-create-review">
-    <form id="reviewForm" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" id="submitReviewBtn" class="edit-button">Submit</button>
-    </form>
-
-</div>
+        <form id="reviewForm" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" id="submitReviewBtn" class="edit-button">Submit</button>
+        </form>
+    </div>
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('reviewForm').addEventListener('submit', function (event) {
+          
+            let ratingValue = parseInt(document.querySelector('input[name="rating"]:checked').value);
+            if (ratingValue <= 1 || isNaN(ratingValue)) {
+                // Prevent form submission if no rating is selected
+                alert('Please select a rating.');
+                event.preventDefault(); // Stop form submission
+                return;
+            }
+
+            // Check if review text is empty
+            let reviewText = document.querySelector('textarea[name="review"]').value.trim();
+            if (reviewText === '') {
+                // Prevent form submission if review text is empty
+                alert('Please enter your review.');
+                event.preventDefault(); // Stop form submission
+                return;
+            }
+
+            console.log('Rating selected:', ratingValue);
+            console.log('Review text:', reviewText);
+
+            // Optionally send the data to the server
+            fetch('/submit-review/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({
+                    rating: ratingValue,
+                    review: reviewText
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log('Success:', data))
+            .catch(error => console.error('Error:', error));
+        });
+
+        // Star rating click event handling (assuming you have .fa-star elements)
         document.querySelectorAll('.star-rating .fa-star').forEach(function (star) {
             star.addEventListener('click', function () {
-                let value = this.getAttribute('data-value');
+                let value = parseInt(this.getAttribute('data-value'));
                 let input = this.parentNode.querySelector('input');
                 input.value = value;
                 this.parentNode.querySelectorAll('.fa-star').forEach(function (s, index) {
@@ -36,7 +75,7 @@
                 console.log('Star clicked:', value);
 
                 // Optionally send the data to the server only if a rating is selected
-                if (value !== null && value !== undefined) {
+                if (value > 0) {
                     fetch('/log-star-rating/', {
                         method: 'POST',
                         headers: {
@@ -51,7 +90,7 @@
                     .then(data => console.log('Success:', data))
                     .catch(error => console.error('Error:', error));
                 } else {
-                    // Alert the user if no rating is selected
+                    // This part should not be executed due to the if condition above
                     alert('No rating selected.');
                 }
             });
@@ -60,5 +99,3 @@
 </script>
 
 {% endblock %}
-
-
