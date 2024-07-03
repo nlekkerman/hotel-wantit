@@ -210,7 +210,7 @@ def add_comment(request, review_id):
 @staff_member_required
 def review_approval_list(request):
     pending_reviews = Review.objects.filter(status=0) 
-    return render(request, 'reviews/partials/review_approval_list.html', {'pending_reviews': pending_reviews})
+    return render(request, 'reviews/review_approval_list.html', {'pending_reviews': pending_reviews})
 
 
 @staff_member_required
