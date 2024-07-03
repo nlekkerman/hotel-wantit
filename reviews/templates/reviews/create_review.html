@@ -35,8 +35,9 @@
                 // Log the click event
                 console.log('Star clicked:', value);
 
-                // Optionally send the data to the server
-                fetch('/log-star-rating/', {
+                // Optionally send the data to the server only if a rating is selected
+                if (value !== null && value !== undefined) {
+                    fetch('/log-star-rating/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -49,10 +50,15 @@
                     .then(response => response.json())
                     .then(data => console.log('Success:', data))
                     .catch(error => console.error('Error:', error));
+                } else {
+                    // Alert the user if no rating is selected
+                    alert('No rating selected.');
+                }
             });
         });
     });
 </script>
+
 {% endblock %}
 
 

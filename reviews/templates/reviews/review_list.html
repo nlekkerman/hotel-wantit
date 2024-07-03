@@ -17,9 +17,9 @@
     <div class="review-list-container">
         <div class="row additional-row-styles">
             {% for review in object_list %}
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4 review-list-item">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4 ">
                 <a href="{% url 'review_detail' review.pk %}" class="text-decoration-none">
-                    <div class="review-item p-3 ">
+                    <div class="room-card p-3 ">
                         <div class="author-title">
                             <p>{{ review.user.username }} </p>
                             <div class="stars mb-2">
