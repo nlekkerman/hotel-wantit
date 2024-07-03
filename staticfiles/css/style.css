@@ -261,6 +261,7 @@ hr {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     background-color: rgba(0, 0, 0, 0.3) !important;
     border-bottom: 3px solid white;
+    border-top: 1px solid white;
     font-size: 1.4rem;
 }
 
@@ -854,7 +855,19 @@ label {
     padding: 10px;
 }
 
+.pending-content-container{
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    animation: zoomIn 1.2s ease-in;
+    min-height: 100vh !important;
+    background-image: url("../images/room7.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100% !important;
 
+}
 .reviews-page {
     margin-top: 0;
     display: flex;
@@ -866,10 +879,6 @@ label {
     background-position: center;
     background-repeat: no-repeat;
     width: 100% !important;
-
-    /* Adjust background size and position as needed */
-
-
 }
 
 .reviews-header {
@@ -2478,7 +2487,7 @@ label {
 }
 
 .return-link {
-    position: float;
+    
     color: white !important;
     text-decoration: none;
     font-weight: 700;
