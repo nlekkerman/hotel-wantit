@@ -60,22 +60,3 @@
     </div>
 </div>
 {% endblock %}
-<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-    <div class="dropdown-content">
-        <div class="col">
-            <a class="dropdown-item" href="{% url 'comment-approval-list' %}">
-                <img src="{% static 'images/icons/comment-icon.png' %}" alt="Comments" class="dropdown-icon"> Comments
-            </a>
-        </div>
-        <div class="col">
-            <a class="dropdown-item" href="{% url 'review-approval-list' %}">
-                <img src="{% static 'images/icons/review-icon.png' %}" alt="Reviews" class="dropdown-icon"> Reviews
-            </a>
-        </div>
-        <div class="col">
-            <a class="dropdown-item" href="{% url 'reservation-approval-list' %}">
-                <img src="{% static 'images/icons/reservation-icon.png' %}" alt="Reservation" class="dropdown-icon"> Reservations
-            </a>
-        </div>
-    </div>
-</div>
