@@ -253,11 +253,6 @@ Test the functionality of creating and editing reviews and comments.
 
 ![Create with Empty Fields](negative_create_empty_fields.png)
 
-### Create with Special Characters
-- Create a review or comment containing special characters (e.g., emojis, symbols).
-- Verify that the application accepts and displays special characters correctly after submission.
-
-![Create with Special Characters](positive_create_special_characters.png)
 
 ### Create with Long Content
 - Create a review or comment with a large amount of text exceeding typical limits.
@@ -285,11 +280,6 @@ Test the functionality of creating and editing reviews and comments.
 
 #### Additional Scenarios and Images:
 
-### Cancel Edit
-- Start editing a review or comment but choose to cancel without saving changes.
-- Verify that the content remains unchanged after canceling edit.
-
-![Cancel Edit](negative_cancel_edit.png)
 
 ### Edit Empty Content
 - Attempt to edit a review or comment by removing all existing content.

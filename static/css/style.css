@@ -917,8 +917,8 @@ hr {
     max-width: 100%;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    height: 200px;
     text-align: center;
+    padding: 10px;
     font-style: italic;
     white-space: normal;
     margin-top: 20px !important;
