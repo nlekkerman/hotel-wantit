@@ -84,6 +84,13 @@ hr {
 
 }
 
+.errorlist {
+    color: white !important;
+
+}
+
+
+
 .nav-holder {
     height: 100% !important;
     text-align: center;
@@ -342,7 +349,7 @@ hr {
     margin: 0 auto;
 }
 
-.reservations-details-content{
+.reservations-details-content {
     padding: 5px;
 }
 
@@ -562,21 +569,31 @@ hr {
 }
 
 .form-group textarea {
-    width: 100% !important; /* Makes the textarea fill its container */
+    width: 100% !important;
+    /* Makes the textarea fill its container */
     background-color: rgba(0, 0, 0, 0.7) !important;
-    padding: 10px; /* Adds padding inside the textarea */
-    font-size: 16px; /* Sets the font size of the textarea */
-    border: 1px solid #ccc; /* Adds a border around the textarea */
+    padding: 10px;
+    /* Adds padding inside the textarea */
+    font-size: 16px;
+    /* Sets the font size of the textarea */
+    border: 1px solid #ccc;
+    /* Adds a border around the textarea */
     color: white;
-    border-radius: 4px; /* Rounds the corners of the textarea */
-    resize: vertical; /* Allows vertical resizing of the textarea */
+    border-radius: 4px;
+    /* Rounds the corners of the textarea */
+    resize: vertical;
+    /* Allows vertical resizing of the textarea */
 }
 
 .form-group textarea:focus {
-    outline: none; /* Removes the default focus outline */
-    border-color: #007bff; /* Changes the border color on focus */
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Adds a box shadow on focus */
+    outline: none;
+    /* Removes the default focus outline */
+    border-color: #007bff;
+    /* Changes the border color on focus */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    /* Adds a box shadow on focus */
 }
+
 /*REVIEW in the SLIDE*/
 
 .review {
@@ -773,7 +790,7 @@ hr {
     padding: 10px;
 }
 
-.pending-content-container{
+.pending-content-container {
     margin-top: 0;
     display: flex;
     flex-direction: column;
@@ -786,6 +803,7 @@ hr {
     width: 100% !important;
 
 }
+
 .reviews-page {
     margin-top: 0;
     display: flex;
@@ -852,16 +870,19 @@ hr {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.comment-user-title{
+
+.comment-user-title {
     margin-bottom: 0px !important;
     background-color: rgba(0, 0, 0, 0.7);
 }
-.profile-review{
+
+.profile-review {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
+
 .review-created-at-profile {
     background-color: rgba(0, 0, 0, 0.2);
     height: 100%;
@@ -1394,11 +1415,13 @@ hr {
     text-align: center;
     font-weight: 500;
 }
-.password-with-message{
+
+.password-with-message {
     display: flex;
     flex-direction: column;
 }
-.signup{
+
+.signup {
     width: 50%;
     margin: 0 auto;
 }
@@ -1621,10 +1644,11 @@ form.signup button {
     box-shadow: -6px -7px 20px 11px rgba(0, 0, 0, 0.2);
     margin-top: 0px !important;
 }
+
 .footer-text {
     color: silver;
     font-size: 1.1rem;
-    font-style:italic;
+    font-style: italic;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1891,26 +1915,29 @@ form.signup button {
     justify-content: space-evenly;
 
 }
-.username-admin-title{
+
+.username-admin-title {
     background-color: rgba(0, 0, 0, 0.8);
     text-transform: capitalize;
-    padding:5px;
+    padding: 5px;
     font-size: 1.2rem;
 }
-.approval-reservation-price{
+
+.approval-reservation-price {
     background-color: rgba(32, 90, 0, 0.3);
     text-transform: capitalize;
-    padding:5px;
+    padding: 5px;
     font-size: 1.2rem;
 }
-.font-italic{
+
+.font-italic {
     background-color: rgba(0, 0, 0, 0.2);
     padding-left: 5px;
 }
 
-.admin-button-container{
-   text-align: center;
-   margin-bottom: 20px;
+.admin-button-container {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .pending-reservation-item {
@@ -1971,12 +1998,14 @@ form.signup button {
     list-style-type: none;
     padding-left: 0;
 }
-.close-message-button{
+
+.close-message-button {
     background-color: white;
     border: none;
 }
+
 .message-item {
-    padding:5px;
+    padding: 5px;
     margin-bottom: 3px;
     background-color: rgba(255, 89, 0, 0.7);
     color: white;
@@ -2409,7 +2438,7 @@ label {
 }
 
 .return-link {
-    
+
     color: white !important;
     text-decoration: none;
     font-weight: 700;
@@ -2728,7 +2757,7 @@ label {
     width: 100%;
     padding: 5px;
     display: flex;
-flex-direction: column;
+    flex-direction: column;
     align-items: center;
 
 }
@@ -3104,8 +3133,8 @@ flex-direction: column;
         width: 50% !important;
         margin: 0 auto;
         display: flex;
-    }    
-   
+    }
+
 }
 
 

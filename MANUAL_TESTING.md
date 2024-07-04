@@ -2,10 +2,101 @@
 
 ## Table of Contents
 - [Test Case 1: Login and Logout](#test-case-1-login-and-logout)
+  - [Description](#description)
+  - [Steps](#steps)
+  - [Expected Results](#expected-results)
+    - [Positive Outcome (Successful Login)](#positive-outcome-successful-login)
+      - [Additional Scenarios and Images](#additional-scenarios-and-images)
+    - [Negative Outcome (Invalid Credentials)](#negative-outcome-invalid-credentials)
+    - [Negative Outcome (Login with Empty Fields)](#negative-outcome-login-with-empty-fields)
+    - [Positive Outcome (Successful Logout)](#positive-outcome-successful-logout)
+      - [Additional Scenarios](#additional-scenarios)
 - [Test Case 2: Navigation Links](#test-case-2-navigation-links)
+  - [Description](#description-1)
+  - [Steps](#steps-1)
+  - [Expected Results](#expected-results-1)
+    - [Positive Outcome (Navigation Link Click)](#positive-outcome-navigation-link-click)
+      - [Scenarios and Images](#scenarios-and-images)
+    - [Negative Outcome (Navigation Link Not Found)](#negative-outcome-navigation-link-not-found)
 - [Test Case 3: Edit and Create Review/Comment](#test-case-3-edit-and-create-reviewcomment)
+  - [Description](#description-2)
+  - [Part A: Create Review/Comment](#part-a-create-reviewcomment)
+    - [Steps](#steps-2)
+    - [Expected Results](#expected-results-2)
+      - [Positive Outcome (Successful Creation)](#positive-outcome-successful-creation)
+        - [Additional Scenarios and Images](#additional-scenarios-and-images-1)
+      - [Negative Outcome (Create with Empty Fields)](#negative-outcome-create-with-empty-fields)
+      - [Negative Outcome (Create with Special Characters)](#negative-outcome-create-with-special-characters)
+      - [Negative Outcome (Create with Long Content)](#negative-outcome-create-with-long-content)
+  - [Part B: Edit Review/Comment](#part-b-edit-reviewcomment)
+    - [Steps](#steps-3)
+    - [Expected Results](#expected-results-3)
+      - [Positive Outcome (Successful Edit)](#positive-outcome-successful-edit)
+        - [Additional Scenarios and Images](#additional-scenarios-and-images-2)
+      - [Negative Outcome (Cancel Edit)](#negative-outcome-cancel-edit)
+      - [Negative Outcome (Edit Empty Content)](#negative-outcome-edit-empty-content)
+      - [Negative Outcome (Edit with Special Characters)](#negative-outcome-edit-with-special-characters)
+      - [Negative Outcome (Unauthorized Edit)](#negative-outcome-unauthorized-edit)
 - [Test Case 4: Reservation Form](#test-case-4-reservation-form)
+  - [Description](#description-3)
+  - [Steps](#steps-4)
+  - [Expected Results](#expected-results-4)
+    - [Part A: Reservation Form Submission](#part-a-reservation-form-submission)
+      - [Positive Outcome (Successful Form Submission)](#positive-outcome-successful-form-submission)
+      - [Additional Scenarios and Images](#additional-scenarios-and-images-3)
+      - [Negative Outcome (Missing Required Fields)](#negative-outcome-missing-required-fields)
+      - [Negative Outcome (Invalid Date Range)](#negative-outcome-invalid-date-range)
+      - [Negative Outcome (Invalid Email Format)](#negative-outcome-invalid-email-format)
+      - [Negative Outcome (Overlapping Reservations)](#negative-outcome-overlapping-reservations)
 - [Test Case 5: Availability Check for Rooms](#test-case-5-availability-check-for-rooms)
+  - [Description](#description-4)
+  - [Steps](#steps-5)
+  - [Expected Results](#expected-results-5)
+    - [Part A: Availability Check](#part-a-availability-check)
+      - [Positive Outcome (Rooms Available)](#positive-outcome-rooms-available)
+      - [Additional Scenarios and Images](#additional-scenarios-and-images-4)
+      - [Negative Outcome (No Rooms Available)](#negative-outcome-no-rooms-available)
+      - [Negative Outcome (Overlapping Reservations)](#negative-outcome-overlapping-reservations-1)
+      - [Additional Scenarios](#additional-scenarios-1)
+- [Validation Results](#validation-results)
+  - [Description](#description-5)
+  - [Table of Contents](#table-of-contents-1)
+  - [Validator Used](#validator-used)
+  - [Bookings App](#bookings-app)
+    - [Views](#views)
+    - [URLs](#urls)
+    - [Models](#models)
+  - [Reviews App](#reviews-app)
+    - [Views](#views-1)
+    - [URLs](#urls-1)
+    - [Models](#models-1)
+  - [Hotel App](#hotel-app)
+    - [Views](#views-2)
+    - [URLs](#urls-2)
+    - [Models](#models-2)
+  - [Home App](#home-app)
+    - [Views](#views-3)
+    - [URLs](#urls-3)
+    - [Models](#models-3)
+  - [HTML Files](#html-files)
+    - [Comments Approval List (comments_approval_list.html)](#comments-approval-list-comments_approval_listhtml)
+    - [Review Approval List (review_approval_list.html)](#review-approval-list-review_approval_listhtml)
+    - [Reservation Approval List (reservation_approval_list.html)](#reservation-approval-list-reservation_approval_listhtml)
+    - [Admin Interface (admin_interface.html)](#admin-interface-admin_interfacehtml)
+    - [Signup Page (signup.html)](#signup-page-signuphtml)
+    - [Check Availability Page (check_availabilty.html)](#check-availability-page-check_availabiltyhtml)
+    - [Rooms Page (rooms.html)](#rooms-page-roomshtml)
+    - [Book Room Page (book_room.html)](#book-room-page-book_roomhtml)
+    - [Edit Comment Page (edit_comment.html)](#edit-comment-page-edit_commenthtml)
+    - [Edit Review Page (edit_review.html)](#edit-review-page-edit_reviewhtml)
+    - [Reviews Page (reviews.html)](#reviews-page-reviewshtml)
+    - [Review Details Page (review_details.html)](#review-details-page-review_detailshtml)
+    - [Home Page (home.html)](#home-page-homehtml)
+    - [Manual Testing: Handling 404 Errors](#manual-testing-handling-404-errors)
+    - [Description](#description-6)
+    - [Steps to Test 404 Error Handling](#steps-to-test-404-error-handling)
+    - [Expected Results](#expected-results-6)
+    - [Notes](#notes)
 
 ---
 
@@ -152,7 +243,7 @@ Test the functionality of creating and editing reviews and comments.
 - Form allows submission of new review or comment with required fields.
 - Submitted content is displayed correctly in the designated section.
 
-![Positive Outcome - Successful Creation](positive_create_review.png)
+![Positive Outcome - Successful Creation ](positive_create_review.png)
 
 #### Additional Scenarios and Images:
 
@@ -631,66 +722,3 @@ Validation of home.html was successful.
 [Back to Top](#table-of-contents)
 
 ---
-
-## CSS Validation
-
-### Validator Used: [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
-
-#### Validation Result Image
-![CSS Validation Result](path_to_css_validation_image.png)
-
-[Back to Top](#table-of-contents)
-
----
-
-## JavaScript (JS) Validation
-
-### Validator Used: [JSHint](https://jshint.com/)
-
-#### Validation Result Image
-![JavaScript (JS) Validation Result](path_to_js_validation_image.png)
-
-[Back to Top](#table-of-contents)
-
----
-
-## Manual Testing: Handling 404 Errors
-
-### Description
-This section details the manual testing steps to ensure proper handling of 404 errors across the application.
-
-### Steps to Test 404 Error Handling
-
-1. [ ] **Access Invalid URL:**
-   - Navigate to a non-existent URL on the application (e.g., `https://8000-nlekkerman-hotelwantit-72nhvj2byqt.ws.codeinstitute-ide.net/accounts/loin/`).
-
-2. [ ] **Verify Error Page Display:** 
-   - Check that the application displays a user-friendly 404 error page.
-
-3. [ ] **Verify Navigation and Messaging:**
-   - Ensure the error page provides clear messaging about the page not being found.
-   - Verify that the error page includes navigation options to return to the homepage or other relevant sections.
-
-4. [ ] **Check Error Handling in Different Scenarios:**
-   - Repeat steps 1-3 for different types of invalid URLs (e.g., mistyped URLs, outdated links).
-
-5. [ ] **Check Consistency Across Devices:**
-   - Test the 404 error handling on various devices (desktop, tablet, mobile) to ensure consistency in appearance and functionality.
-   ![404 Error Page Mobile View](path_to_404_error_page_mobile_image.png)
-
-6. [ ] **Verify Error Logging (if applicable):**
-   - If the application logs 404 errors, check the logs to confirm that appropriate errors are logged with relevant details (timestamp, URL, user agent).
-
-### Expected Results
-
-- The application should consistently display a well-designed 404 error page with clear messaging.
-- Navigation options back to the homepage or relevant sections should be prominently displayed.
-- Error handling should be consistent across different devices and scenarios.
-
-### Notes
-
-- If there are specific edge cases or additional considerations for 404 error handling in your application, mention them here.
-- Document any observed deviations from expected behavior or issues encountered during testing.
-
-[Back to Top](#table-of-contents)
-
