@@ -5,83 +5,37 @@
 Welcome to the Hotel Wantit page! This page is designed to offer a user-friendly and interactive experience for guests looking to book hotel rooms and restaurant tables at Hotel Wantit. Additionally, users can easily obtain all the information they need through our interactive chat feature.
 
 ## Table of Contents
-- [Hotel Wantit](#frisa-booking)
+- [Hotel Wantit](#hotel-wantit)
   - [Introduction](#introduction)
   - [Table of Contents](#table-of-contents)
   - [User Experience](#user-experience)
     - [User Goals](#user-goals)
-    - [Site Owner Goals](#site-owner-goals)
-    - [User Stories](#user-stories)
-      - [Epic 1 - User account creation process](#epic-1---user-account-creation-process)
-      - [Epic 2 - Development of a course booking system](#epic-2---development-of-a-course-booking-system)
-      - [Epic 3 - Development of a contact form](#epic-3---development-of-a-contact-form)
-      - [Epic 4 - Enhancing website aesthetics](#epic-4---enhancing-website-aesthetics)
-      - [Epic 5 - Employee workshop news feed](#epic-5---employee-workshop-news-feed)
+    - [Admin Goals](#admin-goals)
+    - [Owner Goals](#owner-goals)
+  - [User Stories](#user-stories)
+    - [Admin Dashboard Management](#admin-dashboard-management)
+    - [Notifications and Interaction Management](#notifications-and-interaction-management)
+    - [Manage Reviews](#manage-reviews)
+    - [Booking System](#booking-system)
   - [Design](#design)
-    - [Color Scheme](#color-scheme)
-    - [Typography](#typography)
-    - [Imagery](#imagery)
-    - [Wireframes](#wireframes)
-      - [Index page](#index-page)
-      - [About page](#about-page)
-      - [Booking page](#booking-page)
-      - [My bookings page](#my-bookings-page)
-      - [Success page](#success-page)
-      - [Edit booking page](#edit-booking-page)
-      - [Sign up page](#sign-up-page)
-      - [Sign in page](#sign-in-page)
-      - [Sign out page](#sign-out-page)
-      - [404 page](#404-page)
-      - [500 page](#500-page)
-    - [Entity Relationship Diagram - ERD](#entity-relationship-diagram---erd)
+    - [Style Description](#style-description)
+    - [Color Palette](#color-palette)
   - [Features](#features)
     - [Header](#header)
-      - [Navigation bar](#navigation-bar)
-      - [Navigation bar (as a logged in user)](#navigation-bar-as-a-logged-in-user)
-      - [Navigation bar (as a staff member or superuser)](#navigation-bar-as-a-staff-member-or-superuser)
-    - [Index page](#index-page-1)
-      - [Hero image](#hero-image)
-      - [Welcome text](#welcome-text)
-      - [Member benefits](#member-benefits)
-      - [Sign up button](#sign-up-button)
-      - [Carousel](#carousel)
-    - [About page](#about-page-1)
-      - [Profile image](#profile-image)
-      - [About text](#about-text)
-      - [Contact form](#contact-form)
-      - [Contact form response](#contact-form-response)
-    - [Booking page](#booking-page-1)
-      - [Workshop presentation](#workshop-presentation)
-      - [Workshop booking](#workshop-booking)
-      - [Booking pagination](#booking-pagination)
-      - [Confirm booking modal](#confirm-booking-modal)
-      - [Double booked modal](#double-booked-modal)
-    - [Success page](#success-page-1)
-      - [Confirmation text](#confirmation-text)
-      - [Navigation buttons](#navigation-buttons)
-    - [My bookings page](#my-bookings-page-1)
-      - [No bookings - text](#no-bookings---text)
-      - [No bookings - button](#no-bookings---button)
-      - [Active bookings - text](#active-bookings---text)
-      - [Active bookings - booked workshops](#active-bookings---booked-workshops)
-      - [Active bookings pagination](#active-bookings-pagination)
-      - [Confirm cancellation modal](#confirm-cancellation-modal)
-    - [Edit booking page](#edit-booking-page-1)
-      - [Available workshops](#available-workshops)
-      - [Available workshops pagination](#available-workshops-pagination)
-      - [Confirm workshop change modal](#confirm-workshop-change-modal)
-    - [News page](#news-page)
-    - [Sign up page](#sign-up-page-1)
-    - [Sign in page](#sign-in-page-1)
-    - [Sign out page](#sign-out-page-1)
-    - [404 page](#404-page-1)
-      - [404 page text](#404-page-text)
-      - [404 page button](#404-page-button)
-    - [500 page](#500-page-1)
-      - [500 page text](#500-page-text)
-      - [500 page tips](#500-page-tips)
-    - [Footer](#footer)
-  - [Features to be Added](#features-to-be-added)
+      - [Navigation Bar](#navigation-bar)
+      - [Navigation Bar (as a logged in user)](#navigation-bar-as-a-logged-in-user)
+      - [Navigation Bar (as a staff member or superuser)](#navigation-bar-as-a-staff-member-or-superuser)
+    - [Home Page Features](#home-page-features)
+    - [Reviews Page Features](#reviews-page-features)
+    - [Review Detail Page Features](#review-detail-page-features)
+    - [Admin Dashboard Features](#admin-dashboard-features)
+      - [Reservations](#reservations)
+      - [Comments](#comments)
+      - [Reviews](#reviews-1)
+    - [Notifications](#notifications-1)
+    - [Sign Up Form](#sign-up-form)
+    - [Sign Out Confirmation Page](#sign-out-confirmation-page)
+    - [Login Page](#login-page)
   - [Testing](#testing)
     - [Validation of Code](#validation-of-code)
       - [HTML](#html)
@@ -92,9 +46,9 @@ Welcome to the Hotel Wantit page! This page is designed to offer a user-friendly
       - [Desktop](#desktop)
       - [Mobile](#mobile)
     - [Wave Webaim - accessibility testing](#wave-webaim---accessibility-testing)
-      - [Index page](#index-page-2)
-      - [About page](#about-page-2)
-      - [Booking page](#booking-page-2)
+      - [Index page](#index-page)
+      - [About page](#about-page)
+      - [Booking page](#booking-page)
       - [Contrast Grid](#contrast-grid)
     - [Automated Testing](#automated-testing)
       - [About](#about)
@@ -102,19 +56,19 @@ Welcome to the Hotel Wantit page! This page is designed to offer a user-friendly
       - [News](#news)
     - [Manual Testing](#manual-testing)
       - [Navigation bar](#navigation-bar-1)
-      - [Index page](#index-page-3)
-      - [About page](#about-page-3)
-      - [Booking page](#booking-page-3)
-      - [Success page](#success-page-2)
-      - [My bookings page](#my-bookings-page-2)
-      - [Edit booking page](#edit-booking-page-2)
-      - [News page](#news-page-1)
-      - [Sign up page](#sign-up-page-2)
-      - [Sign in page](#sign-in-page-2)
-      - [Sign out page](#sign-out-page-2)
-      - [404 page](#404-page-2)
-      - [500 page](#500-page-2)
-      - [Footer](#footer-1)
+      - [Index page](#index-page-1)
+      - [About page](#about-page-1)
+      - [Booking page](#booking-page-1)
+      - [Success page](#success-page)
+      - [My bookings page](#my-bookings-page)
+      - [Edit booking page](#edit-booking-page)
+      - [News page](#news-page)
+      - [Sign up page](#sign-up-page)
+      - [Sign in page](#sign-in-page)
+      - [Sign out page](#sign-out-page)
+      - [404 page](#404-page)
+      - [500 page](#500-page)
+      - [Footer](#footer)
   - [Bugs](#bugs)
   - [Technologies Used](#technologies-used)
   - [Deployment](#deployment)
@@ -126,8 +80,6 @@ Welcome to the Hotel Wantit page! This page is designed to offer a user-friendly
     - [Used resources](#used-resources)
     - [Images](#images)
     - [Acknowledgements](#acknowledgements)
-  - [User Experience](#user-experience-1)
-
 ## User Experience
 ## User Goals
 
@@ -262,262 +214,351 @@ The booking system enables users to browse available rooms, select dates, make r
 
 
 ## Design
-### Color Scheme
-<!-- Color Scheme content here -->
+## Style Description
 
-### Typography
-<!-- Typography content here -->
+Our project embraces a minimalist design ethos with a touch of uniqueness that sets it apart. This approach ensures clarity in navigation and actions, making the user experience intuitive and engaging.
 
-### Imagery
-<!-- Imagery content here -->
+## Design
 
-### Wireframes
-#### Index page
-<!-- Index page wireframe content here -->
+### Color Palette
 
-#### About page
-<!-- About page wireframe content here -->
+- **Primary Background**: #f0f0f0
 
-#### Booking page
-<!-- Booking page wireframe content here -->
+  ![Primary Background Color](path/to/primary-background-color.png)
 
-#### My bookings page
-<!-- My bookings page wireframe content here -->
+  The primary background color #f0f0f0 provides a clean and neutral base throughout the interface.
 
-#### Success page
-<!-- Success page wireframe content here -->
+- **Secondary Background**: rgba(255, 0, 0, 0.7)
 
-#### Edit booking page
-<!-- Edit booking page wireframe content here -->
+  ![Secondary Background Color](path/to/secondary-background-color.png)
 
-#### Sign up page
-<!-- Sign up page wireframe content here -->
+  The secondary background color rgba(255, 0, 0, 0.7) adds vibrancy and highlights key elements with a touch of transparency.
 
-#### Sign in page
-<!-- Sign in page wireframe content here -->
+- **Text Color**: #333
 
-#### Sign out page
-<!-- Sign out page wireframe content here -->
+  ![Text Color](path/to/text-color.png)
 
-#### 404 page
-<!-- 404 page wireframe content here -->
+  The text color #333 ensures readability and contrasts effectively against the background.
 
-#### 500 page
-<!-- 500 page wireframe content here -->
+- **Accent Colors**: #b30021, #b30000, silver
 
-### Entity Relationship Diagram - ERD
-<!-- ERD content here -->
+  ![Accent Colors](path/to/accent-colors.png)
+
+  Accent colors #b30021, #b30000, and silver are used sparingly to draw attention to interactive elements and important information.
+
+[Back to Top](#table-of-contents)
 
 ## Features
+
 ### Header
-#### Navigation bar
-<!-- Navigation bar content here -->
 
-#### Navigation bar (as a logged in user)
-<!-- Navigation bar (logged in user) content here -->
+#### Navigation Bar
+The navigation bar provides easy access to different sections of the application. It includes links to navigate to various pages such as Home, Reviews, and Bookings.
 
-#### Navigation bar (as a staff member or superuser)
-<!-- Navigation bar (staff member/superuser) content here -->
+![Navigation Bar](https://example.com/navigation_bar.png)
 
-### Index page
-#### Hero image
-<!-- Hero image content here -->
+#### Navigation Bar (as a logged in user)
+When logged in, additional options appear in the navigation bar, such as Notifications and Logout, providing personalized user actions.
 
-#### Welcome text
-<!-- Welcome text content here -->
+![Navigation Bar - Logged In](https://example.com/navigation_bar_logged_in.png)
 
-#### Member benefits
-<!-- Member benefits content here -->
+#### Navigation Bar (as a staff member or superuser)
+Staff members or superusers have access to administrative features through the navigation bar, enabling them to manage administrative tasks efficiently.
 
-#### Sign up button
-<!-- Sign up button content here -->
+![Navigation Bar - Staff/Superuser](https://example.com/navigation_bar_staff_superuser.png)
 
-#### Carousel
-<!-- Carousel content here -->
 
-### About page
-#### Profile image
-<!-- Profile image content here -->
+## Home Page Features
 
-#### About text
-<!-- About text content here -->
+1. **Logo and Branding**
+   - **Logo**: A visually appealing logo that reinforces the brand identity.
+     ![Logo](https://example.com/hv-logo.webp)
+   - **Brand Name**: Clearly displayed brand name "Hotel Wantit" below the logo.
 
-#### Contact form
-<!-- Contact form content here -->
+2. **Promotional Slides**
+   - **Discount Offer Slide**
+     - **Image**: Engaging image of a room.
+     - **Text Overlay**: "Get 10% off on ALL Rooms".
+     - **Call-to-Action Button**: "Book Now" button that applies the discount.
+     ![Room Discount Offer](https://example.com/room1.webp)
 
-#### Contact form response
-<!-- Contact form response content here -->
+   - **Renovated Rooms Slide**
+     - **Image**: Image showcasing the renovated rooms.
+     - **Text Overlay**: "Experience our newly refurbished rooms!".
+     - **Call-to-Action Button**: "Read More" button leading to detailed information about the renovated rooms.
+     ![Renovated Rooms](https://example.com/room2.webp)
 
-### Booking page
-#### Workshop presentation
-<!-- Workshop presentation content here -->
+   - **Guest Review Slide**
+     - **Image**: Image related to guest reviews.
+     - **Review Display**: A random guest review with the review text, author, date, and rating stars.
+     - **Call-to-Action Button**: "Leave Review" button encouraging users to submit their own reviews.
+     ![Guest Review](https://example.com/room-view.webp)
 
-#### Workshop booking
-<!-- Workshop booking content here -->
+3. **Interactive Elements**
+   - **Slideshow Container**: Allows users to navigate through different slides with promotional content.
+   - **Local Storage Handling**: Manages the discount application state using local storage.
+   - **Dynamic Redirection**: Buttons with JavaScript click events to handle redirection based on user actions (e.g., "Book Now" and "Read More").
 
-#### Booking pagination
-<!-- Booking pagination content here -->
+These features aim to provide a clear, engaging, and interactive experience for users visiting the homepage of "Hotel Wantit". The design ensures that users can easily navigate through promotions, view detailed information about renovated rooms, and read or leave guest reviews.
 
-#### Confirm booking modal
-<!-- Confirm booking modal content here -->
 
-#### Double booked modal
-<!-- Double booked modal content here -->
+## Reviews Page Features
 
-### Success page
-#### Confirmation text
-<!-- Confirmation text content here -->
+1. **Page Title and Write Review Button**
+   - **Page Title**: Prominently displays "Reviews".
+   - **Write Review Button**: Floating button that allows users to leave a new review with an icon and text "Write Review".
+     ![Write Review Button](https://example.com/write-review-icon.png)
 
-#### Navigation buttons
-<!-- Navigation buttons content here -->
+2. **Review Cards**
+   - **Author Information**: Displays the reviewer's name.
+   - **Rating Stars**: Visual representation of the rating using filled and empty stars.
+     ![Rating Stars](https://example.com/rating-stars.png)
+   - **Review Text**: Shows a truncated version of the review with an option to expand and read more.
+   - **Review Date**: Displays the date when the review was posted.
+   - **Comment Count**: Shows the number of comments on each review with an icon.
+     ![Comment Icon](https://example.com/comment-icon.png)
 
-### My bookings page
-#### No bookings - text
-<!-- No bookings - text content here -->
+3. **Interactive Elements**
+   - **Read More Functionality**: Expands and collapses the review text for detailed reading or summarizing.
+     ![Read More](https://example.com/read-more.png)
+   - **Dynamic Star Ratings**: Changes star display based on the rating value.
+   - **Comment Count Icon**: Encourages interaction by showing comment activity.
 
-#### No bookings - button
-<!-- No bookings - button content here -->
+4. **Review Text Handling**
+   - **Text Truncation**: Displays only part of the review text with a "Read More" link if the text is long.
+   - **Expand/Collapse**: Clicking "Read More" shows the full review text, and "less" collapses it back.
 
-#### Active bookings - text
-<!-- Active bookings - text content here -->
+5. **Comment Interaction**
+   - **Comment Count Position**: Located at the bottom of the review card to show user engagement.
+     ![Comment Count](https://example.com/comment-count.png)
 
-#### Active bookings - booked workshops
-<!-- Active bookings - booked workshops content here -->
+## Review Detail Page Features
 
-#### Active bookings pagination
-<!-- Active bookings pagination content here -->
+- **Review Title**: Displays the title of the review.
+- **Author Name**: Shows the username of the reviewer.
+- **Rating Stars**: Visual representation of the rating using star icons.
+- **Review Text**: Displays the content of the review.
+- **Review Date**: Shows the date when the review was posted.
 
-#### Confirm cancellation modal
-<!-- Confirm cancellation modal content here -->
+### Comment Section
 
-### Edit booking page
-#### Available workshops
-<!-- Available workshops content here -->
+- **Comments**: Users can add comments to reviews.
+  - **Add Comment Form**: Allows users to input a comment.
 
-#### Available workshops pagination
-<!-- Available workshops pagination content here -->
+### Review Actions
 
-#### Confirm workshop change modal
-<!-- Confirm workshop change modal content here -->
+- **Edit Review**: Users can edit their review.
+- **Delete Review**: Users can delete their review. A confirmation dialog will appear.
 
-### News page
-<!-- News page content here -->
+### Comment Actions
 
-### Sign up page
-<!-- Sign up page content here -->
+- **Edit Comment**: Users can edit their comment.
+- **Delete Comment**: Users can delete their comment. A confirmation dialog will appear.
 
-### Sign in page
-<!-- Sign in page content here -->
 
-### Sign out page
-<!-- Sign out page content here -->
+![Review Detail Page Features](https://example.com/review-detail-page.png)
 
-### 404 page
-#### 404 page text
-<!-- 404 page text content here -->
 
-#### 404 page button
-<!-- 404 page button content here -->
+## Admin Dashboard Features
 
-### 500 page
-#### 500 page text
-<!-- 500 page text content here -->
+### Reservations
 
-#### 500 page tips
-<!-- 500 page tips content here -->
+Manage and approve room reservations. Clicking on this card redirects to the reservations approval list.
 
-### Footer
-<!-- Footer content here -->
+![Reservations](reservations.png) <!-- Replace with actual image URL -->
 
-## Features to be Added
-<!-- Features to be added content here -->
+### Comments
 
-## Testing
-### Validation of Code
-#### HTML
-<!-- HTML validation content here -->
+Review and moderate customer comments. Clicking on this card redirects to the comments approval list.
 
-#### CSS
-<!-- CSS validation content here -->
+![Comments](comments.png)
 
-#### JavaScript
-<!-- JavaScript validation content here -->
+### Reviews
 
-#### Python
-<!-- Python validation content here -->
+Approve and manage customer reviews. Clicking on this card redirects to the reviews approval list.
 
-### Lighthouse
-#### Desktop
-<!-- Lighthouse Desktop content here -->
+![Reviews](reviews.png) 
 
-#### Mobile
-<!-- Lighthouse Mobile content here -->
+[Back to Top](#Table of Contents)
 
-### Wave Webaim - accessibility testing
-#### Index page
-<!-- Index page accessibility testing content here -->
 
-#### About page
-<!-- About page accessibility testing content here -->
+## Pending Reservations
 
-#### Booking page
-<!-- Booking page accessibility testing content here -->
+Displays a list of pending room reservations awaiting approval or rejection.
 
-### Contrast Grid
-<!-- Contrast Grid content here -->
+- Each reservation card includes details such as user, status, check-in/out dates, name, and price.
+- Buttons to approve or reject each reservation trigger AJAX requests for real-time updates.
+- Reservations are dynamically categorized as 'approved' or 'rejected' based on the action taken.
+- Cards slide up and disappear after approval or rejection, providing visual feedback.
+- If no pending reservations exist, a message indicating "No pending requests" is displayed.
+![Pending Reservations](reviews.png) 
 
-### Automated Testing
-#### About
-<!-- Automated Testing About content here -->
+[Back to Top](#table-of-content)
 
-#### Booking
-<!-- Automated Testing Booking content here -->
+## Table of Contents
 
-#### News
-<!-- Automated Testing News content here -->
+- [Pending Reservations](#pending-reservations)
+- [Pending Comments](#pending-comments)
+- [Pending Reviews](#pending-reviews)
+
+---
+
+## Pending Reservations
+
+Displays pending reservations awaiting approval or rejection.
+
+- Each reservation card shows the user's details, reservation dates, and price.
+- Admins can approve or reject reservations using corresponding buttons, which trigger AJAX requests.
+- Reservations are visually marked as 'approved' or 'rejected' based on admin actions.
+- Cards smoothly slide up and disappear after approval or rejection, providing real-time feedback.
+- If no pending reservations exist, a message indicating "No pending requests" is displayed.
+
+![Pending Reservations](path/to/reservation-image.png)
+
+[Back to Top](#table-of-contents)
+
+---
+
+## Pending Comments
+
+Shows pending comments for review and moderation.
+
+- Each comment card displays the commenter's details and the comment content.
+- Admins can approve or reject comments with corresponding buttons triggering AJAX requests.
+- Comments are visually marked as 'approved' or 'rejected' based on admin actions.
+- Cards slide up and disappear after approval or rejection, offering immediate feedback.
+- If no pending comments exist, a message indicating "No pending comments" is displayed.
+
+![Pending Comments](path/to/comment-image.png)
+
+[Back to Top](#table-of-contents)
+
+---
+
+## Pending Reviews
+
+Displays pending reviews awaiting approval or rejection.
+
+- Each review card includes reviewer details, rating, and review text.
+- Admins can approve or reject reviews with respective buttons, using AJAX for live updates.
+- Reviews are visually categorized as 'approved' or 'rejected' based on admin actions.
+- Cards smoothly slide up and vanish after approval or rejection, providing real-time feedback.
+- If no pending reviews exist, a message indicating "No pending reviews" is displayed.
+
+![Pending Reviews](path/to/review-image.png)
+
+[Back to Top](#table-of-contents)
+
+### Notifications
+
+- **Message Notifications**: Shows messages related to user actions with an option to close each message.
+
+### Reservations
+
+- **Reservation Details**: Lists user reservations with details such as status, check-in/out dates, and price.
+  ![Reservations](path/to/reservations-screenshot.png)
+
+### Reviews
+
+- **Pending Reviews**: Displays pending reviews with user details, status, review text, and creation date.
+  ![Pending Reviews](path/to/reviews-screenshot.png)
+
+### Comments
+
+- **Pending Comments**: Shows pending comments with user details, status, comment text, and creation date.
+  ![Pending Comments](path/to/comments-screenshot.png)
+
+[Back to Top](#table-of-contents)
+
+---
+
+### Sign Up Form
+
+- **Form Fields**: Includes fields for username, first name, last name, email, and password.
+- **Validation**: Displays errors next to each form field for validation messages.
+- **Password Help**: Provides help text for password field with safety tips.
+- **Submit Button**: Allows users to submit the form to sign up.
+
+### Localization
+
+- **Internationalization (i18n)**: Utilizes Django's `{% load i18n %}` tag for internationalization.
+- **Translation**: Translates the "Sign Up" title and link text using `{% trans %}` and `{% blocktrans %}` tags.
+
+### Styling and Layout
+
+- **Logo**: Displays the Hotel Wantit logo at the top of the form.
+- **Card Layout**: Organizes the form inside a card for better presentation.
+- **Responsive Design**: Uses responsive classes (`margin-top-style`, `text-bold`, etc.) to adjust layout across devices.
+
+### Accessibility
+
+- **Form Accessibility**: Ensures form accessibility with appropriate label tags and form groupings.
+
+
+![Signup Form](path/to/your/image.png)
+
+[Back to Top](#table-of-contents)
+
+---
+### Sign Out Confirmation Page
+
+- **Title**: Sets the browser title to "Sign Out" using `{% block head_title %}`.
+- **Logo**: Displays the Hotel Wantit logo at the top of the page.
+- **Confirmation Message**: Asks users if they are sure they want to sign out.
+- **Buttons**: Provides options to confirm ("YES") or cancel ("NO") the sign-out action.
+- **Form Submission**: Uses a form to handle the sign-out action, with CSRF protection.
+- **Localization**: Utilizes Django's `{% load i18n %}` tag for internationalization.
+- **Styling**: Applies responsive layout classes (`col-md-8`, `offset-md-2`, `mt-3`, etc.) for proper alignment and spacing.
+
+
+![Sign Out Page](path/to/your/image.png)
+
+[Back to Top](#table-of-contents)
+
+### Login Page
+
+- **Title**: Inherits the base template and sets the browser title accordingly.
+- **Logo**: Displays the Hotel Wantit logo at the top of the page.
+- **Login Form**: Provides a form for users to input their credentials and sign in.
+- **Sign Up Link**: Offers a link to the registration page (`{{ signup_url }}`) for new users.
+- **Localization**: Uses Django's `{% load i18n %}` and `{% blocktrans %}` tags for internationalization.
+- **Form Submission**: Handles form submission securely with CSRF protection (`{% csrf_token %}`).
+- **Styling**: Applies responsive layout classes (`col-md-8`, `col-lg-6`, `offset-md-2`, `mt-3`, etc.) for proper alignment and spacing.
+
+### Example Image
+
+![Login Page](path/to/your/image.png)
+
+[Back to Top](#table-of-contents)
+
+- **Logo**: Displays the Hotel Wantit logo at the top of the page.
+- **Sign Up Form**: Provides a form (`<form class="signup" ...>`) for users to register.
+  - **Username**: Input field (`{{ form.username }}`) for username with label.
+  - **First Name**: Input field (`{{ form.first_name }}`) for first name with label.
+  - **Last Name**: Input field (`{{ form.last_name }}`) for last name with label.
+  - **Email**: Input field (`{{ form.email }}`) for email with label.
+  - **Password**: Input field (`{{ form.password1 }}`) for password with label and help text (`{{ form.password1.help_text|safe }}`).
+  - **Confirm Password**: Input field (`{{ form.password2 }}`) to confirm password with label.
+  - **Validation**: Displays any form errors (`{{ form.non_field_errors }}`) if present.
+  - **Sign Up Button**: Button (`<button type="submit" class="btn edit-button">{% trans "Sign Up" %}</button>`) to submit the form securely (`{% csrf_token %}`).
+- **Already have an account?**: Provides a link (`<a href="{{ login_url }}">sign in</a>`) to the login page (`{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}`).
+
+
+![Sign Up Page](path/to/your/image.png)
+
+[Back to Top](#table-of-contents)
+
+---
+# Testing
 
 ### Manual Testing
-#### Navigation bar
-<!-- Manual Testing Navigation bar content here -->
 
-#### Index page
-<!-- Manual Testing Index page content here -->
+- For detailed manual testing procedures, please refer to [MANUAL_TESTING.md](MANUAL_TESTING.md).
 
-#### About page
-<!-- Manual Testing About page content here -->
+### Validation
 
-#### Booking page
-<!-- Manual Testing Booking page content here -->
+- Validation processes and criteria are documented in [VALIDATION.md](VALIDATION.md).
 
-#### Success page
-<!-- Manual Testing Success page content here -->
-
-#### My bookings page
-<!-- Manual Testing My bookings page content here -->
-
-#### Edit booking page
-<!-- Manual Testing Edit booking page content here -->
-
-#### News page
-<!-- Manual Testing News page content here -->
-
-#### Sign up page
-<!-- Manual Testing Sign up page content here -->
-
-#### Sign in page
-<!-- Manual Testing Sign in page content here -->
-
-#### Sign out page
-<!-- Manual Testing Sign out page content here -->
-
-#### 404 page
-<!-- Manual Testing 404 page content here -->
-
-#### 500 page
-<!-- Manual Testing 500 page content here -->
-
-### Footer
-<!-- Manual Testing Footer content here -->
 
 ## Bugs
 <!-- Bugs content here -->

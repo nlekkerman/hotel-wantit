@@ -46,7 +46,7 @@ hr {
 
 
 .attention-required {
-    background-image: url("../images/attention-required.jpg");
+    background-image: url("../images/attention-required.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -93,7 +93,7 @@ hr {
     position: fixed;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 6px 7px 20px 11px rgba(0, 0, 0, 0.2);
     width: 100%;
     background-color: rgba(1, 38, 41, 0.7);
     animation: slideInFromLeft 1.5s ease-in-out;
@@ -306,104 +306,6 @@ hr {
     flex-direction: column;
 }
 
-/*CHAT*/
-.floating-chat {
-    background-color: #b30021;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 25px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    font-size: 0.7rem;
-}
-
-.floating-chat i {
-    margin-right: 8px;
-}
-
-label {
-    color: #f8f9fa;
-}
-
-.chat-body {
-    animation: slideFromRight 0.7s ease-in-out;
-
-}
-
-.chat-header {
-    display: flex;
-    justify-content: space-between;
-    animation: slideInFromTop 1.3s ease-in-out;
-
-}
-
-.chat-footer {
-    animation: slideInFromBottom 1.3s ease-in-out;
-
-}
-
-.chat-window {
-    position: fixed;
-    bottom: 80px;
-    /* Adjust according to floating chat button position */
-    right: 10px;
-    width: 300px;
-    height: 400px;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    display: none;
-    /* Initially hidden */
-    flex-direction: column;
-    animation: slideInFromRight 0.7s ease-in-out;
-
-}
-
-.chat-header {
-    background-color: #b30000;
-    color: white;
-    padding: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.chat-body {
-    flex: 1;
-    padding: 10px;
-    overflow-y: auto;
-}
-
-.chat-footer {
-    padding: 10px;
-    border-top: 1px solid #ccc;
-}
-
-.chat-footer input {
-    width: calc(100% - 60px);
-    padding: 5px;
-}
-
-.chat-footer button {
-    width: 50px;
-    background-color: #b30000;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.floating-chat-container {
-    display: none;
-    position: fixed;
-    z-index: 1000000000;
-    bottom: 20px;
-    animation: slideInFromRight 1.2s ease-in-out;
-    right: 20px;
-    /* distance from the right of the viewport */
-}
 
 
 /*MAIN CONTENT*/
@@ -414,7 +316,7 @@ label {
     align-items: center;
     height: 100vh;
     background-color: #f4f4f4;
-    background-image: url("../images/lobby.jpg");
+    background-image: url("../images/lobby.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -496,7 +398,7 @@ label {
 }
 
 .resevation-details-container {
-    background-image: url("../images/room7.jpg");
+    background-image: url("../images/room7.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -507,7 +409,7 @@ label {
 }
 
 .reservation-background {
-    background-image: url("../images/room3.jpg");
+    background-image: url("../images/room3.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -518,7 +420,7 @@ label {
 }
 
 .rooms-details-background {
-    background-image: url("../images/room6.jpg");
+    background-image: url("../images/room6.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -552,7 +454,7 @@ label {
     height: 100%;
     padding-top: 50px;
     background-color: #f4f4f4;
-    background-image: url("../images/room-view.jpg");
+    background-image: url("../images/room-view.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -659,6 +561,22 @@ label {
     width: 100%;
 }
 
+.form-group textarea {
+    width: 100% !important; /* Makes the textarea fill its container */
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    padding: 10px; /* Adds padding inside the textarea */
+    font-size: 16px; /* Sets the font size of the textarea */
+    border: 1px solid #ccc; /* Adds a border around the textarea */
+    color: white;
+    border-radius: 4px; /* Rounds the corners of the textarea */
+    resize: vertical; /* Allows vertical resizing of the textarea */
+}
+
+.form-group textarea:focus {
+    outline: none; /* Removes the default focus outline */
+    border-color: #007bff; /* Changes the border color on focus */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Adds a box shadow on focus */
+}
 /*REVIEW in the SLIDE*/
 
 .review {
@@ -737,7 +655,7 @@ label {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image: url("../images/room-view.jpg");
+    background-image: url("../images/room-view.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -764,7 +682,7 @@ label {
     flex-direction: column;
     min-height: 100vh;
     justify-content: center;
-    background-image: url("../images/room-view.jpg");
+    background-image: url("../images/room-view.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -783,7 +701,7 @@ label {
     flex-direction: column;
     min-height: 100vh;
     justify-content: center;
-    background-image: url("../images/room-view.jpg");
+    background-image: url("../images/room-view.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -861,7 +779,7 @@ label {
     flex-direction: column;
     animation: zoomIn 1.2s ease-in;
     min-height: 100vh !important;
-    background-image: url("../images/room7.jpg");
+    background-image: url("../images/room7.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -874,7 +792,7 @@ label {
     flex-direction: column;
     animation: zoomIn 1.2s ease-in;
     min-height: 100vh !important;
-    background-image: url("../images/room6.jpg");
+    background-image: url("../images/room6.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -978,14 +896,12 @@ label {
     max-width: 100%;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    height: 310px;
+    height: 200px;
+    text-align: center;
+    font-style: italic;
     white-space: normal;
     margin-top: 20px !important;
-    background-color: rgba(0, 0, 0, 0.5) !important;
-
-
-
-
+    background-color: rgba(0, 0, 0, 0.2) !important;
 }
 
 .author-title {
@@ -1010,9 +926,8 @@ label {
 .comment-count-position {
     text-align: left;
     position: absolute;
-    bottom: -10;
-    right: 0;
-
+    bottom: 20px;
+    right: -5px;
 }
 
 /* renovated-rooms.css */
@@ -1022,7 +937,7 @@ label {
     min-height: 100vh;
     margin: 0 auto;
     padding: 5px;
-    background-image: url("../images/room4.jpg");
+    background-image: url("../images/room4.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1036,7 +951,7 @@ label {
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     font-size: 2rem !important;
-    font-family: 500;
+    font-weight: 500;
 
 }
 
@@ -1044,7 +959,7 @@ label {
     margin-top: 2rem;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
-    font-family: 500;
+    font-weight: 500;
     padding: 10px;
 
 }
@@ -1135,7 +1050,7 @@ label {
     align-items: center;
     min-height: 100vh;
     background-color: #f4f4f4;
-    background-image: url("../images/lobby.jpg");
+    background-image: url("../images/lobby.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1155,14 +1070,14 @@ label {
 
 .approved {
     z-index: 1;
-    background-image: url("../images/approved-image.jpg");
+    background-image: url("../images/approved-image.webp");
     background-size: cover;
     background-position: center;
 }
 
 .rejected {
     z-index: 1;
-    background-image: url("../images/rejected-image.jpg");
+    background-image: url("../images/rejected-image.webp");
     background-size: cover;
     background-position: center;
 }
@@ -1175,7 +1090,7 @@ label {
     animation: zoomIn 1.2s ease-in;
     min-height: 100vh !important;
     width: 100% !important;
-    background-image: url("../images/room2.jpg");
+    background-image: url("../images/room2.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1286,7 +1201,7 @@ label {
     margin-top: 0;
     animation: zoomIn 1.2s ease-in;
     min-height: 100vh !important;
-    background-image: url("../images/room7.jpg");
+    background-image: url("../images/room7.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1301,7 +1216,6 @@ label {
 /*CUSTOM BUTTONS*/
 .card-body .btn {
     margin-top: 30px;
-    width: 40%;
 }
 
 .edit-button {
@@ -1480,6 +1394,14 @@ label {
     text-align: center;
     font-weight: 500;
 }
+.password-with-message{
+    display: flex;
+    flex-direction: column;
+}
+.signup{
+    width: 50%;
+    margin: 0 auto;
+}
 
 form.signup input[type="text"],
 form.signup input[type="email"],
@@ -1523,7 +1445,7 @@ form.signup input[type="submit"]:focus {
 /*SIGN IN STYLES*/
 .logo-login-holder {
     width: 60% !important;
-    background-color: 'none' !important;
+    background-color: transparent !important;
     padding-bottom: 10px;
 }
 
@@ -1543,7 +1465,7 @@ form.login button {
     margin-top: 10px;
     display: flex;
     align-self: center;
-    border-radius: none !important;
+    border-radius: 0px !important;
 }
 
 form.login input[type="text"] {
@@ -1642,7 +1564,7 @@ form.signup button {
     margin-top: 10px;
     display: flex;
     align-self: center;
-    border-radius: none !important;
+    border-radius: 0px !important;
 
 
 }
@@ -1689,27 +1611,27 @@ form.signup button {
 
 /*FOOTER STYLES*/
 .footer {
-    background-color: #f8f9fa;
+    background-color: rgba(0, 0, 0, 0.9);
     padding: 20px 0;
-    flex-shrink: 0;
-}
-
-.footer .social-icons {
-    list-style: none;
-    padding: 0;
     display: flex;
     justify-content: center;
+    color: white;
+    flex-shrink: 0;
+    border-top: 5px solid silver;
+    box-shadow: -6px -7px 20px 11px rgba(0, 0, 0, 0.2);
+    margin-top: 0px !important;
+}
+.footer-text {
+    color: silver;
+    font-size: 1.1rem;
+    font-style:italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+
 }
 
-.footer .social-icons li {
-    margin: 0 10px;
-}
-
-.footer .social-icons li a {
-    color: #343a40;
-    font-size: 24px;
-    text-decoration: none;
-}
 
 /*Comments*/
 
@@ -1725,7 +1647,7 @@ form.signup button {
     resize: vertical;
     background-color: #0062cc;
     width: 100%;
-    margin: 5;
+    margin: 5px;
 }
 
 .edit-comment-container h1 {
@@ -1744,7 +1666,7 @@ form.signup button {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image: url("../images/room-view.jpg");
+    background-image: url("../images/room-view.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -2297,7 +2219,7 @@ form.signup button {
 .background-image-book-room {
     width: 100% !important;
     padding: 5px;
-    background-image: url('../images/with-view.jpg');
+    background-image: url('../images/with-view.webp');
     background-size: cover;
     background-position: center;
     color: white;
@@ -2312,7 +2234,7 @@ form.signup button {
 .aproval-admin-reservation-dashboard {
     width: 100% !important;
     padding: 20px;
-    background-image: url('../images/with-view.jpg');
+    background-image: url('../images/with-view.webp');
     background-size: cover;
     background-position: center;
     color: white;
@@ -2804,8 +2726,9 @@ label {
 
 .form-group {
     width: 100%;
+    padding: 5px;
     display: flex;
-
+flex-direction: column;
     align-items: center;
 
 }
@@ -2819,7 +2742,7 @@ label {
 
 .check_avialability_container {
     min-height: 100vh;
-    background-image: url("../images/room7.jpg");
+    background-image: url("../images/room7.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -3176,9 +3099,13 @@ label {
         width: 70%;
         margin: 0 auto;
     }
-    .card-body .btn {
-        width: 20%;
-    }
+
+    .form-group textarea {
+        width: 50% !important;
+        margin: 0 auto;
+        display: flex;
+    }    
+   
 }
 
 

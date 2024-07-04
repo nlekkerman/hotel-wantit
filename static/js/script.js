@@ -1,227 +1,98 @@
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-const totalSlides = slides.length;
+/*jshint esversion: 6*/
+// Wait for the DOM content to be fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize variables
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
 
-
-document.addEventListener('DOMContentLoaded', (event) => {
+    // Navbar toggler functionality
     const toggler = document.querySelector('.navbar-toggler');
-    const navbar = document.querySelector('.avbar');
+    const navbar = document.querySelector('.navbar');
     const navbarCollapse = document.querySelector('#navbarNav');
 
     toggler.addEventListener('click', () => {
-        if (!navbarCollapse.classList.contains('show')) {
-            navbar.classList.add('toggler-active');
-        } else {
-            navbar.classList.remove('toggler-active');
-        }
+        navbar.classList.toggle('toggler-active');
     });
-});
 
-function moveSlide(direction) {
-    console.log("asnckjanckjas")
-    const slides = document.querySelectorAll('.carousel-item');
-    const totalSlides = slides.length;
+    // Function to move slides in a carousel
+    function moveSlide(direction) {
+        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
 
-    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+        const carouselSlide = document.querySelector('.carousel-slide');
+        const offset = -currentSlide * 100;
+        carouselSlide.style.transform = `translateX(${offset}%)`;
+    }
 
-    const carouselSlide = document.querySelector('.carousel-slide');
-    const offset = -currentSlide * 100;
-    carouselSlide.style.transform = `translateX(${offset}%)`;
-}
+    // Set interval to automatically change slides every 5 seconds
+    setInterval(() => {
+        moveSlide(1); // Change slide every 5 seconds
+    }, 5000);
 
-function showSlide(index) {
-    slides.forEach((slide, i) => {
-        if (i === index) {
-            slide.style.left = '0';
-        } else {
-            slide.style.left = '100%';
-        }
-    });
-}
-
-function nextSlide() {
-
-
-    if (slides[currentSlide]) {
-        slides[currentSlide].style.left = '-100%';
-    } else {}
-
-    currentSlide = (currentSlide + 1) % totalSlides;
-
-    if (slides[currentSlide]) {
-        slides[currentSlide].style.left = '0';
-    } else {}
-}
-$(document).ready(function () {
-    fetchAdminDashboardData();
-    console.log("ADMINANDNASMASNADN");
-
-    function fetchAdminDashboardData() {
-        console.log("BBBBBBBBBBBBBBBBBBBBBBBBB");
-
+    // Event listener for leaving a comment (assuming using Bootstrap modal)
+    const leaveCommentButton = document.getElementById('leaveCommentButton');
+    leaveCommentButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        $('#reviewModal').modal('show'); // Assuming Bootstrap modal
         $.ajax({
-            url: '{% url "admin_dashboard" %}',
-            method: 'GET',
-            success: function (data) {
-                handleAdminDashboardData(data);
-
-            },
-            error: function (xhr, status, error) {
-                console.error('Error fetching admin dashboard data:', xhr.responseText);
+            url: "{% url 'create-review' %}",
+            type: "GET",
+            success: function(data) {
+                $('#reviewModal .modal-body').html(data);
             }
+        });
+    });
+
+    // Function to update dot color based on pending items
+    function updateDotColor() {
+        const dotElement = document.getElementById('adminDot');
+        dotElement.classList.toggle('badge-danger', checkPendingItems());
+    }
+
+    // Function to check pending items (dummy function for illustration)
+    function checkPendingItems() {
+        return true; // Replace with your logic to check pending items
+    }
+
+    // Call updateDotColor function when the page loads
+    updateDotColor();
+
+    // Filter rooms by type on button click
+    const roomButtons = document.querySelectorAll('.booking-btn');
+    roomButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const roomType = button.dataset.room;
+            filterRoomsByType(roomType);
+        });
+    });
+
+    // Function to filter rooms by type and display them
+    function filterRoomsByType(roomType) {
+        const roomCards = document.querySelectorAll('.room-card');
+        roomCards.forEach(card => {
+            const cardType = card.getAttribute('data-room-type');
+            card.style.display = (cardType === roomType) ? 'block' : 'none';
         });
     }
 
-    function handleAdminDashboardData(data) {
-        
-        if (data.total_pending > 0) {
-            $('.attention-required').show();  // Show the attention message
-        } else {
-            $('#attentionMessage').hide();  // Hide the attention message
-        }
-    }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    showSlide(currentSlide);
-    setInterval(nextSlide, 5000); // Change slide every 3 seconds
-});
-
-
-/*Chat button
-document.getElementById('chatButton').addEventListener('click', function() {
-
-  
-    let chatWindow = document.getElementById('chatWindow');
-    if (chatWindow.style.display === 'none' || chatWindow.style.display === '') {
-        chatWindow.style.display = 'flex';
-    } else {
-        chatWindow.style.display = 'none';
-    }
-});
-
-document.getElementById('closeChat').addEventListener('click', function() {
-    var chatWindow = document.getElementById('chatWindow');
-    chatWindow.style.display = 'none';
-});
-
-document.getElementById('sendButton').addEventListener('click', function() {
-    var chatBody = document.querySelector('.chat-body');
-    var chatInput = document.getElementById('chatInput');
-    var newMessage = document.createElement('div');
-    newMessage.classList.add('chat-message');
-    newMessage.innerHTML = `<img src="https://via.placeholder.com/30" alt="avatar" class="avatar">
-                            <div class="message-content">${chatInput.value}</div>`;
-    chatBody.appendChild(newMessage);
-    chatInput.value = '';
-    chatBody.scrollTop = chatBody.scrollHeight; // Scroll to the bottom of the chat body
-});
-*/
-
-
-document.getElementById('toggleButton').addEventListener('click', function () {
-    document.getElementById('navbar').classList.toggle('active');
-});
-
-document.getElementById('leaveCommentButton').addEventListener('click', function (event) {
-    event.preventDefault();
-    $('#reviewModal').modal('show');
-    $.ajax({
-        url: "{% url 'create-review' %}",
-        type: "GET",
-        success: function (data) {
-            $('#reviewModal .modal-body').html(data);
-        }
-    });
-});
-
-
-
-// Function to update the color of the dot based on pending items
-function updateDotColor() {
-    let dotElement = document.getElementById('adminDot');
-    if (checkPendingItems()) {
-        dotElement.classList.remove('badge-secondary');
-        dotElement.classList.add('badge-danger');
-    } else {
-        dotElement.classList.remove('badge-danger');
-        dotElement.classList.add('badge-secondary');
-    }
-}
-
-// Call the function when the page loads
-updateDotColor();
-
-// Get all room buttons
-const roomButtons = document.querySelectorAll('.booking-btn');
-
-// Add click event listener to each button
-roomButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        console.log('Button clicked:', button);
-        const roomType = button.dataset.room;
-        console.log('Room type:', roomType);
-        filterRoomsByType(roomType);
-    });
-});
-
-// Function to filter rooms by type and display them
-function filterRoomsByType(roomType) {
-    console.log('Filtering rooms by type:', roomType);
-    // Get all room cards
-    const roomCards = document.querySelectorAll('.room-card');
-
-    // Hide all room cards
-    roomCards.forEach(card => {
-        card.style.display = 'none';
-    });
-
-    // Show only room cards of the selected type
-    const filteredRooms = document.querySelectorAll(`.room-card[data-room-type="${roomType}"]`);
-    filteredRooms.forEach(card => {
-        card.style.display = 'block';
-    });
-}
-
-function filterRooms(roomType) {
-    var roomCards = document.querySelectorAll('.room-card');
-    roomCards.forEach(function (card) {
-        var cardType = card.getAttribute('data-room-type');
-        if (cardType === roomType) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
-    });
-}
-
-
-$(document).ready(function () {
+    // Datepicker initialization (assuming using Bootstrap datepicker)
     $('.datepicker').datepicker({
         format: 'yyyy-mm-dd',
         startDate: new Date(),
         autoclose: true
     });
-});
 
+    // Initialize review modal (assuming using Bootstrap modal)
+    const reviewForm = document.getElementById('reviewForm');
+    const reviewModal = new bootstrap.Modal(document.getElementById('reviewModal'));
 
-
-    // Wait for the document to be ready
-    document.addEventListener('DOMContentLoaded', function() {
-        // Select form and button elements
-        const reviewForm = document.getElementById('reviewForm');
-        const submitReviewBtn = document.getElementById('submitReviewBtn');
-        const reviewModal = new bootstrap.Modal(document.getElementById('reviewModal')); // Assuming you're using Bootstrap modal
-
-        // Add event listener for form submission
-        reviewForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            // Perform AJAX request or submit form data here
-            // For demonstration purposes, simulate a delay before showing the modal
-            setTimeout(function() {
-                reviewModal.show(); // Show the modal
-            }, 500); // Adjust the delay as needed
-        });
+    // Event listener for review form submission
+    reviewForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        setTimeout(() => {
+            reviewModal.show(); // Show the review modal after a delay
+        }, 500); // Adjust delay as needed
     });
 
+    // Other functions and event listeners as needed
+});

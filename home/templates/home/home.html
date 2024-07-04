@@ -4,13 +4,13 @@
 {% block content %}
 <div class="main-content-background">
     <div class="logo-container">
-        <img id="logo" src="{% static 'images/hv-logo.jpg' %}" alt="Logo Image">
+        <img id="logo" src="{% static 'images/hv-logo.webp' %}" alt="Logo Image">
         <p>Hotel Wantit</p>
     </div>
     <div class="slide-holder">
         <div class="slideshow-container">
             <div class="slide" id="slide1">
-                <img src="{% static 'images/room1.jpg' %}" alt="Room Image">
+                <img src="{% static 'images/room1.webp' %}" alt="Room Image">
                 <div class="overlay">
                     <p>Get 10% off on ALL Rooms</p>
                 </div>
@@ -18,7 +18,7 @@
 
             </div>
             <div class="slide" id="slide2">
-                <img src="{% static 'images/room2.jpg' %}" alt="Renovation Image">
+                <img src="{% static 'images/room2.webp' %}" alt="Renovation Image">
                 <div class="overlay">
                     <p>Experience our newly refurbished rooms!</p>
                 </div>
@@ -26,7 +26,7 @@
 
             </div>
             <div class="slide" id="slide3">
-                <img src="{% static 'images/room-view.jpg' %}" alt="Reviews Image">
+                <img src="{% static 'images/room-view.webp' %}" alt="Reviews Image">
                 <div class="review">
                     {% if random_review %}
                     <div class="review-body">"{{ random_review.review }}"</div>

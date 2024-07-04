@@ -1,38 +1,36 @@
-"""
-URL configuration for hotel project.
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from reviews import views as reviews_views
 from home import views as home_views
 from bookings import views as bookings_views
+from django.conf.urls import handler404
 from . import views as root_views
 from django_summernote import urls as summernote_urls
 from . import views
 
 urlpatterns = [
-    path('notifications/', root_views.user_notifications, name='user-notifications'),
-    path('', include('home.urls')),  # Assuming 'home.urls' defines its own URL patterns
-    path('accounts/', include('allauth.urls')),
-    path('admin/', admin.site.urls),
-    path('summernote/', include(summernote_urls)),
-    path('reviews/', include('reviews.urls')),  # Example: Replace 'reviews.urls' with actual path
-    path('bookings/', include('bookings.urls')),  # Example: Replace 'bookings.urls' with actual path
-    path('admin_dashboard/', root_views.admin_dashboard, name='admin_dashboard'),
-    path('close-message/<int:message_id>/', views.close_message_view, name='close_message'),
-    path('admin-interface/', views.admin_interface, name='admin-interface'),
+    path(
+        "notifications/",
+        root_views.user_notifications,
+        name="user-notifications",
+    ),
+    path("", include("home.urls")),
+    path("accounts/", include("allauth.urls")),
+    path("admin/", admin.site.urls),
+    path("summernote/", include(summernote_urls)),
+    path("reviews/", include("reviews.urls")),
+    path("bookings/", include("bookings.urls")),
+    path(
+        "admin_dashboard/", root_views.admin_dashboard, name="admin_dashboard"
+    ),
+    path(
+        "close-message/<int:message_id>/",
+        views.close_message_view,
+        name="close_message",
+    ),
+    path("admin-interface/", views.admin_interface, name="admin-interface"),
 ]
+
+handler404 = 'hotel.views.custom_404'
