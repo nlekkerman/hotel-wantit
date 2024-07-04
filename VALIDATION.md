@@ -162,7 +162,7 @@ Validation of comments_approval_list.html was successful.
 
 Validation of review_approval_list.html was successful.
 
-![Review Approval List Validation](path_to_review_approval_list_image.png)
+![Review Approval List Validation](assets/validation-images/review-approval-html.png)
 
 [Back to Top](#table-of-contents)
 
@@ -170,7 +170,7 @@ Validation of review_approval_list.html was successful.
 
 Validation of reservation_approval_list.html was successful.
 
-![Reservation Approval List Validation](path_to_reservation_approval_list_image.png)
+![Reservation Approval List Validation](assets/validation-images/reservation-approval-html.png)
 
 [Back to Top](#table-of-contents)
 
@@ -178,7 +178,7 @@ Validation of reservation_approval_list.html was successful.
 
 Validation of admin_interface.html was successful.
 
-![Admin Interface Validation](path_to_admin_interface_image.png)
+![Admin Interface Validation](assets/validation-images/admin-interface.png)
 
 [Back to Top](#table-of-contents)
 
@@ -186,7 +186,7 @@ Validation of admin_interface.html was successful.
 
 Validation of signup.html was successful.
 
-![Signup Page Validation](path_to_signup_image.png)
+![Signup Page Validation](assets/validation-images/signup-html.png)
 
 [Back to Top](#table-of-contents)
 
@@ -194,7 +194,7 @@ Validation of signup.html was successful.
 
 Validation of check_availabilty.html was successful.
 
-![Check Availability Page Validation](path_to_check_availabilty_image.png)
+![Check Availability Page Validation](assets/validation-images/signup-html.png)
 
 [Back to Top](#table-of-contents)
 
@@ -202,7 +202,7 @@ Validation of check_availabilty.html was successful.
 
 Validation of rooms.html was successful.
 
-![Rooms Page Validation](path_to_rooms_image.png)
+![Rooms Page Validation](assets/validation-images/rooms-html.png)
 
 [Back to Top](#table-of-contents)
 
@@ -210,7 +210,7 @@ Validation of rooms.html was successful.
 
 Validation of book_room.html was successful.
 
-![Book Room Page Validation](path_to_book_room_image.png)
+![Book Room Page Validation](assets/validation-images/reserve-room.png)
 
 [Back to Top](#table-of-contents)
 
@@ -218,7 +218,7 @@ Validation of book_room.html was successful.
 
 Validation of edit_comment.html was successful.
 
-![Edit Comment Page Validation](path_to_edit_comment_image.png)
+![Edit Comment Page Validation](assets/validation-images/comment-edit-html.png)
 
 [Back to Top](#table-of-contents)
 
@@ -226,7 +226,7 @@ Validation of edit_comment.html was successful.
 
 Validation of edit_review.html was successful.
 
-![Edit Review Page Validation](path_to_edit_review_image.png)
+![Edit Review Page Validation](assets/validation-images/review-edit-html.png)
 
 [Back to Top](#table-of-contents)
 
@@ -234,7 +234,7 @@ Validation of edit_review.html was successful.
 
 Validation of reviews.html was successful.
 
-![Reviews Page Validation](path_to_reviews_image.png)
+![Reviews Page Validation](assets/validation-images/reviews_html.png)
 
 [Back to Top](#table-of-contents)
 
@@ -242,7 +242,7 @@ Validation of reviews.html was successful.
 
 Validation of review_details.html was successful.
 
-![Review Details Page Validation](path_to_review_details_image.png)
+![Review Details Page Validation](assets/validation-images/review-detail-html.png)
 
 [Back to Top](#table-of-contents)
 
@@ -250,7 +250,7 @@ Validation of review_details.html was successful.
 
 Validation of home.html was successful.
 
-![Home Page Validation](path_to_home_image.png)
+![Home Page Validation](assets/validation-images/home_html.png)
 
 [Back to Top](#table-of-contents)
 
