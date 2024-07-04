@@ -42,7 +42,7 @@ All validations for views, URLs, and models across the applications (Bookings, R
 
 All views in the Bookings app passed validation.
 
-![Bookings Views Validation](path_to_bookings_views_image.png)
+![Bookings Views Validation](assets/validation-images/python_validation/bookings-view.png)
 
 [Back to Top](#table-of-contents)
 
@@ -50,7 +50,7 @@ All views in the Bookings app passed validation.
 
 All URLs in the Bookings app passed validation.
 
-![Bookings URLs Validation](path_to_bookings_urls_image.png)
+![Bookings URLs Validation](assets/validation-images/python_validation/bookings-urls.png)
 
 [Back to Top](#table-of-contents)
 
@@ -58,7 +58,7 @@ All URLs in the Bookings app passed validation.
 
 All models in the Bookings app passed validation.
 
-![Bookings Models Validation](path_to_bookings_models_image.png)
+![Bookings Models Validation](assets/validation-images/python_validation/booking-model.png)
 
 [Back to Top](#table-of-contents)
 
@@ -70,7 +70,7 @@ All models in the Bookings app passed validation.
 
 All views in the Reviews app passed validation.
 
-![Reviews Views Validation](path_to_reviews_views_image.png)
+![Reviews Views Validation](assets/validation-images/python_validation/review-views.png)
 
 [Back to Top](#table-of-contents)
 
@@ -78,7 +78,7 @@ All views in the Reviews app passed validation.
 
 All URLs in the Reviews app passed validation.
 
-![Reviews URLs Validation](path_to_reviews_urls_image.png)
+![Reviews URLs Validation](assets/validation-images/python_validation/review-urls.png)
 
 [Back to Top](#table-of-contents)
 
@@ -86,7 +86,7 @@ All URLs in the Reviews app passed validation.
 
 All models in the Reviews app passed validation.
 
-![Reviews Models Validation](path_to_reviews_models_image.png)
+![Reviews Models Validation](assets/validation-images/python_validation/review-model.png)
 
 [Back to Top](#table-of-contents)
 
@@ -98,7 +98,7 @@ All models in the Reviews app passed validation.
 
 All views in the Hotel app passed validation.
 
-![Hotel Views Validation](path_to_hotel_views_image.png)
+![Hotel Views Validation](assets/validation-images/python_validation/hotel-views.png)
 
 [Back to Top](#table-of-contents)
 
@@ -106,17 +106,13 @@ All views in the Hotel app passed validation.
 
 All URLs in the Hotel app passed validation.
 
-![Hotel URLs Validation](path_to_hotel_urls_image.png)
+![Hotel URLs Validation](assets/validation-images/python_validation/hotel-views.png)
 
 [Back to Top](#table-of-contents)
 
 ### Models
 
-All models in the Hotel app passed validation.
-
-![Hotel Models Validation](path_to_hotel_models_image.png)
-
-[Back to Top](#table-of-contents)
+**No models in Hotel App**
 
 ---
 
@@ -126,7 +122,7 @@ All models in the Hotel app passed validation.
 
 All views in the Home app passed validation.
 
-![Home Views Validation](path_to_home_views_image.png)
+![Home Views Validation](assets/validation-images/python_validation/home-views.png)
 
 [Back to Top](#table-of-contents)
 
@@ -134,7 +130,7 @@ All views in the Home app passed validation.
 
 All URLs in the Home app passed validation.
 
-![Home URLs Validation](path_to_home_urls_image.png)
+![Home URLs Validation](assets/validation-images/python_validation/home-urls.png)
 
 [Back to Top](#table-of-contents)
 
@@ -142,7 +138,7 @@ All URLs in the Home app passed validation.
 
 All models in the Home app passed validation.
 
-![Home Models Validation](path_to_home_models_image.png)
+![Home Models Validation](assets/validation-images/python_validation/message-model.png)
 
 [Back to Top](#table-of-contents)
 
@@ -261,7 +257,7 @@ Validation of home.html was successful.
 ### Validator Used: [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
 
 #### Validation Result Image
-![CSS Validation Result](path_to_css_validation_image.png)
+![CSS Validation Result](assets/validation-images/css-validation.png)
 
 [Back to Top](#table-of-contents)
 
@@ -272,7 +268,7 @@ Validation of home.html was successful.
 ### Validator Used: [JSHint](https://jshint.com/)
 
 #### Validation Result Image
-![JavaScript (JS) Validation Result](path_to_js_validation_image.png)
+![JavaScript (JS) Validation Result](assets/validation-images/js-validation.png)
 
 [Back to Top](#table-of-contents)
 
