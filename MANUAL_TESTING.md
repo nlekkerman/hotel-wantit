@@ -92,7 +92,7 @@ Test the functionality of navigation links in the header.
 ### Reviews Link Navigation
 - Click on the Reviews link and verify navigation to the reviews page.
   
-![Reviews Link Navigation](positive_navigation_reviews.png)
+![Reviews Link Navigation](assets/validation-images/testing/positive_navigation_reviews.png)
 
 ### Bookings Link Navigation
 - Click on the Bookings link and verify navigation to the bookings page.
