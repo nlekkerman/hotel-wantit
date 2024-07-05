@@ -5,13 +5,15 @@
 Welcome to the Hotel Wantit page! This page is designed to offer a user-friendly and interactive experience for guests looking to book hotel rooms and restaurant tables at Hotel Wantit. Additionally, users can easily obtain all the information they need through our interactive chat feature.
 
 ## Table of Contents
+
 - [Hotel Wantit](#hotel-wantit)
   - [Introduction](#introduction)
   - [Table of Contents](#table-of-contents)
   - [User Experience](#user-experience)
     - [User Goals](#user-goals)
-    - [Admin Goals](#admin-goals)
-    - [Owner Goals](#owner-goals)
+      - [Hotel Guest/User](#hotel-guestuser)
+      - [Admin](#admin)
+      - [Owner](#owner)
   - [User Stories](#user-stories)
     - [Admin Dashboard Management](#admin-dashboard-management)
     - [Notifications and Interaction Management](#notifications-and-interaction-management)
@@ -20,53 +22,24 @@ Welcome to the Hotel Wantit page! This page is designed to offer a user-friendly
   - [Design](#design)
     - [Style Description](#style-description)
     - [Color Palette](#color-palette)
-  - [Features](#features)
-    - [Header](#header)
-      - [Navigation Bar](#navigation-bar)
-      - [Navigation Bar (as a logged in user)](#navigation-bar-as-a-logged-in-user)
-      - [Navigation Bar (as a staff member or superuser)](#navigation-bar-as-a-staff-member-or-superuser)
-    - [Home Page Features](#home-page-features)
-    - [Reviews Page Features](#reviews-page-features)
-    - [Review Detail Page Features](#review-detail-page-features)
-    - [Admin Dashboard Features](#admin-dashboard-features)
-      - [Reservations](#reservations)
-      - [Comments](#comments)
-      - [Reviews](#reviews-1)
-    - [Notifications](#notifications-1)
-    - [Sign Up Form](#sign-up-form)
-    - [Sign Out Confirmation Page](#sign-out-confirmation-page)
-    - [Login Page](#login-page)
   - [Testing](#testing)
-    - [Validation of Code](#validation-of-code)
-      - [HTML](#html)
-      - [CSS](#css)
-      - [JavaScript](#javascript)
-      - [Python](#python)
-    - [Lighthouse](#lighthouse)
-      - [Desktop](#desktop)
-      - [Mobile](#mobile)
-    - [Wave Webaim - accessibility testing](#wave-webaim---accessibility-testing)
-      - [Index page](#index-page)
-      - [About page](#about-page)
-      - [Booking page](#booking-page)
-      - [Contrast Grid](#contrast-grid)
-    - [Automated Testing](#automated-testing)
-      - [About](#about)
-      - [Booking](#booking)
-      - [News](#news)
     - [Manual Testing](#manual-testing)
-  - [Bugs](#bugs)
+    - [Validation](#validation)
   - [Technologies Used](#technologies-used)
   - [Deployment](#deployment)
-    - [Fork repository in GitHub](#fork-repository-in-github)
-    - [Clone repository in GitHub](#clone-repository-in-github)
-    - [Deployment to Heroku](#deployment-to-heroku)
+    - [Create a GitHub Repository](#create-a-github-repository)
+    - [Push Code to GitHub](#push-code-to-github)
+    - [Development](#development)
+      - [GitHub Repository](#github-repository)
+      - [Installation](#installation)
+      - [Deployment on Heroku](#deployment-on-heroku)
+    - [Accessing Application](#accessing-application)
   - [Credits](#credits)
-    - [Libraries used](#libraries-used)
-    - [Used resources](#used-resources)
     - [Images](#images)
     - [Acknowledgements](#acknowledgements)
-## User Experience
+
+# User Experience
+
 ## User Goals
 
 ### Hotel Guest/User
@@ -236,19 +209,28 @@ Our project embraces a minimalist design ethos with a touch of uniqueness that s
 - **Description:** This color is used for negative action buttons, indicating cancellation or deletion.
 - **Image:** ![Negative Button Color](assets/validation-images/negative_button_image.jpg)
 
+[Back to Top](#table-of-contents)
+
+---
+
 # Testing
 
 ### Manual Testing
 
 - For detailed manual testing procedures, please refer to [MANUAL_TESTING.md](MANUAL_TESTING.md).
 
+[Back to Top](#table-of-contents)
+
+---
+
 ### Validation
 
 - Validation processes and criteria are documented in [VALIDATION.md](VALIDATION.md).
 
+[Back to Top](#table-of-contents)
 
-## Bugs
-<!-- Bugs content here -->
+---
+
 
 ## Technologies Used
 
@@ -264,6 +246,10 @@ Our project embraces a minimalist design ethos with a touch of uniqueness that s
 - **Photoshop**: Used for designing graphical elements and assets.
 ## Deployment
 
+[Back to Top](#table-of-contents)
+
+---
+
 ### Create a GitHub Repository
 
 1. Created a new repo on GitHub from the [Code Institute template](https://github.com/Code-Institute-Org/gitpod-full-template).
@@ -274,6 +260,9 @@ Our project embraces a minimalist design ethos with a touch of uniqueness that s
 2. Added and committed HTML, CSS, and other relevant files.
 3. Pushed the code to the GitHub repository.
 
+[Back to Top](#table-of-contents)
+
+---
 
 ## Development
 
@@ -296,6 +285,11 @@ Our project embraces a minimalist design ethos with a touch of uniqueness that s
 
 - Now you have the Hotel Wantit project cloned to your local machine, and you can explore, modify, and run it from within Visual Studio.
 
+[Back to Top](#table-of-contents)
+
+---
+
+
 #### Cloning with Terminal or Command Prompt
 
 1. Open a terminal or command prompt.
@@ -303,8 +297,6 @@ Our project embraces a minimalist design ethos with a touch of uniqueness that s
 3. Clone Repository: Run the following command to clone the Hotel Wantit repository from GitHub:
 git clone https://github.com/nlekkerman/hotel-wantit.git
 
-markdown
-Copy code
 4. Navigate to Cloned Project: `cd hotel-wantit`
 
 - Now you have the Hotel Wantit project cloned to your local machine, and you can explore.
@@ -333,21 +325,10 @@ To deploy my application on Heroku, I followed these steps:
 
 2. Set up automatic deployment so that Heroku builds and deploys my application whenever I push changes to GitHub.
 
-### Set Up Config Vars
+[Back to Top](#table-of-contents)
 
-1. Configured necessary environment variables (Config Vars) for my application. I added these variables either through the Heroku dashboard or using the Heroku CLI:heroku config
-CREDS=
-heroku config
-PORT=8000
+---
 
-
-### Add Buildpacks
-
-1. Specified the required buildpacks for my application:
-- `heroku/python` for Python applications.
-- `heroku/nodejs` for Node.js applications.
-
-2. Added these buildpacks through the Heroku dashboard.
 
 ### Deployment of Application
 
@@ -357,7 +338,12 @@ PORT=8000
 
 - After a successful deployment, I accessed my application by opening the URL provided by Heroku.
 
-[Link to the deployed application](https://hotel-wantit-0444de03d75c.herokuapp.com/) <!-- Replace with your actual Heroku app URL -->
+[Link to the deployed application](https://hotel-wantit-0444de03d75c.herokuapp.com/) 
+
+[Back to Top](#table-of-contents)
+
+----
+
 
 ## Credits
 
@@ -385,3 +371,4 @@ PORT=8000
 - **Brian O'Hare**: Mentor who provided valuable guidance throughout the development process.
 - **Walkthrough Blog - I Think Therefore I Blog**: Provided helpful resources and insights for building this project.
 
+[Back to Top](#table-of-contents)
