@@ -79,3 +79,37 @@ class ReservationForm(forms.ModelForm):
     class Meta:
         model = Reservation
         fields = ["name", "email", "phone", "checkin_date", "checkout_date"]
+        widgets = {
+            'checkin_date': forms.DateInput(
+                attrs={
+                    "type": "date",
+                    "class": "form-control",
+                    "min": date.today().strftime("%Y-%m-%d"),
+                }
+            ),
+            'checkout_date': forms.DateInput(
+                attrs={"type": "date", "class": "form-control"}
+            ),
+        }
+
+    def clean(self):
+        """
+        Validates the form data.
+
+        Raises:
+            ValidationError: If check-in date is missing
+            or check-out date is missing or before check-in date.
+        """
+        cleaned_data = super().clean()
+        checkin_date = cleaned_data.get("checkin_date")
+        checkout_date = cleaned_data.get("checkout_date")
+
+        if not checkin_date:
+            self.add_error("checkin_date", "Check-In date is required.")
+        if not checkout_date:
+            self.add_error("checkout_date", "Check-Out date is required.")
+        elif checkin_date and checkout_date and checkin_date >= checkout_date:
+            self.add_error(
+                "checkout_date", "Check-Out date must be after Check-In date."
+            )
+        return cleaned_data

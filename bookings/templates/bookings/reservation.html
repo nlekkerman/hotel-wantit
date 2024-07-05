@@ -70,13 +70,12 @@
         <div class="form-group">
           <label for="id_checkin_date" class="label-checkin-date">Check-in Date:</label>
           <input type="date" id="id_checkin_date" name="checkin_date" class="form-control"
-            value="{{ form.initial.checkin_date }}" required>
-        </div>
-        <div class="form-group">
+              value="{{ form.initial.checkin_date }}" required>
+      </div>
+      <div class="form-group">
           <label for="id_checkout_date" class="label-checkout-date">Check-out Date:</label>
           <input type="date" id="id_checkout_date" name="checkout_date" class="form-control"
-            value="{{ form.initial.checkout_date }}" required>
-        </div>
+              value="{{ form.initial.checkout_date }}" required>
 
         <!-- Submit button -->
         <button type="submit" class="btn edit-button" id="reserveButton">Reserve Room</button>
@@ -149,8 +148,7 @@
   $(document).ready(function () {
     // Retrieve is_discount from local storage
     let is_discount = localStorage.getItem('is_discount') === 'true';
-    console.log("IS DISCONOUNT RESERVATION " + is_discount)
-
+    console.log("IS DISCOUNT RESERVATION " + is_discount);
 
     // Show or hide check-box-visibility-style based on is_discount
     if (is_discount) {
@@ -159,16 +157,31 @@
       $('#check-box-visibility-style').hide();
     }
 
-    $('#reservation-form').submit(function (event) {
-      event.preventDefault();
-      $('#confirmationModal').modal('show');
-    });
+    // Function to handle form submission
+    function submitReservationForm(event) {
+      event.preventDefault(); // Prevent the default form submission
 
-    $('#confirmReservationBtn').click(function () {
-      var formData = $('#reservation-form').serialize();
+      // Perform date validation
+      var checkin_date = $('#id_checkin_date').val();
+      var checkout_date = $('#id_checkout_date').val();
+
+      // Convert date strings to Date objects for comparison
+      var checkinDateObj = new Date(checkin_date);
+      var checkoutDateObj = new Date(checkout_date);
+
+      // Validate check-out date is after check-in date
+      if (checkinDateObj >= checkoutDateObj) {
+        alert('Check-Out date must be after Check-In date.');
+        return; // Exit function if validation fails
+      }
+
+      // Proceed with form submission via AJAX if validation passes
+      var form = $(this);
+      var formData = form.serialize();
+
       $.ajax({
+        url: form.attr('action'), // The form's action URL
         type: 'POST',
-        url: '{% url "reserve_room" room.id %}',
         data: formData,
         dataType: 'json',
         success: function (data) {
@@ -198,8 +211,8 @@
 
             // Set up close button behavior
             $('#reservation_modal_close_button').click(function () {
-              is_discount = false
-              console.log("AFTER DISPLAY" + is_discount)
+              is_discount = false;
+              console.log("AFTER DISPLAY " + is_discount);
 
               $('#reservationModal').modal('hide');
               $('#thankYouModal').modal('show');
@@ -215,7 +228,10 @@
           $('#confirmationModal').modal('hide');
         }
       });
-    });
+    }
+
+    // Attach the event listener to the form
+    $('#reservation-form').submit(submitReservationForm);
 
     $('#thankYouCloseBtn').click(function () {
       window.location.href = "{% url 'home' %}";
@@ -231,5 +247,6 @@
     });
   });
 </script>
+
 
 {% endblock %}
