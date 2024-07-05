@@ -35,7 +35,7 @@ Test the login and logout functionality.
 ### Redirect After Login
 - After successful login, verify redirection to the intended page.
   
-![Redirect After Login](assets/validation-images/testing/positive_login_redirect.png)
+![Redirect After Login](assets/validation-images/testing/positive_login.png)
 
 ### Negative Outcome (Invalid Credentials)
 - User enters invalid credentials.

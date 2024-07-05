@@ -55,20 +55,6 @@ Welcome to the Hotel Wantit page! This page is designed to offer a user-friendly
       - [Booking](#booking)
       - [News](#news)
     - [Manual Testing](#manual-testing)
-      - [Navigation bar](#navigation-bar-1)
-      - [Index page](#index-page-1)
-      - [About page](#about-page-1)
-      - [Booking page](#booking-page-1)
-      - [Success page](#success-page)
-      - [My bookings page](#my-bookings-page)
-      - [Edit booking page](#edit-booking-page)
-      - [News page](#news-page)
-      - [Sign up page](#sign-up-page)
-      - [Sign in page](#sign-in-page)
-      - [Sign out page](#sign-out-page)
-      - [404 page](#404-page)
-      - [500 page](#500-page)
-      - [Footer](#footer)
   - [Bugs](#bugs)
   - [Technologies Used](#technologies-used)
   - [Deployment](#deployment)
@@ -255,24 +241,24 @@ Our project embraces a minimalist design ethos with a touch of uniqueness that s
 #### Navigation Bar
 The navigation bar provides easy access to different sections of the application. It includes links to navigate to various pages such as Home, Reviews, and Bookings.
 
-![Navigation Bar](https://example.com/navigation_bar.png)
+![Navigation Bar](assets/validation-images/testing/positive_login.png)
 
 #### Navigation Bar (as a logged in user)
 When logged in, additional options appear in the navigation bar, such as Notifications and Logout, providing personalized user actions.
 
-![Navigation Bar - Logged In](https://example.com/navigation_bar_logged_in.png)
+![Navigation Bar - Logged In](assets/validation-images/features/navigation_bar_logged_in.png)
 
 #### Navigation Bar (as a staff member or superuser)
 Staff members or superusers have access to administrative features through the navigation bar, enabling them to manage administrative tasks efficiently.
 
-![Navigation Bar - Staff/Superuser](https://example.com/navigation_bar_staff_superuser.png)
+![Navigation Bar - Staff/Superuser](assets/validation-images/testing/positive_login.png)
 
 
 ## Home Page Features
 
 1. **Logo and Branding**
    - **Logo**: A visually appealing logo that reinforces the brand identity.
-     ![Logo](https://example.com/hv-logo.webp)
+     ![Logo](assets/validation-images/features/logo.png)
    - **Brand Name**: Clearly displayed brand name "Hotel Wantit" below the logo.
 
 2. **Promotional Slides**
@@ -280,19 +266,19 @@ Staff members or superusers have access to administrative features through the n
      - **Image**: Engaging image of a room.
      - **Text Overlay**: "Get 10% off on ALL Rooms".
      - **Call-to-Action Button**: "Book Now" button that applies the discount.
-     ![Room Discount Offer](https://example.com/room1.webp)
+     ![Room Discount Offer](assets/validation-images/features/room_discount.png)
 
    - **Renovated Rooms Slide**
      - **Image**: Image showcasing the renovated rooms.
      - **Text Overlay**: "Experience our newly refurbished rooms!".
      - **Call-to-Action Button**: "Read More" button leading to detailed information about the renovated rooms.
-     ![Renovated Rooms](https://example.com/room2.webp)
+     ![Renovated Rooms](assets/validation-images/features/renovated_room.png)
 
    - **Guest Review Slide**
      - **Image**: Image related to guest reviews.
      - **Review Display**: A random guest review with the review text, author, date, and rating stars.
      - **Call-to-Action Button**: "Leave Review" button encouraging users to submit their own reviews.
-     ![Guest Review](https://example.com/room-view.webp)
+     ![Guest Review](assets/validation-images/features/reviews_slide.png)
 
 3. **Interactive Elements**
    - **Slideshow Container**: Allows users to navigate through different slides with promotional content.
@@ -307,20 +293,18 @@ These features aim to provide a clear, engaging, and interactive experience for 
 1. **Page Title and Write Review Button**
    - **Page Title**: Prominently displays "Reviews".
    - **Write Review Button**: Floating button that allows users to leave a new review with an icon and text "Write Review".
-     ![Write Review Button](https://example.com/write-review-icon.png)
+     ![Write Review Button](assets/validation-images/features/write-review-icon.png)
 
 2. **Review Cards**
    - **Author Information**: Displays the reviewer's name.
    - **Rating Stars**: Visual representation of the rating using filled and empty stars.
-     ![Rating Stars](https://example.com/rating-stars.png)
    - **Review Text**: Shows a truncated version of the review with an option to expand and read more.
    - **Review Date**: Displays the date when the review was posted.
    - **Comment Count**: Shows the number of comments on each review with an icon.
-     ![Comment Icon](https://example.com/comment-icon.png)
+     ![Comment Icon](assets/validation-images/features/review-card.png)
 
 3. **Interactive Elements**
    - **Read More Functionality**: Expands and collapses the review text for detailed reading or summarizing.
-     ![Read More](https://example.com/read-more.png)
    - **Dynamic Star Ratings**: Changes star display based on the rating value.
    - **Comment Count Icon**: Encourages interaction by showing comment activity.
 
@@ -330,7 +314,6 @@ These features aim to provide a clear, engaging, and interactive experience for 
 
 5. **Comment Interaction**
    - **Comment Count Position**: Located at the bottom of the review card to show user engagement.
-     ![Comment Count](https://example.com/comment-count.png)
 
 ## Review Detail Page Features
 
@@ -356,50 +339,32 @@ These features aim to provide a clear, engaging, and interactive experience for 
 - **Delete Comment**: Users can delete their comment. A confirmation dialog will appear.
 
 
-![Review Detail Page Features](https://example.com/review-detail-page.png)
+![Review Detail Page Features](assets/validation-images/features/review-detail-page.png)
 
 
 ## Admin Dashboard Features
+
+![Admin Dashboard](assets/validation-images/testing/positive_navigation_admin.png)
 
 ### Reservations
 
 Manage and approve room reservations. Clicking on this card redirects to the reservations approval list.
 
-![Reservations](reservations.png) <!-- Replace with actual image URL -->
-
+![Reservations](assets/validation-images/testing/pending_reservations.png)
 ### Comments
 
 Review and moderate customer comments. Clicking on this card redirects to the comments approval list.
 
-![Comments](comments.png)
+![Comments](assets/validation-images/features/pending-comments.png)
 
 ### Reviews
 
 Approve and manage customer reviews. Clicking on this card redirects to the reviews approval list.
 
-![Reviews](reviews.png) 
+![Reviews](assets/validation-images/features/pending-reviews.png) 
 
 [Back to Top](#Table of Contents)
 
-
-## Pending Reservations
-
-Displays a list of pending room reservations awaiting approval or rejection.
-
-- Each reservation card includes details such as user, status, check-in/out dates, name, and price.
-- Buttons to approve or reject each reservation trigger AJAX requests for real-time updates.
-- Reservations are dynamically categorized as 'approved' or 'rejected' based on the action taken.
-- Cards slide up and disappear after approval or rejection, providing visual feedback.
-- If no pending reservations exist, a message indicating "No pending requests" is displayed.
-![Pending Reservations](reviews.png) 
-
-[Back to Top](#table-of-content)
-
-## Table of Contents
-
-- [Pending Reservations](#pending-reservations)
-- [Pending Comments](#pending-comments)
-- [Pending Reviews](#pending-reviews)
 
 ---
 
@@ -413,7 +378,7 @@ Displays pending reservations awaiting approval or rejection.
 - Cards smoothly slide up and disappear after approval or rejection, providing real-time feedback.
 - If no pending reservations exist, a message indicating "No pending requests" is displayed.
 
-![Pending Reservations](path/to/reservation-image.png)
+![Pending Reservations](assets/validation-images/features/pending-reservations.png)
 
 [Back to Top](#table-of-contents)
 
@@ -429,7 +394,7 @@ Shows pending comments for review and moderation.
 - Cards slide up and disappear after approval or rejection, offering immediate feedback.
 - If no pending comments exist, a message indicating "No pending comments" is displayed.
 
-![Pending Comments](path/to/comment-image.png)
+![Pending Comments](assets/validation-images/features/pending-comment.png)
 
 [Back to Top](#table-of-contents)
 
@@ -445,7 +410,7 @@ Displays pending reviews awaiting approval or rejection.
 - Cards smoothly slide up and vanish after approval or rejection, providing real-time feedback.
 - If no pending reviews exist, a message indicating "No pending reviews" is displayed.
 
-![Pending Reviews](path/to/review-image.png)
+![Pending Reviews](assets/validation-images/features/pending-review.png)
 
 [Back to Top](#table-of-contents)
 
@@ -453,22 +418,12 @@ Displays pending reviews awaiting approval or rejection.
 
 - **Message Notifications**: Shows messages related to user actions with an option to close each message.
 
-### Reservations
+### Reservation Details
 
 - **Reservation Details**: Lists user reservations with details such as status, check-in/out dates, and price.
-  ![Reservations](path/to/reservations-screenshot.png)
+  ![Reservations](assets/validation-images/features/reservations-detail-screenshot.png)
 
-### Reviews
 
-- **Pending Reviews**: Displays pending reviews with user details, status, review text, and creation date.
-  ![Pending Reviews](path/to/reviews-screenshot.png)
-
-### Comments
-
-- **Pending Comments**: Shows pending comments with user details, status, comment text, and creation date.
-  ![Pending Comments](path/to/comments-screenshot.png)
-
-[Back to Top](#table-of-contents)
 
 ---
 
@@ -495,7 +450,7 @@ Displays pending reviews awaiting approval or rejection.
 - **Form Accessibility**: Ensures form accessibility with appropriate label tags and form groupings.
 
 
-![Signup Form](path/to/your/image.png)
+![Signup Form](assets/validation-images/features/sign-up-form.png)
 
 [Back to Top](#table-of-contents)
 
@@ -511,7 +466,7 @@ Displays pending reviews awaiting approval or rejection.
 - **Styling**: Applies responsive layout classes (`col-md-8`, `offset-md-2`, `mt-3`, etc.) for proper alignment and spacing.
 
 
-![Sign Out Page](path/to/your/image.png)
+![Sign Out Page](assets/validation-images/testing/positive_logout.png)
 
 [Back to Top](#table-of-contents)
 
@@ -527,7 +482,7 @@ Displays pending reviews awaiting approval or rejection.
 
 ### Example Image
 
-![Login Page](path/to/your/image.png)
+![Login Page](assets/validation-images/testing/positive_navigation_login_register.png)
 
 [Back to Top](#table-of-contents)
 
@@ -544,7 +499,7 @@ Displays pending reviews awaiting approval or rejection.
 - **Already have an account?**: Provides a link (`<a href="{{ login_url }}">sign in</a>`) to the login page (`{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}`).
 
 
-![Sign Up Page](path/to/your/image.png)
+![Sign Up Page](assets/validation-images/features/sign-up-form.png)
 
 [Back to Top](#table-of-contents)
 
