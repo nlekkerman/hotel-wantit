@@ -280,7 +280,11 @@ Validation of home.html was successful.
 
 Lighthouse report for desktop testing:
 
+
+- home
 ![Lighthouse home Report](assets/validation-images/testing/lighthouse-home.jpg)
+
+- bookings
 ![Lighthouse bookings Report](assets/validation-images/testing/lighthouse-bookings.jpg)
 
 
