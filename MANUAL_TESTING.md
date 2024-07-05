@@ -35,13 +35,13 @@ Test the login and logout functionality.
 ### Redirect After Login
 - After successful login, verify redirection to the intended page.
   
-![Redirect After Login](positive_login_redirect.png)
+![Redirect After Login](assets/validation-images/testing/positive_login_redirect.png)
 
 ### Negative Outcome (Invalid Credentials)
 - User enters invalid credentials.
 - Login form displays error message indicating invalid credentials.
   
-![Negative Outcome - Invalid Credentials](assets/validation-images/testing/negative_login_invalid.png)
+![Negative Outcome - Invalid Credentials](assets/validation-images/testing/negative-login-invalid-credentials.png)
 
 ### Negative Outcome (Login with Empty Fields)
 - Attempt to login with empty username and password fields.
@@ -312,7 +312,7 @@ Test the availability check functionality for booking rooms.
 - No rooms are available for the selected dates.
 - Availability check displays a message indicating no rooms are available.
 
-![Negative Outcome - No Rooms Available](negative_room_availability.png)
+![Negative Outcome - No Rooms Available](assets/validation-images/testing/negative_room_availability.png)
 
 ### Overlapping Reservations
 
