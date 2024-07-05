@@ -1,5 +1,7 @@
 # Hotel Wantit
 
+![Responsive](assets/validation-images/responsivnes.png)
+
 ## Introduction
 
 Welcome to the Hotel Wantit page! This page is designed to offer a user-friendly and interactive experience for guests looking to book hotel rooms and restaurant tables at Hotel Wantit. Additionally, users can easily obtain all the information they need through our interactive chat feature.
