@@ -206,304 +206,36 @@ Our project embraces a minimalist design ethos with a touch of uniqueness that s
 
 ## Design
 
-### Color Palette
+# Color Palette
 
-- **Primary Background**: #f0f0f0
+## Background Colors
 
-  ![Primary Background Color](path/to/primary-background-color.png)
+### Primary Background
 
-  The primary background color #f0f0f0 provides a clean and neutral base throughout the interface.
+- **Color Code:** #f0f0f0
+- **Description:** The primary background color #f0f0f0 provides a clean and neutral base throughout the interface.
+- **Image:** ![Primary Background Color](assets/validation-images/background-color-image.jpg)
 
-- **Secondary Background**: rgba(255, 0, 0, 0.7)
+## Text Color
 
-  ![Secondary Background Color](path/to/secondary-background-color.png)
+- **Color Code:** #333
+- **Description:** The text color #333 ensures readability and contrasts effectively against the background.
+- **Image:** ![Text Color](assets/validation-images/text-color-image.jpg)
 
-  The secondary background color rgba(255, 0, 0, 0.7) adds vibrancy and highlights key elements with a touch of transparency.
+## Button Colors
 
-- **Text Color**: #333
+### Positive Button
 
-  ![Text Color](path/to/text-color.png)
+- **Color Code:** rgba(0, 255, 0, 0.6)
+- **Description:** This color is used for positive action buttons.
+- **Image:** ![Positive Button Color](assets/validation-images/positive-button-image.png)
 
-  The text color #333 ensures readability and contrasts effectively against the background.
+### Negative Button
 
-- **Accent Colors**: #b30021, #b30000, silver
+- **Color Code:** rgba(223, 0, 0, 0.5)
+- **Description:** This color is used for negative action buttons, indicating cancellation or deletion.
+- **Image:** ![Negative Button Color](assets/validation-images/negative_button_image.jpg)
 
-  ![Accent Colors](path/to/accent-colors.png)
-
-  Accent colors #b30021, #b30000, and silver are used sparingly to draw attention to interactive elements and important information.
-
-[Back to Top](#table-of-contents)
-
-## Features
-
-### Header
-
-#### Navigation Bar
-The navigation bar provides easy access to different sections of the application. It includes links to navigate to various pages such as Home, Reviews, and Bookings.
-
-![Navigation Bar](assets/validation-images/testing/positive_login.png)
-
-#### Navigation Bar (as a logged in user)
-When logged in, additional options appear in the navigation bar, such as Notifications and Logout, providing personalized user actions.
-
-![Navigation Bar - Logged In](assets/validation-images/features/navigation_bar_logged_in.png)
-
-#### Navigation Bar (as a staff member or superuser)
-Staff members or superusers have access to administrative features through the navigation bar, enabling them to manage administrative tasks efficiently.
-
-![Navigation Bar - Staff/Superuser](assets/validation-images/testing/positive_login.png)
-
-
-## Home Page Features
-
-1. **Logo and Branding**
-   - **Logo**: A visually appealing logo that reinforces the brand identity.
-     ![Logo](assets/validation-images/features/logo.png)
-   - **Brand Name**: Clearly displayed brand name "Hotel Wantit" below the logo.
-
-2. **Promotional Slides**
-   - **Discount Offer Slide**
-     - **Image**: Engaging image of a room.
-     - **Text Overlay**: "Get 10% off on ALL Rooms".
-     - **Call-to-Action Button**: "Book Now" button that applies the discount.
-     ![Room Discount Offer](assets/validation-images/features/room_discount.png)
-
-   - **Renovated Rooms Slide**
-     - **Image**: Image showcasing the renovated rooms.
-     - **Text Overlay**: "Experience our newly refurbished rooms!".
-     - **Call-to-Action Button**: "Read More" button leading to detailed information about the renovated rooms.
-     ![Renovated Rooms](assets/validation-images/features/renovated_room.png)
-
-   - **Guest Review Slide**
-     - **Image**: Image related to guest reviews.
-     - **Review Display**: A random guest review with the review text, author, date, and rating stars.
-     - **Call-to-Action Button**: "Leave Review" button encouraging users to submit their own reviews.
-     ![Guest Review](assets/validation-images/features/reviews_slide.png)
-
-3. **Interactive Elements**
-   - **Slideshow Container**: Allows users to navigate through different slides with promotional content.
-   - **Local Storage Handling**: Manages the discount application state using local storage.
-   - **Dynamic Redirection**: Buttons with JavaScript click events to handle redirection based on user actions (e.g., "Book Now" and "Read More").
-
-These features aim to provide a clear, engaging, and interactive experience for users visiting the homepage of "Hotel Wantit". The design ensures that users can easily navigate through promotions, view detailed information about renovated rooms, and read or leave guest reviews.
-
-
-## Reviews Page Features
-
-1. **Page Title and Write Review Button**
-   - **Page Title**: Prominently displays "Reviews".
-   - **Write Review Button**: Floating button that allows users to leave a new review with an icon and text "Write Review".
-     ![Write Review Button](assets/validation-images/features/write-review-icon.png)
-
-2. **Review Cards**
-   - **Author Information**: Displays the reviewer's name.
-   - **Rating Stars**: Visual representation of the rating using filled and empty stars.
-   - **Review Text**: Shows a truncated version of the review with an option to expand and read more.
-   - **Review Date**: Displays the date when the review was posted.
-   - **Comment Count**: Shows the number of comments on each review with an icon.
-     ![Comment Icon](assets/validation-images/features/review-card.png)
-
-3. **Interactive Elements**
-   - **Read More Functionality**: Expands and collapses the review text for detailed reading or summarizing.
-   - **Dynamic Star Ratings**: Changes star display based on the rating value.
-   - **Comment Count Icon**: Encourages interaction by showing comment activity.
-
-4. **Review Text Handling**
-   - **Text Truncation**: Displays only part of the review text with a "Read More" link if the text is long.
-   - **Expand/Collapse**: Clicking "Read More" shows the full review text, and "less" collapses it back.
-
-5. **Comment Interaction**
-   - **Comment Count Position**: Located at the bottom of the review card to show user engagement.
-
-## Review Detail Page Features
-
-- **Review Title**: Displays the title of the review.
-- **Author Name**: Shows the username of the reviewer.
-- **Rating Stars**: Visual representation of the rating using star icons.
-- **Review Text**: Displays the content of the review.
-- **Review Date**: Shows the date when the review was posted.
-
-### Comment Section
-
-- **Comments**: Users can add comments to reviews.
-  - **Add Comment Form**: Allows users to input a comment.
-
-### Review Actions
-
-- **Edit Review**: Users can edit their review.
-- **Delete Review**: Users can delete their review. A confirmation dialog will appear.
-
-### Comment Actions
-
-- **Edit Comment**: Users can edit their comment.
-- **Delete Comment**: Users can delete their comment. A confirmation dialog will appear.
-
-
-![Review Detail Page Features](assets/validation-images/features/review-detail-page.png)
-
-
-## Admin Dashboard Features
-
-![Admin Dashboard](assets/validation-images/testing/positive_navigation_admin.png)
-
-### Reservations
-
-Manage and approve room reservations. Clicking on this card redirects to the reservations approval list.
-
-![Reservations](assets/validation-images/testing/pending_reservations.png)
-### Comments
-
-Review and moderate customer comments. Clicking on this card redirects to the comments approval list.
-
-![Comments](assets/validation-images/features/pending-comments.png)
-
-### Reviews
-
-Approve and manage customer reviews. Clicking on this card redirects to the reviews approval list.
-
-![Reviews](assets/validation-images/features/pending-reviews.png) 
-
-[Back to Top](#Table of Contents)
-
-
----
-
-## Pending Reservations
-
-Displays pending reservations awaiting approval or rejection.
-
-- Each reservation card shows the user's details, reservation dates, and price.
-- Admins can approve or reject reservations using corresponding buttons, which trigger AJAX requests.
-- Reservations are visually marked as 'approved' or 'rejected' based on admin actions.
-- Cards smoothly slide up and disappear after approval or rejection, providing real-time feedback.
-- If no pending reservations exist, a message indicating "No pending requests" is displayed.
-
-![Pending Reservations](assets/validation-images/features/pending-reservations.png)
-
-[Back to Top](#table-of-contents)
-
----
-
-## Pending Comments
-
-Shows pending comments for review and moderation.
-
-- Each comment card displays the commenter's details and the comment content.
-- Admins can approve or reject comments with corresponding buttons triggering AJAX requests.
-- Comments are visually marked as 'approved' or 'rejected' based on admin actions.
-- Cards slide up and disappear after approval or rejection, offering immediate feedback.
-- If no pending comments exist, a message indicating "No pending comments" is displayed.
-
-![Pending Comments](assets/validation-images/features/pending-comment.png)
-
-[Back to Top](#table-of-contents)
-
----
-
-## Pending Reviews
-
-Displays pending reviews awaiting approval or rejection.
-
-- Each review card includes reviewer details, rating, and review text.
-- Admins can approve or reject reviews with respective buttons, using AJAX for live updates.
-- Reviews are visually categorized as 'approved' or 'rejected' based on admin actions.
-- Cards smoothly slide up and vanish after approval or rejection, providing real-time feedback.
-- If no pending reviews exist, a message indicating "No pending reviews" is displayed.
-
-![Pending Reviews](assets/validation-images/features/pending-review.png)
-
-[Back to Top](#table-of-contents)
-
-### Notifications
-
-- **Message Notifications**: Shows messages related to user actions with an option to close each message.
-
-### Reservation Details
-
-- **Reservation Details**: Lists user reservations with details such as status, check-in/out dates, and price.
-  ![Reservations](assets/validation-images/features/reservations-detail-screenshot.png)
-
-
-
----
-
-### Sign Up Form
-
-- **Form Fields**: Includes fields for username, first name, last name, email, and password.
-- **Validation**: Displays errors next to each form field for validation messages.
-- **Password Help**: Provides help text for password field with safety tips.
-- **Submit Button**: Allows users to submit the form to sign up.
-
-### Localization
-
-- **Internationalization (i18n)**: Utilizes Django's `{% load i18n %}` tag for internationalization.
-- **Translation**: Translates the "Sign Up" title and link text using `{% trans %}` and `{% blocktrans %}` tags.
-
-### Styling and Layout
-
-- **Logo**: Displays the Hotel Wantit logo at the top of the form.
-- **Card Layout**: Organizes the form inside a card for better presentation.
-- **Responsive Design**: Uses responsive classes (`margin-top-style`, `text-bold`, etc.) to adjust layout across devices.
-
-### Accessibility
-
-- **Form Accessibility**: Ensures form accessibility with appropriate label tags and form groupings.
-
-
-![Signup Form](assets/validation-images/features/sign-up-form.png)
-
-[Back to Top](#table-of-contents)
-
----
-### Sign Out Confirmation Page
-
-- **Title**: Sets the browser title to "Sign Out" using `{% block head_title %}`.
-- **Logo**: Displays the Hotel Wantit logo at the top of the page.
-- **Confirmation Message**: Asks users if they are sure they want to sign out.
-- **Buttons**: Provides options to confirm ("YES") or cancel ("NO") the sign-out action.
-- **Form Submission**: Uses a form to handle the sign-out action, with CSRF protection.
-- **Localization**: Utilizes Django's `{% load i18n %}` tag for internationalization.
-- **Styling**: Applies responsive layout classes (`col-md-8`, `offset-md-2`, `mt-3`, etc.) for proper alignment and spacing.
-
-
-![Sign Out Page](assets/validation-images/testing/positive_logout.png)
-
-[Back to Top](#table-of-contents)
-
-### Login Page
-
-- **Title**: Inherits the base template and sets the browser title accordingly.
-- **Logo**: Displays the Hotel Wantit logo at the top of the page.
-- **Login Form**: Provides a form for users to input their credentials and sign in.
-- **Sign Up Link**: Offers a link to the registration page (`{{ signup_url }}`) for new users.
-- **Localization**: Uses Django's `{% load i18n %}` and `{% blocktrans %}` tags for internationalization.
-- **Form Submission**: Handles form submission securely with CSRF protection (`{% csrf_token %}`).
-- **Styling**: Applies responsive layout classes (`col-md-8`, `col-lg-6`, `offset-md-2`, `mt-3`, etc.) for proper alignment and spacing.
-
-### Example Image
-
-![Login Page](assets/validation-images/testing/positive_navigation_login_register.png)
-
-[Back to Top](#table-of-contents)
-
-- **Logo**: Displays the Hotel Wantit logo at the top of the page.
-- **Sign Up Form**: Provides a form (`<form class="signup" ...>`) for users to register.
-  - **Username**: Input field (`{{ form.username }}`) for username with label.
-  - **First Name**: Input field (`{{ form.first_name }}`) for first name with label.
-  - **Last Name**: Input field (`{{ form.last_name }}`) for last name with label.
-  - **Email**: Input field (`{{ form.email }}`) for email with label.
-  - **Password**: Input field (`{{ form.password1 }}`) for password with label and help text (`{{ form.password1.help_text|safe }}`).
-  - **Confirm Password**: Input field (`{{ form.password2 }}`) to confirm password with label.
-  - **Validation**: Displays any form errors (`{{ form.non_field_errors }}`) if present.
-  - **Sign Up Button**: Button (`<button type="submit" class="btn edit-button">{% trans "Sign Up" %}</button>`) to submit the form securely (`{% csrf_token %}`).
-- **Already have an account?**: Provides a link (`<a href="{{ login_url }}">sign in</a>`) to the login page (`{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}`).
-
-
-![Sign Up Page](assets/validation-images/features/sign-up-form.png)
-
-[Back to Top](#table-of-contents)
-
----
 # Testing
 
 ### Manual Testing
@@ -519,30 +251,137 @@ Displays pending reviews awaiting approval or rejection.
 <!-- Bugs content here -->
 
 ## Technologies Used
-<!-- Technologies Used content here -->
 
+- **Django**: Python-based web framework used for backend development.
+- **Bootstrap**: Frontend framework for responsive design and UI components.
+- **jQuery**: JavaScript library used for DOM manipulation and AJAX.
+- **Font Awesome**: Icon toolkit used for icons throughout the application.
+- **Animate.css**: Library for CSS animations used for visual effects.
+- **Bootstrap Datepicker**: Plugin for date selection in forms.
+- **HTML/CSS**: Frontend languages for structuring and styling web pages.
+- **JavaScript**: Used for client-side scripting and enhancing user interactions.
+- **Git & GitHub**: Version control and repository hosting platform.
+- **Photoshop**: Used for designing graphical elements and assets.
 ## Deployment
-### Fork repository in GitHub
-<!-- Fork repository in GitHub content here -->
 
-### Clone repository in GitHub
-<!-- Clone repository in GitHub content here -->
+### Create a GitHub Repository
 
-### Deployment to Heroku
-<!-- Deployment to Heroku content here -->
+1. Created a new repo on GitHub from the [Code Institute template](https://github.com/Code-Institute-Org/gitpod-full-template).
+
+### Push Code to GitHub
+
+1. Initialized a Git repository locally.
+2. Added and committed HTML, CSS, and other relevant files.
+3. Pushed the code to the GitHub repository.
+
+
+## Development
+
+### GitHub Repository
+
+- The source code for Hotel Wantit is on GitHub. You can find the repository at:
+  [Hotel Wantit Repository](https://github.com/nlekkerman/hotel-wantit.git)
+  
+- Feel free to explore the codebase, open issues, and submit pull requests.
+
+### Installation
+
+#### Cloning Hotel Wantit Repository in Visual Studio
+
+1. Open Visual Studio: On the start window, select "Clone a repository."
+2. Enter Repository URL: In the "Clone a Repository" window, enter the repository URL: `https://github.com/nlekkerman/hotel-wantit.git`
+3. Choose Local Directory: Choose a directory on your local machine where you want to clone the repository.
+4. Click "Clone": Click the "Clone" button.
+5. Open Cloned Project: Once the cloning process is complete, open the cloned project in your IDE.
+
+- Now you have the Hotel Wantit project cloned to your local machine, and you can explore, modify, and run it from within Visual Studio.
+
+#### Cloning with Terminal or Command Prompt
+
+1. Open a terminal or command prompt.
+2. Navigate to Local Directory: `cd path/to/your/directory`
+3. Clone Repository: Run the following command to clone the Hotel Wantit repository from GitHub:
+git clone https://github.com/nlekkerman/hotel-wantit.git
+
+markdown
+Copy code
+4. Navigate to Cloned Project: `cd hotel-wantit`
+
+- Now you have the Hotel Wantit project cloned to your local machine, and you can explore.
+
+## Deployment on Heroku
+
+To deploy my application on Heroku, I followed these steps:
+
+### Create a Heroku Account
+
+1. Created a Heroku account on [Heroku's website](https://www.heroku.com/).
+
+### Login to Heroku
+
+- Logged in to my Heroku account.
+
+### Prepare Application
+
+1. Ensured that my project was set up properly and contained all necessary files.
+
+2. Verified that my project had a `requirements.txt` file containing all Python dependencies required for my application.
+
+### Connect Heroku with GitHub
+
+1. Connected Heroku with my GitHub repository.
+
+2. Set up automatic deployment so that Heroku builds and deploys my application whenever I push changes to GitHub.
+
+### Set Up Config Vars
+
+1. Configured necessary environment variables (Config Vars) for my application. I added these variables either through the Heroku dashboard or using the Heroku CLI:heroku config
+CREDS=
+heroku config
+PORT=8000
+
+
+### Add Buildpacks
+
+1. Specified the required buildpacks for my application:
+- `heroku/python` for Python applications.
+- `heroku/nodejs` for Node.js applications.
+
+2. Added these buildpacks through the Heroku dashboard.
+
+### Deployment of Application
+
+- With automatic deployment set up, Heroku automatically built and deployed my application whenever I pushed changes to my GitHub repository.
+
+### Accessing Application
+
+- After a successful deployment, I accessed my application by opening the URL provided by Heroku.
+
+[Link to the deployed application](https://hotel-wantit-0444de03d75c.herokuapp.com/) <!-- Replace with your actual Heroku app URL -->
 
 ## Credits
-### Libraries used
-<!-- Libraries used content here -->
-
-### Used resources
-<!-- Used resources content here -->
 
 ### Images
-<!-- Images content here -->
+- Image by [vecstock on Freepik](https://www.freepik.com/free-ai-image/bedroom-with-chandelier-bed-with-blanket-it_42293048.htm#fromView=search&page=1&position=3&uuid=8bf78fdd-a1f0-4299-beb6-94a9d872d08a)
+- Image by [freepik](https://www.freepik.com/free-ai-image/interior-design-neoclassical-style-with-furnishings-decor_138316835.htm#fromView=search&page=1&position=34&uuid=5a4cb3a7-4be1-45af-8c96-330c99918f93)
+- Image by [freepik](https://www.freepik.com/free-ai-image/rendering-elegant-neoclassical-interior_94940198.htm#fromView=search&page=1&position=36&uuid=5a4cb3a7-4be1-45af-8c96-330c99918f93)
+- Image by [dit26978 on Freepik](https://www.freepik.com/free-photo/3d-rendering-beautiful-comtemporary-luxury-bedroom-suite-hotel-with-tv_24803801.htm#fromView=search&page=1&position=31&uuid=77aeb5c3-6ef7-4084-ac0e-045121bf4959)
+- Image by [mrsiraphol on Freepik](https://www.freepik.com/free-photo/spacious-hotel-room-with-rug_968440.htm#fromView=search&page=2&position=8&uuid=77aeb5c3-6ef7-4084-ac0e-045121bf4959)
+- Icon by [juicy_fish on Freepik](https://www.freepik.com/search)
+- Image by [upklyak on Freepik](https://www.freepik.com/free-vector/alert-warning-emergency-notification-3d-render_32230554.htm#fromView=search&page=3&position=16&uuid=b94e0487-7a40-4694-b9bf-e5eba093d534)
+- Image by [freepik](https://www.freepik.com/free-ai-image/interior-design-neoclassical-style-with-furnishings-decor_138316853.htm#fromView=search&page=1&position=0&uuid=ee901e76-2088-4809-ad65-5e8ed285a4a9)
+- Image by [stockgiu on Freepik](https://www.freepik.com/free-ai-image/modern-luxury-bathroom-with-marble-sink-elegant-chandelier-illuminated-faucet-generated-by-ai_48651085.htm#fromView=search&page=1&position=11&uuid=7a957443-60c5-492b-b7d2-f2e6e4b0cd5d)
+- Image by [freepik](https://www.freepik.com/free-ai-image/interior-design-neoclassical-style-with-furnishings-decor_138316892.htm#fromView=search&page=1&position=29&uuid=7a957443-60c5-492b-b7d2-f2e6e4b0cd5d)
+- Image by [freepik](https://www.freepik.com/free-ai-image/photorealistic-stone-wall-surface-used-interior-design_138363665.htm#fromView=search&page=1&position=37&uuid=7a957443-60c5-492b-b7d2-f2e6e4b0cd5d)
+- Image by [vecstock on Freepik](https://www.freepik.com/free-ai-image/large-group-objects-winery-generated-by-ai_43160903.htm#fromView=search&page=1&position=10&uuid=00634b15-4b9a-43a5-9e1c-98a2d0c0d464)
+- Image by [vecstock on Freepik](https://www.freepik.com/free-photo/cocktail-celebration-martini-lemon-lime-whiskey-tequila-generative-ai_41060997.htm#from_view=detail_alsolike)
+- Image by [vecstock on Freepik](https://www.freepik.com/free-ai-image/refreshing-cocktails-poured-bar-counter-vibrant-nightclub-generated-by-artificial-intelligence_89236283.htm#fromView=search&page=1&position=8&uuid=00634b15-4b9a-43a5-9e1c-98a2d0c0d464)
+- Image by [vecstock on Freepik](https://www.freepik.com/free-ai-image/abundance-wine-bottles-retail-store-generated-by-ai_43159641.htm#fromView=search&page=1&position=36&uuid=00634b15-4b9a-43a5-9e1c-98a2d0c0d464)
+- Image by [upklyak on Freepik](https://www.freepik.com/free-vector/error-404-page-found-confused-characters_28998047.htm#fromView=search&page=1&position=51&uuid=9638879a-e833-493a-a207-b7884e782551)
+
 
 ### Acknowledgements
-<!-- Acknowledgements content here -->
 
-## User Experience
-<!-- User Experience content here -->
+- **Brian O'Hare**: Mentor who provided valuable guidance throughout the development process.
+- **Walkthrough Blog - I Think Therefore I Blog**: Provided helpful resources and insights for building this project.
+
