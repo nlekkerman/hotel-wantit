@@ -87,6 +87,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
 ]
+
+X_FRAME_OPTIONS = 'DENY'
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 ROOT_URLCONF = 'hotel.urls'
