@@ -33,14 +33,14 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['8000-nlekkerman-hotelwantit-yrp6g6lcw5o.ws-eu117.gitpod.io', '.herokuapp.com']
+ALLOWED_HOSTS = ['8000-nlekkerman-hotelwantit-l85pzlw1eo4.ws-eu118.gitpod.io', '.herokuapp.com']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*.gitpod.io',
     'https://*.herokuapp.com',
-    'https://8000-nlekkerman-hotelwantit-yrp6g6lcw5o.ws-eu117.gitpod.io'
+    'https://8000-nlekkerman-hotelwantit-l85pzlw1eo4.ws-eu118.gitpod.io'
 ]
 
 """# Email configuration
@@ -122,16 +122,17 @@ WSGI_APPLICATION = 'hotel.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres.parziwuqbgdildfjregm',
-        'PASSWORD': '59tPYxAHe5-9K*9',
-        'HOST': 'aws-0-eu-west-1.pooler.supabase.com',
-        'PORT': '5432',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
         'OPTIONS': {
             'sslmode': 'require',
         },
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
